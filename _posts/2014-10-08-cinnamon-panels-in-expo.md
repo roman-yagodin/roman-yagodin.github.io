@@ -20,13 +20,13 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
 
 1. Open script with superuser privileges in the text editor:
 
-  {% highlight shell %}
+  {% highlight bash %}
   gksu gedit /usr/share/cinnamon/js/ui/expo.js
   {% endhighlight %}
   
   for overview:
   
-  {% highlight shell %}
+  {% highlight bash %}
   gksu gedit /usr/share/cinnamon/js/ui/overview.js
   {% endhighlight %}
 
@@ -100,7 +100,7 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
 
 5. Now you need restart Cinnamon. For this you can use entry in the Troubleshooting menu, or use command line:
 
-  {% highlight shell %}
+  {% highlight bash %}
   killall cinnamon && cinnamon
   {% endhighlight %}
   
