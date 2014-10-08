@@ -8,10 +8,10 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : My pesonal website & blog
+title : R7 personal blog
 tagline: Site Tagline
 author :
-  name : Roman Yagodin
+  name : Roman M. Yagodin
   email : roman-yagodin@gmail.com
   github : roman-yagodin
   twitter : username
@@ -100,7 +100,7 @@ JB :
   analytics :
     provider : google 
     google : 
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-49696828-6'
     getclicky :
       site_id : 
     mixpanel :
