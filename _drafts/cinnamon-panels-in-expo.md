@@ -85,6 +85,8 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
 4. For those who'd prefer panel on top, more tweaks needed as expo / overview boxes could be partially overlapped with panel. 
   
   For expo, edit `expoThumbnail.js`:
+
+  *Old solution not working* :(  
   
   For overview, edit `workspacesView.js`:
 
