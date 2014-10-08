@@ -20,89 +20,89 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
 
 1. Open script with superuser privileges in the text editor:
 
-  {% highlight bash %}
-  gksu gedit /usr/share/cinnamon/js/ui/expo.js
-  {% endhighlight %}
-  
-  for overview:
-  
-  {% highlight bash %}
-  gksu gedit /usr/share/cinnamon/js/ui/overview.js
-  {% endhighlight %}
+		{% highlight bash %}
+		gksu gedit /usr/share/cinnamon/js/ui/expo.js
+		{% endhighlight %}
+
+	for overview:
+
+		{% highlight bash %}
+		gksu gedit /usr/share/cinnamon/js/ui/overview.js
+		{% endhighlight %}
 
 2. Find these two lines (marked as 1 and 2):
 
-  {% highlight javascript %}
-  ...
-  if (!options || !options.toScale ) {
-    Main.enablePanels(); /* 1 */
-    activeWorkspace.overviewModeOff(true, true);
-  }
-  ...
-  this._gradient.show();
-  Main.disablePanels(); /* 2 */
-  {% endhighlight %}
-  
-  Variant for overview:
-  
-  {% highlight javascript %}
-  ...
-  this.workspacesView = new WorkspacesView.WorkspacesView();
-  global.overlay_group.add_actor(this.workspacesView.actor);
-  Main.disablePanels(); /* 1 */
-  ...
-  this.animationInProgress = true;
-  this._hideInProgress = true;
-  Main.enablePanels(); /* 2 */
-  {% endhighlight %}
+		{% highlight javascript %}
+		...
+		if (!options || !options.toScale ) {
+			Main.enablePanels(); /* 1 */
+			activeWorkspace.overviewModeOff(true, true);
+		}
+		...
+		this._gradient.show();
+		Main.disablePanels(); /* 2 */
+		{% endhighlight %}
+
+	Variant for overview:
+
+		{% highlight javascript %}
+		...
+		this.workspacesView = new WorkspacesView.WorkspacesView();
+		global.overlay_group.add_actor(this.workspacesView.actor);
+		Main.disablePanels(); /* 1 */
+		...
+		this.animationInProgress = true;
+		this._hideInProgress = true;
+		Main.enablePanels(); /* 2 */
+		{% endhighlight %}
 
 3. Comment out these lines and save the file:
-  
-  {% highlight javascript %}
-  ...
-  if (!options || !options.toScale ) {
-    // Main.enablePanels(); /* 1 */
-    activeWorkspace.overviewModeOff(true, true);
-  }
-  ...
-  this._gradient.show();
-  // Main.disablePanels(); /* 2 */
-  {% endhighlight %}
-  
-  Variant for overview:
-  
-  {% highlight javascript %}
-  ...
-  this.workspacesView = new WorkspacesView.WorkspacesView();
-  global.overlay_group.add_actor(this.workspacesView.actor);
-  // Main.disablePanels(); /* 1 */
-  ...
-  this.animationInProgress = true;
-  this._hideInProgress = true;
-  // Main.enablePanels(); /* 2 */
-  {% endhighlight %}
 
-4. For those who'd prefer panel on top, more tweaks needed as expo / overview boxes could be partially overlapped with panel. 
-  
-  For expo, edit `expoThumbnail.js`:
+		{% highlight javascript %}
+		...
+		if (!options || !options.toScale ) {
+		// Main.enablePanels(); /* 1 */
+		activeWorkspace.overviewModeOff(true, true);
+		}
+		...
+		this._gradient.show();
+		// Main.disablePanels(); /* 2 */
+		{% endhighlight %}
 
-  *Old solution not working* :(  
-  
-  For overview, edit `workspacesView.js`:
+	Variant for overview:
 
-  {% highlight javascript %}
-  else {
-    workspace.actor.set_position(x, 0); /* change 0 to panel height */
-    if (w == 0)
-    this._updateVisibility();
-  }
-  {% endhighlight %}
+		{% highlight javascript %}
+		...
+		this.workspacesView = new WorkspacesView.WorkspacesView();
+		global.overlay_group.add_actor(this.workspacesView.actor);
+		// Main.disablePanels(); /* 1 */	
+		...
+		this.animationInProgress = true;
+		this._hideInProgress = true;
+		// Main.enablePanels(); /* 2 */
+		{% endhighlight %}
+
+4. For those who'd prefer panel on top, more tweaks needed as expo / overview boxes could be partially overlapped with panel.
+
+	For expo, edit `expoThumbnail.js`:
+
+	*Old solution not working* :(  
+	
+	For overview, edit `workspacesView.js`:
+
+		{% highlight javascript %}
+		else {
+			workspace.actor.set_position(x, 0); /* change 0 to panel height */
+			if (w == 0)
+				this._updateVisibility();
+		}
+		{% endhighlight %}
 
 5. Now you need restart Cinnamon. For this you can use entry in the Troubleshooting menu, or use command line:
 
-  {% highlight bash %}
-  killall cinnamon && cinnamon
-  {% endhighlight %}
+		{% highlight bash %}
+		killall cinnamon && cinnamon
+		{% endhighlight %}
   
 ## Thanks
 
