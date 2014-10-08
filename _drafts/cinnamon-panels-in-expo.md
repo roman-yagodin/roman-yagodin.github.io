@@ -82,7 +82,21 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   // Main.enablePanels(); /* 2 */
   ```
 
-4. Now you need restart Cinnamon. For this you can use entry in the Troubleshooting menu, or use command line:
+4. For those who'd prefer panel on top, more tweaks needed as expo / overview boxes could be partially overlapped with panel. 
+  
+  For expo, edit `expoThumbnail.js`:
+  
+  For overview, edit `workspacesView.js`:
+
+  ```javascript
+  else {
+    workspace.actor.set_position(x, 0); /* change 0 to panel height */
+    if (w == 0)
+    this._updateVisibility();
+  }
+  ```
+
+5. Now you need restart Cinnamon. For this you can use entry in the Troubleshooting menu, or use command line:
 
   ```shell
   killall cinnamon && cinnamon
