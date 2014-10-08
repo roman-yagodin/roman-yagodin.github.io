@@ -81,5 +81,13 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   this._hideInProgress = true;
   // Main.enablePanels(); /* 2 */
   ```
+
+4. Now you need restart Cinnamon. For this you can use entry in the Troubleshooting menu, or use command line:
+
+  ```shell
+  killall cinnamon && cinnamon
+  ```
   
-Thanks nfat for this: https://github.com/linuxmint/Cinnamon/issues/3001
+## Thanks
+
+Thanks [nfat](https://github.com/nfat) for the ideas described [here](https://github.com/linuxmint/Cinnamon/issues/3001).
