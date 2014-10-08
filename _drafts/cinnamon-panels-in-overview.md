@@ -36,3 +36,17 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   this._hideInProgress = true;
   Main.enablePanels(); /* 2 */
   ```
+
+3. Comment out these lines and save the file:
+
+  ```javascript
+  ...
+  this.workspacesView = new WorkspacesView.WorkspacesView();
+  global.overlay_group.add_actor(this.workspacesView.actor);
+  // Main.disablePanels(); /* 1 */
+  ...
+  this.animationInProgress = true;
+  this._hideInProgress = true;
+  // Main.enablePanels(); /* 2 */
+  ```
+  
