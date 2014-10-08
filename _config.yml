@@ -9,7 +9,7 @@ highlighter: pygments
 # so be sure to set them if your theme uses them.
 #
 title : R7 personal blog
-tagline: Site Tagline
+tagline : Site Tagline
 author :
   name : Roman M. Yagodin
   email : roman-yagodin@gmail.com
