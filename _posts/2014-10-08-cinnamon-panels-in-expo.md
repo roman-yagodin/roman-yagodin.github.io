@@ -20,19 +20,19 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
 
 1. Open script with superuser privileges in the text editor:
 
-  ```shell
+  {% highlight shell %}
   gksu gedit /usr/share/cinnamon/js/ui/expo.js
-  ```
+  {% endhighlight %}
   
   for overview:
   
-   ```shell
+  {% highlight shell %}
   gksu gedit /usr/share/cinnamon/js/ui/overview.js
-  ```
+  {% endhighlight %}
 
 2. Find these two lines (marked as 1 and 2):
 
-  ```javascript
+  {% highlight javascript %}
   ...
   if (!options || !options.toScale ) {
     Main.enablePanels(); /* 1 */
@@ -41,11 +41,11 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   ...
   this._gradient.show();
   Main.disablePanels(); /* 2 */
-  ```
+  {% endhighlight %}
   
   Variant for overview:
   
-  ```javascript
+  {% highlight javascript %}
   ...
   this.workspacesView = new WorkspacesView.WorkspacesView();
   global.overlay_group.add_actor(this.workspacesView.actor);
@@ -54,11 +54,11 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   this.animationInProgress = true;
   this._hideInProgress = true;
   Main.enablePanels(); /* 2 */
-  ```
+  {% endhighlight %}
 
 3. Comment out these lines and save the file:
   
-  ```javascript
+  {% highlight javascript %}
   ...
   if (!options || !options.toScale ) {
     // Main.enablePanels(); /* 1 */
@@ -67,11 +67,11 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   ...
   this._gradient.show();
   // Main.disablePanels(); /* 2 */
-  ```
+  {% endhighlight %}
   
   Variant for overview:
   
-  ```javascript
+  {% highlight javascript %}
   ...
   this.workspacesView = new WorkspacesView.WorkspacesView();
   global.overlay_group.add_actor(this.workspacesView.actor);
@@ -80,7 +80,7 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   this.animationInProgress = true;
   this._hideInProgress = true;
   // Main.enablePanels(); /* 2 */
-  ```
+  {% endhighlight %}
 
 4. For those who'd prefer panel on top, more tweaks needed as expo / overview boxes could be partially overlapped with panel. 
   
@@ -90,19 +90,19 @@ Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/u
   
   For overview, edit `workspacesView.js`:
 
-  ```javascript
+  {% highlight javascript %}
   else {
     workspace.actor.set_position(x, 0); /* change 0 to panel height */
     if (w == 0)
     this._updateVisibility();
   }
-  ```
+  {% endhighlight %}
 
 5. Now you need restart Cinnamon. For this you can use entry in the Troubleshooting menu, or use command line:
 
-  ```shell
+  {% highlight shell %}
   killall cinnamon && cinnamon
-  ```
+  {% endhighlight %}
   
 ## Thanks
 
