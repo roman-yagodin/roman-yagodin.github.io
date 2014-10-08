@@ -18,4 +18,21 @@ Simpliest way to run applications in the Cinnamon is to use favorites and menu a
 
 Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the `/usr/share/cinnamon/js/ui/` directory. As you can guess, overview logic is in `overview.js`. So what's next?
 
+1. Open `overview.js` with superuser privileges in the text editor:
 
+  ```shell
+  gksu gedit /usr/share/cinnamon/js/ui/overview.js
+  ```
+
+2. Find these two lines (marked as 1 and 2):
+
+  ```javascript
+  ...
+  this.workspacesView = new WorkspacesView.WorkspacesView();
+  global.overlay_group.add_actor(this.workspacesView.actor);
+  Main.disablePanels(); /* 1 */
+  ...
+  this.animationInProgress = true;
+  this._hideInProgress = true;
+  Main.enablePanels(); /* 2 */
+  ```
