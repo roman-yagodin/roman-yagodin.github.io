@@ -6,13 +6,13 @@ tags : [mint, cinnamon, tutorial]
 ---
 {% include JB/setup %}
 
-# Cinnamon panels in expo and overview
-
-## Problem
-
 One of the things that I've liked in GNOME 3 is ability to manage workspaces, windows and run application from the overview mode, all beginning from one single gesture. So I'd like to my Cinnamon desktop behave somethat alike.
 
 Simpliest way to run applications in the Cinnamon is to use favorites and menu applets. But they are on the panel, and by default Cinnamon hides panels then entering expo and overview modes - so from expo you can manage only workspaces and windows, from overview - only windows,  and can't run an application (except from Alt+F2 command line) from both of modes.
+
+---
+
+<img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg" alt="Cinnamon expo mode with top panel" width="100%" />
 
 ## Solution
 
@@ -116,6 +116,10 @@ else {
 
 Offset value is related to the panel height, but you need to experiment with this to get desired result, as current Cinnamon theme 
 could greatly infuence it. In my case (*New Minty* theme), panel height is about 26, but value of 16 in the `expo.js` and 32 in `workspacesView.js` is fine.
+
+---
+
+<img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_02.jpg" alt="Cinnamon overview (scale) mode with top panel" width="100%" />
 
 ## Acknowledgements
 
