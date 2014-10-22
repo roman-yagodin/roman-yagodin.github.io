@@ -26,7 +26,9 @@ Here are the desktops and default window managers:
 
 ## Setting up
 
-You can use `dconf-editor` for GUI or `gsettings set` in the terminal to change value of the key `org.cinnamon.desktop.wm.preferences.button-layout` for *Cinnamon*. The key `org.cinnamon.muffin.button-layout` can be used to override the value of `org.cinnamon.desktop.wm.preferences.button-layout`.
+Buttons layout and some other WM options are stored in the *dconf* keys. For *Cinnamon's muffin*, we should 
+change value of the key `org.cinnamon.desktop.wm.preferences.button-layout` or the key `org.cinnamon.muffin.button-layout` 
+to override value of the first key.
 
 Some other desktops:
 
@@ -41,6 +43,9 @@ Here are list of button names:
 - **shade** - toggle "roll / minimize to header"
 - **spacer** - space between buttons
 - **close, maximize, minimize*** - as they sounds
+
+Note what standard *Cinnamon* window settings do not have ability to add some buttons, like **above**, **shade** and also **spacer** - 
+so we should use `dconf-editor` for GUI or `gsettings set` command in the terminal to get things done. 
 
 ## Examples
 
