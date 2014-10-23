@@ -8,6 +8,8 @@ tags : [cinnamon, muffin]
 
 One of great things about Linux desktops is ability to customize window title buttons layout - according to your taste or regular job specifics. If you are using *Cinnamon*, this instruction is for you - but majority of things are same for *GNOME 3*, *GNOME Flashback*, *Cinnamon* and *MATE* - as they are using similar window managers, derived from *metacity* - default window manager in *GNOME 2*. 
 
+<!-- more -->
+
 ---
  
 <img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_01.png" alt="Editing muffin buttons layout in dconf-editor" width="100%" />

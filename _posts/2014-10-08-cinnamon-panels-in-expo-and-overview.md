@@ -8,11 +8,15 @@ tags : [mint, cinnamon, tutorial]
 
 One of the things that I've liked in GNOME 3 is ability to manage workspaces, windows and run application from the overview mode, all beginning from one single gesture. So I'd like to my Cinnamon desktop behave somethat alike.
 
-Simpliest way to run applications in the Cinnamon is to use favorites and menu applets. But they are on the panel, and by default Cinnamon hides panels then entering expo and overview modes - so from expo you can manage only workspaces and windows, from overview - only windows,  and can't run an application (except from Alt+F2 command line) from both of modes.
+<!-- more -->
 
 ---
 
 <img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg" alt="Cinnamon expo mode with top panel" width="100%" />
+
+## Problem
+
+Simpliest way to run applications in the Cinnamon is to use favorites and menu applets. But they are on the panel, and by default Cinnamon hides panels then entering expo and overview modes - so from expo you can manage only workspaces and windows, from overview - only windows,  and can't run an application (except from Alt+F2 command line) from both of modes.
 
 ## Solution
 

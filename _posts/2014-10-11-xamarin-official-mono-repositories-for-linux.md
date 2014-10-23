@@ -8,6 +8,8 @@ tags : [mono, linux, debian, xamarin]
 
 **Great news for all Mono developers on Linux!** Recently *Xamarin* introduced [official Mono repositories for Linux](http://www.mono-project.com/download/#download-lin) (Debian, Ubuntu, RedHat, SUSE and derivatives). Currently it contains Mono 3.10.0 and MonoDevelop 5.5.0 - a major improvement at least for Debian users (currently Mono 3.2.8, MonoDevelop 4.0.12 even in Sid).
 
+<!-- more -->
+
 ---
 
 <img src="{{ site.url }}/assets/images/xamarin-official-mono-repositories-for-linux_01.png" alt="Xamarin Mono downloads page" width="100%" />
