@@ -14,7 +14,7 @@ tagline: Don't panic!
 			{{ post.excerpt }}
 		{% endfor %}
 		{% for post in site.posts offset:2 %}
-			<strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+			<div><strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></div>
 		{% endfor %}
 		</div>
 	</div>
