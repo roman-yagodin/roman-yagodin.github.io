@@ -1,27 +1,27 @@
 ---
 layout: page
 title: R7 Technology Blog
-tagline: Don't panic!
+tagline: All things what matter...
 ---
 {% include JB/setup %}
 
+{% include jumbotron.html %}
+
 <div class="row">
 	<div class="col-md-6">
-		<h2>Recent posts</h2>
+		<h2><span class="glyphicon glyphicon-pencil"></span> Recent Posts</h2>
 		<div class="posts">
 		{% for post in site.posts limit:2 %}
 			<strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
 			{{ post.excerpt }}
 		{% endfor %}
+		<h3>Previous Posts</h3>
 		{% for post in site.posts offset:2 %}
 			<div><strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></div>
 		{% endfor %}
 		</div>
 	</div>
 	<div class="col-md-6">
-		<h2>Welcome, traveler!</h2>
-		<p>I'm <em>Roman M. "redhound" Yagodin</em>, a software developer / webmaster from <a href="https://goo.gl/maps/Svixn" target="_blank">Volgograd, Russia</a>.</p>
-		<p>This site is the place for the articles about everything that I found interesting (.NET / Mono, Linux, FOSS, ASP.NET, DNN Platform, etc.) and also the place for my humble experiments with Jekyll, GitHib Pages, Markdown and Bootstrap.</p>
-		<p>See you on <a href="http://github.com/roman-yagodin">GitHub</a>, <a href="https://plus.google.com/u/0/106562370972095746829/posts">Google+</a> or blog comments!</p>
+		{% include projects_cloud.html %}
 	</div>
 </div>
