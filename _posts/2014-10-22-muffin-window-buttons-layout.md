@@ -12,7 +12,7 @@ One of great things about Linux desktops is ability to customize window title bu
 
 ---
  
-<img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_01.png" alt="Editing muffin buttons layout in dconf-editor" width="100%" />
+<img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_01.png" alt="Editing muffin buttons layout in dconf-editor" class="img-responsive" />
  
 ## Desktop environments and window managers
 
