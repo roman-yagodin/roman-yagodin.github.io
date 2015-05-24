@@ -46,7 +46,7 @@ Here are list of button names:
 - **spacer** - space between buttons
 - **close, maximize, minimize*** - as they sounds
 
-Note what standard *Cinnamon* window settings do not have ability to add some buttons, like **above**, **shade** and also **spacer** - 
+Note what standard *Cinnamon* window settings do not have ability to add some buttons, like **above**, <del>**shade**</del> (present in 2.4) and also **spacer** - 
 so we should use `dconf-editor` for GUI or `gsettings set` command in the terminal to get things done. 
 
 ## Examples
