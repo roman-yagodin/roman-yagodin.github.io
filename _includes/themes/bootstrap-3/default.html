@@ -17,7 +17,7 @@
     <link href="{{ ASSET_PATH }}/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Sticky Footer -->
     <link href="{{ ASSET_PATH }}/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
-    
+
     <!-- Pygments -->
     <link href="{{ BASE_PATH }}/assets/pygments/default.css" rel="stylesheet" type="text/css">
 
@@ -42,7 +42,7 @@
     <!-- atom & rss feed -->
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-	
+
 	{% include JB/analytics %}
 
   </head>
@@ -58,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ HOME_PATH }}">{{ site.title }}</a> 
+          <a class="navbar-brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,12 +89,21 @@
     </div>
 
     <div id="footer">
-      <div class="container">
-        <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
-      </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+                        with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                        and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+                    </p>
+                </div>
+                <div class="col-md-4 hidden-sm">
+                    <div class="openhub-widget pull-right">
+                        <a target="_blank" href="https://www.openhub.net/accounts/roman-yagodin?ref=sample"><img alt='Open Hub profile for roman-yagodin' border='0' height='35' src='https://www.openhub.net/accounts/roman-yagodin/widgets/account_detailed?format=gif&amp;ref=sample' width='230'></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
@@ -105,8 +114,8 @@
 
 	<!-- Startup script -->
 	<script>
-	function searchSubmit () 
-	{ 
+	function searchSubmit ()
+	{
 		var searchBox = document.getElementById ("search-box");
 		var searchBoxHidden = document.getElementById ("search-box-hidden");
 		searchBoxHidden.value = "site:" + "{{ site.production_url }}".replace("http://","") + " " + searchBox.value;

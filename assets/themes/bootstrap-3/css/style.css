@@ -17,11 +17,16 @@
 h1, h2, h3, h4 {
   color: #f22430;
 }
+
 #footer {
-  background-color: #fdcd60;
+  background-color: #eee;
+  border-top: 4px solid #F62C30;
 }
 
-
+#footer .openhub-widget {
+    margin-top: 8px;
+    background-color: #fff;
+}
 
 /* posts index */
 .post > h3.title {
