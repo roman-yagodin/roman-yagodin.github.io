@@ -5,9 +5,10 @@ tagline: DNN, Linux, games and other things what matter...
 ---
 {% include JB/setup %}
 
-{% include jumbotron.html %}
-
 <div class="row">
+	<div class="col-md-6">
+		{% include jumbotron.html %}
+	</div>
 	<div class="col-md-6">
 		<h2><span class="glyphicon glyphicon-pencil"></span> Recent Posts</h2>
 		<div class="posts">
@@ -21,8 +22,13 @@ tagline: DNN, Linux, games and other things what matter...
 		{% endfor %}
 		</div>
 	</div>
+</div>
+<div class="row">
 	<div class="col-md-6">
 		{% include i_recommend.html %}
+	</div>
+	<div class="col-md-6">
+		{% include projects_cloud.html}
 	</div>
 </div>
 <input name="version" type="hidden" value="1" />
