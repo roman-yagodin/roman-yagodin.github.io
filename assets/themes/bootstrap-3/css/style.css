@@ -87,3 +87,7 @@ h1, h2, h3, h4 {
 #footer {
   margin-top:3em;
 }
+
+dl dd {
+  margin-bottom: 10px
+}
