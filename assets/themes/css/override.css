@@ -20,3 +20,7 @@ dl dd {
 .navbar-default .navbar-brand {
   color: #f22430
 }
+
+.jumbotron .btn.btn-block {
+  margin-bottom: 2rem
+}
