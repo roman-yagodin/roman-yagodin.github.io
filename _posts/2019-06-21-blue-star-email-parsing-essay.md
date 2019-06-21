@@ -13,8 +13,6 @@ I hope this short essay will ease your pain, even a little.
 
 <!-- more -->
 
-* * * * *
-
 <span class="badge">1</span> Mark incoming mail with the "blue star" (Gmail) to separate from rest of the noise -- this is your *Real Mail Inbox*.
 Also this way you could see which mails are "new" (unreviewed) even if they are readed.
 

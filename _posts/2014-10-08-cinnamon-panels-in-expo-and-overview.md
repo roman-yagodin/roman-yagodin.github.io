@@ -11,8 +11,6 @@ One of the things that I've liked in GNOME 3 is ability to manage workspaces, wi
 
 <!-- more -->
 
----
-
 <img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg" alt="Cinnamon expo mode with top panel" class="img-responsive" />
 
 ## Problem

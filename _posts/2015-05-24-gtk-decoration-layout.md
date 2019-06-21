@@ -11,8 +11,6 @@ Many great GNOME 3 applications are used widely across various desktop environme
 
 <!-- more -->
 
----
-
 <img src="{{ site.url }}/assets/images/gtk-decoration-layout_01.png" alt="Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus)" class="img-responsive" />
 
 <p style="text-align:center">Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus).</p>

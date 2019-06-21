@@ -11,8 +11,6 @@ tags : [mono, linux, debian, xamarin]
 
 <!-- more -->
 
----
-
 <img src="{{ site.url }}/assets/images/xamarin-official-mono-repositories-for-linux_01.png" alt="Xamarin Mono downloads page" class="img-responsive" />
 
 ## Installation in Debian
