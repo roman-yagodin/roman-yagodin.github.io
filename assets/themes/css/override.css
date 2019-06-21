@@ -16,3 +16,7 @@ dl dd {
 .tag_box {
   margin-top: 1rem
 }
+
+.navbar-default .navbar-brand {
+  color: #f22430
+}
