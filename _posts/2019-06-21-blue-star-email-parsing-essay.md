@@ -2,7 +2,6 @@
 layout: post
 category: how-to
 tagline: "manage your email inbox with 1 & &frac12; simple tricks"
-description: "Many of us know very well how embarassing could be email routine at work -- it distracts you from the real work, makes you nervous and wasting tons of energy... on hating mail senders. I hope this short essay will ease your pain, even a little."
 tags : [GTD, fun]
 ---
 {% include JB/setup %}
