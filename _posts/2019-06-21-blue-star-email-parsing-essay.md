@@ -6,7 +6,7 @@ tags : [GTD, fun]
 ---
 {% include JB/setup %}
 
-Many of us know very vell how embarassing could be email routine at work --
+Many of us know very well how embarassing could be email routine at work --
 it distracts you from the real work, makes you nervous and wasting tons of energy... on hating mail senders.
 I hope this short essay will ease your pain, even a little.
 
@@ -19,7 +19,7 @@ Also this way you could see which mails are "new" (unreviewed) even if they are 
 
 > Blue stars won't bug you -- they are not yellow - so won't meld with rest of mail, and not red - so not very urgent, and not green - so not very relaxing...
 
-<span class="badge">2</span> Now you need to do your work. I mean -- do you already have something in your GTD? Even if you don't do GDT...
+<span class="badge">2</span> Now you need to do your work. I mean -- do you already have something in your GTD? Even if you don't do GTD...
 This could autoresolve a number of potential issues with mail. Cause all people do errors and I hope that most of your "blue star" mail senders are people. 
 
 > But do they really people?.. Still you must give the Universe some time to clean things up...
