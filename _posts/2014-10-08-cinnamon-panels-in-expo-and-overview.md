@@ -1,7 +1,8 @@
 ---
 layout: post
 category: how-to 
-tagline: "Supporting tagline"
+title: "Cinnamon panels in Expo and Overview"
+tagline: "Where is that start menu?"
 tags : [mint, cinnamon, tutorial]
 ---
 {% include JB/setup %}

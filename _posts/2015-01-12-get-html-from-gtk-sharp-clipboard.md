@@ -1,6 +1,7 @@
 ---
 layout: post
-category: how-to 
+category: how-to
+title: "Get HTML from GTK# clipboard"
 tagline: ""
 tags : [gtk-sharp, clipboard, mono]
 ---

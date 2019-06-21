@@ -1,7 +1,8 @@
 ---
 layout: post
 category: how-to
-tagline: "Supporting tagline"
+title: "Muffin window buttons layout"
+tagline: "Don't miss a close window button anymore!"
 tags : [cinnamon, muffin]
 ---
 {% include JB/setup %}

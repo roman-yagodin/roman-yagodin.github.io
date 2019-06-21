@@ -1,7 +1,8 @@
 ---
 layout: post
 category: how-to 
-tagline: "Supporting tagline"
+title: "Xamarin official Mono repositories for Linux"
+tagline: ""
 tags : [mono, linux, debian, xamarin]
 ---
 {% include JB/setup %}

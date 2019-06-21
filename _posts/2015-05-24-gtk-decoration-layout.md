@@ -1,7 +1,8 @@
 ---
 layout: post
 category: how-to
-tagline: "Customize client-side decorated windows"
+title: "GTK decoration layout"
+tagline: "Customize GTK 3 client-side decorated windows"
 tags : [gtk, cinnamon]
 ---
 {% include JB/setup %}
