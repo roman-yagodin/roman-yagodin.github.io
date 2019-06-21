@@ -1,0 +1,14 @@
+/* Custom styles and overrides */
+
+#footer {
+  margin-top:3em;
+}
+
+dl dd {
+  margin-bottom: 10px
+}
+
+.date {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
