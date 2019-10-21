@@ -1,6 +1,6 @@
 ---
 layout: post
-category: how-to
+category: guide
 title: "GTD with Simpletask"
 tagline: "a TL;DR guide"
 tags : [GTD, trusted system]
