@@ -13,7 +13,7 @@ tags : [GitHub, Redmine, Git]
 
 * * * * *
 
-## Настройка синхронизации с GitHub
+## Создание зеркала
 
 Создаем зеркало публичного репозитория GitHub:
 
@@ -26,6 +26,8 @@ git clone --mirror https://github.com/volgau/redmine-theme-greenmine.git
 Добавляем в проект новое хранилище, связанное с зеркалом репозитория, через меню **Настройки проекта > Хранилища**.
 
 <img src="{{ site.url }}/assets/images/ru-sync-github-repository-with-redmine-1.png" alt="Создание нового хранилища в Redmine" class="img-responsive" />
+
+## Настройка синхронизации
 
 В настройках проекта на GitHub (меню **Settings > Webhooks**) добавляем новый webhook.
 
