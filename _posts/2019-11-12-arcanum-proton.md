@@ -188,7 +188,7 @@ exit
 
 ## Additional tweaks
 
-Before switching to software renderer, you could also explore other possibilities by tweaking some options via *HighRes* `config.ini`, [Wine options](https://wiki.winehq.org/Useful_Registry_Keys) and/or [Proton options](https://github.com/ValveSoftware/Proton#runtime-config-options). Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.
+Before switching to software renderer, you could also explore other possibilities by tweaking some options via *HighRes* `config.ini`, [Wine](https://wiki.winehq.org/Useful_Registry_Keys) and/or [Proton](https://github.com/ValveSoftware/Proton#runtime-config-options). Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.
 
 ### Setting Arcanum.exe options via SierraLauncher.ini
 
