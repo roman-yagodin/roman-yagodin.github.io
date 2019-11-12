@@ -164,7 +164,7 @@ For the first-timers I'd recommend to start with the [official manual](http://te
 
 Please share your favorite resources for beginners in the comments!
 
-## Troubleshoting
+## Troubleshooting
 
 Unfortunately, you can experience graphics glitches (like one on the screenshot).
 
