@@ -7,7 +7,15 @@ order: 4
 ---
 {% include JB/setup %}
 
-<ul>
-{% assign pages_list = site.pages %}
-{% include JB/pages_list %}
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <ul>
+            {% assign pages_list = site.pages %}
+            {% include JB/pages_list %}
+            </ul>
+
+        </div>
+    </div>
+</div>

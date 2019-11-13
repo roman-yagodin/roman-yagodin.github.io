@@ -62,6 +62,7 @@ dl dd {
   margin-bottom: 10px
 }
 
-.jumbotron .btn.btn-block {
-  margin-bottom: 2rem
+.jumbotron.jumbotron-welcome {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
