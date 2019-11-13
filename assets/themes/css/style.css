@@ -9,6 +9,11 @@ h3, h4 {
   color: #6c757d;
 }
 
+.tagline {
+  display: inline-block;
+  color: #6c757d;
+}
+
 .navbar {
   border-bottom: 4px solid #f62c30;
 }
