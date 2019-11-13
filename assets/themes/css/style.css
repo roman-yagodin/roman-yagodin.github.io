@@ -55,3 +55,6 @@ main {
   margin-bottom: 20px;
   font-weight: bold; }
 
+.tag-box .list-inline-item {
+  margin-bottom: .5rem;
+}
