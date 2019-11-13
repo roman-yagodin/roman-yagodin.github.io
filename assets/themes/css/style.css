@@ -1,18 +1,5 @@
 /* Custom container */
 
-/* Replaced with normal container and standard footer */
-/*.container-narrow {
-  margin: 0 auto;
-  max-width: 700px; }
-
-.container-narrow > hr {
-  margin: 30px 0; }
-*/
-
-/* Replaced with standard BS3 Navbar */
-/*.navbar .nav {
-  float: right; }*/
-
 /* Jekyll Bootstrap Colors */
 h1, h2, h3, h4 {
   color: #f22430;
@@ -35,26 +22,41 @@ main {
   margin-top: 3rem;
 }
 
+.date {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
 /* posts index */
 .post > h3.title {
   position: relative;
-  padding-top: 10px; }
+  padding-top: 10px;
+}
 
 .post > h3.title span.date {
   position: absolute;
   right: 0;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+}
 
 .post > .more {
   margin: 10px 0;
-  text-align: left; }
+  text-align: left;
+}
 
-/* post-full*/
 .post-full .date {
   margin-bottom: 20px;
-  font-weight: bold; }
-
+  font-weight: bold;
+}
+  
 .tag-box .list-inline-item {
   margin-bottom: .5rem;
 }
 
+dl dd {
+  margin-bottom: 10px
+}
+
+.jumbotron .btn.btn-block {
+  margin-bottom: 2rem
+}
