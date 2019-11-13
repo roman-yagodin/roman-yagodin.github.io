@@ -15,7 +15,7 @@ Celebrating recent update to [Unofficial Arcanum Patch][] after almost 10 years 
 
 ## Proton and Steam Play
 
-[Proton][] is compatibility tool for [Steam Play][] based mainly on *Wine* plus some other components like *DXVK*. It allows you to install and run Windows games via Steam client on "unsupported" platforms - almost like a native games. While you still can install any game from your Steam library on Linux with [steamcmd][], and then use *Wine*, *Winetricks* or e.g. [PlayOnLinux][] to run it, the *Proton* provides very refreshing and more straightforward alternavite.
+[Proton][] is compatibility tool for [Steam Play][] based mainly on *Wine* plus some other components like *DXVK*. It allows you to install and run Windows games via Steam client on "unsupported" platforms - almost like a native games. While you still can install any game from your Steam library on Linux with [steamcmd][], and then use *Wine*, *Winetricks* or e.g. [PlayOnLinux][] to run it, the *Proton* provides very refreshing and more straightforward alternative.
 
 The *Proton* doesn't looks very mature for the moment, but it contantly improves. User reports about various games are gathered in the [ProtonDB][] (its like the [WineHQ][] is for *Wine*), there you can find useful tips on how to setup your favorite game or which quirks to expect from it. You can also find the growing list of [whitelisted][] games there.
 
