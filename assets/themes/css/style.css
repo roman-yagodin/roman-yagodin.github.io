@@ -18,6 +18,14 @@ h1, h2, h3, h4 {
   color: #f22430;
 }
 
+.navbar {
+  border-bottom: 4px solid #F62C30;
+}
+
+main {
+  margin-top: 1rem;
+}
+
 #footer {
   background-color: #eee;
   border-top: 4px solid #F62C30;
