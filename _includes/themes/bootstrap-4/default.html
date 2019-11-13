@@ -56,35 +56,37 @@
 
   <body>
     <div id="wrap">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <a class="navbar-brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            {% assign pages_list = site.pages %}
-            {% assign group = 'navigation' %}
-            {% assign pages_list_list_item_css_class = 'nav-item' %}
-            {% assign pages_list_link_css_class = 'nav-link' %}
-            {% include JB/pages_list %}
-          </ul>
-          <hr class="d-lg-none" />
-          <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
-            <div class="input-group" role="group">
-              <input type="text" id="search-box" class="form-control" placeholder="Search..." />
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
-                  <i class="fas fa-search" aria-hidden="true"></i>
-                </button>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              {% assign pages_list = site.pages %}
+              {% assign group = 'navigation' %}
+              {% assign pages_list_list_item_css_class = 'nav-item' %}
+              {% assign pages_list_link_css_class = 'nav-link' %}
+              {% include JB/pages_list %}
+            </ul>
+            <hr class="d-lg-none" />
+            <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
+              <div class="input-group" role="group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search..." />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <input type="hidden" id="search-box-hidden" name="q" />
-          </form>
-        </div><!-- /.navbar-collapse -->
-      </nav>
+              <input type="hidden" id="search-box-hidden" name="q" />
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
 
       <main>
         {{ content }}
@@ -92,27 +94,27 @@
 
     </div>
 
-    <div id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-                        with help of <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-                    </p>
-                </div>
-                <div class="col-md-4 hidden-sm">
-                    <div class="openhub-widget pull-right">
-                        <a target="_blank" href="https://www.openhub.net/accounts/roman-yagodin?ref=sample"><img alt='Open Hub profile for roman-yagodin' border='0' height='35' src='https://www.openhub.net/accounts/roman-yagodin/widgets/account_detailed?format=gif&amp;ref=sample' width='230'></a>
-                    </div>
-                </div>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <p>&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+                with help of <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+            </p>
+          </div>
+          <div class="col-md-4 hidden-sm">
+            <div class="openhub-widget pull-right">
+              <a target="_blank" href="https://www.openhub.net/accounts/roman-yagodin?ref=sample"><img alt='Open Hub profile for roman-yagodin' border='0' height='35' src='https://www.openhub.net/accounts/roman-yagodin/widgets/account_detailed?format=gif&amp;ref=sample' width='230'></a>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </footer>
 
-    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="{{ ASSET_PATH }}/js/bootstrap.bundle.min.js"></script>
+  <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="{{ ASSET_PATH }}/js/bootstrap.bundle.min.js"></script>
 
   <!-- Startup script -->
 	<script>
