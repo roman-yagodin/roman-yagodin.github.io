@@ -6,11 +6,13 @@ group: navigation
 ---
 {% include JB/setup %}
 
-<ul class="tag_box list-inline">
-  {% assign tags_list = site.tags %}  
+<ul class="list-inline tag-box">
+  {% assign tags_list = site.tags %}
+  {% assign tags_list_list_item_css_class = 'list-inline-item' %}
+  {% assign tags_list_link_css_class = 'btn btn-secondary btn-sm' %}
+  {% assign tags_list_badge_css_class = 'badge badge-light' %}
   {% include JB/tags_list %}
 </ul>
-
 
 {% for tag in site.tags %} 
   <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
