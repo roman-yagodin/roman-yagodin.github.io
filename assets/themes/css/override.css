@@ -17,8 +17,8 @@ dl dd {
   margin-top: 1rem
 }
 
-.navbar-default .navbar-brand {
-  color: #f22430
+.navbar-brand {
+  color: #f22430 !important
 }
 
 .jumbotron .btn.btn-block {
