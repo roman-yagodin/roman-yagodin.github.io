@@ -11,7 +11,7 @@ Celebrating recent update to [Unofficial Arcanum Patch][] after almost 10 years 
 
 <!-- more -->
 
-<img src="{{ site.url }}/assets/images/arcanum-library.png" alt="Arcanum in Steam library" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-library.png" alt="Arcanum in Steam library" class="img-fluid" />
 
 ## Proton and Steam Play
 
@@ -33,7 +33,7 @@ First of all, you need to enable Steam Play for all titles via *Steam client set
 
 This will allow you to install (and run) Arcanum on Linux just like any other native Linux game from your Steam libary.
 
-<img src="{{ site.url }}/assets/images/arcanum-enable-steam-play.png" alt="Enable Steam play for all other titles" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-enable-steam-play.png" alt="Enable Steam play for all other titles" class="img-fluid" />
 
 After that, you can install the game by just clicking *Install*.
 
@@ -64,7 +64,7 @@ env WINEPREFIX="$HOME/.steam/steam/steamapps/compatdata/500810/pfx" \
   wineconsole
 ```
 
-<img src="{{ site.url }}/assets/images/arcanum-wineconsole.png" alt="Arcanum folder via wineconsole" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-wineconsole.png" alt="Arcanum folder via wineconsole" class="img-fluid" />
 
 Feeling some nostalgia? It's cool!
 
@@ -113,7 +113,7 @@ cd Arcanum
 UAP1.5.1.exe
 ```
 
-<img src="{{ site.url }}/assets/images/arcanum-uap.png" alt="Arcanum: Unofficial patch installer" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-uap.png" alt="Arcanum: Unofficial patch installer" class="img-fluid" />
 
 Choose things to install - it's about your preference, but surely *HighRes* patch is greatly recommended.
 
@@ -121,7 +121,7 @@ About level cap remover - I think it's more fun to just start again with differe
 
 Proceed. Select proper install location carefully: 
 
-<img src="{{ site.url }}/assets/images/arcanum-uap-install-path.png" alt="Arcanum: Unofficial patch install path" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-uap-install-path.png" alt="Arcanum: Unofficial patch install path" class="img-fluid" />
 
 Done.
 
@@ -148,7 +148,7 @@ _install.bat
 exit
 ```
 
-<img src="{{ site.url }}/assets/images/arcanum-highres-applied.png" alt="Arcanum: HighRes patch applied" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-highres-applied.png" alt="Arcanum: HighRes patch applied" class="img-fluid" />
 
 Done.
 
@@ -158,7 +158,7 @@ If you started *wineconsole* from SierraLauncher, it's time to restore the `Sier
 
 Now **run Arcanum from your Steam library** and have fun with such a great game!
 
-<img src="{{ site.url }}/assets/images/arcanum-in-game.png" alt="Arcanum: In game" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-in-game.png" alt="Arcanum: In game" class="img-fluid" />
 
 For the first-timers I'd recommend to start with the [official manual](http://terra-arcanum.com/downloads/arcanum/resources/arcanum_manual.zip) or the [Spoiler-Free Character Creation Guide and Orientation (pre-UAP)][].
 
@@ -168,7 +168,7 @@ Please share your favorite resources for beginners in the comments!
 
 Unfortunately, you can experience graphics glitches (like one on the screenshot).
 
-<img src="{{ site.url }}/assets/images/arcanum-graphics-glitch-small.png" alt="Arcanum: Graphics glitch" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/arcanum-graphics-glitch-small.png" alt="Arcanum: Graphics glitch" class="img-fluid" />
 
 The most simple way to fix it is to switch to the software rendering via *HighRes* `config.ini`:
 

@@ -11,7 +11,7 @@ tags : [games, linux, debian, build]
 
 <!-- more -->
 
-<img src="{{ site.url }}/assets/images/build-speed-dreams-linux.png" alt="Speed Dreams 2 starting screen" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/build-speed-dreams-linux.png" alt="Speed Dreams 2 starting screen" class="img-fluid" />
 
 ## Step 1: Get source tarballs
 
