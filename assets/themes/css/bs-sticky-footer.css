@@ -1,8 +1,7 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 
-html,
-body {
+html, body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
@@ -19,9 +18,9 @@ body {
 
 /* Set the fixed height of the footer here */
 #footer {
-    height: 55px;
+    height: 59px; /* 55px + 4px top border */
 }
 
 #footer p {
-    margin-top:13px;
+    line-height: 55px;
 }

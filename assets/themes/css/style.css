@@ -19,7 +19,11 @@ h1, h2, h3, h4 {
 }
 
 .navbar {
-  border-bottom: 4px solid #F62C30;
+  border-bottom: 4px solid #f62c30;
+}
+
+.navbar-brand {
+  color: #f22430 !important;
 }
 
 main {
@@ -27,13 +31,8 @@ main {
 }
 
 #footer {
-  background-color: #eee;
-  border-top: 4px solid #F62C30;
-}
-
-#footer .openhub-widget {
-    margin-top: 8px;
-    background-color: #fff;
+  border-top: 4px solid #f62c30;
+  margin-top: 3rem;
 }
 
 /* posts index */
@@ -58,3 +57,4 @@ main {
 .tag-box .list-inline-item {
   margin-bottom: .5rem;
 }
+

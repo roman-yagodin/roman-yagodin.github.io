@@ -1,9 +1,5 @@
 /* Custom styles and overrides */
 
-#footer {
-  margin-top:3em;
-}
-
 dl dd {
   margin-bottom: 10px
 }
@@ -11,10 +7,6 @@ dl dd {
 .date {
   margin-bottom: 1rem;
   font-weight: bold;
-}
-
-.navbar-brand {
-  color: #f22430 !important
 }
 
 .jumbotron .btn.btn-block {
