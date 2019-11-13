@@ -1,30 +1,33 @@
-<div class="row">
-  <div class="col">
-    <div class="page-header">
-      <div class="date">
-        <i class="fas fa-calendar-alt"></i> {{ page.date | date_to_long_string }}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i> {{ page.date | date_to_long_string }}
+        </div>
+        <h1>{{ page.title }} {% if page.tagline %}<small class="text-muted">{{page.tagline}}</small>{% endif %}</h1>
       </div>
-      <h1>{{ page.title }} {% if page.tagline %}<small class="text-muted">{{page.tagline}}</small>{% endif %}</h1>
-    </div>
-    <p class="lead">
-      {{ page.excerpt | strip_html }}
-    </p>
+      <p class="lead">
+        {{ page.excerpt | strip_html }}
+      </p>
+    </div> 
   </div>
+
   <div class="row"> 
     <div class="col">
       {% include ads/adsense_2 %}
     </div>
-</div>
-  
-<div class="row post-full" style="margin-top:1rem">
-  <div class="col-xs-12">
-    <hr />
-    <div class="content">
-      {{ content | remove_first:page.excerpt }}
-    </div>
-    <hr />
+  </div>
+    
+  <div class="row post-full">
+    <div class="col">
+      <hr />
+      <div class="content">
+        {{ content | remove_first:page.excerpt }}
+      </div>
+      <hr />
 
-  {% unless page.categories == empty %}
+    {% unless page.categories == empty %}
     <ul class="list-inline tag-box">
       <li class="list-inline-item"><i class="fas fa-folder-open"></i></li>
       {% assign categories_list = page.categories %}
@@ -33,9 +36,9 @@
       {% assign categories_list_badge_css_class = 'badge badge-light' %}
       {% include JB/categories_list %}
     </ul>
-  {% endunless %}
+    {% endunless %}
 
-  {% unless page.tags == empty %}
+    {% unless page.tags == empty %}
     <ul class="list-inline tag-box">
       <li class="list-inline-item"><i class="fas fa-tags"></i></li>
       {% assign tags_list = page.tags %}
@@ -44,27 +47,28 @@
       {% assign tags_list_badge_css_class = 'badge badge-light' %}
       {% include JB/tags_list %}
     </ul>
-  {% endunless %}  
-  
-    <ul class="pagination">
-    {% if page.previous %}
-      <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&laquo; Previous</a></li>
-    {% else %}
-      <li class="prev disabled"><a>&larr; Previous</a></li>
-    {% endif %}
-      <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
-    {% if page.next %}
-      <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &raquo;</a></li>
-    {% else %}
-      <li class="next disabled"><a>Next &rarr;</a>
-    {% endif %}
-    </ul>
-	
-	<div>
-		{% include ads/adsense_3 %}
-	</div>
+    {% endunless %}  
+    
+      <ul class="pagination">
+      {% if page.previous %}
+        <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&laquo; Previous</a></li>
+      {% else %}
+        <li class="prev disabled"><a>&larr; Previous</a></li>
+      {% endif %}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
+      {% if page.next %}
+        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &raquo;</a></li>
+      {% else %}
+        <li class="next disabled"><a>Next &rarr;</a>
+      {% endif %}
+      </ul>
+    
+      <div>
+        {% include ads/adsense_3 %}
+      </div>
 
-    <hr>
-    {% include JB/comments %}
+      <hr />
+      {% include JB/comments %}
+    </div>
   </div>
 </div>
