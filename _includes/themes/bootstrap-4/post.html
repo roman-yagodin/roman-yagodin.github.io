@@ -29,7 +29,7 @@
 
     {% unless page.categories == empty %}
     <ul class="list-inline tag-box">
-      <li class="list-inline-item"><i class="fas fa-folder-open"></i></li>
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i> Categories:</li>
       {% assign categories_list = page.categories %}
       {% assign categories_list_list_item_css_class = 'list-inline-item' %}
       {% assign categories_list_link_css_class = 'btn btn-primary btn-sm' %}
@@ -40,7 +40,7 @@
 
     {% unless page.tags == empty %}
     <ul class="list-inline tag-box">
-      <li class="list-inline-item"><i class="fas fa-tags"></i></li>
+      <li class="list-inline-item"><i class="fas fa-tags"></i> Tags:</li>
       {% assign tags_list = page.tags %}
       {% assign tags_list_list_item_css_class = 'list-inline-item' %}
       {% assign tags_list_link_css_class = 'btn btn-secondary btn-sm' %}
