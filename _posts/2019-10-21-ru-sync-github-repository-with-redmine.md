@@ -25,7 +25,7 @@ git clone --mirror https://github.com/volgau/redmine-theme-greenmine.git
 
 Добавляем в проект новое хранилище, связанное с зеркалом репозитория, через меню **Настройки проекта > Хранилища**.
 
-<img src="{{ site.url }}/assets/images/ru-sync-github-repository-with-redmine-1.png" alt="Создание нового хранилища в Redmine" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/ru-sync-github-repository-with-redmine-1.png" alt="Создание нового хранилища в Redmine" class="img-fluid" />
 
 ## Настройка синхронизации
 
@@ -35,7 +35,7 @@ git clone --mirror https://github.com/volgau/redmine-theme-greenmine.git
 
 Если в проекте несколько хранилищ, то добавляем к URL параметр **repository_id**. Возможные форматы URL см. в [readme плагина](https://github.com/koppen/redmine_github_hook#readme)
 
-<img src="{{ site.url }}/assets/images/ru-sync-github-repository-with-redmine-2.png" alt="Добавляем webhook в GitHub" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/ru-sync-github-repository-with-redmine-2.png" alt="Добавляем webhook в GitHub" class="img-fluid" />
 
 Если все настроено правильно, то все изменения состояния кода в удаленном репозитории на GitHub будут автоматически отражаться в локальном зеркале, а коммиты будет добавлены в [историю действий](http://projects.volgau.com/projects/greenmine/activity?from=2018-01-30).
 

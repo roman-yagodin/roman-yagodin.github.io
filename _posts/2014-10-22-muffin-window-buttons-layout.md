@@ -11,7 +11,7 @@ One of great things about Linux desktops is ability to customize window title bu
 
 <!-- more -->
 
-<img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_01.png" alt="Editing muffin buttons layout in dconf-editor" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_01.png" alt="Editing muffin buttons layout in dconf-editor" class="img-fluid" />
 
 ## Desktop environments and window managers
 
@@ -48,7 +48,7 @@ Here are list of button names:
 Note what standard *Cinnamon* window settings do not have ability to add some buttons, like **above**, <del>**shade**</del> (present since 2.4) and also **spacer** -
 so we should use `dconf-editor` for GUI or `gsettings set` command in the terminal to get things done.
 
-<img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_04.png" alt="Editing muffin buttons layout in Cinnamon windows settings" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/muffin-window-buttons-layout_04.png" alt="Editing muffin buttons layout in Cinnamon windows settings" class="img-fluid" />
 
 ## Examples
 

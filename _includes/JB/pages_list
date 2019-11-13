@@ -27,9 +27,9 @@ Usage:
     {% if node.title != null %}
       {% if group == null or group == node.group %}
       	{% if page.url == node.url %}
-      	<li class="active"><a href="{{ BASE_PATH }}{{node.url}}" class="active">{{node.title}}</a></li>
+      	<li class="{{pages_list_list_item_css_class}} active"><a href="{{ BASE_PATH }}{{node.url}}" class="{{pages_list_link_css_class}} active">{{node.title}}</a></li>
       	{% else %}
-      	<li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
+      	<li class="{{pages_list_list_item_css_class}}"><a href="{{ BASE_PATH }}{{node.url}}" class="{{pages_list_link_css_class}}">{{node.title}}</a></li>
       	{% endif %}
       {% endif %}
     {% endif %}
@@ -37,3 +37,5 @@ Usage:
 {% endif %}
 {% assign pages_list = nil %}
 {% assign group = nil %}
+{% assign pages_list_list_item_css_class = nil %}
+{% assign pages_list_link_css_class = nil %}

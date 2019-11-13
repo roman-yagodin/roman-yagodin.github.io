@@ -5,27 +5,29 @@ tagline: about DNN, Linux, games and all other things...
 ---
 {% include JB/setup %}
 
-<div class="row">
-	<div class="col-md-6">
-		{% include jumbotron.html %}
-		<hr />
-		{% include i_recommend.html %}
-	</div>
-	<div class="col-md-6">
-		{% include ads/adsense_1 %}
-		<h2><span class="glyphicon glyphicon-pencil"></span> Recent Posts</h2>
-		<div class="posts">
-		{% for post in site.posts limit:3 %}
-			<strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
-			{{ post.excerpt }}
-		{% endfor %}
-		<h3>Previous Posts</h3>
-		{% for post in site.posts offset:3 %}
-			<div><strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></div>
-		{% endfor %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+			{% include jumbotron.html %}
+			{% include ads/adsense_1 %}
+			<hr />
+			{% include i_recommend.html %}
 		</div>
-		<hr />
-		{% include projects_cloud.html %}
+		<div class="col">
+			<h2><span class="glyphicon glyphicon-pencil"></span> Recent Posts</h2>
+			<div class="posts">
+				{% for post in site.posts limit:3 %}
+					<strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+					{{ post.excerpt }}
+				{% endfor %}
+				<h3>Previous Posts</h3>
+				{% for post in site.posts offset:3 %}
+					<div><strong>{{ post.date | date_to_string }}</strong> &ndash; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></div>
+				{% endfor %}
+			</div>
+			<hr />
+			{% include projects_cloud.html %}
+		</div>
 	</div>
+	<input name="version" type="hidden" value="2" />
 </div>
-<input name="version" type="hidden" value="2" />

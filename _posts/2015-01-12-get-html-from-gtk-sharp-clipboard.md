@@ -11,7 +11,7 @@ Developing a cross-platform application would never be easy job, but I consider 
 
 <!-- more -->
 
-<img src="{{ site.url }}/assets/images/get-html-from-gtk-sharp-clipboard_01.png" alt="Paste table from LibreOffice Writer to GTK# application as HTML" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/get-html-from-gtk-sharp-clipboard_01.png" alt="Paste table from LibreOffice Writer to GTK# application as HTML" class="img-fluid" />
 
 ## Problem
 

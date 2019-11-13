@@ -11,7 +11,7 @@ tags : [mono, linux, debian, xamarin]
 
 <!-- more -->
 
-<img src="{{ site.url }}/assets/images/xamarin-official-mono-repositories-for-linux_01.png" alt="Xamarin Mono downloads page" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/xamarin-official-mono-repositories-for-linux_01.png" alt="Xamarin Mono downloads page" class="img-fluid" />
 
 ## Installation in Debian
 
@@ -35,5 +35,5 @@ Now get some tea (coffee) and sandwiches and wait... In case of problems check [
 
 ---
 
-<img src="{{ site.url }}/assets/images/xamarin-official-mono-repositories-for-linux_02.jpg" alt="MonoDevelop IDE 5.5 with GTK# designer and Mono 3.10" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/xamarin-official-mono-repositories-for-linux_02.jpg" alt="MonoDevelop IDE 5.5 with GTK# designer and Mono 3.10" class="img-fluid" />
 

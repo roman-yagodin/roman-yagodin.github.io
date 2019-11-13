@@ -1,85 +1,73 @@
 /* Custom container */
 
-/* Replaced with normal container and standard footer */
-/*.container-narrow {
-  margin: 0 auto;
-  max-width: 700px; }
-
-.container-narrow > hr {
-  margin: 30px 0; }
-*/
-
-/* Replaced with standard BS3 Navbar */
-/*.navbar .nav {
-  float: right; }*/
-
 /* Jekyll Bootstrap Colors */
-h1, h2, h3, h4 {
+h1, h2 {
   color: #f22430;
 }
 
-#footer {
-  background-color: #eee;
-  border-top: 4px solid #F62C30;
+h3, h4 {
+  color: #6c757d;
 }
 
-#footer .openhub-widget {
-    margin-top: 8px;
-    background-color: #fff;
+.tagline {
+  display: inline-block;
+  color: #6c757d;
+}
+
+.navbar {
+  border-bottom: 4px solid #f62c30;
+}
+
+.navbar-brand {
+  color: #f22430 !important;
+}
+
+main {
+  margin-top: 1rem;
+}
+
+#footer {
+  border-top: 4px solid #f62c30;
+  margin-top: 3rem;
+}
+
+.date {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #343a40;
 }
 
 /* posts index */
 .post > h3.title {
   position: relative;
-  padding-top: 10px; }
+  padding-top: 10px;
+}
 
 .post > h3.title span.date {
   position: absolute;
   right: 0;
-  font-size: 0.9em; }
+  font-size: 0.9em;
+}
 
 .post > .more {
   margin: 10px 0;
-  text-align: left; }
+  text-align: left;
+}
 
-/* post-full*/
 .post-full .date {
-  margin-bottom: 20px;
-  font-weight: bold; }
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+  
+.tag-box .list-inline-item {
+  margin-bottom: .5rem;
+}
 
-/* tag_box */
-.tag_box {
-  list-style: none;
-  margin: 0;
-  overflow: hidden; }
+dl dd {
+  margin-bottom: 10px
+}
 
-.tag_box li {
-  line-height: 28px; }
-
-.tag_box li i {
-  opacity: 0.9; }
-
-/* deprecated */
-.tag_box.inline li {
-  float: left; }
-
-.tag_box a {
-  padding: 3px 6px;
-  margin: 2px;
-  background: #eee;
-  color: #555;
-  border-radius: 3px;
-  text-decoration: none;
-  border: 1px dashed #cccccc; }
-
-.tag_box a span {
-  vertical-align: super;
-  font-size: 0.8em; }
-
-.tag_box a:hover {
-  background-color: #e5e5e5; }
-
-.tag_box a.active {
-  background: #57A957;
-  border: 1px solid #4c964d;
-  color: #FFF; }
+.jumbotron.jumbotron-welcome {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

@@ -11,7 +11,7 @@ One of the things that I've liked in GNOME 3 is ability to manage workspaces, wi
 
 <!-- more -->
 
-<img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg" alt="Cinnamon expo mode with top panel" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg" alt="Cinnamon expo mode with top panel" class="img-fluid" />
 
 ## Problem
 
@@ -122,7 +122,7 @@ could greatly infuence it. In my case (*New Minty* theme), panel height is about
 
 ---
 
-<img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_02.jpg" alt="Cinnamon overview (scale) mode with top panel" class="img-responsive" />
+<img src="{{ site.url }}/assets/images/cinnamon-panels-in-expo-and-overview_02.jpg" alt="Cinnamon overview (scale) mode with top panel" class="img-fluid" />
 
 ## Acknowledgements
 

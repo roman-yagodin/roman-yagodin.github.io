@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Pages 
-header: Pages
+title : Posts
+header : Blog Archive
 group: navigation
-order: 4
+order: 1
 ---
 {% include JB/setup %}
 
@@ -11,10 +11,8 @@ order: 4
     <div class="row">
         <div class="col">
 
-            <ul>
-            {% assign pages_list = site.pages %}
-            {% include JB/pages_list %}
-            </ul>
+            {% assign posts_collate = site.posts %}
+            {% include JB/posts_collate %}
 
         </div>
     </div>
