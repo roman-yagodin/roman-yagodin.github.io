@@ -22,16 +22,21 @@ Usage:
 {% else %}
   {% if categories_list.first[0] == null %}
     {% for category in categories_list %} 
-    	<li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-    		{{ category | join: "/" }} <span>{{ site.categories[category].size }}</span>
+    	<li class="{{categories_list_list_item_css_class}}"><a class="{{categories_list_link_css_class}}" href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
+    		{{ category | join: "/" }}
+        <span class="{{categories_list_badge_css_class}}">{{ site.categories[category].size }}</span>
     	</a></li>
     {% endfor %}
   {% else %}
     {% for category in categories_list %} 
-    	<li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-    		{{ category[0] | join: "/" }} <span>{{ category[1].size }}</span>
+    	<li class="{{categories_list_list_item_css_class}}"><a class="{{categories_list_link_css_class}}" href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+    		{{ category[0] | join: "/" }}
+        <span class="{{categories_list_badge_css_class}}">{{ category[1].size }}</span>
     	</a></li>
     {% endfor %}
   {% endif %}
 {% endif %}
 {% assign categories_list = nil %}
+{% assign categories_list_list_item_css_class = nil %}
+{% assign categories_list_link_css_class = nil %}
+{% assign categories_list_badge_css_class = nil %}

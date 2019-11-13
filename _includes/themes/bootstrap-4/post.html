@@ -26,17 +26,23 @@
     <hr />
 
   {% unless page.categories == empty %}
-    <ul class="tag_box list-inline">
-      <li><i class="glyphicon glyphicon-open"></i></li>
+    <ul class="list-inline">
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i></li>
       {% assign categories_list = page.categories %}
+      {% assign categories_list_list_item_css_class = 'list-inline-item' %}
+      {% assign categories_list_link_css_class = 'btn btn-primary btn-sm' %}
+      {% assign categories_list_badge_css_class = 'badge badge-light' %}
       {% include JB/categories_list %}
     </ul>
-  {% endunless %}  
+  {% endunless %}
 
   {% unless page.tags == empty %}
-    <ul class="tag_box list-inline">
-      <li><i class="glyphicon glyphicon-tags"></i></li>
+    <ul class="list-inline">
+      <li class="list-inline-item"><i class="fas fa-tags"></i></li>
       {% assign tags_list = page.tags %}
+      {% assign tags_list_list_item_css_class = 'list-inline-item' %}
+      {% assign tags_list_link_css_class = 'btn btn-secondary btn-sm' %}
+      {% assign tags_list_badge_css_class = 'badge badge-light' %}
       {% include JB/tags_list %}
     </ul>
   {% endunless %}  
