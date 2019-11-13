@@ -65,7 +65,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="jb-navbar-collapse">
             <ul class="navbar-nav mr-auto">
-              {% assign pages_list = site.pages %}
+              {% assign pages_list = site.pages | sort:"order" %}
               {% assign group = 'navigation' %}
               {% assign pages_list_list_item_css_class = 'nav-item' %}
               {% assign pages_list_link_css_class = 'nav-link' %}
