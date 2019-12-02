@@ -41,6 +41,8 @@ module JB
   end #Path
 end #JB
 
+# Usage: bundle exec rake
+# Default build task for Travis CI.
 task :default do
   config = Jekyll.configuration({ 
     'source' => './', 
