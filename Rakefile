@@ -40,7 +40,7 @@ module JB
   end #Path
 end #JB
 
-task :build do
+task :default do
   config = Jekyll.configuration({ 
     'source' => './', 
     'destination' => './_site' 
