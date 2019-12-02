@@ -6,8 +6,5 @@ deploy:
   skip-cleanup: true
   keep-history: true
   on:
-    branch: gh-pages-src
-
-branches:
-  only: gh-pages-src
+    branch: master-src
 
