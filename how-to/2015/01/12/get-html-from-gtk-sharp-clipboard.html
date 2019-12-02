@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Get HTML from GTK# clipboard</title>
+
+    
+      <meta name="description" content="Developing a cross-platform application would never be easy job, but I consider GTK# framework as one of the solid options to provide cross-platform UI, thou...">
+    
+    
+    <meta name="author" content="Roman M. Yagodin & R7.Labs">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Pygments -->
+    <link href="/assets/pygments/default.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+    
+    <script src="https://kit.fontawesome.com/6cbfab33ab.js"></script>
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9311000650074319",
+          enable_page_level_ads: true
+     });
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="/">(R7) Personal Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              
+              
+              
+              
+              
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/categories" class="nav-link">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/tags" class="nav-link">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/pages" class="nav-link">Pages</a></li>
+      	
+      
+    
+  
+
+
+
+
+
+            </ul>
+            <hr class="d-lg-none" />
+            <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
+              <div class="input-group" role="group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search..." />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <input type="hidden" id="search-box-hidden" name="q" />
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
+
+      <main>
+        
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i> January 12, 2015
+        </div>
+        <h1>Get HTML from GTK# clipboard <small class="tagline"></small></h1>
+      </div>
+      <p class="lead">
+        
+Developing a cross-platform application would never be easy job, but I consider GTK# framework as one of the solid options to provide cross-platform UI, though the lack of documentation is embarassing sometimes. In this post I want to show an example of using Gtk.Clipboard object to get HTML markup from the clipboard.
+
+
+      </p>
+    </div>
+    <hr />
+  </div>
+
+  <div class="row"> 
+    <div class="col">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="7819924488"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+  </div>
+    
+  <div class="row post-full">
+    <div class="col">
+      <hr />
+      <div class="content">
+        <!-- more -->
+
+<p><img src="/assets/images/get-html-from-gtk-sharp-clipboard_01.png" alt="Paste table from LibreOffice Writer to GTK# application as HTML" class="img-fluid" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>GTK# documentation and examples do not provide excessive information about using <code class="highlighter-rouge">Gtk.Clipboard</code> object to get various types of content. To get text from clipboard, the <code class="highlighter-rouge">Gtk.Clipboard.WaitForText()</code> method could be used, but how to get, by example, HTML table from LibreOffice Writer document or formatted text from webpage?</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>In this solution we:</p>
+
+<ol>
+  <li>Create target using <code class="highlighter-rouge">Gdk.Atom.Intern()</code> method, passing MIME type string <code class="highlighter-rouge">text/html</code> to it.</li>
+  <li>Get selection object by using <code class="highlighter-rouge">Gtk.Clipboard.WaitForContents()</code> method for created target.</li>
+  <li>If the selection is not null, then it’s <code class="highlighter-rouge">Data</code> property generally contains UTF-8 encoded string with HTML markup.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="c1">// create clipboard object</span>
+<span class="kt">var</span> <span class="n">clipboard</span> <span class="p">=</span> <span class="n">Gtk</span><span class="p">.</span><span class="n">Clipboard</span><span class="p">.</span><span class="nf">Get</span> <span class="p">(</span><span class="n">Gdk</span><span class="p">.</span><span class="n">Atom</span><span class="p">.</span><span class="nf">Intern</span> <span class="p">(</span><span class="s">"CLIPBOARD"</span><span class="p">,</span> <span class="k">true</span><span class="p">));</span>
+
+<span class="c1">// create target using MIME type</span>
+<span class="kt">var</span> <span class="n">target</span> <span class="p">=</span> <span class="n">Gdk</span><span class="p">.</span><span class="n">Atom</span><span class="p">.</span><span class="nf">Intern</span> <span class="p">(</span><span class="s">"text/html"</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// trying to get HTML markup</span>
+<span class="kt">var</span> <span class="n">selection</span> <span class="p">=</span> <span class="n">clipboard</span><span class="p">.</span><span class="nf">WaitForContents</span> <span class="p">(</span><span class="n">target</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">selection</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">// data is UTF-8 encoded string</span>
+	<span class="n">textview1</span><span class="p">.</span><span class="n">Buffer</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetString</span> <span class="p">(</span><span class="n">selection</span><span class="p">.</span><span class="n">Data</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">selection</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+	<span class="n">textview1</span><span class="p">.</span><span class="n">Buffer</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">"No selection"</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The solution is currently tested only on Linux with Mono 3.10.</p>
+
+<p>Note, that <code class="highlighter-rouge">Gtk.Clipboard.WaitForTargets()</code> method in the GTK# 2.12 seems to have broken interface. It defined as <code class="highlighter-rouge">bool WaitForTargets (Gdk.Atom targets, out int n_targets)</code>, but should be something like <code class="highlighter-rouge">bool WaitForTargets (Gdk.Atom [] targets, out int n_targets)</code> to return array of available targets. As a result, we can’t see what targets are available in the clipboard, but only a number of them:</p>
+
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="c1">// create clipboard object</span>
+<span class="kt">var</span> <span class="n">clipboard</span> <span class="p">=</span> <span class="n">Gtk</span><span class="p">.</span><span class="n">Clipboard</span><span class="p">.</span><span class="nf">Get</span> <span class="p">(</span><span class="n">Gdk</span><span class="p">.</span><span class="n">Atom</span><span class="p">.</span><span class="nf">Intern</span> <span class="p">(</span><span class="s">"CLIPBOARD"</span><span class="p">,</span> <span class="k">true</span><span class="p">));</span>
+
+<span class="c1">// create dummy target</span>
+<span class="kt">var</span> <span class="n">target</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Gdk</span><span class="p">.</span><span class="nf">Atom</span> <span class="p">(</span><span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">n_targets</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">clipboard</span><span class="p">.</span><span class="nf">WaitForTargets</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="k">out</span> <span class="n">n_targets</span><span class="p">))</span>
+<span class="p">{</span>
+	<span class="c1">// for me, returns about 12 or 13 targets</span>
+	<span class="n">textview1</span><span class="p">.</span><span class="n">Buffer</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">n_targets</span><span class="p">.</span><span class="nf">ToString</span> <span class="p">();</span> 
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="more-to-explore">More to Explore</h2>
+
+<p>We got the basic example to work, but many things are need to be explored:</p>
+
+<ul>
+  <li>Primary: the selection data encoding seems to not always UTF-8, so we need a way to determine the encoding.</li>
+  <li>Which other common MIME types are supported by <code class="highlighter-rouge">Gtk.Clipboard</code>?</li>
+  <li>How this code will behave on the different platforms?</li>
+</ul>
+
+
+      </div>
+      <hr />
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i> Categories:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#how-to-ref">
+    		how-to
+        <span class="badge badge-light">7</span>
+    	</a></li>
+    
+  
+
+
+
+
+
+
+    </ul>
+    
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-tags"></i> Tags:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#gtk-sharp-ref">gtk-sharp
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#clipboard-ref">clipboard
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#mono-ref">mono
+        <span class="badge badge-light">2</span></a>
+      </li>
+    
+  
+
+
+
+
+
+
+    </ul>
+      
+    
+      <ul class="pagination">
+      
+        <li class="page-item prev"><a class="page-link" href="/how-to/2014/10/22/muffin-window-buttons-layout" title="Muffin window buttons layout"><i class="fas fa-chevron-left"></i> Previous</a></li>
+      
+        <li><a href="/posts.html" class="page-link">All Posts</a></li>
+      
+        <li class="page-item next"><a class="page-link" href="/how-to/2015/05/24/gtk-decoration-layout" title="GTK decoration layout">Next <i class="fas fa-chevron-right"></i></a></li>
+      
+      </ul>
+    
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="1961729102"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
+
+      <hr />
+      
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'r7-blog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+    </div>
+
+    <footer id="footer" class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/themes/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Startup script -->
+	<script>
+	function searchSubmit ()
+	{
+		var searchBox = document.getElementById ("search-box");
+		var searchBoxHidden = document.getElementById ("search-box-hidden");
+		searchBoxHidden.value = "site:" + "http://roman-yagodin.github.io".replace("http://","") + " " + searchBox.value;
+
+		return true;
+	}
+	</script>
+  </body>
+</html>
+

@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>GTK decoration layout</title>
+
+    
+      <meta name="description" content="Many great GNOME 3 applications are used widely across various desktop environments. Most of them use GTK+ client-side decorations (csd) instead of window ma...">
+    
+    
+    <meta name="author" content="Roman M. Yagodin & R7.Labs">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Pygments -->
+    <link href="/assets/pygments/default.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+    
+    <script src="https://kit.fontawesome.com/6cbfab33ab.js"></script>
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9311000650074319",
+          enable_page_level_ads: true
+     });
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="/">(R7) Personal Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              
+              
+              
+              
+              
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/categories" class="nav-link">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/tags" class="nav-link">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/pages" class="nav-link">Pages</a></li>
+      	
+      
+    
+  
+
+
+
+
+
+            </ul>
+            <hr class="d-lg-none" />
+            <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
+              <div class="input-group" role="group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search..." />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <input type="hidden" id="search-box-hidden" name="q" />
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
+
+      <main>
+        
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i> May 24, 2015
+        </div>
+        <h1>GTK decoration layout <small class="tagline">Customize GTK 3 client-side decorated windows</small></h1>
+      </div>
+      <p class="lead">
+        
+Many great GNOME 3 applications are used widely across various desktop environments. Most of them use GTK+ client-side decorations (csd) instead of window manager borders, which makes them look as strangers outside GNOME Shell. In this post I want to show you how to tweak window buttons layout for csd-enabled applications.
+
+
+      </p>
+    </div>
+    <hr />
+  </div>
+
+  <div class="row"> 
+    <div class="col">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="7819924488"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+  </div>
+    
+  <div class="row post-full">
+    <div class="col">
+      <hr />
+      <div class="content">
+        <!-- more -->
+
+<p><img src="/assets/images/gtk-decoration-layout_01.png" alt="Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus)" class="img-fluid" /></p>
+
+<p style="text-align:center">Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus).</p>
+
+<h2 id="facts">Facts</h2>
+
+<p>Since GTK+ 3.10, GtkHeaderBar widgets use <code class="highlighter-rouge">gtk-decoration-layout</code> setting value
+to display window control buttons in the right place &amp; order. Default value is
+<code class="highlighter-rouge">menu:maximize,minimize,close</code> (format is the same as for window manager buttons layout).</p>
+
+<h2 id="solution-for-cinnamon">Solution for Cinnamon</h2>
+
+<p><em>Cinnamon</em> provide a way to override default <code class="highlighter-rouge">gtk-decoration-layout</code> setting value via <code class="highlighter-rouge">dconf</code> key <code class="highlighter-rouge">gtk-decoration-layout</code> in the  <code class="highlighter-rouge">org.cinnamon.desktop.interface</code> section.</p>
+
+<p>Let’s set close button + menu to the left, and minimize button to the right. You could use <code class="highlighter-rouge">dconf-editor</code> to change setting value from GUI. From command-line, it should be like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gsettings <span class="nb">set </span>org.cinnamon.desktop.interface gtk-decoration-layout <span class="s1">'close,menu:minimize'</span></code></pre></figure>
+
+<p>Note what some buttons names are not supported, these are: <strong>above</strong>, <strong>stick</strong>, <strong>shade</strong> and <strong>separator</strong>. Hopefully, this will change in the future GTK+ versions.</p>
+
+<h2 id="more-common-way">More common way</h2>
+
+<p>For desktop environments, which don’t override <code class="highlighter-rouge">gtk-decoration-layout</code> setting, just change (or define) it in <code class="highlighter-rouge">~/.config/gtk-3.0/setting.ini</code> like this:</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[Settings]</span>
+<span class="py">gtk-theme-name</span><span class="p">=</span><span class="s">Adwaita</span>
+<span class="err">...</span>
+<span class="py">gtk-decoration-layout</span><span class="p">=</span><span class="s">close,menu:minimize</span></code></pre></figure>
+
+<p>Session restart would be needed to apply changes. Also, if there are no <code class="highlighter-rouge">settings.ini</code> file, just create new one and add <code class="highlighter-rouge">[Settings]</code> line.</p>
+
+<h2 id="results">Results</h2>
+
+<p><img src="/assets/images/gtk-decoration-layout_02.png" alt="Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus) - after changes" class="img-fluid" /></p>
+
+<p style="text-align:center">Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus) - after changes.</p>
+
+<h2 id="useful-links">Useful links</h2>
+
+<ul>
+  <li><a href="https://blogs.gnome.org/mclasen/2014/01/13/client-side-decorations-continued/">Client-side decoration, continued</a></li>
+  <li><a href="https://developer.gnome.org/gtk3/stable/GtkSettings.html#GtkSettings--gtk-decoration-layout">GTK3 documentation about gtk-decoration-layout setting</a></li>
+  <li><a href="/how-to/2014/10/22/muffin-window-buttons-layout/">Muffin Window Buttons Layout</a></li>
+</ul>
+
+      </div>
+      <hr />
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i> Categories:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#how-to-ref">
+    		how-to
+        <span class="badge badge-light">7</span>
+    	</a></li>
+    
+  
+
+
+
+
+
+
+    </ul>
+    
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-tags"></i> Tags:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#gtk-ref">gtk
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#cinnamon-ref">cinnamon
+        <span class="badge badge-light">3</span></a>
+      </li>
+    
+  
+
+
+
+
+
+
+    </ul>
+      
+    
+      <ul class="pagination">
+      
+        <li class="page-item prev"><a class="page-link" href="/how-to/2015/01/12/get-html-from-gtk-sharp-clipboard" title="Get HTML from GTK# clipboard"><i class="fas fa-chevron-left"></i> Previous</a></li>
+      
+        <li><a href="/posts.html" class="page-link">All Posts</a></li>
+      
+        <li class="page-item next"><a class="page-link" href="/compile-guide/2016/03/30/build-speed-dreams-linux" title="How to build Speed Dreams 2.2 on Linux">Next <i class="fas fa-chevron-right"></i></a></li>
+      
+      </ul>
+    
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="1961729102"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
+
+      <hr />
+      
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'r7-blog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+    </div>
+
+    <footer id="footer" class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/themes/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Startup script -->
+	<script>
+	function searchSubmit ()
+	{
+		var searchBox = document.getElementById ("search-box");
+		var searchBoxHidden = document.getElementById ("search-box-hidden");
+		searchBoxHidden.value = "site:" + "http://roman-yagodin.github.io".replace("http://","") + " " + searchBox.value;
+
+		return true;
+	}
+	</script>
+  </body>
+</html>
+

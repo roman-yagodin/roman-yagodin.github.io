@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Cinnamon panels in Expo and Overview</title>
+
+    
+      <meta name="description" content="One of the things that I’ve liked in GNOME 3 is ability to manage workspaces, windows and run application from the overview mode, all beginning from one sing...">
+    
+    
+    <meta name="author" content="Roman M. Yagodin & R7.Labs">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Pygments -->
+    <link href="/assets/pygments/default.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+    
+    <script src="https://kit.fontawesome.com/6cbfab33ab.js"></script>
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9311000650074319",
+          enable_page_level_ads: true
+     });
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="/">(R7) Personal Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              
+              
+              
+              
+              
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/categories" class="nav-link">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/tags" class="nav-link">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/pages" class="nav-link">Pages</a></li>
+      	
+      
+    
+  
+
+
+
+
+
+            </ul>
+            <hr class="d-lg-none" />
+            <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
+              <div class="input-group" role="group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search..." />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <input type="hidden" id="search-box-hidden" name="q" />
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
+
+      <main>
+        
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i> October  8, 2014
+        </div>
+        <h1>Cinnamon panels in Expo and Overview <small class="tagline">Where is that start menu?</small></h1>
+      </div>
+      <p class="lead">
+        
+One of the things that I’ve liked in GNOME 3 is ability to manage workspaces, windows and run application from the overview mode, all beginning from one single gesture. So I’d like to my Cinnamon desktop behave somethat alike.
+
+
+      </p>
+    </div>
+    <hr />
+  </div>
+
+  <div class="row"> 
+    <div class="col">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="7819924488"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+  </div>
+    
+  <div class="row post-full">
+    <div class="col">
+      <hr />
+      <div class="content">
+        <!-- more -->
+
+<p><img src="/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg" alt="Cinnamon expo mode with top panel" class="img-fluid" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Simpliest way to run applications in the Cinnamon is to use favorites and menu applets. But they are on the panel, and by default Cinnamon hides panels then entering expo and overview modes - so from expo you can manage only workspaces and windows, from overview - only windows,  and can’t run an application (except from Alt+F2 command line) from both of modes.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the <code class="highlighter-rouge">/usr/share/cinnamon/js/ui/</code> directory. As you can guess, expo logic is in <code class="highlighter-rouge">expo.js</code> and overview is in <code class="highlighter-rouge">overview.js</code>. So what’s next?</p>
+
+<p>1. Open script with superuser privileges in the text editor:</p>
+
+<p>For expo:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gksu gedit /usr/share/cinnamon/js/ui/expo.js</code></pre></figure>
+
+<p>For overview:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gksu gedit /usr/share/cinnamon/js/ui/overview.js</code></pre></figure>
+
+<p>2. Find these two lines (marked as 1 and 2):</p>
+
+<p>For expo:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">...</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span> <span class="o">||</span> <span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">toScale</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="nx">Main</span><span class="p">.</span><span class="nx">enablePanels</span><span class="p">();</span> <span class="cm">/* 1 */</span>
+	<span class="nx">activeWorkspace</span><span class="p">.</span><span class="nx">overviewModeOff</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_gradient</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">Main</span><span class="p">.</span><span class="nx">disablePanels</span><span class="p">();</span> <span class="cm">/* 2 */</span></code></pre></figure>
+
+<p>For overview:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">workspacesView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WorkspacesView</span><span class="p">.</span><span class="nx">WorkspacesView</span><span class="p">();</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">overlay_group</span><span class="p">.</span><span class="nx">add_actor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">workspacesView</span><span class="p">.</span><span class="nx">actor</span><span class="p">);</span>
+<span class="nx">Main</span><span class="p">.</span><span class="nx">disablePanels</span><span class="p">();</span> <span class="cm">/* 1 */</span>
+<span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">animationInProgress</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_hideInProgress</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">Main</span><span class="p">.</span><span class="nx">enablePanels</span><span class="p">();</span> <span class="cm">/* 2 */</span></code></pre></figure>
+
+<p>3. Comment out these lines and save the file:</p>
+
+<p>For expo:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">...</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span> <span class="o">||</span> <span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">toScale</span> <span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Main.enablePanels(); /* 1 */</span>
+<span class="nx">activeWorkspace</span><span class="p">.</span><span class="nx">overviewModeOff</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_gradient</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="c1">// Main.disablePanels(); /* 2 */</span></code></pre></figure>
+
+<p>For overview:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">workspacesView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WorkspacesView</span><span class="p">.</span><span class="nx">WorkspacesView</span><span class="p">();</span>
+<span class="nb">global</span><span class="p">.</span><span class="nx">overlay_group</span><span class="p">.</span><span class="nx">add_actor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">workspacesView</span><span class="p">.</span><span class="nx">actor</span><span class="p">);</span>
+<span class="c1">// Main.disablePanels(); /* 1 */	</span>
+<span class="p">...</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">animationInProgress</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_hideInProgress</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="c1">// Main.enablePanels(); /* 2 */</span></code></pre></figure>
+
+<p>4. Now you need to restart Cinnamon. For this you can use entry in the <em>Troubleshooting</em> menu, or command line:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">killall cinnamon <span class="o">&amp;&amp;</span> cinnamon</code></pre></figure>
+
+<p>5. In some cases expo and overview boxes could be partially overlapped with panels - it’s probably your case if you using top panel. 
+For both expo and overview, you need to change second parameter value of <code class="highlighter-rouge">set_position</code> function (Y offset).</p>
+
+<p>For expo, edit <code class="highlighter-rouge">expo.js</code> again:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_expo</span><span class="p">.</span><span class="nx">actor</span><span class="p">.</span><span class="nx">set_position</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* change last 0 to the desired value */</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">_expo</span><span class="p">.</span><span class="nx">actor</span><span class="p">.</span><span class="nx">set_size</span><span class="p">((</span><span class="nx">primary</span><span class="p">.</span><span class="nx">width</span> <span class="o">-</span> <span class="nx">buttonWidth</span><span class="p">),</span> <span class="nx">primary</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span></code></pre></figure>
+
+<p>For overview, edit <code class="highlighter-rouge">workspacesView.js</code>:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">else</span> <span class="p">{</span>
+	<span class="nx">workspace</span><span class="p">.</span><span class="nx">actor</span><span class="p">.</span><span class="nx">set_position</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* change 0 to the desired value */</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">w</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">_updateVisibility</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Offset value is related to the panel height, but you need to experiment with this to get desired result, as current Cinnamon theme 
+could greatly infuence it. In my case (<em>New Minty</em> theme), panel height is about 26, but value of 16 in the <code class="highlighter-rouge">expo.js</code> and 32 in <code class="highlighter-rouge">workspacesView.js</code> is fine.</p>
+
+<hr />
+
+<p><img src="/assets/images/cinnamon-panels-in-expo-and-overview_02.jpg" alt="Cinnamon overview (scale) mode with top panel" class="img-fluid" /></p>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>This post mainly based on the solution, provided <a href="https://github.com/linuxmint/Cinnamon/issues/3001">here</a> by <a href="https://github.com/nfat">@nfat</a>.</p>
+
+
+      </div>
+      <hr />
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i> Categories:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#how-to-ref">
+    		how-to
+        <span class="badge badge-light">7</span>
+    	</a></li>
+    
+  
+
+
+
+
+
+
+    </ul>
+    
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-tags"></i> Tags:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#mint-ref">mint
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#cinnamon-ref">cinnamon
+        <span class="badge badge-light">3</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#tutorial-ref">tutorial
+        <span class="badge badge-light">1</span></a>
+      </li>
+    
+  
+
+
+
+
+
+
+    </ul>
+      
+    
+      <ul class="pagination">
+      
+        <li class="page-item prev disabled"><a class="page-link"><i class="fas fa-chevron-left"></i> Previous</a></li>
+      
+        <li><a href="/posts.html" class="page-link">All Posts</a></li>
+      
+        <li class="page-item next"><a class="page-link" href="/how-to/2014/10/11/xamarin-official-mono-repositories-for-linux" title="Xamarin official Mono repositories for Linux">Next <i class="fas fa-chevron-right"></i></a></li>
+      
+      </ul>
+    
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="1961729102"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
+
+      <hr />
+      
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'r7-blog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+    </div>
+
+    <footer id="footer" class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/themes/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Startup script -->
+	<script>
+	function searchSubmit ()
+	{
+		var searchBox = document.getElementById ("search-box");
+		var searchBoxHidden = document.getElementById ("search-box-hidden");
+		searchBoxHidden.value = "site:" + "http://roman-yagodin.github.io".replace("http://","") + " " + searchBox.value;
+
+		return true;
+	}
+	</script>
+  </body>
+</html>
+

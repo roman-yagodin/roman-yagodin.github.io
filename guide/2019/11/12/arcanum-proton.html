@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Arcanum on Linux with Steam Play Proton</title>
+
+    
+      <meta name="description" content="Celebrating recent update to Unofficial Arcanum Patch after almost 10 years since the last one, I decided to write this post to guide you through the basics ...">
+    
+    
+    <meta name="author" content="Roman M. Yagodin & R7.Labs">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Pygments -->
+    <link href="/assets/pygments/default.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+    
+    <script src="https://kit.fontawesome.com/6cbfab33ab.js"></script>
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9311000650074319",
+          enable_page_level_ads: true
+     });
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="/">(R7) Personal Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              
+              
+              
+              
+              
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/categories" class="nav-link">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/tags" class="nav-link">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/pages" class="nav-link">Pages</a></li>
+      	
+      
+    
+  
+
+
+
+
+
+            </ul>
+            <hr class="d-lg-none" />
+            <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
+              <div class="input-group" role="group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search..." />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <input type="hidden" id="search-box-hidden" name="q" />
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
+
+      <main>
+        
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i> November 12, 2019
+        </div>
+        <h1>Arcanum on Linux with Steam Play Proton <small class="tagline">plus UAP and HighRes patches</small></h1>
+      </div>
+      <p class="lead">
+        
+Celebrating recent update to Unofficial Arcanum Patch after almost 10 years since the last one, I decided to write this post to guide you through the basics of install and setup process of famous Arcanum: Of Steamworks and Magick Obscura title on Linux with the Steam Play Proton.
+
+
+      </p>
+    </div>
+    <hr />
+  </div>
+
+  <div class="row"> 
+    <div class="col">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="7819924488"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+  </div>
+    
+  <div class="row post-full">
+    <div class="col">
+      <hr />
+      <div class="content">
+        <!-- more -->
+
+<p><img src="/assets/images/arcanum-library.png" alt="Arcanum in Steam library" class="img-fluid" /></p>
+
+<h2 id="proton-and-steam-play">Proton and Steam Play</h2>
+
+<p><a href="https://github.com/ValveSoftware/Proton">Proton</a> is compatibility tool for <a href="https://steamcommunity.com/games/221410/announcements/detail/1696055855739350561">Steam Play</a> based mainly on <em>Wine</em> plus some other components like <em>DXVK</em>. It allows you to install and run Windows games via Steam client on “unsupported” platforms - almost like a native games. While you still can install any game from your Steam library on Linux with <a href="https://developer.valvesoftware.com/wiki/SteamCMD">steamcmd</a>, and then use <em>Wine</em>, <em>Winetricks</em> or e.g. <a href="https://www.playonlinux.com">PlayOnLinux</a> to run it, the <em>Proton</em> provides very refreshing and more straightforward alternative.</p>
+
+<p>The <em>Proton</em> doesn’t looks very mature for the moment, but it contantly improves. User reports about various games are gathered in the <a href="https://www.protondb.com">ProtonDB</a> (its like the <a href="https://www.winehq.org">WineHQ</a> is for <em>Wine</em>), there you can find useful tips on how to setup your favorite game or which quirks to expect from it. You can also find the growing list of <a href="https://www.protondb.com/explore?page=0&amp;selectedFilters=whitelisted">whitelisted</a> games there.</p>
+
+<h2 id="general-sequence">General sequence</h2>
+
+<ol>
+  <li>Install the game.</li>
+  <li>Setup <em>wineconsole</em>.</li>
+  <li>Install <em>Unofficial Arcanum Patch</em>.</li>
+  <li>Apply <em>HighRes</em> patch.</li>
+  <li>Play.</li>
+</ol>
+
+<h2 id="install-the-game">Install the game</h2>
+
+<p>First of all, you need to enable Steam Play for all titles via <em>Steam client settings</em> / <em>Steam Play options</em>.</p>
+
+<p>This will allow you to install (and run) Arcanum on Linux just like any other native Linux game from your Steam libary.</p>
+
+<p><img src="/assets/images/arcanum-enable-steam-play.png" alt="Enable Steam play for all other titles" class="img-fluid" /></p>
+
+<p>After that, you can install the game by just clicking <em>Install</em>.</p>
+
+<p>After installing, run game once - just to create <code class="highlighter-rouge">$HOME/.local/share/Steam/steamapps/compatdata/500810</code> directory.
+It will take some time, as Steam will need to download <em>Proton</em> and create wineprefix for the game.</p>
+
+<p>Add symlink to the game install directory and place it inside the <code class="highlighter-rouge">$HOME/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c</code> directory:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/share/Steam/steamapps/common/Arcanum"</span> <span class="se">\</span>
+  <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c/Arcanum"</span>
+</code></pre></div></div>
+
+<p><strong>Note:</strong> I think there should be a better way to do that (without creating symlink), as <em>Proton</em> surely do need to merge the game install directory with wineprefix somehow.
+If you know something about it, please drop a comment.</p>
+
+<h2 id="setup-wineconsole">Setup wineconsole</h2>
+
+<h3 id="wine-way">Wine way</h3>
+
+<p><em>wineconsole</em> is the <em>Wine</em> console manager, used to run console commands and applications. We will need it to run <code class="highlighter-rouge">cmd.exe</code> shell in order to run some commands to setup the game.</p>
+
+<p>Execute in the terminal emulator (replace <code class="highlighter-rouge">Proton 4.11</code> with actual <em>Proton</em> version):</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">env </span><span class="nv">WINEPREFIX</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.steam/steam/steamapps/compatdata/500810/pfx"</span> <span class="se">\</span>
+  <span class="nv">WINEPATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/share/Steam/steamapps/common/Proton 4.11/dist/bin/wine"</span> <span class="se">\</span>
+  wineconsole
+</code></pre></div></div>
+
+<p><img src="/assets/images/arcanum-wineconsole.png" alt="Arcanum folder via wineconsole" class="img-fluid" /></p>
+
+<p>Feeling some nostalgia? It’s cool!</p>
+
+<p><strong>Note:</strong> AFAIK this is not 100% safe way - but it will work the same for other games, which doesn’t have configurable launcher.</p>
+
+<h3 id="sierralauncher-way">SierraLauncher way</h3>
+
+<p>Backup <code class="highlighter-rouge">SierraLauncher.ini</code> into <code class="highlighter-rouge">original_SierraLauncher.ini</code></p>
+
+<p>Create <code class="highlighter-rouge">cmd.bat</code> file with following content:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmd.exe
+</code></pre></div></div>
+
+<p>Modify <code class="highlighter-rouge">SierraLauncher.ini</code></p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[Launcher]</span>
+<span class="py">Name</span><span class="p">=</span><span class="s">Arcanum</span>
+<span class="py">NumButtons</span><span class="p">=</span><span class="s">1</span>
+<span class="py">GameManual</span><span class="p">=</span><span class="s">Manual.pdf</span>
+
+<span class="py">Game1Name</span><span class="p">=</span><span class="s">Game</span>
+<span class="py">Game1Prog</span><span class="p">=</span><span class="s">other</span>
+<span class="py">Game1Path</span><span class="p">=</span><span class="se">\
+</span><span class="s">Game1Exe=cmd.bat</span>
+<span class="py">Game1Cmd</span><span class="p">=</span>
+</code></pre></div></div>
+
+<p>Now run the game - it will start <code class="highlighter-rouge">SierraLauncher.exe</code>, but then you click <em>Launch</em>, it will open <em>wineconsole</em> (<code class="highlighter-rouge">cmd.exe</code>) window instead.</p>
+
+<p><strong>Note:</strong> Optionally you can create a <code class="highlighter-rouge">cmd_SierraLauncher.ini</code> file and make <code class="highlighter-rouge">SierraLauncher.ini</code> the symlink to it. This way you can switch between two <code class="highlighter-rouge">.ini</code> versions without copying files.</p>
+
+<h2 id="install-unofficial-arcanum-patch">Install Unofficial Arcanum Patch</h2>
+
+<p>Get latest and the greatest <a href="http://terra-arcanum.com/drog/uap.html">Unofficial Arcanum patch</a>.</p>
+
+<p>Copy <em>UAP</em> installer to the Arcanum folder.</p>
+
+<p>Run <em>wineconsole</em>, type some commands:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
+cd Arcanum
+UAP1.5.1.exe
+</code></pre></div></div>
+
+<p><img src="/assets/images/arcanum-uap.png" alt="Arcanum: Unofficial patch installer" class="img-fluid" /></p>
+
+<p>Choose things to install - it’s about your preference, but surely <em>HighRes</em> patch is greatly recommended.</p>
+
+<p>About level cap remover - I think it’s more fun to just start again with different kind of character.</p>
+
+<p>Proceed. Select proper install location carefully:</p>
+
+<p><img src="/assets/images/arcanum-uap-install-path.png" alt="Arcanum: Unofficial patch install path" class="img-fluid" /></p>
+
+<p>Done.</p>
+
+<h2 id="apply-highres-patch">Apply HighRes patch</h2>
+
+<p>Then you install <em>Unofficial patch</em>, the <em>HighRes</em> patch will be installed into <code class="highlighter-rouge">Arcanum/HighRes</code> directory, but not applied, as it will require some additional configuration. Let’s do it.</p>
+
+<p>Open <em>HighRes</em> <code class="highlighter-rouge">config.ini</code> and modify it as you like:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">Width</span> <span class="p">=</span> <span class="s">1920 // original: 800</span>
+<span class="py">Height</span> <span class="p">=</span> <span class="s">1080 // original: 600</span>
+<span class="py">DialogFont</span> <span class="p">=</span> <span class="s">2 // 0 = size 12, 1 = size 14, 2 = size 18</span>
+</code></pre></div></div>
+
+<p>Save changes.</p>
+
+<p>Install patch. Open <em>wineconsole</em> again,  type:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
+cd Arcanum\Arcanum\HighRes
+_install.bat
+exit
+</code></pre></div></div>
+
+<p><img src="/assets/images/arcanum-highres-applied.png" alt="Arcanum: HighRes patch applied" class="img-fluid" /></p>
+
+<p>Done.</p>
+
+<h2 id="play">Play</h2>
+
+<p>If you started <em>wineconsole</em> from SierraLauncher, it’s time to restore the <code class="highlighter-rouge">SierraLauncher.ini</code> to its original state.</p>
+
+<p>Now <strong>run Arcanum from your Steam library</strong> and have fun with such a great game!</p>
+
+<p><img src="/assets/images/arcanum-in-game.png" alt="Arcanum: In game" class="img-fluid" /></p>
+
+<p>For the first-timers I’d recommend to start with the <a href="http://terra-arcanum.com/downloads/arcanum/resources/arcanum_manual.zip">official manual</a> or the <a href="https://gamefaqs.gamespot.com/pc/914155-arcanum-of-steamworks-and-magick-obscura/faqs/64280">Spoiler-Free Character Creation Guide and Orientation (pre-UAP)</a>.</p>
+
+<p>Please share your favorite resources for beginners in the comments!</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Unfortunately, you can experience graphics glitches (like one on the screenshot).</p>
+
+<p><img src="/assets/images/arcanum-graphics-glitch-small.png" alt="Arcanum: Graphics glitch" class="img-fluid" /></p>
+
+<p>The most simple way to fix it is to switch to the software rendering via <em>HighRes</em> <code class="highlighter-rouge">config.ini</code>:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">Renderer</span> <span class="p">=</span> <span class="s">0 // 0 = software, 1 = hardware</span>
+</code></pre></div></div>
+
+<p>Repeat <em>HighRes</em> patch setup, but run <code class="highlighter-rouge">_uninstall.bat</code> first.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
+cd Arcanum\Arcanum\HighRes
+_uninstall.bat
+_install.bat
+exit
+</code></pre></div></div>
+
+<h2 id="additional-tweaks">Additional tweaks</h2>
+
+<p>Before switching to software renderer, you could also explore other possibilities by tweaking some options via <em>HighRes</em> <code class="highlighter-rouge">config.ini</code>, <a href="https://wiki.winehq.org/Useful_Registry_Keys">Wine</a> and/or <a href="https://github.com/ValveSoftware/Proton#runtime-config-options">Proton</a>. Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.</p>
+
+<h3 id="setting-arcanumexe-options-via-sierralauncherini">Setting Arcanum.exe options via SierraLauncher.ini</h3>
+
+<p>This is an (almost) obsolete way to do it, as the <em>HighRes</em> patch allows you to set many options via <code class="highlighter-rouge">config.ini</code>. But still, let’s set <code class="highlighter-rouge">-doublebuffer</code> option:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[Launcher]</span>
+<span class="py">Name</span><span class="p">=</span><span class="s">Arcanum</span>
+<span class="py">NumButtons</span><span class="p">=</span><span class="s">1</span>
+<span class="py">GameManual</span><span class="p">=</span><span class="s">Manual.pdf</span>
+
+<span class="py">Game1Name</span><span class="p">=</span><span class="s">Game</span>
+<span class="py">Game1Prog</span><span class="p">=</span><span class="s">other</span>
+<span class="py">Game1Path</span><span class="p">=</span><span class="s">Arcanum</span><span class="se">\
+</span><span class="s">Game1Exe=Arcanum.exe</span>
+<span class="py">Game1Cmd</span><span class="p">=</span><span class="s">-doublebuffer</span>
+</code></pre></div></div>
+
+<p>See more <a href="https://terra-arcanum.com/forums/index.php?threads/arcanum-command-line-arguments.15208/">here</a>.</p>
+
+<h3 id="setting-wine-options-via-regedit">Setting Wine options via regedit</h3>
+
+<ol>
+  <li>Run <em>wineconsole</em>.</li>
+  <li>Type <code class="highlighter-rouge">regedit</code>.</li>
+  <li>Go to <code class="highlighter-rouge">HKEY_CURRENT_USER\Software\Wine\Direct3D</code> (if key not exists, create it).</li>
+</ol>
+
+<p>Here you can set number of <em>Wine</em> options, like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"DirectDrawRenderer"="gdi"
+"OffscreenRenderingMode"="backbuffer"
+</code></pre></div></div>
+
+<p>See more <a href="https://wiki.winehq.org/Useful_Registry_Keys">here</a>.</p>
+
+<h3 id="emulate-virtual-desktop">Emulate virtual desktop</h3>
+
+<ol>
+  <li>Run <em>wineconsole</em>.</li>
+  <li>Type <code class="highlighter-rouge">winecfg</code>.</li>
+  <li>Go to <em>Graphics</em> tab.</li>
+  <li>Check <em>Emulate virtual desktop</em> option.</li>
+  <li>Set required values for screen width and height.</li>
+  <li>Ensure that same width and height values is set and also fullscreen is enabled in the <em>HighRes</em> <code class="highlighter-rouge">config.ini</code>.</li>
+</ol>
+
+<h2 id="finally-some-links">Finally, some links:</h2>
+
+<ul>
+  <li><a href="http://terra-arcanum.com/drog/uap.html">Unofficial Arcanum patch</a></li>
+  <li><a href="https://www.protondb.com/app/500810">Arcanum entry in ProtonDB</a></li>
+  <li><a href="http://terra-arcanum.com">Terra Arcanum</a></li>
+  <li><a href="http://terra-arcanum.com/downloads/arcanum/resources/arcanum_manual.zip">Official Manual</a></li>
+  <li><a href="https://gamefaqs.gamespot.com/pc/914155-arcanum-of-steamworks-and-magick-obscura/faqs/64280">Spoiler-Free Character Creation Guide and Orientation (pre-UAP)</a></li>
+  <li><a href="https://github.com/ValveSoftware/Proton#runtime-config-options">Proton runtime config options</a></li>
+  <li><a href="https://wiki.winehq.org/Useful_Registry_Keys">Wine useful registry keys</a></li>
+  <li><a href="https://github.com/ValveSoftware/Proton">Proton code repository on GitHub</a></li>
+  <li><a href="https://www.protondb.com/explore?page=0&amp;selectedFilters=whitelisted">“whitelisted” ProtonDB games</a></li>
+  <li><a href="https://terra-arcanum.com/forums/index.php?threads/arcanum-command-line-arguments.15208/">Arcanum.exe commandline arguments</a></li>
+</ul>
+
+<!-- Reference Links -->
+
+
+      </div>
+      <hr />
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i> Categories:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#guide-ref">
+    		guide
+        <span class="badge badge-light">2</span>
+    	</a></li>
+    
+  
+
+
+
+
+
+
+    </ul>
+    
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-tags"></i> Tags:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#games-ref">games
+        <span class="badge badge-light">2</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#linux-ref">linux
+        <span class="badge badge-light">3</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#steam-ref">steam
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#proton-ref">proton
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#wine-ref">wine
+        <span class="badge badge-light">1</span></a>
+      </li>
+    
+  
+
+
+
+
+
+
+    </ul>
+      
+    
+      <ul class="pagination">
+      
+        <li class="page-item prev"><a class="page-link" href="/how-to/2019/10/21/ru-sync-github-repository-with-redmine" title="Синхронизация GitHub с хранилищем Redmine"><i class="fas fa-chevron-left"></i> Previous</a></li>
+      
+        <li><a href="/posts.html" class="page-link">All Posts</a></li>
+      
+        <li class="page-item next"><a class="page-link" href="/test/2019/12/02/asciidoc-test" title="AsciiDoc test">Next <i class="fas fa-chevron-right"></i></a></li>
+      
+      </ul>
+    
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="1961729102"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
+
+      <hr />
+      
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'r7-blog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+    </div>
+
+    <footer id="footer" class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/themes/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Startup script -->
+	<script>
+	function searchSubmit ()
+	{
+		var searchBox = document.getElementById ("search-box");
+		var searchBoxHidden = document.getElementById ("search-box-hidden");
+		searchBoxHidden.value = "site:" + "http://roman-yagodin.github.io".replace("http://","") + " " + searchBox.value;
+
+		return true;
+	}
+	</script>
+  </body>
+</html>
+
