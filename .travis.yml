@@ -1,0 +1,10 @@
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  target-branch: master
+  skip-cleanup: true
+  keep-history: true
+  on:
+    branch: master
+
+

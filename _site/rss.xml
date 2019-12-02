@@ -1,0 +1,1294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>(R7) Personal Blog</title>
+        <description>(R7) Personal Blog - Roman M. Yagodin & R7.Labs</description>
+        <link>http://roman-yagodin.github.io</link>
+        <link>http://roman-yagodin.github.io</link>
+        <lastBuildDate>2019-12-02T10:59:26+00:00</lastBuildDate>
+        <pubDate>2019-12-02T10:59:26+00:00</pubDate>
+        <ttl>1800</ttl>
+
+
+        <item>
+                <title>AsciiDoc test</title>
+                <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Sample post in AsciiDoc format.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;sample-post&quot;&gt;Sample Post&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a sample post composed in AsciiDoc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Jekyll converts it to HTML using &lt;a href=&quot;http://asciidoctor.org&quot;&gt;Asciidoctor&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+                <link>http://roman-yagodin.github.io/test/2019/12/02/asciidoc-test</link>
+                <guid>http://roman-yagodin.github.io/test/2019/12/02/asciidoc-test</guid>
+                <pubDate>2019-12-02T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Arcanum on Linux with Steam Play Proton</title>
+                <description>
+&lt;p&gt;Celebrating recent update to &lt;a href=&quot;http://terra-arcanum.com/drog/uap.html&quot;&gt;Unofficial Arcanum Patch&lt;/a&gt; after almost 10 years since the last one, I decided to write this post to guide you through the basics of install and setup process of famous &lt;a href=&quot;https://store.steampowered.com/app/500810/Arcanum_Of_Steamworks_and_Magick_Obscura/&quot;&gt;Arcanum: Of Steamworks and Magick Obscura&lt;/a&gt; title on Linux with the Steam Play &lt;a href=&quot;https://github.com/ValveSoftware/Proton&quot;&gt;Proton&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-library.png&quot; alt=&quot;Arcanum in Steam library&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;proton-and-steam-play&quot;&gt;Proton and Steam Play&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ValveSoftware/Proton&quot;&gt;Proton&lt;/a&gt; is compatibility tool for &lt;a href=&quot;https://steamcommunity.com/games/221410/announcements/detail/1696055855739350561&quot;&gt;Steam Play&lt;/a&gt; based mainly on &lt;em&gt;Wine&lt;/em&gt; plus some other components like &lt;em&gt;DXVK&lt;/em&gt;. It allows you to install and run Windows games via Steam client on “unsupported” platforms - almost like a native games. While you still can install any game from your Steam library on Linux with &lt;a href=&quot;https://developer.valvesoftware.com/wiki/SteamCMD&quot;&gt;steamcmd&lt;/a&gt;, and then use &lt;em&gt;Wine&lt;/em&gt;, &lt;em&gt;Winetricks&lt;/em&gt; or e.g. &lt;a href=&quot;https://www.playonlinux.com&quot;&gt;PlayOnLinux&lt;/a&gt; to run it, the &lt;em&gt;Proton&lt;/em&gt; provides very refreshing and more straightforward alternative.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;Proton&lt;/em&gt; doesn’t looks very mature for the moment, but it contantly improves. User reports about various games are gathered in the &lt;a href=&quot;https://www.protondb.com&quot;&gt;ProtonDB&lt;/a&gt; (its like the &lt;a href=&quot;https://www.winehq.org&quot;&gt;WineHQ&lt;/a&gt; is for &lt;em&gt;Wine&lt;/em&gt;), there you can find useful tips on how to setup your favorite game or which quirks to expect from it. You can also find the growing list of &lt;a href=&quot;https://www.protondb.com/explore?page=0&amp;amp;selectedFilters=whitelisted&quot;&gt;whitelisted&lt;/a&gt; games there.&lt;/p&gt;
+
+&lt;h2 id=&quot;general-sequence&quot;&gt;General sequence&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Install the game.&lt;/li&gt;
+  &lt;li&gt;Setup &lt;em&gt;wineconsole&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Install &lt;em&gt;Unofficial Arcanum Patch&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Apply &lt;em&gt;HighRes&lt;/em&gt; patch.&lt;/li&gt;
+  &lt;li&gt;Play.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;install-the-game&quot;&gt;Install the game&lt;/h2&gt;
+
+&lt;p&gt;First of all, you need to enable Steam Play for all titles via &lt;em&gt;Steam client settings&lt;/em&gt; / &lt;em&gt;Steam Play options&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This will allow you to install (and run) Arcanum on Linux just like any other native Linux game from your Steam libary.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-enable-steam-play.png&quot; alt=&quot;Enable Steam play for all other titles&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After that, you can install the game by just clicking &lt;em&gt;Install&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;After installing, run game once - just to create &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.local/share/Steam/steamapps/compatdata/500810&lt;/code&gt; directory.
+It will take some time, as Steam will need to download &lt;em&gt;Proton&lt;/em&gt; and create wineprefix for the game.&lt;/p&gt;
+
+&lt;p&gt;Add symlink to the game install directory and place it inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c&lt;/code&gt; directory:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.local/share/Steam/steamapps/common/Arcanum&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c/Arcanum&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I think there should be a better way to do that (without creating symlink), as &lt;em&gt;Proton&lt;/em&gt; surely do need to merge the game install directory with wineprefix somehow.
+If you know something about it, please drop a comment.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-wineconsole&quot;&gt;Setup wineconsole&lt;/h2&gt;
+
+&lt;h3 id=&quot;wine-way&quot;&gt;Wine way&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;wineconsole&lt;/em&gt; is the &lt;em&gt;Wine&lt;/em&gt; console manager, used to run console commands and applications. We will need it to run &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd.exe&lt;/code&gt; shell in order to run some commands to setup the game.&lt;/p&gt;
+
+&lt;p&gt;Execute in the terminal emulator (replace &lt;code class=&quot;highlighter-rouge&quot;&gt;Proton 4.11&lt;/code&gt; with actual &lt;em&gt;Proton&lt;/em&gt; version):&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;WINEPREFIX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.steam/steam/steamapps/compatdata/500810/pfx&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;WINEPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.local/share/Steam/steamapps/common/Proton 4.11/dist/bin/wine&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  wineconsole
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-wineconsole.png&quot; alt=&quot;Arcanum folder via wineconsole&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Feeling some nostalgia? It’s cool!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; AFAIK this is not 100% safe way - but it will work the same for other games, which doesn’t have configurable launcher.&lt;/p&gt;
+
+&lt;h3 id=&quot;sierralauncher-way&quot;&gt;SierraLauncher way&lt;/h3&gt;
+
+&lt;p&gt;Backup &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;original_SierraLauncher.ini&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd.bat&lt;/code&gt; file with following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cmd.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Modify &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[Launcher]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Arcanum&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;NumButtons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;GameManual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Manual.pdf&lt;/span&gt;
+
+&lt;span class=&quot;py&quot;&gt;Game1Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Game&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Game1Prog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;other&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Game1Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Game1Exe=cmd.bat&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Game1Cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now run the game - it will start &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.exe&lt;/code&gt;, but then you click &lt;em&gt;Launch&lt;/em&gt;, it will open &lt;em&gt;wineconsole&lt;/em&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd.exe&lt;/code&gt;) window instead.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Optionally you can create a &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd_SierraLauncher.ini&lt;/code&gt; file and make &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; the symlink to it. This way you can switch between two &lt;code class=&quot;highlighter-rouge&quot;&gt;.ini&lt;/code&gt; versions without copying files.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-unofficial-arcanum-patch&quot;&gt;Install Unofficial Arcanum Patch&lt;/h2&gt;
+
+&lt;p&gt;Get latest and the greatest &lt;a href=&quot;http://terra-arcanum.com/drog/uap.html&quot;&gt;Unofficial Arcanum patch&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Copy &lt;em&gt;UAP&lt;/em&gt; installer to the Arcanum folder.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;em&gt;wineconsole&lt;/em&gt;, type some commands:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
+cd Arcanum
+UAP1.5.1.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-uap.png&quot; alt=&quot;Arcanum: Unofficial patch installer&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Choose things to install - it’s about your preference, but surely &lt;em&gt;HighRes&lt;/em&gt; patch is greatly recommended.&lt;/p&gt;
+
+&lt;p&gt;About level cap remover - I think it’s more fun to just start again with different kind of character.&lt;/p&gt;
+
+&lt;p&gt;Proceed. Select proper install location carefully:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-uap-install-path.png&quot; alt=&quot;Arcanum: Unofficial patch install path&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Done.&lt;/p&gt;
+
+&lt;h2 id=&quot;apply-highres-patch&quot;&gt;Apply HighRes patch&lt;/h2&gt;
+
+&lt;p&gt;Then you install &lt;em&gt;Unofficial patch&lt;/em&gt;, the &lt;em&gt;HighRes&lt;/em&gt; patch will be installed into &lt;code class=&quot;highlighter-rouge&quot;&gt;Arcanum/HighRes&lt;/code&gt; directory, but not applied, as it will require some additional configuration. Let’s do it.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt; and modify it as you like:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;py&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1920 // original: 800&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1080 // original: 600&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;DialogFont&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2 // 0 = size 12, 1 = size 14, 2 = size 18&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Save changes.&lt;/p&gt;
+
+&lt;p&gt;Install patch. Open &lt;em&gt;wineconsole&lt;/em&gt; again,  type:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
+cd Arcanum\Arcanum\HighRes
+_install.bat
+exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-highres-applied.png&quot; alt=&quot;Arcanum: HighRes patch applied&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Done.&lt;/p&gt;
+
+&lt;h2 id=&quot;play&quot;&gt;Play&lt;/h2&gt;
+
+&lt;p&gt;If you started &lt;em&gt;wineconsole&lt;/em&gt; from SierraLauncher, it’s time to restore the &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; to its original state.&lt;/p&gt;
+
+&lt;p&gt;Now &lt;strong&gt;run Arcanum from your Steam library&lt;/strong&gt; and have fun with such a great game!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-in-game.png&quot; alt=&quot;Arcanum: In game&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For the first-timers I’d recommend to start with the &lt;a href=&quot;http://terra-arcanum.com/downloads/arcanum/resources/arcanum_manual.zip&quot;&gt;official manual&lt;/a&gt; or the &lt;a href=&quot;https://gamefaqs.gamespot.com/pc/914155-arcanum-of-steamworks-and-magick-obscura/faqs/64280&quot;&gt;Spoiler-Free Character Creation Guide and Orientation (pre-UAP)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Please share your favorite resources for beginners in the comments!&lt;/p&gt;
+
+&lt;h2 id=&quot;troubleshooting&quot;&gt;Troubleshooting&lt;/h2&gt;
+
+&lt;p&gt;Unfortunately, you can experience graphics glitches (like one on the screenshot).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-graphics-glitch-small.png&quot; alt=&quot;Arcanum: Graphics glitch&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The most simple way to fix it is to switch to the software rendering via &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;py&quot;&gt;Renderer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0 // 0 = software, 1 = hardware&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Repeat &lt;em&gt;HighRes&lt;/em&gt; patch setup, but run &lt;code class=&quot;highlighter-rouge&quot;&gt;_uninstall.bat&lt;/code&gt; first.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
+cd Arcanum\Arcanum\HighRes
+_uninstall.bat
+_install.bat
+exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;additional-tweaks&quot;&gt;Additional tweaks&lt;/h2&gt;
+
+&lt;p&gt;Before switching to software renderer, you could also explore other possibilities by tweaking some options via &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;, &lt;a href=&quot;https://wiki.winehq.org/Useful_Registry_Keys&quot;&gt;Wine&lt;/a&gt; and/or &lt;a href=&quot;https://github.com/ValveSoftware/Proton#runtime-config-options&quot;&gt;Proton&lt;/a&gt;. Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-arcanumexe-options-via-sierralauncherini&quot;&gt;Setting Arcanum.exe options via SierraLauncher.ini&lt;/h3&gt;
+
+&lt;p&gt;This is an (almost) obsolete way to do it, as the &lt;em&gt;HighRes&lt;/em&gt; patch allows you to set many options via &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;. But still, let’s set &lt;code class=&quot;highlighter-rouge&quot;&gt;-doublebuffer&lt;/code&gt; option:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[Launcher]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Arcanum&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;NumButtons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;GameManual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Manual.pdf&lt;/span&gt;
+
+&lt;span class=&quot;py&quot;&gt;Game1Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Game&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Game1Prog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;other&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Game1Path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Arcanum&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Game1Exe=Arcanum.exe&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Game1Cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-doublebuffer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;See more &lt;a href=&quot;https://terra-arcanum.com/forums/index.php?threads/arcanum-command-line-arguments.15208/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-wine-options-via-regedit&quot;&gt;Setting Wine options via regedit&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;em&gt;wineconsole&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;regedit&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;HKEY_CURRENT_USER\Software\Wine\Direct3D&lt;/code&gt; (if key not exists, create it).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here you can set number of &lt;em&gt;Wine&lt;/em&gt; options, like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;DirectDrawRenderer&quot;=&quot;gdi&quot;
+&quot;OffscreenRenderingMode&quot;=&quot;backbuffer&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;See more &lt;a href=&quot;https://wiki.winehq.org/Useful_Registry_Keys&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;emulate-virtual-desktop&quot;&gt;Emulate virtual desktop&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Run &lt;em&gt;wineconsole&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;winecfg&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Go to &lt;em&gt;Graphics&lt;/em&gt; tab.&lt;/li&gt;
+  &lt;li&gt;Check &lt;em&gt;Emulate virtual desktop&lt;/em&gt; option.&lt;/li&gt;
+  &lt;li&gt;Set required values for screen width and height.&lt;/li&gt;
+  &lt;li&gt;Ensure that same width and height values is set and also fullscreen is enabled in the &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;finally-some-links&quot;&gt;Finally, some links:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://terra-arcanum.com/drog/uap.html&quot;&gt;Unofficial Arcanum patch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.protondb.com/app/500810&quot;&gt;Arcanum entry in ProtonDB&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://terra-arcanum.com&quot;&gt;Terra Arcanum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://terra-arcanum.com/downloads/arcanum/resources/arcanum_manual.zip&quot;&gt;Official Manual&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gamefaqs.gamespot.com/pc/914155-arcanum-of-steamworks-and-magick-obscura/faqs/64280&quot;&gt;Spoiler-Free Character Creation Guide and Orientation (pre-UAP)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ValveSoftware/Proton#runtime-config-options&quot;&gt;Proton runtime config options&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.winehq.org/Useful_Registry_Keys&quot;&gt;Wine useful registry keys&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ValveSoftware/Proton&quot;&gt;Proton code repository on GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.protondb.com/explore?page=0&amp;amp;selectedFilters=whitelisted&quot;&gt;“whitelisted” ProtonDB games&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://terra-arcanum.com/forums/index.php?threads/arcanum-command-line-arguments.15208/&quot;&gt;Arcanum.exe commandline arguments&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Reference Links --&gt;
+
+</description>
+                <link>http://roman-yagodin.github.io/guide/2019/11/12/arcanum-proton</link>
+                <guid>http://roman-yagodin.github.io/guide/2019/11/12/arcanum-proton</guid>
+                <pubDate>2019-11-12T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Синхронизация GitHub с хранилищем Redmine</title>
+                <description>
+&lt;p&gt;Описывается процесс настройки синхронизации репозитория исходного кода на GitHub с хранилищем в проекте Redmine с использованием плагина &lt;a href=&quot;http://www.redmine.org/plugins/redmine_github_hook&quot;&gt;Redmine GitHub Hook&lt;/a&gt; на примере &lt;a href=&quot;http://projects.volgau.com/projects/greenmine/repository&quot;&gt;репозитория темы Greenmine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;создание-зеркала&quot;&gt;Создание зеркала&lt;/h2&gt;
+
+&lt;p&gt;Создаем зеркало публичного репозитория GitHub:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Shell&quot;&gt;sudo -u redmine /bin/bash
+cd /var/opt/redmine/repos
+git clone --mirror https://github.com/volgau/redmine-theme-greenmine.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Добавляем в проект новое хранилище, связанное с зеркалом репозитория, через меню &lt;strong&gt;Настройки проекта &amp;gt; Хранилища&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ru-sync-github-repository-with-redmine-1.png&quot; alt=&quot;Создание нового хранилища в Redmine&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;настройка-синхронизации&quot;&gt;Настройка синхронизации&lt;/h2&gt;
+
+&lt;p&gt;В настройках проекта на GitHub (меню &lt;strong&gt;Settings &amp;gt; Webhooks&lt;/strong&gt;) добавляем новый webhook.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Внимание!&lt;/strong&gt; Параметр &lt;strong&gt;project_id&lt;/strong&gt; в &lt;strong&gt;Payload URL&lt;/strong&gt; устанавливаем равным идентификатору проекта, а не хранилища!&lt;/p&gt;
+
+&lt;p&gt;Если в проекте несколько хранилищ, то добавляем к URL параметр &lt;strong&gt;repository_id&lt;/strong&gt;. Возможные форматы URL см. в &lt;a href=&quot;https://github.com/koppen/redmine_github_hook#readme&quot;&gt;readme плагина&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/ru-sync-github-repository-with-redmine-2.png&quot; alt=&quot;Добавляем webhook в GitHub&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Если все настроено правильно, то все изменения состояния кода в удаленном репозитории на GitHub будут автоматически отражаться в локальном зеркале, а коммиты будет добавлены в &lt;a href=&quot;http://projects.volgau.com/projects/greenmine/activity?from=2018-01-30&quot;&gt;историю действий&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Если что-то пошло не так (статус отправки изменений можно посмотреть в разделе &lt;strong&gt;Recent Deliveries&lt;/strong&gt;), то лучше всего выполнить настройку сначала - проверить настройки на стороне Redmine, удалить и заново добавить webhook на GitHub.&lt;/p&gt;
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2019/10/21/ru-sync-github-repository-with-redmine</link>
+                <guid>http://roman-yagodin.github.io/how-to/2019/10/21/ru-sync-github-repository-with-redmine</guid>
+                <pubDate>2019-10-21T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>GTD with Simpletask</title>
+                <description>
+&lt;p&gt;This is a TL;DR guide of &lt;em&gt;Getting Things Done (GTD)&lt;/em&gt; implementation using &lt;a href=&quot;https://play.google.com/store/apps/details?id=nl.mpcjanssen.todotxtholo&quot;&gt;Simpletask&lt;/a&gt; app by &lt;a href=&quot;http://mpcjanssen.nl/&quot;&gt;Mark Janssen&lt;/a&gt; as a core component of trusted system, heavily based on &lt;a href=&quot;https://gist.github.com/alehandrof/9941620&quot;&gt;Alex Armstrong’s work&lt;/a&gt; including my thoughts and personal experience about it over past couple of years. The content is restructured to center on GTD-related things. Consider it incomplete and very eccentric.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Simpletask&lt;/em&gt; uses the &lt;a href=&quot;http://todotxt.com/&quot;&gt;todo.txt&lt;/a&gt; syntax, but has sufficient differences and quirks of its own to be worth describing in detail – at least, that’s the story I’m going with. I actually began this guide as an exploration of my own trusted system. &lt;em&gt;Personal workflows are by definition eccentric&lt;/em&gt;; I have included only what seems to me to be broadly useful.&lt;/p&gt;
+
+  &lt;p&gt;This implementation of GTD covers the “standard” classifications: next actions by context, projects, somedays, agendas by person and meeting, etc. In a departure from strict GTD, each entry in these lists is also tagged with an area of focus, interest or responsibility. I find that the ability to slice the system by this extra dimension is worth the additional complexity at the processing and organizing stages. Limitations, issues and workarounds are discussed at the end.&lt;/p&gt;
+
+  &lt;p&gt;– Alex Armstrong, the author of original guide.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Your system has to be easy enough (and complete enough) that you will be motivated to work it even when you have the flu. The system is only as good as what you’re willing to maintain when you don’t feel like it.&lt;/p&gt;
+
+  &lt;p&gt;– David Allen, “&lt;a href=&quot;http://www.davidco.com/newsletters/archive/0810b.html&quot;&gt;Let the Lists Fall Where They May&lt;/a&gt;”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;entries&quot;&gt;Entries&lt;/h2&gt;
+
+&lt;p&gt;I refer to every line in your &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; as an “entry” to differentiate them from tasks. Simpletask takes a broader view of what constitutes a &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; file.
+In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format provides a large chunk of your trusted system.&lt;/p&gt;
+
+&lt;p&gt;Entries may belong to one list (&lt;code class=&quot;highlighter-rouge&quot;&gt;@something&lt;/code&gt;) and they may have one or more tags (&lt;code class=&quot;highlighter-rouge&quot;&gt;+something&lt;/code&gt;) assigned to them. They may also utilize due dates (&lt;code class=&quot;highlighter-rouge&quot;&gt;due:2014-04-2&lt;/code&gt;) thresholds (&lt;code class=&quot;highlighter-rouge&quot;&gt;t:2014-04-3&lt;/code&gt;), recurrance (&lt;code class=&quot;highlighter-rouge&quot;&gt;rec:1w&lt;/code&gt;) and priorities (&lt;code class=&quot;highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, …, &lt;code class=&quot;highlighter-rouge&quot;&gt;(Z)&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;lists-&quot;&gt;Lists (&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;)&lt;/h2&gt;
+
+&lt;p&gt;Simpletasks collects all &lt;code class=&quot;highlighter-rouge&quot;&gt;@somethings&lt;/code&gt; in your entries and calls them &lt;em&gt;lists&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Lists hold all entries on the first four &lt;em&gt;Horizons of Focus&lt;/em&gt;: from &lt;em&gt;Runway&lt;/em&gt; to &lt;em&gt;30,000 feet&lt;/em&gt;, or &lt;em&gt;Next Actions&lt;/em&gt; to &lt;em&gt;Goals &amp;amp; Objectives&lt;/em&gt;.  If you find this format appropriate, you could feasibly include items from the remaining two altitudes: &lt;em&gt;Vision&lt;/em&gt;, &lt;em&gt;Purpose&lt;/em&gt; and &lt;em&gt;Principles&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lists are mutually exclusive!&lt;/strong&gt; If an entry can be placed in more than one list, you need to clarify either the entry or your lists.&lt;/p&gt;
+
+&lt;h2 id=&quot;tags-&quot;&gt;Tags (&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;)&lt;/h2&gt;
+
+&lt;p&gt;Simpletasks collects all &lt;code class=&quot;highlighter-rouge&quot;&gt;+somethings&lt;/code&gt; in your entries and calls them &lt;em&gt;tags&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tags specify &lt;em&gt;areas of focus, interest or responsibility&lt;/em&gt;, as well as &lt;em&gt;agendas for people or meetings&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;inbox-capturecollect&quot;&gt;Inbox (Capture/Collect)&lt;/h2&gt;
+
+&lt;p&gt;The inbox consists of &lt;em&gt;all entries that have not been assigned to a list&lt;/em&gt;. They are typically not tagged, either. Although I will often revise entries before tagging and assigning them to another list, I generally preserve the original creation date.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You don’t need a list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Inbox&lt;/code&gt;!&lt;/strong&gt; First of all, it will just slow you down at the collection phase. If you want to view just your &lt;em&gt;Inbox&lt;/em&gt;, filter by &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; in the left drawer.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-actions--contexts-runway&quot;&gt;Next Actions / Contexts (Runway)&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Next actions&lt;/em&gt; are filed in lists that begin with an &lt;em&gt;at-sign&lt;/em&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;), one for each context. The &lt;em&gt;at-sign&lt;/em&gt; is an established shorthand that reinforces the idea that the context (place or tool) is required for the action to be performed. More importantly, the &lt;em&gt;at-sign&lt;/em&gt; makes these lists sort above the others, so you can find them more quickly.&lt;/p&gt;
+
+&lt;p&gt;The examples of GTD contexts are:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@@agendas
+@@anywhere
+@@calls
+@@computer / @@laptop
+@@errands
+@@home
+@@office / @@work
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Уou may (and must) define your own contexts!&lt;/strong&gt; By example, I like to have context &lt;code class=&quot;highlighter-rouge&quot;&gt;@@buy&lt;/code&gt; - for any optional triffles I’d want to buy during accidental shopping; and also context &lt;code class=&quot;highlighter-rouge&quot;&gt;@@ingame&lt;/code&gt; - it’s just like &lt;code class=&quot;highlighter-rouge&quot;&gt;@@computer&lt;/code&gt;, but when you use it for fun.&lt;/p&gt;
+
+&lt;p&gt;Next actions are tagged with an area tag and, for entries relating to communication, an agenda tag (either a person or meeting).&lt;/p&gt;
+
+&lt;h3 id=&quot;agendas&quot;&gt;Agendas&lt;/h3&gt;
+
+&lt;p&gt;Agendas may be listed under &lt;code class=&quot;highlighter-rouge&quot;&gt;@@agendas&lt;/code&gt; (for face-to-face and impromptu communications) or required context (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;@@calls&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@@computer&lt;/code&gt;, etc.) but &lt;em&gt;not&lt;/em&gt; both.&lt;/p&gt;
+
+&lt;p&gt;All tags that begin with a capital letter refer to agendas – that is, to people or meetings.&lt;/p&gt;
+
+&lt;p&gt;Example tags:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+Mom
++JSmith
++StaffMeeting
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Place agenda entries in the appropriate context list and then tag them with an area.&lt;/p&gt;
+
+&lt;p&gt;Example entries:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Tell +Bob about the party @@agendas +fun
+Email +DevTeam re: new client @@online +work
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;People and meetings you refer to often can be added to a hidden entry (see below) for easy access.&lt;/p&gt;
+
+&lt;h2 id=&quot;projects-10000-ft&quot;&gt;Projects (10,000 ft)&lt;/h2&gt;
+
+&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; with an entry for &lt;strong&gt;every multi-step outcome you are committed to completing within the next year&lt;/strong&gt;. Each project entry is tagged with an area and, if applicable, an agenda.&lt;/p&gt;
+
+&lt;p&gt;For code-related project you could think of each milestone as of GTD project.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Clean out the garage +household @Projects
+Release R7.Documents module v1.11 +work @Projects
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;somedaymaybe-incubate-runway10000-ft&quot;&gt;Someday/Maybe (Incubate Runway/10,000 ft)&lt;/h2&gt;
+
+&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday&lt;/code&gt; with an entry for every project (multi-step outcome) or single action you are incubating – i.e., that would like to periodically review but are not committed to moving on, yet. Each someday entry is tagged with an area and, if applicable, an agenda, allowing you to view potential commitments along with your current ones.&lt;/p&gt;
+
+&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;Learn to play the piano +creativity @Someday&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You could feasibly have multiple Someday/Maybe lists like &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday-Soon&lt;/code&gt; or even &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt;, if you need the additional granularity –
+or just use Simpletask priorities.&lt;/p&gt;
+
+&lt;p&gt;Use the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt; to RIP things that you strongly doesn’t want and have strong reasons to not to do, but still need to remember sometimes.&lt;/p&gt;
+
+&lt;h2 id=&quot;tickler-incubate-runway10000-ft&quot;&gt;Tickler (Incubate Runway/10,000 ft)&lt;/h2&gt;
+
+&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; contains &lt;strong&gt;all tickled items which are not actions&lt;/strong&gt;. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tickled actions are not included in this list; they are placed under the appropriate context.&lt;/p&gt;
+
+&lt;h2 id=&quot;waiting-for-runway&quot;&gt;Waiting For (Runway)&lt;/h2&gt;
+
+&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@WaitingFor&lt;/code&gt; with an entry for each delegated action, tagged with both area and agenda.&lt;/p&gt;
+
+&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;+JSmith re: conference +consortium @WaitingFor&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;areas-20000-ft&quot;&gt;Areas (20,000 ft)&lt;/h2&gt;
+
+&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@\_Areas&lt;/code&gt; with entries identifying all your areas of focus, interest or responsibility. There is overlap between this horizon and the area tags (described below), but a 1-to-1 correspondence is not obligatory. How you set up this horizon depends on how you think about your life and how it makes sense to carve up your commitments.&lt;/p&gt;
+
+&lt;p&gt;Note: the underscore in front of this list is merely to have it sort to the bottom of your lists.&lt;/p&gt;
+
+&lt;p&gt;All lowercase tags refer to areas of focus, interest or responsibility. These generally relate to the &lt;em&gt;20,000 feet horizon&lt;/em&gt;, but will probably be more granular. There’s no rule here; you will need as many areas as you need.&lt;/p&gt;
+
+&lt;p&gt;A word of warning, however: &lt;strong&gt;avoid making area tags too specific&lt;/strong&gt; (so that they basically map to your projects). Most area tags will be somewhere between projects and areas (or approximately &lt;em&gt;25,000 feet&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+gtd
++blog
++health
++household
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example entries:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Family +family @_Areas
+Health, Vitality &amp;amp; Well-Being +health @_Areas
+Profession, Self-improvement +profession +gtd @_Areas
+Finances +finances @_Areas
+Household +household @_Areas
+Hobbies +blog +painting +rpg  @_Areas
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To make sure that these are always available, define them in your &lt;code class=&quot;highlighter-rouge&quot;&gt;@_Areas&lt;/code&gt; entries or add them to a hidden entry (see below).&lt;/p&gt;
+
+&lt;h2 id=&quot;goals--objectives-30000-ft&quot;&gt;Goals &amp;amp; Objectives (30,000 ft)&lt;/h2&gt;
+
+&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@\_Goals&lt;/code&gt; with an entry for &lt;strong&gt;every outcome you are committed to completing within the next 2-5 years&lt;/strong&gt;, tagged with an area and, if applicable, an agenda. Goals are treated basically as long-term projects.&lt;/p&gt;
+
+&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;Attain some promotion +career @\_Goals&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;other-features&quot;&gt;Other Features&lt;/h2&gt;
+
+&lt;h3 id=&quot;the-left-drawer&quot;&gt;The Left Drawer&lt;/h3&gt;
+
+&lt;p&gt;The left drawer allows you to view your system by any combination of horizon, area and agenda. This is a rough sketch of how your left drawer should look:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lists
+    &lt;ul&gt;
+      &lt;li&gt;Inbox&lt;/li&gt;
+      &lt;li&gt;Contexts&lt;/li&gt;
+      &lt;li&gt;Higher Altitudes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tags
+    &lt;ul&gt;
+      &lt;li&gt;Agendas&lt;/li&gt;
+      &lt;li&gt;Areas&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The most frequently used ways to slice your system – contexts and areas – are the quickest to reach, being at at the top and bottom, respectively. Less used stuff – higher altitudes, agendas – is in the middle.&lt;/p&gt;
+
+&lt;p&gt;You can choose multiple lists and tags to slice your trusted system in various ways. For example, you can see all the &lt;code class=&quot;highlighter-rouge&quot;&gt;@@calls&lt;/code&gt; you have to make for &lt;code class=&quot;highlighter-rouge&quot;&gt;+work&lt;/code&gt;, the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; relating to your &lt;code class=&quot;highlighter-rouge&quot;&gt;+family&lt;/code&gt; or all the &lt;code class=&quot;highlighter-rouge&quot;&gt;+fun&lt;/code&gt; things you might do &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;hidden-entries&quot;&gt;Hidden Entries&lt;/h3&gt;
+
+&lt;p&gt;These can serve as placeholders to preserve your lists and tags when they do not contain any items.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;h:1 Contexts: @@agendas, @@anywhere, @@calls, @@computer, @@errands, @@home, @@office
+h:1 Other Lists: @Projects, @Someday, @Tickler, @WaitingFor, @_Areas, @_Goals
+h:1 Contacts: +Mom, +JSmith, etc.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Hidden entries can also be used to store some private entries which you wouldn’t like to be shown on your phone screen in public accidentally –
+while it’s possibly better to have separate todo file for that.&lt;/p&gt;
+
+&lt;h3 id=&quot;due-dates&quot;&gt;Due Dates&lt;/h3&gt;
+
+&lt;p&gt;Per GTD, I only use due dates for the “hard landscape”, such as appointments, rather than estimations of when I’d like to do something. I also add them to projects to indicate deadlines (after which completion becomes moot).&lt;/p&gt;
+
+&lt;p&gt;For time-sensitive actions you could use prefix times like so: &lt;code class=&quot;highlighter-rouge&quot;&gt;[10:15] Taskname&lt;/code&gt;. Or suffix times so: &lt;code class=&quot;highlighter-rouge&quot;&gt;due:2019-06-20 T10:15&lt;/code&gt; - this looks almost like an &lt;a href=&quot;https://www.w3.org/TR/NOTE-datetime&quot;&gt;ISO datetime&lt;/a&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;2019-06-20T10:15&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;That said, I find Simpletask’s calendar integration to be really clunky, and I have begun adding items straight to the calendar, which I find problematic.&lt;/p&gt;
+
+&lt;h3 id=&quot;threshold-dates&quot;&gt;Threshold Dates&lt;/h3&gt;
+
+&lt;p&gt;Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; list.&lt;/p&gt;
+
+&lt;p&gt;The priority is removed when the entry has been “tickled” (the threshold has been passed).&lt;/p&gt;
+
+&lt;h3 id=&quot;recurrence-dates&quot;&gt;Recurrence Dates&lt;/h3&gt;
+
+&lt;p&gt;TBD.&lt;/p&gt;
+
+&lt;h3 id=&quot;priorities&quot;&gt;Priorities&lt;/h3&gt;
+
+&lt;p&gt;GTD does not (and should not) have a priority system. I use the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; priority syntax to help me filter three kinds of entries:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;(A)&lt;/code&gt; priority are “hot”: they are actions that I plan (not would &lt;em&gt;like&lt;/em&gt;) to do today or at least tomorrow. I update this list daily.&lt;/li&gt;
+  &lt;li&gt;Entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority are “tickled”: all actions or reminders with a threshold date have this priority until the threshold is passed.&lt;/li&gt;
+  &lt;li&gt;Entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priority are just GTD hints I like to leave above other entries in the list, something like that:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(D) Check context lists
+(D) Plan to complete within the next year @Projects
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This leaves &lt;code class=&quot;highlighter-rouge&quot;&gt;(C)&lt;/code&gt; priority reserved for future use, as only &lt;code class=&quot;highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;(C)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priorities are useful (have a color) in the current Simpletask version.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Projects and higher altitudes never have priorities.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;saved-filters-the-right-drawer&quot;&gt;Saved Filters (The Right Drawer)&lt;/h2&gt;
+
+&lt;p&gt;Saved filters allow you to bring up or review aspects of your GTD system. The ones I’ve found most useful are:&lt;/p&gt;
+
+&lt;h3 id=&quot;hotlist&quot;&gt;Hotlist&lt;/h3&gt;
+
+&lt;p&gt;The &lt;em&gt;Hotlist&lt;/em&gt; shows me anything with a priority. In this way I see all my “hot” actions for today or tomorrow, as well as all “tickled” entries (incubated actions with a threshold that have become relevant).&lt;/p&gt;
+
+&lt;p&gt;The hotlist is not a GTD concept, but in interviews &lt;em&gt;David Allen&lt;/em&gt; has accepted the it as a potentially useful, as long as it does not become a system unto itself. It also allows an incubation system with date-specific triggers.&lt;/p&gt;
+
+&lt;h3 id=&quot;common&quot;&gt;Common&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Hide completed tasks and tasks with threshold date in future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;review&quot;&gt;Review&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Show all tasks (including complete and tasks with threshold in the future).&lt;/li&gt;
+  &lt;li&gt;Sort with Completed on top - to avoid scrolling:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Base state:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x Completed entry 1
+Entry 2
+Entry 3
+...
+Entry 199
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Completing entry 2 on review:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x Completed entry 2
+x Completed entry 1
+Entry 3
+...
+Entry 199
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;others&quot;&gt;Others&lt;/h3&gt;
+
+&lt;p&gt;Work+Computer, Calendared, Completed, Groceries/ToBuy, Inbox&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;important-components-of-gtd-system&quot;&gt;Important Components of GTD System&lt;/h2&gt;
+
+&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
+
+&lt;p&gt;There are times when I clear my Inbox and some entries which do not require any actions, but looks like general information,
+while still important (for some project or area) - I just move them to the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Notes&lt;/code&gt; list.&lt;/p&gt;
+
+&lt;p&gt;When reviewing my &lt;code class=&quot;highlighter-rouge&quot;&gt;@Notes&lt;/code&gt; list, I could decide do I need to delete it or move to the note-taking application.
+Currently I prefer &lt;a href=&quot;https://simplenote.com/&quot;&gt;Simplenote&lt;/a&gt; for that - very nice addition to my trusted system.&lt;/p&gt;
+
+&lt;h3 id=&quot;issue-trackers&quot;&gt;Issue Trackers&lt;/h3&gt;
+
+&lt;p&gt;Then working on code project, I like to treat the project bugtracker as a public context list for the project,
+still having an entry for it (or better - for a single milestone of it) in the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; list.&lt;/p&gt;
+
+&lt;p&gt;During review, I move entries which should go to the bugtracker, to the &lt;code class=&quot;highlighter-rouge&quot;&gt;@@bugtracker&lt;/code&gt; list.
+And during review of &lt;code class=&quot;highlighter-rouge&quot;&gt;@@bugtracker&lt;/code&gt; list, I just create issues and remove entries from Simpletask,
+effectively “forgeting” about them. But I will certainly will remember them again – then and where I resume work on the project.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Issue tracker term&lt;/th&gt;
+      &lt;th&gt;GTD term&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;new issues&lt;/td&gt;
+      &lt;td&gt;inbox&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;backlog&lt;/td&gt;
+      &lt;td&gt;someday/maybe list&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;repository (project)&lt;/td&gt;
+      &lt;td&gt;context&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;commit&lt;/td&gt;
+      &lt;td&gt;action&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;issue&lt;/td&gt;
+      &lt;td&gt;project&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;milestone&lt;/td&gt;
+      &lt;td&gt;project&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;email&quot;&gt;Email&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://roman-yagodin.github.io/how-to/2019/06/21/blue-star-email-parsing-essay&quot;&gt;“Blue star” email parsing essay&lt;/a&gt; - Мanage your email inbox with 1 &amp;amp; ½ simple tricks.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;tips--tricks&quot;&gt;Tips &amp;amp; Tricks&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Simpletask provides an option to automatically generate a creation date for new tasks. Use it.&lt;/li&gt;
+  &lt;li&gt;You could make copy of entry (or entries) by sharing it. Press “Share” button and then select Simpletask as a target app.
+This will produce a copy of entry with the &lt;code class=&quot;highlighter-rouge&quot;&gt;+background&lt;/code&gt; tag.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;issues--problems&quot;&gt;Issues &amp;amp; Problems&lt;/h2&gt;
+
+&lt;p&gt;The following are known issues with the GTD implementation in this guide.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Inbox&lt;/strong&gt;. I enter data straight into the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; with Simpletask or a text editor. I haven’t experimented with using emails or other input, which is why I don’t discuss this at all. There are some &lt;a href=&quot;https://ifttt.com/search/query/todo&quot;&gt;ifttt recipes&lt;/a&gt;, but I haven’t tried any of them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Calendar&lt;/strong&gt;. You do not need a calendar with this system – at least insofar as your GTD system is concerned. Integration with an online calendar would be useful, but that is a feature that would need to be provided by Simpletask, or via something that can read the text file and populate the calendar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Reference System&lt;/strong&gt;. This is outside the scope of a list maker such as Simpletask.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Project Support&lt;/strong&gt;. A subset of the Reference System that is related your active actions, projects, etc. There is no inherent&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I include these as “notes” (see above). For example: &lt;code class=&quot;highlighter-rouge&quot;&gt;2014-01-07 Complete Something or Other // Files in Dropbox &amp;gt; Projects &amp;gt; SomethingOrOther&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Tickler&lt;/strong&gt;. The tickler system does not work all that well when you try and making it into a list. I have yet to see a virtual solution to the tickler system that work reasonably well.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Read/Review&lt;/strong&gt;.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;“Must read” items go into the main system at the appropriate context – since I am committed to reading or reviewing them. This works very well for items that you can keep on your mobile device.&lt;/p&gt;
+
+        &lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;Read email from bank @@anywhere +finances&lt;/code&gt;.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;“Nice to read” things do not go into the main system. You might want to add some of these to your classify &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday&lt;/code&gt; list, if you would like to review them weekly.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since I don’t care much if anything falls through the cracks, they are housed in various systems: books and movies are in text files (in a custom format, but I might convert these to the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format as well), online articles are in a read-it-later service, etc.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;. Simpletask becomes quite slow if you are viewing many entries at once (over 200 on my phone). You might want to experiment with breaking off the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday/Maybe&lt;/code&gt; entries into their own todo file.&lt;/p&gt;
+
+    &lt;p&gt;That said, my &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; is over 400 lines and, while not snappy, is still usable.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://play.google.com/store/apps/developer?id=Mark+Janssen&quot;&gt;Various Simpletask flavours&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://simplenote.com&quot;&gt;Simplenote&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Reference Links --&gt;
+
+</description>
+                <link>http://roman-yagodin.github.io/guide/2019/10/21/gtd-with-simpletask</link>
+                <guid>http://roman-yagodin.github.io/guide/2019/10/21/gtd-with-simpletask</guid>
+                <pubDate>2019-10-21T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>"Blue star" email parsing essay</title>
+                <description>
+&lt;p&gt;Many of us know very well how embarassing could be email routine at work - 
+it distracts you from the real work, makes you nervous and wasting tons of energy… on hating mail senders.
+I hope this short essay will ease your pain, even a little.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;span class=&quot;badge badge-secondary&quot;&gt;1&lt;/span&gt; Mark incoming mail with the “blue star” (Gmail) to separate from rest of the noise – this is your &lt;em&gt;Real Mail Inbox&lt;/em&gt;.
+Also this way you could see which mails are “new” (unreviewed) even if they are readed.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Blue stars won’t bug you – they are not yellow - so won’t meld with rest of mail, and not red - so not very urgent, and not green - so not very relaxing…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;span class=&quot;badge badge-secondary&quot;&gt;2&lt;/span&gt; Now you need to do your work. I mean – do you already have something in your GTD? Even if you don’t do GTD…
+This could autoresolve a number of potential issues with mail. Cause all people do errors and I hope that most of your “blue star” mail senders are people.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;But do they really people?.. Still you must give the Universe some time to clean things up…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;span class=&quot;badge badge-secondary&quot;&gt;3&lt;/span&gt; Tired doing work? Return to the mail. Read it, do quick replies, create tracker issues with backlinks to mail or &lt;a href=&quot;https://github.com/mpcjanssen/simpletask-android&quot;&gt;Simpletask&lt;/a&gt; inbox entries – preferably “in bulk” to avoid thinking about a single thing too much. And only after that remove the “blue stars”.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;badge badge-secondary&quot;&gt;4&lt;/span&gt; And now you need to do your work again – which all is in your GTD (or anywhere else), but you can forget about mail for now.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Just one thing at the time…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;span class=&quot;badge badge-secondary&quot;&gt;5&lt;/span&gt; Tired of work again? A quick trip to the mail!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Scatter some blue stars!..&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2019/06/21/blue-star-email-parsing-essay</link>
+                <guid>http://roman-yagodin.github.io/how-to/2019/06/21/blue-star-email-parsing-essay</guid>
+                <pubDate>2019-06-21T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>How to build Speed Dreams 2.2 on Linux</title>
+                <description>
+&lt;p&gt;&lt;a href=&quot;http://www.speed-dreams.org/&quot;&gt;Speed Dreams&lt;/a&gt; is a 3D cross-platform, open source motorsport simulation and racing game, a fork of the open racing car simulator Torcs, aiming to implement exciting new features, cars, tracks and AI opponents. Unfortunately, the &lt;em&gt;Speed Dreams&lt;/em&gt; team do not provide binary release for Debian GNU/Linux. In this post I’ll try to give you the recipe on how to get latest &lt;em&gt;Speed Dreams&lt;/em&gt; game running on your desktop.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/build-speed-dreams-linux.png&quot; alt=&quot;Speed Dreams 2 starting screen&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-get-source-tarballs&quot;&gt;Step 1: Get source tarballs&lt;/h2&gt;
+
+&lt;p&gt;First you need to download &lt;em&gt;Speed Dreams&lt;/em&gt; source tarballs from the &lt;a href=&quot;https://sourceforge.net/projects/speed-dreams/files/2.2.0/&quot;&gt;project page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;These are files you will need (version and revision numbers may differ):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-base-2.2.0-r6381.tar.xz&lt;/code&gt; - core components of the game;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-hq-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - LS-GT1 and 36GP cars and AI drivers, HQ tracks;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-more-hq-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - TRB1 cars and AI drivers, more HQ tracks, and the Career mode;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-wip-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - work-in-progress MP5, LS-GT2 and RS cars and AI drivers, and many other tracks;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-unmaintained-2.2.0-r6381.tar.xz&lt;/code&gt; - unmaintained Simu V2.1 engine and maybe something else, but do you really need this?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Unpack &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; tarball first, then &lt;code class=&quot;highlighter-rouge&quot;&gt;hq-cars-and-tracks&lt;/code&gt;, then &lt;code class=&quot;highlighter-rouge&quot;&gt;more-hq-cars-and-tracks&lt;/code&gt;, etc. Choose to rewrite files / folders in the case of conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-install-development-libraries&quot;&gt;Step 2: Install development libraries&lt;/h2&gt;
+
+&lt;p&gt;Second, install required development libraries. If you on &lt;em&gt;Debian&lt;/em&gt; or &lt;em&gt;Ubuntu&lt;/em&gt;, use following command:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;build-essential &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+cmake &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libplib-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+alsoft-conf &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libogg-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libenet-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libexpat1-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libpng12-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libjpeg8-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libplib-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libopenscenegraph-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+libsdl2-dev&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For other GNU/Linux distributions, consult with &lt;em&gt;Pre-requisites&lt;/em&gt; section of &lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALL.txt&lt;/code&gt; file in the source folder.&lt;/p&gt;
+
+&lt;p&gt;Note that the &lt;em&gt;OpenSceneGraph&lt;/em&gt; and &lt;em&gt;SDL 2&lt;/em&gt; dependencies were introduced in the &lt;em&gt;Speed Dreams&lt;/em&gt; 2.2.0. You don’t need them for 2.1.0 version.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-3-configure--build&quot;&gt;Step 3: Configure &amp;amp; build&lt;/h2&gt;
+
+&lt;p&gt;Third step - create &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; subfolder &lt;strong&gt;inside&lt;/strong&gt; the source folder, where you have extracted source tarballs. From this folder you need to invoke &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; with some options (see below).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;build
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build
+cmake &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; OPTION_OFFICIAL_ONLY:BOOL&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ON &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PLIB_INCLUDE_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/usr/include/plib&quot;&lt;/span&gt; ..&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This will configure source, and if something required is missing you will see an error message. This generally means that you should install some missing dependencies (additional development libraries). In case of other problems, it’s time to read the manual - see &lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALL.txt&lt;/code&gt; file in the source folder.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; finish without errors, it’s time to perform build and install:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;make
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This will install main executable to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/games/speed-dreams-2&lt;/code&gt; and data files to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/share/games/speed-dreams-2&lt;/code&gt;, so the game will be available system-wide.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-create-game-shortcut&quot;&gt;Step 4: Create game shortcut&lt;/h2&gt;
+
+&lt;p&gt;Note that &lt;em&gt;Speed Dreams&lt;/em&gt; install won’t create a shortcut (&lt;em&gt;FreeDesktop.org&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;.desktop&lt;/code&gt; file) anywhere. So now it’s your move to create one!&lt;/p&gt;
+
+&lt;p&gt;You generally would like to add shortcut with an icon. The source does not provide us with one, so let’s search over the Internet. I’ve got one from &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Speed_Dreams_Icon.svg&quot;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When you got the icon, copy it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/pixmaps/speed-dreams.svg&lt;/code&gt;. Then create &lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-2.desktop&lt;/code&gt; text file (see content below), copy it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/share/applications&lt;/code&gt; folder and set executable flag (may or may not be required). These operations should require root access.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[Desktop Entry]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;UTF-8&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;1.0&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Application&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;speed-dreams&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Speed Dreams&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;speed-dreams-2&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Comment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Speed Dreams: an Open Motorsport Sim&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Categories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Game;SportsGame;Simulation&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now you should see &lt;em&gt;Speed Dreams&lt;/em&gt; shortcut in the main menu of your desktop.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-5-enjoy-the-game&quot;&gt;Step 5: Enjoy the game!&lt;/h2&gt;
+
+&lt;p&gt;It’s all about it, you know…&lt;/p&gt;
+
+&lt;h2 id=&quot;upgrade-to-new-version&quot;&gt;Upgrade to new version&lt;/h2&gt;
+
+&lt;p&gt;In order to safely upgrade your &lt;em&gt;Speed Dreams&lt;/em&gt; installation to new version, you should uninstall old one first.&lt;/p&gt;
+
+&lt;p&gt;To do so, go to the &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; subfolder you’ve created inside the source folder, and invoke &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo make uninstall&lt;/code&gt;.
+Then you can safely clear source folder, get &amp;amp; unpack source packages, configure and build.&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.speed-dreams.org/&quot;&gt;Speed Dreams official website&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sourceforge.net/projects/speed-dreams/&quot;&gt;Speed Dreams project on SourceForge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Speed_Dreams&quot;&gt;Speed Dreams Wikipedia article&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.playdeb.net/software/Speed%20Dreams&quot;&gt;Speed Dreams on PlayDeb&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://sourceforge.net/p/speed-dreams/discussion/865036/thread/7e2ee9af/&quot;&gt;About missing PLIB headers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>http://roman-yagodin.github.io/compile-guide/2016/03/30/build-speed-dreams-linux</link>
+                <guid>http://roman-yagodin.github.io/compile-guide/2016/03/30/build-speed-dreams-linux</guid>
+                <pubDate>2016-03-30T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>GTK decoration layout</title>
+                <description>
+&lt;p&gt;Many great GNOME 3 applications are used widely across various desktop environments. Most of them use GTK+ client-side decorations (csd) instead of window manager borders, which makes them look as strangers outside GNOME Shell. In this post I want to show you how to tweak window buttons layout for csd-enabled applications.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/gtk-decoration-layout_01.png&quot; alt=&quot;Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus)&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus).&lt;/p&gt;
+
+&lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
+
+&lt;p&gt;Since GTK+ 3.10, GtkHeaderBar widgets use &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting value
+to display window control buttons in the right place &amp;amp; order. Default value is
+&lt;code class=&quot;highlighter-rouge&quot;&gt;menu:maximize,minimize,close&lt;/code&gt; (format is the same as for window manager buttons layout).&lt;/p&gt;
+
+&lt;h2 id=&quot;solution-for-cinnamon&quot;&gt;Solution for Cinnamon&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Cinnamon&lt;/em&gt; provide a way to override default &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting value via &lt;code class=&quot;highlighter-rouge&quot;&gt;dconf&lt;/code&gt; key &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; in the  &lt;code class=&quot;highlighter-rouge&quot;&gt;org.cinnamon.desktop.interface&lt;/code&gt; section.&lt;/p&gt;
+
+&lt;p&gt;Let’s set close button + menu to the left, and minimize button to the right. You could use &lt;code class=&quot;highlighter-rouge&quot;&gt;dconf-editor&lt;/code&gt; to change setting value from GUI. From command-line, it should be like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;org.cinnamon.desktop.interface gtk-decoration-layout &lt;span class=&quot;s1&quot;&gt;'close,menu:minimize'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Note what some buttons names are not supported, these are: &lt;strong&gt;above&lt;/strong&gt;, &lt;strong&gt;stick&lt;/strong&gt;, &lt;strong&gt;shade&lt;/strong&gt; and &lt;strong&gt;separator&lt;/strong&gt;. Hopefully, this will change in the future GTK+ versions.&lt;/p&gt;
+
+&lt;h2 id=&quot;more-common-way&quot;&gt;More common way&lt;/h2&gt;
+
+&lt;p&gt;For desktop environments, which don’t override &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting, just change (or define) it in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/gtk-3.0/setting.ini&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[Settings]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;gtk-theme-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Adwaita&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;gtk-decoration-layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;close,menu:minimize&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Session restart would be needed to apply changes. Also, if there are no &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.ini&lt;/code&gt; file, just create new one and add &lt;code class=&quot;highlighter-rouge&quot;&gt;[Settings]&lt;/code&gt; line.&lt;/p&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/gtk-decoration-layout_02.png&quot; alt=&quot;Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus) - after changes&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;Classic window manager decorated window (Nemo) along with client-side decorated window (Nautilus) - after changes.&lt;/p&gt;
+
+&lt;h2 id=&quot;useful-links&quot;&gt;Useful links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blogs.gnome.org/mclasen/2014/01/13/client-side-decorations-continued/&quot;&gt;Client-side decoration, continued&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.gnome.org/gtk3/stable/GtkSettings.html#GtkSettings--gtk-decoration-layout&quot;&gt;GTK3 documentation about gtk-decoration-layout setting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/how-to/2014/10/22/muffin-window-buttons-layout/&quot;&gt;Muffin Window Buttons Layout&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2015/05/24/gtk-decoration-layout</link>
+                <guid>http://roman-yagodin.github.io/how-to/2015/05/24/gtk-decoration-layout</guid>
+                <pubDate>2015-05-24T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Get HTML from GTK# clipboard</title>
+                <description>
+&lt;p&gt;Developing a cross-platform application would never be easy job, but I consider GTK# framework as one of the solid options to provide cross-platform UI, though the lack of documentation is embarassing sometimes. In this post I want to show an example of using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt; object to get HTML markup from the clipboard.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/get-html-from-gtk-sharp-clipboard_01.png&quot; alt=&quot;Paste table from LibreOffice Writer to GTK# application as HTML&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;GTK# documentation and examples do not provide excessive information about using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt; object to get various types of content. To get text from clipboard, the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForText()&lt;/code&gt; method could be used, but how to get, by example, HTML table from LibreOffice Writer document or formatted text from webpage?&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;In this solution we:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create target using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gdk.Atom.Intern()&lt;/code&gt; method, passing MIME type string &lt;code class=&quot;highlighter-rouge&quot;&gt;text/html&lt;/code&gt; to it.&lt;/li&gt;
+  &lt;li&gt;Get selection object by using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForContents()&lt;/code&gt; method for created target.&lt;/li&gt;
+  &lt;li&gt;If the selection is not null, then it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Data&lt;/code&gt; property generally contains UTF-8 encoded string with HTML markup.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create clipboard object&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clipboard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gtk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Gdk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Atom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Intern&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CLIPBOARD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// create target using MIME type&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gdk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Atom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Intern&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// trying to get HTML markup&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WaitForContents&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// data is UTF-8 encoded string&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;textview1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UTF8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetString&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;textview1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;No selection&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The solution is currently tested only on Linux with Mono 3.10.&lt;/p&gt;
+
+&lt;p&gt;Note, that &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForTargets()&lt;/code&gt; method in the GTK# 2.12 seems to have broken interface. It defined as &lt;code class=&quot;highlighter-rouge&quot;&gt;bool WaitForTargets (Gdk.Atom targets, out int n_targets)&lt;/code&gt;, but should be something like &lt;code class=&quot;highlighter-rouge&quot;&gt;bool WaitForTargets (Gdk.Atom [] targets, out int n_targets)&lt;/code&gt; to return array of available targets. As a result, we can’t see what targets are available in the clipboard, but only a number of them:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create clipboard object&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clipboard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gtk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Gdk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Atom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Intern&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CLIPBOARD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// create dummy target&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gdk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Atom&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IntPtr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_targets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WaitForTargets&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_targets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// for me, returns about 12 or 13 targets&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;textview1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_targets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToString&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;more-to-explore&quot;&gt;More to Explore&lt;/h2&gt;
+
+&lt;p&gt;We got the basic example to work, but many things are need to be explored:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Primary: the selection data encoding seems to not always UTF-8, so we need a way to determine the encoding.&lt;/li&gt;
+  &lt;li&gt;Which other common MIME types are supported by &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt;?&lt;/li&gt;
+  &lt;li&gt;How this code will behave on the different platforms?&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2015/01/12/get-html-from-gtk-sharp-clipboard</link>
+                <guid>http://roman-yagodin.github.io/how-to/2015/01/12/get-html-from-gtk-sharp-clipboard</guid>
+                <pubDate>2015-01-12T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Muffin window buttons layout</title>
+                <description>
+&lt;p&gt;One of great things about Linux desktops is ability to customize window title buttons layout - according to your taste or regular job specifics. If you are using &lt;em&gt;Cinnamon&lt;/em&gt;, this instruction is for you - but majority of things are same for &lt;em&gt;GNOME 3&lt;/em&gt;, &lt;em&gt;GNOME Flashback&lt;/em&gt;, &lt;em&gt;Cinnamon&lt;/em&gt; and &lt;em&gt;MATE&lt;/em&gt; - as they are using similar window managers, derived from &lt;em&gt;metacity&lt;/em&gt; - default window manager in &lt;em&gt;GNOME 2&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/muffin-window-buttons-layout_01.png&quot; alt=&quot;Editing muffin buttons layout in dconf-editor&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;desktop-environments-and-window-managers&quot;&gt;Desktop environments and window managers&lt;/h2&gt;
+
+&lt;p&gt;Here are the desktops and default window managers:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;DE&lt;/th&gt;
+      &lt;th&gt;Default WM&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GNOME 2&lt;/td&gt;
+      &lt;td&gt;metacity&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MATE&lt;/td&gt;
+      &lt;td&gt;marco (metacity fork)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GNOME 3&lt;/td&gt;
+      &lt;td&gt;mutter = metacity + clutter&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GNOME 3 Flashback&lt;/td&gt;
+      &lt;td&gt;mutter&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cinnamon&lt;/td&gt;
+      &lt;td&gt;muffin (mutter fork)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;setting-up&quot;&gt;Setting up&lt;/h2&gt;
+
+&lt;p&gt;Buttons layout and some other WM options are stored in the &lt;em&gt;dconf&lt;/em&gt; keys. For &lt;em&gt;Cinnamon’s muffin&lt;/em&gt;, we should
+change value of the key &lt;code class=&quot;highlighter-rouge&quot;&gt;org.cinnamon.desktop.wm.preferences.button-layout&lt;/code&gt; or the key &lt;code class=&quot;highlighter-rouge&quot;&gt;org.cinnamon.muffin.button-layout&lt;/code&gt;
+to override value of the first key.&lt;/p&gt;
+
+&lt;p&gt;Some other desktops:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;org.gnome.shell.overrides.button-layout&lt;/code&gt; - for &lt;em&gt;GNOME 3&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;org.gnome.desktop.wm.preferences.button-layout&lt;/code&gt; - said to work in &lt;em&gt;GNOME Flashback / Classic&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here are list of button names:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;stick&lt;/strong&gt; - toggle “show on all workspaces”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;above&lt;/strong&gt; - toggle “always on top”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;menu&lt;/strong&gt; - window menu&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;shade&lt;/strong&gt; - toggle “roll / minimize to header”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;spacer&lt;/strong&gt; - space between buttons&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;close, maximize, minimize&lt;/strong&gt;* - as they sounds&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note what standard &lt;em&gt;Cinnamon&lt;/em&gt; window settings do not have ability to add some buttons, like &lt;strong&gt;above&lt;/strong&gt;, &lt;del&gt;&lt;strong&gt;shade&lt;/strong&gt;&lt;/del&gt; (present since 2.4) and also &lt;strong&gt;spacer&lt;/strong&gt; -
+so we should use &lt;code class=&quot;highlighter-rouge&quot;&gt;dconf-editor&lt;/code&gt; for GUI or &lt;code class=&quot;highlighter-rouge&quot;&gt;gsettings set&lt;/code&gt; command in the terminal to get things done.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/muffin-window-buttons-layout_04.png&quot; alt=&quot;Editing muffin buttons layout in Cinnamon windows settings&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Value of &lt;code class=&quot;highlighter-rouge&quot;&gt;button-layout&lt;/code&gt; key is a comma-separated list of button names, like &lt;code class=&quot;highlighter-rouge&quot;&gt;close:shade,minimize&lt;/code&gt;. Colon (:) is used to distinguish left and right side.&lt;/p&gt;
+
+&lt;p&gt;Format of &lt;code class=&quot;highlighter-rouge&quot;&gt;gsettings&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &amp;lt;key&amp;gt; button-layout &amp;lt;value&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Move all 3 default buttons to the left:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;org.cinnamon.muffin button-layout &lt;span class=&quot;s1&quot;&gt;'close,maximize,minimize:'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/muffin-window-buttons-layout_02.png&quot; alt=&quot;3 default buttons&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My current layout:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;org.cinnamon.muffin button-layout &lt;span class=&quot;s1&quot;&gt;'close,above:shade,minimize'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/muffin-window-buttons-layout_03.png&quot; alt=&quot;My current buttons layout&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;theme-issues&quot;&gt;Theme issues&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Some buttons could miss icons - it’s very common issue. By example, &lt;em&gt;Adwaita&lt;/em&gt; theme have no icon for &lt;strong&gt;above&lt;/strong&gt; button.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I also encounter problem with &lt;strong&gt;spacer&lt;/strong&gt; button in both &lt;em&gt;Cinnamon 2.0&lt;/em&gt; and &lt;em&gt;GNOME 3.8&lt;/em&gt; with &lt;em&gt;Adwaita&lt;/em&gt; theme - space is visible only if window is shaded (minimized to header). In normal state, spacer is not visible.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;feedback&quot;&gt;Feedback&lt;/h2&gt;
+
+&lt;p&gt;Let me know, if I’ve messed up with something! I would also want to know
+about which button layouts you are using and what theme or WM issues you have encountered.&lt;/p&gt;
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2014/10/22/muffin-window-buttons-layout</link>
+                <guid>http://roman-yagodin.github.io/how-to/2014/10/22/muffin-window-buttons-layout</guid>
+                <pubDate>2014-10-22T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Xamarin official Mono repositories for Linux</title>
+                <description>
+&lt;p&gt;&lt;strong&gt;Great news for all Mono developers on Linux!&lt;/strong&gt; Recently &lt;em&gt;Xamarin&lt;/em&gt; introduced &lt;a href=&quot;http://www.mono-project.com/download/#download-lin&quot;&gt;official Mono repositories for Linux&lt;/a&gt; (Debian, Ubuntu, RedHat, SUSE and derivatives). Currently it contains Mono 3.10.0 and MonoDevelop 5.5.0 - a major improvement at least for Debian users (currently Mono 3.2.8, MonoDevelop 4.0.12 even in Sid).&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/xamarin-official-mono-repositories-for-linux_01.png&quot; alt=&quot;Xamarin Mono downloads page&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;installation-in-debian&quot;&gt;Installation in Debian&lt;/h2&gt;
+
+&lt;p&gt;Add repository line to your &lt;code class=&quot;highlighter-rouge&quot;&gt;sources.list&lt;/code&gt; and install Xamarin &lt;a href=&quot;http://download.mono-project.com/repo/xamarin.gpg&quot;&gt;GPG key&lt;/a&gt;. The most simple way to do that is using &lt;em&gt;software-properties-gtk&lt;/em&gt; or &lt;em&gt;mintsources&lt;/em&gt; (in case you are using Mint or LMDE). It also can be done from command line:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb http://download.mono-project.com/repo/debian wheezy main&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/apt/sources.list.d/mono-xamarin.list
+wget http://download.mono-project.com/repo/xamarin.gpg
+apt-key add - &amp;lt; xamarin.gpg&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now we have to update apt cache and upgrade packages:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now get some tea (coffee) and sandwiches and wait… In case of problems check &lt;a href=&quot;http://www.mono-project.com/docs/getting-started/install/linux/&quot;&gt;official installation guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/xamarin-official-mono-repositories-for-linux_02.jpg&quot; alt=&quot;MonoDevelop IDE 5.5 with GTK# designer and Mono 3.10&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2014/10/11/xamarin-official-mono-repositories-for-linux</link>
+                <guid>http://roman-yagodin.github.io/how-to/2014/10/11/xamarin-official-mono-repositories-for-linux</guid>
+                <pubDate>2014-10-11T00:00:00+00:00</pubDate>
+        </item>
+
+        <item>
+                <title>Cinnamon panels in Expo and Overview</title>
+                <description>
+&lt;p&gt;One of the things that I’ve liked in GNOME 3 is ability to manage workspaces, windows and run application from the overview mode, all beginning from one single gesture. So I’d like to my Cinnamon desktop behave somethat alike.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cinnamon-panels-in-expo-and-overview_01.jpg&quot; alt=&quot;Cinnamon expo mode with top panel&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;Simpliest way to run applications in the Cinnamon is to use favorites and menu applets. But they are on the panel, and by default Cinnamon hides panels then entering expo and overview modes - so from expo you can manage only workspaces and windows, from overview - only windows,  and can’t run an application (except from Alt+F2 command line) from both of modes.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/cinnamon/js/ui/&lt;/code&gt; directory. As you can guess, expo logic is in &lt;code class=&quot;highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; and overview is in &lt;code class=&quot;highlighter-rouge&quot;&gt;overview.js&lt;/code&gt;. So what’s next?&lt;/p&gt;
+
+&lt;p&gt;1. Open script with superuser privileges in the text editor:&lt;/p&gt;
+
+&lt;p&gt;For expo:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gksu gedit /usr/share/cinnamon/js/ui/expo.js&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For overview:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gksu gedit /usr/share/cinnamon/js/ui/overview.js&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;2. Find these two lines (marked as 1 and 2):&lt;/p&gt;
+
+&lt;p&gt;For expo:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toScale&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;enablePanels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* 1 */&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;activeWorkspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overviewModeOff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;disablePanels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* 2 */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For overview:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;workspacesView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WorkspacesView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WorkspacesView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overlay_group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add_actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;workspacesView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;disablePanels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* 1 */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animationInProgress&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_hideInProgress&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;enablePanels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* 2 */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;3. Comment out these lines and save the file:&lt;/p&gt;
+
+&lt;p&gt;For expo:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toScale&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Main.enablePanels(); /* 1 */&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;activeWorkspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overviewModeOff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Main.disablePanels(); /* 2 */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For overview:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;workspacesView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WorkspacesView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WorkspacesView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overlay_group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add_actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;workspacesView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Main.disablePanels(); /* 1 */	&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animationInProgress&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_hideInProgress&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Main.enablePanels(); /* 2 */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;4. Now you need to restart Cinnamon. For this you can use entry in the &lt;em&gt;Troubleshooting&lt;/em&gt; menu, or command line:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;killall cinnamon &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cinnamon&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;5. In some cases expo and overview boxes could be partially overlapped with panels - it’s probably your case if you using top panel. 
+For both expo and overview, you need to change second parameter value of &lt;code class=&quot;highlighter-rouge&quot;&gt;set_position&lt;/code&gt; function (Y offset).&lt;/p&gt;
+
+&lt;p&gt;For expo, edit &lt;code class=&quot;highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; again:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_expo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* change last 0 to the desired value */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_expo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buttonWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For overview, edit &lt;code class=&quot;highlighter-rouge&quot;&gt;workspacesView.js&lt;/code&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nx&quot;&gt;workspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* change 0 to the desired value */&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_updateVisibility&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Offset value is related to the panel height, but you need to experiment with this to get desired result, as current Cinnamon theme 
+could greatly infuence it. In my case (&lt;em&gt;New Minty&lt;/em&gt; theme), panel height is about 26, but value of 16 in the &lt;code class=&quot;highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; and 32 in &lt;code class=&quot;highlighter-rouge&quot;&gt;workspacesView.js&lt;/code&gt; is fine.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/cinnamon-panels-in-expo-and-overview_02.jpg&quot; alt=&quot;Cinnamon overview (scale) mode with top panel&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h2&gt;
+
+&lt;p&gt;This post mainly based on the solution, provided &lt;a href=&quot;https://github.com/linuxmint/Cinnamon/issues/3001&quot;&gt;here&lt;/a&gt; by &lt;a href=&quot;https://github.com/nfat&quot;&gt;@nfat&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+                <link>http://roman-yagodin.github.io/how-to/2014/10/08/cinnamon-panels-in-expo-and-overview</link>
+                <guid>http://roman-yagodin.github.io/how-to/2014/10/08/cinnamon-panels-in-expo-and-overview</guid>
+                <pubDate>2014-10-08T00:00:00+00:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>
