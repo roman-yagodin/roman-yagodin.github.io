@@ -1,4 +1,0 @@
-#!/bin/bash
-
-sleep 3 && x-www-browser http://localhost:4000 &
-jekyll serve --baseurl '' --drafts
