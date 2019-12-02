@@ -40,6 +40,15 @@ module JB
   end #Path
 end #JB
 
+task :build do
+  config = Jekyll.configuration({ 
+    'source' => './', 
+    'destination' => './_site' 
+  })
+  site = Jekyll::Site.new(config)
+  Jekyll::Commands::Build.build site, config
+end
+
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [category="category"]
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
