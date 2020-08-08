@@ -41,9 +41,9 @@ If you'll need multilanguage website (good for development), it is advisable to 
 ----
 
 [TIP]
-.To get multiple console windows inside Server Core:
+.Hot to get multiple console windows inside Server Core:
 ====
-Press kbd:[Ctrl+Alt+Del], select menu:Task Manager, then run `cmd.exe` or `powershell.exe` via menu:File[Run new task] menu.
+Press kbd:[Ctrl+Alt+Del], select **Task Manager**, then run `cmd.exe` or `powershell.exe` via menu:File[Run new task] menu.
 ====
 
 == Install Far file manager
@@ -263,7 +263,7 @@ Test by trying to connect share by IP: `\\192.168.56.101\Dnn9`.
 
 == Run DNN install
 
-Access `http://dnn9.local` from a web browser on host machine and follow instructions!
+Access \http://dnn9.local from a web browser on host machine and follow instructions!
 
 Database Setup:: Custom
 Server Name:: (local)

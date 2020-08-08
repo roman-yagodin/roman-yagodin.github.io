@@ -81,3 +81,8 @@ dl dd {
   padding: 0.5rem;
   border-radius: 0.25rem;
 }
+
+/* quickfix for P inside LI */
+li > p {
+  margin-bottom: 0;
+}
