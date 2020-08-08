@@ -463,88 +463,125 @@ New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http
 <div class="content">
 <pre class="highlight"><code>Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
-Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
---
-
-Check:
-
-[source]</code></pre>
+Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Import-Module WebAdministration
-ls "IIS:\AppPools"</p>
+<p>Check:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>This will list all websites and corresponding application pools.
-
-== Configure file system permissions
-
-- https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422
-
-[source]</pre>
+<pre class="highlight"><code>Import-Module WebAdministration
+ls "IIS:\AppPools"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>$acl = Get-Acl "C:\Dnn9"
+<p>This will list all websites and corresponding application pools.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configure-file-system-permissions">Configure file system permissions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422" class="bare">https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$acl = Get-Acl "C:\Dnn9"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Dnn9" $acl
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Check:
-
-[source]</pre>
+Set-Acl "C:\Dnn9" $acl</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Get-Acl "C:\Dnn9" | Format-List</p>
+<p>Check:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>== Make website folder shared
-
-You will probably need the website folder to be accessible via share,
-so you can setup automatic deployment of build output from IDE into it.
-
-[source]</pre>
+<pre class="highlight"><code>Get-Acl "C:\Dnn9" | Format-List</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="make-website-folder-shared">Make website folder shared</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Install-WindowsFeature FS-SMB1-SERVER
+<p>You will probably need the website folder to be accessible via share,
+so you can setup automatic deployment of build output from IDE into it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Install-WindowsFeature FS-SMB1-SERVER
 # Optional?
-# Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol</p>
+# Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+
+New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"</p>
+<p>Test by trying to connect share by IP: <code>\\192.168.56.101\Dnn9</code>.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>Test by trying to connect share by IP: `\\192.168.56.101\Dnn9`.
-
-== Run DNN install
-
-Access http://dnn9.local from a web browser on host machine and follow instructions!
-
-Database Setup:: Custom
-Server Name:: (local)
-Database Name:: Dnn9
-Database Username:: sa
-
-== TODO
-
-- Separate initial setup and adding new DNN instances
-- Create separate database owner user for each database
-- Configure firewall to allow external connections to the SQL Server
-- Add some screenshots
-- Further integration (probably out of scope):
-  https://github.com/roman-yagodin/vm-scripts[vm-scripts], `/etc/fstab` entries for shares, deploy build output to the share, etc.</pre>
 </div>
+</div>
+<div class="sect1">
+<h2 id="run-dnn-install">Run DNN install</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Access <a href="http://dnn9.local" class="bare">http://dnn9.local</a> from a web browser on host machine and follow instructions!</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Database Setup</dt>
+<dd>
+<p>Custom</p>
+</dd>
+<dt class="hdlist1">Server Name</dt>
+<dd>
+<p>(local)</p>
+</dd>
+<dt class="hdlist1">Database Name</dt>
+<dd>
+<p>Dnn9</p>
+</dd>
+<dt class="hdlist1">Database Username</dt>
+<dd>
+<p>sa</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="todo">TODO</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Separate initial setup and adding new DNN instances</p>
+</li>
+<li>
+<p>Create separate database owner user for each database</p>
+</li>
+<li>
+<p>Configure firewall to allow external connections to the SQL Server</p>
+</li>
+<li>
+<p>Add some screenshots</p>
+</li>
+<li>
+<p>Further integration (probably out of scope):
+<a href="https://github.com/roman-yagodin/vm-scripts">vm-scripts</a>, <code>/etc/fstab</code> entries for shares, deploy build output to the share, etc.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>

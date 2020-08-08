@@ -71,3 +71,8 @@ dl dd {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+.listingblock {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
