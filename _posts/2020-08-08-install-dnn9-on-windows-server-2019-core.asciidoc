@@ -44,7 +44,7 @@ Tip: Multiple console windows inside Server Core:
 
 == Install Far file manager
 
-[source,powershell]
+[source]
 ----
 wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
 Expand-Archive far.zip -DestinationPath .
@@ -61,14 +61,14 @@ Most simple way to do it is via `regedit`. User variables are at `HKCU\Environme
 
 List of installed features:
 
-[source,powershell]
+[source]
 ----
 Get-WindowsFeature
 ----
 
 Install IIS and ASP.NET:
 
-[source,powershell]
+[source]
 ----
 Install-WindowsFeature Web-Server
 Install-WindowsFeature Web-Asp-Net-45
@@ -83,7 +83,7 @@ Install-WindowsFeature Web-Asp-Net-45
 
 Get and run the SQL Express 2019 *downloader*: 
 
-[source,powershell]
+[source]
 ----
 wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
 ./sqlexpress.exe
@@ -95,14 +95,14 @@ After downloading real installer, find and run `SETUP.EXE` - this will require s
 
 Good old GUI wizard:
 
-[source,powershell]
+[source]
 ----
 ./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install
 ----
 
 Command-line:
 
-[source,powershell]
+[source]
 ----
 ./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN 
 ----
@@ -113,14 +113,14 @@ Command-line:
 
 Create folder to store databases:
 
-[source,powershell]
+[source]
 ----
 mkdir C:\Databases
 ----
 
 Configure permissions:
 
-[source,powershell]
+[source]
 ----
 $acl = Get-Acl "C:\Databases"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
@@ -146,7 +146,7 @@ go
 
 Execute it:
 
-[source,powershell]
+[source]
 ----
 Install-Module -Name "SqlServer"
 Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
@@ -156,14 +156,14 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
 
 Get the current rules:
 
-[source,powershell]
+[source]
 ----
 Get-NetFirewallRule | Where Name -like "*ICMP4*"
 ----
 
 Allow ping:
 
-[source,powershell]
+[source]
 ----
 Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow
 ----
@@ -172,14 +172,14 @@ Allow external connections to IIS via HTTP (80): this is done by default by addi
 
 Allow inbound SMB for shared folders:
 
-[source,powershell]
+[source]
 ----
 Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow
 ----
 
 == Download and unpack DNN
 
-[source,powershell]
+[source]
 ----
 wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
 Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
@@ -191,7 +191,7 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
 - https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps
 - https://octopus.com/blog/iis-powershell
 
-[source,powershell]
+[source]
 ----
 Import-Module IISAdministration 
 New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9 
@@ -201,7 +201,7 @@ New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http
 
 Create new application pool and bind it to the website:
 
-[source,powershell]
+[source]
 ----
 Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
@@ -210,7 +210,7 @@ Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.lo
 
 Check:
 
-[source,powershell]
+[source]
 ----
 Import-Module WebAdministration
 ls "IIS:\AppPools"
@@ -222,7 +222,7 @@ This will list all websites and corresponding application pools.
 
 - https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422
 
-[source,powershell]
+[source]
 ----
 $acl = Get-Acl "C:\Dnn9"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
@@ -235,7 +235,7 @@ Set-Acl "C:\Dnn9" $acl
 
 Check: 
 
-[source,powershell]
+[source]
 ----
 Get-Acl "C:\Dnn9" | Format-List
 ----
@@ -245,7 +245,7 @@ Get-Acl "C:\Dnn9" | Format-List
 You will probably need the website folder to be accessible via share,
 so you can setup automatic deployment of build output from IDE into it.  
 
-[source,powershell]
+[source]
 ----
 Install-WindowsFeature FS-SMB1-SERVER
 # Optional?
