@@ -4,7 +4,7 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2020-08-08T13:00:43+00:00</updated>
+ <updated>2020-08-08T13:28:31+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
@@ -61,9 +61,9 @@ or &lt;code&gt;C:\Windows\System32\drivers\etc\hosts&lt;/code&gt; (Windows):&lt;
 &lt;div class=&quot;title&quot;&gt;Tip&lt;/div&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;To get multiple console windows inside Server Core:&lt;/div&gt;
+&lt;div class=&quot;title&quot;&gt;Hot to get multiple console windows inside Server Core:&lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Press &lt;span class=&quot;keyseq&quot;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;&lt;/span&gt;, select &lt;span class=&quot;menuseq&quot;&gt;&lt;b class=&quot;menu&quot;&gt;Task Manager, then run &lt;code&gt;cmd.exe&lt;/code&gt; or &lt;code&gt;powershell.exe&lt;/code&gt; via menu:File&lt;/b&gt;&amp;#160;&lt;b class=&quot;caret&quot;&gt;&amp;#8250;&lt;/b&gt; &lt;b class=&quot;menuitem&quot;&gt;Run new task&lt;/b&gt;&lt;/span&gt; menu.&lt;/p&gt;
+&lt;p&gt;Press &lt;span class=&quot;keyseq&quot;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;&lt;/span&gt;, select &lt;strong&gt;Task Manager&lt;/strong&gt;, then run &lt;code&gt;cmd.exe&lt;/code&gt; or &lt;code&gt;powershell.exe&lt;/code&gt; via &lt;span class=&quot;menuseq&quot;&gt;&lt;b class=&quot;menu&quot;&gt;File&lt;/b&gt;&amp;#160;&lt;b class=&quot;caret&quot;&gt;&amp;#8250;&lt;/b&gt; &lt;b class=&quot;menuitem&quot;&gt;Run new task&lt;/b&gt;&lt;/span&gt; menu.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
@@ -376,7 +376,7 @@ so you can setup automatic deployment of build output from IDE into it.&lt;/p&gt
 &lt;h2 id=&quot;run-dnn-install&quot;&gt;Run DNN install&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Access &lt;code&gt;&lt;a href=&quot;http://dnn9.local&quot; class=&quot;bare&quot;&gt;http://dnn9.local&lt;/a&gt;&lt;/code&gt; from a web browser on host machine and follow instructions!&lt;/p&gt;
+&lt;p&gt;Access http://dnn9.local from a web browser on host machine and follow instructions!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;dlist&quot;&gt;
 &lt;dl&gt;
