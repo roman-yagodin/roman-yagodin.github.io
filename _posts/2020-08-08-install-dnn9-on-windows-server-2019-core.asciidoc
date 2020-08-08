@@ -206,7 +206,7 @@ Create new application pool and bind it to the website:
 Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
 Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
---
+----
 
 Check:
 
