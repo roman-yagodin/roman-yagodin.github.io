@@ -9,15 +9,15 @@
 
 {% include JB/setup %}
 
-This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM, primarily for development purposes.
-It was tested on DNN 8.0.4, DNN 9.6.2. Some things are still missing or not have detailed descriptions,
-but still it will be very usefull if you are new to the Windows Server Core administration.
+This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.
+It is tested on DNN 8.0.4 and DNN 9.6.2. Some things are still missing or don't have detailed description,
+but I hope it still will be helpful, especially if you are new to the Windows Server Core administration.
 
 //more
 
-== Setup VirtualBox VM
+== Setup VirtualBox VM and networking
 
-Install Windows Server 2019 x64 Core on e.g. VirtualBox (this is out of scope of this post),
+Install Windows Server 2019 x64 Core on e.g. VirtualBox (out of scope of this post),
 using 32 GB dynamic VDI disk, 1 GB of RAM and UEFI. You can tweak RAM size and even shrink out virtual disk later.
 
 You will need to configure host-only network interface.
@@ -26,53 +26,53 @@ Assuming host-only interface lease IP addresses via DHCP starting with 192.168.5
 or `C:\Windows\System32\drivers\etc\hosts` (Windows):
 
 [source]
----
+----
 192.168.56.101	dnn9.local
----
+----
 
 If you'll need multilanguage website (good for development), it is advisable to have separate aliases for different languages:
 
 [source]
----
+----
 192.168.56.101	dnn9.local
 192.168.56.101	dnn9-ru.local
 --
 
-== Tip: Multiple console windows inside Server Core:
+Tip: Multiple console windows inside Server Core:
 
-[Ctrl+Alt+Del] -> Task Manager -> File/Run new task -> cmd/powershell
+`Ctrl+Alt+Del` / Task Manager / File/Run new task / `cmd` or `powershell`
+
+== Install Far file manager
+
+[source,powershell]
+----
+wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+Expand-Archive far.zip -DestinationPath .
+./Far30b4455.x64.20151115.msi
+----
+
+Now you will probably want to add `far` command to the PATH.
+
+- https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows
+
+Most simple way to do it is via `regedit`. User variables are at `HKCU\Environment`, system variables are at `HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment`.
 
 == Install IIS
 
 List of installed features:
 
 [source,powershell]
----
+----
 Get-WindowsFeature
----
+----
 
 Install IIS and ASP.NET:
 
 [source,powershell]
----
+----
 Install-WindowsFeature Web-Server
 Install-WindowsFeature Web-Asp-Net-45
----
-
-== Install Far file manager
-
-[source,powershell]
----
-wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
-Expand-Archive far.zip -DestinationPath .
-./far-???.msi
----
-
-You probably want to add far command to the PATH.
-
-- https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows
-
-Most simple way is to use regedit. User variables are at `HKCU\Environment`, system variables are at `HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment`.
+----
 
 == Install SQL Server Express/Developer
 
@@ -81,49 +81,57 @@ Most simple way is to use regedit. User variables are at `HKCU\Environment`, sys
 - https://system-administrators.info/?p=6506
 - https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/
 
-Get the SQL Express 2019 downloader: 
+Get and run the SQL Express 2019 *downloader*: 
 
 [source,powershell]
----
-wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe 
----
+----
+wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
+./sqlexpress.exe
+----
 
-Run ./sqlexpress.exe - can proceed with GUI from now to download real installer.
-After that, find and run SETUP.EXE - this will require some command-line switches.
+Proceed with GUI wizard from now to download *real installer*.
 
-GUI wizard:
+After downloading real installer, find and run `SETUP.EXE` - this will require some command-line switches.
+
+Good old GUI wizard:
 
 [source,powershell]
----
+----
 ./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install
----
+----
 
 Command-line:
 
 [source,powershell]
----
+----
 ./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN 
----
+----
 
-== Create new (empty) database and the database owner user:
+== Create the database for DNN
 
 - https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/
 
 Create folder to store databases:
 
 [source,powershell]
----
+----
 mkdir C:\Databases
----
+----
 
-Configure permissions (see below) for "NT Service\MSSQLSERVER", "FullControl"
+Configure permissions:
 
-TODO: Create separate database owner user, not use sa!
+[source,powershell]
+----
+$acl = Get-Acl "C:\Databases"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($accessRule)
+Set-Acl "C:\Databases" $acl
+----
 
 Create the `CreateDnn9Database.sql` file somewhere:
 
 [source,sql]
----
+----
 use master;
 go
 
@@ -134,78 +142,67 @@ go
 
 alter authorization on database::Dnn9 to sa
 go
----
+----
+
+Execute it:
 
 [source,powershell]
----
+----
 Install-Module -Name "SqlServer"
 Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
----
+----
 
 == Configure firewall
 
-Get rules:
+Get the current rules:
 
 [source,powershell]
----
+----
 Get-NetFirewallRule | Where Name -like "*ICMP4*"
----
+----
 
 Allow ping:
 
 [source,powershell]
----
+----
 Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow
----
+----
 
 Allow external connections to IIS via HTTP (80): this is done by default by adding webserver role, rule names: IIS-WebServerRole-HTTP-In-TCP and IIS-WebServerRole-HTTPS-In-TCP.
 
 Allow inbound SMB for shared folders:
 
 [source,powershell]
----
+----
 Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow
----
-
-TODO: Optionally, allow external connections to the SQL Server (to use later with e.g. DBeaver):
+----
 
 == Download and unpack DNN
 
 [source,powershell]
----
+----
 wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
 Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
----
+----
 
-== Add site and app pool to IIS
+== Add new website and application pool in IIS
 
 - https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap
-- https://octopus.com/blog/iis-powershell
 - https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps
-
-Semo-old way:
-
-[source,powershell]
----
-Import-Module WebAdministration
-cd IIS:\
-ls
----
-
-New way:
+- https://octopus.com/blog/iis-powershell
 
 [source,powershell]
----
+----
 Import-Module IISAdministration 
 New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9 
----
+----
 
-But this will not create the "dnn9.local" app pool!
+**But this will not create the app pool for the new website!**
 
-Create new AppPool and bind to the website:
+Create new application pool and bind it to the website:
 
 [source,powershell]
----
+----
 Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
 Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
@@ -214,16 +211,19 @@ Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.lo
 Check:
 
 [source,powershell]
----
+----
+Import-Module WebAdministration
 ls "IIS:\AppPools"
----
+----
 
-== Configure FS permissions
+This will list all websites and corresponding application pools.
+
+== Configure file system permissions
 
 - https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422
 
 [source,powershell]
----
+----
 $acl = Get-Acl "C:\Dnn9"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
@@ -231,31 +231,46 @@ Set-Acl "C:\Dnn9" $acl
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Dnn9" $acl
----
+----
 
 Check: 
 
 [source,powershell]
----
-Get-Acl "C:\Dnn9" | Format-List`
----
+----
+Get-Acl "C:\Dnn9" | Format-List
+----
 
-== Make website folder shared for local deploy
+== Make website folder shared
+
+You will probably need the website folder to be accessible via share,
+so you can setup automatic deployment of build output from IDE into it.  
 
 [source,powershell]
----
+----
 Install-WindowsFeature FS-SMB1-SERVER
-#optional: Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
-New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"
----
+# Optional?
+# Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
 
-Test by trying to connect share by IP (\\192.168.56.101\Dnn9), not hostname!
+New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"
+----
+
+Test by trying to connect share by IP: `\\192.168.56.101\Dnn9`.
 
 == Run DNN install
 
 Access http://dnn9.local from a web browser on host machine and follow instructions!
 
-Database Setup: Custom
-Server Name: (local)
-Database Name: Dnn9
-Database Username: sa
+Database Setup:: Custom
+Server Name:: (local)
+Database Name:: Dnn9
+Database Username:: sa
+
+== TODO
+
+- Separate initial setup and adding new DNN instances
+- Create separate database owner user for each database
+- Configure firewall to allow external connections to the SQL Server
+- Add some screenshots
+- Further integration (probably out of scope):
+  https://github.com/roman-yagodin/vm-scripts[vm-scripts], `/etc/fstab` entries for shares, deploy build output to the share, etc.
+  
