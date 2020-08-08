@@ -237,7 +237,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+<pre class="highlight"><code>wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
 Expand-Archive far.zip -DestinationPath .
 ./Far30b4455.x64.20151115.msi</code></pre>
 </div>
@@ -265,7 +265,7 @@ Expand-Archive far.zip -DestinationPath .
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Get-WindowsFeature</code></pre>
+<pre class="highlight"><code>Get-WindowsFeature</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -273,7 +273,7 @@ Expand-Archive far.zip -DestinationPath .
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Install-WindowsFeature Web-Server
+<pre class="highlight"><code>Install-WindowsFeature Web-Server
 Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 </div>
@@ -303,7 +303,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
+<pre class="highlight"><code>wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
 ./sqlexpress.exe</code></pre>
 </div>
 </div>
@@ -318,7 +318,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install</code></pre>
+<pre class="highlight"><code>./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -326,7 +326,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
+<pre class="highlight"><code>./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
 </div>
 </div>
 </div>
@@ -346,7 +346,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">mkdir C:\Databases</code></pre>
+<pre class="highlight"><code>mkdir C:\Databases</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -354,7 +354,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">$acl = Get-Acl "C:\Databases"
+<pre class="highlight"><code>$acl = Get-Acl "C:\Databases"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Databases" $acl</code></pre>
@@ -382,7 +382,7 @@ go</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Install-Module -Name "SqlServer"
+<pre class="highlight"><code>Install-Module -Name "SqlServer"
 Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</code></pre>
 </div>
 </div>
@@ -396,7 +396,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Get-NetFirewallRule | Where Name -like "*ICMP4*"</code></pre>
+<pre class="highlight"><code>Get-NetFirewallRule | Where Name -like "*ICMP4*"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -404,7 +404,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow</code></pre>
+<pre class="highlight"><code>Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -415,7 +415,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow</code></pre>
+<pre class="highlight"><code>Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow</code></pre>
 </div>
 </div>
 </div>
@@ -425,7 +425,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
+<pre class="highlight"><code>wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
 Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</code></pre>
 </div>
 </div>
@@ -449,7 +449,7 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Import-Module IISAdministration
+<pre class="highlight"><code>Import-Module IISAdministration
 New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9</code></pre>
 </div>
 </div>
@@ -461,14 +461,14 @@ New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">Import-Module WebAdministration
+<pre class="highlight"><code>Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
 Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
 --
 
 Check:
 
-[source,powershell]</code></pre>
+[source]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -483,7 +483,7 @@ ls "IIS:\AppPools"</p>
 
 - https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422
 
-[source,powershell]</pre>
+[source]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -499,7 +499,7 @@ Set-Acl "C:\Dnn9" $acl</p>
 <div class="content">
 <pre>Check:
 
-[source,powershell]</pre>
+[source]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -512,7 +512,7 @@ Set-Acl "C:\Dnn9" $acl</p>
 You will probably need the website folder to be accessible via share,
 so you can setup automatic deployment of build output from IDE into it.
 
-[source,powershell]</pre>
+[source]</pre>
 </div>
 </div>
 <div class="paragraph">

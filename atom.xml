@@ -4,7 +4,7 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2020-08-08T12:02:31+00:00</updated>
+ <updated>2020-08-08T12:05:56+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
@@ -67,7 +67,7 @@ or &lt;code&gt;C:\Windows\System32\drivers\etc\hosts&lt;/code&gt; (Windows):&lt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
 Expand-Archive far.zip -DestinationPath .
 ./Far30b4455.x64.20151115.msi&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -95,7 +95,7 @@ Expand-Archive far.zip -DestinationPath .
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Get-WindowsFeature&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Get-WindowsFeature&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -103,7 +103,7 @@ Expand-Archive far.zip -DestinationPath .
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Install-WindowsFeature Web-Server
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Install-WindowsFeature Web-Server
 Install-WindowsFeature Web-Asp-Net-45&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -133,7 +133,7 @@ Install-WindowsFeature Web-Asp-Net-45&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
 ./sqlexpress.exe&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -148,7 +148,7 @@ Install-WindowsFeature Web-Asp-Net-45&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -156,7 +156,7 @@ Install-WindowsFeature Web-Asp-Net-45&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD=&quot;MyP@$$w0rd&quot; /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD=&quot;MyP@$$w0rd&quot; /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -176,7 +176,7 @@ Install-WindowsFeature Web-Asp-Net-45&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;mkdir C:\Databases&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir C:\Databases&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -184,7 +184,7 @@ Install-WindowsFeature Web-Asp-Net-45&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;$acl = Get-Acl &quot;C:\Databases&quot;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$acl = Get-Acl &quot;C:\Databases&quot;
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(&quot;NT Service\MSSQLSERVER&quot;, &quot;FullControl&quot;, &quot;ContainerInherit,ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)
 $acl.SetAccessRule($accessRule)
 Set-Acl &quot;C:\Databases&quot; $acl&lt;/code&gt;&lt;/pre&gt;
@@ -212,7 +212,7 @@ go&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Install-Module -Name &quot;SqlServer&quot;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Install-Module -Name &quot;SqlServer&quot;
 Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Database.sql&quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -226,7 +226,7 @@ Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Dat
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Get-NetFirewallRule | Where Name -like &quot;*ICMP4*&quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Get-NetFirewallRule | Where Name -like &quot;*ICMP4*&quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -234,7 +234,7 @@ Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Dat
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -245,7 +245,7 @@ Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Dat
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -255,7 +255,7 @@ Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Dat
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
 Expand-Archive dnn9.zip -DestinationPath C:\Dnn9&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -279,7 +279,7 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Import-Module IISAdministration
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Import-Module IISAdministration
 New-IISSite -Name dnn9.local -BindingInformation &quot;:80:dnn9.local&quot; -Protocol http -PhysicalPath C:\Dnn9&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -291,14 +291,14 @@ New-IISSite -Name dnn9.local -BindingInformation &quot;:80:dnn9.local&quot; -Pro
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;Import-Module WebAdministration
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Import-Module WebAdministration
 New-WebAppPool -Name &quot;dnn9.local&quot;
 Set-ItemProperty &quot;IIS:\Sites\dnn9.local&quot; -Name &quot;applicationPool&quot; -Value &quot;dnn9.local&quot;
 --
 
 Check:
 
-[source,powershell]&lt;/code&gt;&lt;/pre&gt;
+[source]&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -313,7 +313,7 @@ ls &quot;IIS:\AppPools&quot;&lt;/p&gt;
 
 - https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422
 
-[source,powershell]&lt;/pre&gt;
+[source]&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -329,7 +329,7 @@ Set-Acl &quot;C:\Dnn9&quot; $acl&lt;/p&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre&gt;Check:
 
-[source,powershell]&lt;/pre&gt;
+[source]&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -342,7 +342,7 @@ Set-Acl &quot;C:\Dnn9&quot; $acl&lt;/p&gt;
 You will probably need the website folder to be accessible via share,
 so you can setup automatic deployment of build output from IDE into it.
 
-[source,powershell]&lt;/pre&gt;
+[source]&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
