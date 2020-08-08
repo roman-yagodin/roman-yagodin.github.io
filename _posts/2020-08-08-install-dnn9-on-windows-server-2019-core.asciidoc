@@ -62,14 +62,14 @@ Most simple way to do it is via `regedit`. User variables are at `HKCU\Environme
 
 List of installed features:
 
-[source]
+[source,powershell]
 ----
 Get-WindowsFeature
 ----
 
 Install IIS and ASP.NET:
 
-[source]
+[source,powershell]
 ----
 Install-WindowsFeature Web-Server
 Install-WindowsFeature Web-Asp-Net-45
@@ -84,7 +84,7 @@ Install-WindowsFeature Web-Asp-Net-45
 
 Get and run the SQL Express 2019 *downloader*: 
 
-[source]
+[source,powershell]
 ----
 wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
 ./sqlexpress.exe
@@ -96,14 +96,14 @@ After downloading real installer, find and run `SETUP.EXE` - this will require s
 
 Good old GUI wizard:
 
-[source]
+[source,shell]
 ----
 ./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install
 ----
 
 Command-line:
 
-[source]
+[source,shell]
 ----
 ./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN 
 ----
@@ -114,14 +114,14 @@ Command-line:
 
 Create folder to store databases:
 
-[source]
+[source,powershell]
 ----
 mkdir C:\Databases
 ----
 
 Configure permissions:
 
-[source]
+[source,powershell]
 ----
 $acl = Get-Acl "C:\Databases"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
@@ -131,6 +131,7 @@ Set-Acl "C:\Databases" $acl
 
 Create the `CreateDnn9Database.sql` file somewhere:
 
+.CreateDnn9Database.sql
 [source,sql]
 ----
 use master;
@@ -147,7 +148,7 @@ go
 
 Execute it:
 
-[source]
+[source,powershell]
 ----
 Install-Module -Name "SqlServer"
 Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
@@ -157,14 +158,14 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
 
 Get the current rules:
 
-[source]
+[source,powershell]
 ----
 Get-NetFirewallRule | Where Name -like "*ICMP4*"
 ----
 
 Allow ping:
 
-[source]
+[source,powershell]
 ----
 Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow
 ----
@@ -173,14 +174,14 @@ Allow external connections to IIS via HTTP (80): this is done by default by addi
 
 Allow inbound SMB for shared folders:
 
-[source]
+[source,powershell]
 ----
 Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow
 ----
 
 == Download and unpack DNN
 
-[source]
+[source,powershell]
 ----
 wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
 Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
@@ -192,7 +193,7 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
 - https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps
 - https://octopus.com/blog/iis-powershell
 
-[source]
+[source,powershell]
 ----
 Import-Module IISAdministration 
 New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9 
@@ -202,7 +203,7 @@ New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http
 
 Create new application pool and bind it to the website:
 
-[source]
+[source,powershell]
 ----
 Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
@@ -211,7 +212,7 @@ Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.lo
 
 Check:
 
-[source]
+[source,powershell]
 ----
 Import-Module WebAdministration
 ls "IIS:\AppPools"
@@ -223,7 +224,7 @@ This will list all websites and corresponding application pools.
 
 - https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422
 
-[source]
+[source,powershell]
 ----
 $acl = Get-Acl "C:\Dnn9"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
@@ -236,7 +237,7 @@ Set-Acl "C:\Dnn9" $acl
 
 Check: 
 
-[source]
+[source,powershell]
 ----
 Get-Acl "C:\Dnn9" | Format-List
 ----
@@ -246,7 +247,7 @@ Get-Acl "C:\Dnn9" | Format-List
 You will probably need the website folder to be accessible via share,
 so you can setup automatic deployment of build output from IDE into it.  
 
-[source]
+[source,powershell]
 ----
 Install-WindowsFeature FS-SMB1-SERVER
 # Optional?
