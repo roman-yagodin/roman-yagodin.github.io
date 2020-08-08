@@ -86,3 +86,12 @@ dl dd {
 li > p {
   margin-bottom: 0;
 }
+
+.admonitionblock table td.icon {
+  padding: 0.5rem;
+  border-right: 3px solid #ccc;
+}
+
+.admonitionblock table td.content {
+  padding: 0.5rem;
+}
