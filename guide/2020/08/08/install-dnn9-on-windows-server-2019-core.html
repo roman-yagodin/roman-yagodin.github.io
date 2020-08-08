@@ -224,22 +224,26 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 192.168.56.101	dnn9-ru.local</code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">To get multiple console windows inside Server Core:</div>
 <div class="paragraph">
-<p>Tip: Multiple console windows inside Server Core:</p>
+<p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></span>, select <span class="menuseq"><b class="menu">Task Manager, then run <code>cmd.exe</code> or <code>powershell.exe</code> via menu:File</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Run new task</b></span> menu.
+===</p>
 </div>
 <div class="paragraph">
-<p><code>Ctrl+Alt+Del</code> / Task Manager / File/Run new task / <code>cmd</code> or <code>powershell</code></p>
+<p>== Install Far file manager</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="install-far-file-manager">Install Far file manager</h2>
-<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
-Expand-Archive far.zip -DestinationPath .
-./Far30b4455.x64.20151115.msi</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">far-manager.ru/files/Far_Manager_v3.0_build_4455.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">far.zip</span><span class="w">
+</span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">far.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="o">.</span><span class="w">
+</span><span class="o">.</span><span class="nf">/Far30b4455.x64.20151115.msi</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -255,11 +259,9 @@ Expand-Archive far.zip -DestinationPath .
 <div class="paragraph">
 <p>Most simple way to do it is via <code>regedit</code>. User variables are at <code>HKCU\Environment</code>, system variables are at <code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code>.</p>
 </div>
+<div class="paragraph">
+<p>== Install IIS</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="install-iis">Install IIS</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>List of installed features:</p>
 </div>
@@ -277,11 +279,9 @@ Expand-Archive far.zip -DestinationPath .
 </span><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Asp-Net-45</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Install SQL Server Express/Developer</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="install-sql-server-expressdeveloper">Install SQL Server Express/Developer</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -329,11 +329,9 @@ Expand-Archive far.zip -DestinationPath .
 <pre class="rouge highlight"><code data-lang="shell">./SETUP.EXE /Q /Action<span class="o">=</span>Install /SECURITYMODE<span class="o">=</span>SQL /SAPWD<span class="o">=</span><span class="s2">"MyP@</span><span class="nv">$$</span><span class="s2">w0rd"</span> /TCPENABLED<span class="o">=</span>1 /FEATURES<span class="o">=</span>SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Create the database for DNN</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="create-the-database-for-dnn">Create the database for DNN</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -387,11 +385,9 @@ Expand-Archive far.zip -DestinationPath .
 </span><span class="nf">Invoke-SqlCmd</span><span class="w"> </span><span class="nt">-ServerInstance</span><span class="w"> </span><span class="s2">"(local)"</span><span class="w"> </span><span class="nt">-InputFile</span><span class="w"> </span><span class="s2">"CreateDnn9Database.sql"</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Configure firewall</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="configure-firewall">Configure firewall</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Get the current rules:</p>
 </div>
@@ -419,22 +415,18 @@ Expand-Archive far.zip -DestinationPath .
 <pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-SMB-In-TCP</span><span class="w">  </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Download and unpack DNN</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="download-and-unpack-dnn">Download and unpack DNN</h2>
-<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">dnn9.zip</span><span class="w">
 </span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">dnn9.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Add new website and application pool in IIS</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="add-new-website-and-application-pool-in-iis">Add new website and application pool in IIS</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -479,11 +471,9 @@ Expand-Archive far.zip -DestinationPath .
 <div class="paragraph">
 <p>This will list all websites and corresponding application pools.</p>
 </div>
+<div class="paragraph">
+<p>== Configure file system permissions</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="configure-file-system-permissions">Configure file system permissions</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -510,11 +500,9 @@ Expand-Archive far.zip -DestinationPath .
 <pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Format-List</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Make website folder shared</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="make-website-folder-shared">Make website folder shared</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>You will probably need the website folder to be accessible via share,
 so you can setup automatic deployment of build output from IDE into it.</p>
@@ -531,11 +519,9 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <div class="paragraph">
 <p>Test by trying to connect share by IP: <code>\\192.168.56.101\Dnn9</code>.</p>
 </div>
+<div class="paragraph">
+<p>== Run DNN install</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="run-dnn-install">Run DNN install</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Access <a href="http://dnn9.local" class="bare">http://dnn9.local</a> from a web browser on host machine and follow instructions!</p>
 </div>
@@ -559,11 +545,9 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </dd>
 </dl>
 </div>
+<div class="paragraph">
+<p>== TODO</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="todo">TODO</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -583,6 +567,10 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <a href="https://github.com/roman-yagodin/vm-scripts">vm-scripts</a>, <code>/etc/fstab</code> entries for shares, deploy build output to the share, etc.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
