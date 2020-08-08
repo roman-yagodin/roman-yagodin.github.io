@@ -5,6 +5,7 @@
 :page-tagline: ""
 :page-tags: [dnn, virtualbox, windows, powershell]
 :page-liquid:
+:experimental:
 :source-highlighter: rouge
 :url-asciidoctor: http://asciidoctor.org
 
@@ -39,13 +40,15 @@ If you'll need multilanguage website (good for development), it is advisable to 
 192.168.56.101	dnn9-ru.local
 ----
 
-Tip: Multiple console windows inside Server Core:
-
-`Ctrl+Alt+Del` / Task Manager / File/Run new task / `cmd` or `powershell`
+[TIP]
+.To get multiple console windows inside Server Core:
+====
+Press kbd:[Ctrl+Alt+Del], select menu:Task Manager, then run `cmd.exe` or `powershell.exe` via menu:File[Run new task] menu.
+===
 
 == Install Far file manager
 
-[source]
+[source,powershell]
 ----
 wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
 Expand-Archive far.zip -DestinationPath .
