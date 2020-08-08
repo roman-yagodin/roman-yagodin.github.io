@@ -44,7 +44,7 @@ If you'll need multilanguage website (good for development), it is advisable to 
 .To get multiple console windows inside Server Core:
 ====
 Press kbd:[Ctrl+Alt+Del], select menu:Task Manager, then run `cmd.exe` or `powershell.exe` via menu:File[Run new task] menu.
-===
+====
 
 == Install Far file manager
 
@@ -263,7 +263,7 @@ Test by trying to connect share by IP: `\\192.168.56.101\Dnn9`.
 
 == Run DNN install
 
-Access http://dnn9.local from a web browser on host machine and follow instructions!
+Access `http://dnn9.local` from a web browser on host machine and follow instructions!
 
 Database Setup:: Custom
 Server Name:: (local)
@@ -273,9 +273,9 @@ Database Username:: sa
 == TODO
 
 - Separate initial setup and adding new DNN instances
+- Add some screenshots?
 - Create separate database owner user for each database
 - Configure firewall to allow external connections to the SQL Server
-- Add some screenshots
 - Further integration (probably out of scope):
   https://github.com/roman-yagodin/vm-scripts[vm-scripts], `/etc/fstab` entries for shares, deploy build output to the share, etc.
   

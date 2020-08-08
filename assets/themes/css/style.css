@@ -71,3 +71,13 @@ dl dd {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+.listingblock .title {
+  font-style: italic;
+}
+
+.listingblock pre {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
