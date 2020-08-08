@@ -36,7 +36,7 @@ If you'll need multilanguage website (good for development), it is advisable to 
 ----
 192.168.56.101	dnn9.local
 192.168.56.101	dnn9-ru.local
---
+----
 
 Tip: Multiple console windows inside Server Core:
 
