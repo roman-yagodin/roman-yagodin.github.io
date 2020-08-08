@@ -200,15 +200,15 @@ but I hope it still will be helpful, especially if you are new to the Windows Se
 <h2 id="setup-virtualbox-vm-and-networking">Setup VirtualBox VM and networking</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Install Windows Server 2019 x64 Core on e.g. VirtualBox (out of scope of this post),
-using 32 GB dynamic VDI disk, 1 GB of RAM and UEFI. You can tweak RAM size and even shrink out virtual disk later.</p>
+<p>Install <strong>Windows Server 2019 x64 Core</strong> on e.g. <strong>VirtualBox</strong> (out of scope of this post),
+using 32 GB dynamic VDI disk, 1 GB of RAM and UEFI. You can tweak RAM size and resize virtual disk later.</p>
 </div>
 <div class="paragraph">
-<p>You will need to configure host-only network interface.</p>
+<p>You will need to configure host-only network interface, which will allow connections between virtual and host machines.
+Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">virtual networking</a> options.</p>
 </div>
 <div class="paragraph">
-<p>Assuming host-only interface lease IP addresses via DHCP starting with 192.168.56.101, you should add the following line to <code>/etc/hosts</code> (Linux)
-or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
+<p>Assuming that DHCP server of host-only interface is configured to lease IP addresses starting with 192.168.56.101, you should add the following line to <code>/etc/hosts</code> (on Linux) or <code>C:\Windows\System32\drivers\etc\hosts</code> (on Windows):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -216,53 +216,15 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you&#8217;ll need multilanguage website (good for development), it is advisable to have separate aliases for different languages:</p>
+<p>If you&#8217;ll need multilanguage website, it is good to have separate alias for each of target languages:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code>192.168.56.101	dnn9.local
-192.168.56.101	dnn9-ru.local</code></pre>
+192.168.56.101	dnn9-de.local
+192.168.56.101	dnn9-ru.local
+...</code></pre>
 </div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-<div class="title">Hot to get multiple console windows inside Server Core:</div>
-<div class="paragraph">
-<p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></span>, select <strong>Task Manager</strong>, then run <code>cmd.exe</code> or <code>powershell.exe</code> via <span class="menuseq"><b class="menu">File</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Run new task</b></span> menu.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="install-far-file-manager">Install Far file manager</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">far-manager.ru/files/Far_Manager_v3.0_build_4455.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">far.zip</span><span class="w">
-</span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">far.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="o">.</span><span class="w">
-</span><span class="o">.</span><span class="nf">/Far30b4455.x64.20151115.msi</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you will probably want to add <code>far</code> command to the PATH.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows" class="bare">https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Most simple way to do it is via <code>regedit</code>. User variables are at <code>HKCU\Environment</code>, system variables are at <code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code>.</p>
 </div>
 </div>
 </div>
@@ -270,7 +232,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 <h2 id="install-iis">Install IIS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>List of installed features:</p>
+<p>List of currently installed features:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -402,11 +364,11 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 <h2 id="configure-firewall">Configure firewall</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Get the current rules:</p>
+<p>Get the current rules, e.g. related to ICMP:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-NetFirewallRule</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Where</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">-like</span><span class="w"> </span><span class="s2">"*ICMP4*"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-NetFirewallRule</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Where</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">-like</span><span class="w"> </span><span class="s2">"*ICMP*"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -418,7 +380,10 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Allow external connections to IIS via HTTP (80): this is done by default by adding webserver role, rule names: IIS-WebServerRole-HTTP-In-TCP and IIS-WebServerRole-HTTPS-In-TCP.</p>
+<p>Allow external connections to IIS via HTTP (port 80):</p>
+</div>
+<div class="paragraph">
+<p>This is done by default by adding webserver role, rule names <code>IIS-WebServerRole-HTTP-In-TCP</code> and <code>IIS-WebServerRole-HTTPS-In-TCP</code>.</p>
 </div>
 <div class="paragraph">
 <p>Allow inbound SMB for shared folders:</p>
@@ -442,7 +407,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="add-new-website-and-application-pool-in-iis">Add new website and application pool in IIS</h2>
+<h2 id="add-website-and-application-pool-in-iis">Add website and application pool in IIS</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -464,7 +429,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>But this will not create the app pool for the new website!</strong></p>
+<p><strong>But this will not create the application pool for the new website!</strong></p>
 </div>
 <div class="paragraph">
 <p>Create new application pool and bind it to the website:</p>
@@ -522,7 +487,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="make-website-folder-shared">Make website folder shared</h2>
+<h2 id="share-website-folder">Share website folder</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You will probably need the website folder to be accessible via share,
@@ -538,7 +503,7 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Test by trying to connect share by IP: <code>\\192.168.56.101\Dnn9</code>.</p>
+<p>Test this by trying to access share by IP like that: <code>\\192.168.56.101\Dnn9</code>.</p>
 </div>
 </div>
 </div>
@@ -546,7 +511,10 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <h2 id="run-dnn-install">Run DNN install</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Access http://dnn9.local from a web browser on host machine and follow instructions!</p>
+<p>Access http://dnn9.local from a web browser on host machine and follow installation wizard!</p>
+</div>
+<div class="paragraph">
+<p>Database setup form fields:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -571,15 +539,46 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="extra">Extra</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="install-far-file-manager">Install Far file manager</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">far-manager.ru/files/Far_Manager_v3.0_build_4455.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">far.zip</span><span class="w">
+</span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">far.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="o">.</span><span class="w">
+</span><span class="o">.</span><span class="nf">/Far30b4455.x64.20151115.msi</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you will probably want to add <code>far</code> command to the <code>PATH</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows" class="bare">https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Most simple way to do it is via <code>regedit</code>. User environment variables are at <code>HKCU\Environment</code>, system variables are at <code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multiple-console-windows">Multiple console windows</h3>
+<div class="paragraph">
+<p>Press <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></span>, select <strong>Task Manager</strong>, then run <code>cmd.exe</code> or <code>powershell.exe</code> via <span class="menuseq"><b class="menu">File</b>&#160;<b class="caret">&#8250;</b> <b class="menuitem">Run new task</b></span> menu.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="todo">TODO</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>Separate initial setup and adding new DNN instances</p>
-</li>
-<li>
-<p>Add some screenshots?</p>
+<p>Separate initial configuration and installing new DNN instances</p>
 </li>
 <li>
 <p>Create separate database owner user for each database</p>
