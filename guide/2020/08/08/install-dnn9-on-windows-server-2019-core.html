@@ -8,7 +8,7 @@
     <title>Install DNN 9 on Windows Server 2019 Core</title>
 
     
-      <meta name="description" content="This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM, primarily for development purposes.It was tested on DNN 8.0.4, DNN ...">
+      <meta name="description" content="This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.It is tested on DNN 8.0.4 and DNN 9.6.2. So...">
     
     
     <meta name="author" content="Roman M. Yagodin & R7.Labs">
@@ -162,9 +162,9 @@
       </div>
       <p class="lead">
         
-This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM, primarily for development purposes.
-It was tested on DNN 8.0.4, DNN 9.6.2. Some things are still missing or not have detailed descriptions,
-but still it will be very usefull if you are new to the Windows Server Core administration.
+This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.
+It is tested on DNN 8.0.4 and DNN 9.6.2. Some things are still missing or don&#8217;t have detailed description,
+but I hope it still will be helpful, especially if you are new to the Windows Server Core administration.
 
       </p>
     </div>
@@ -197,10 +197,10 @@ but still it will be very usefull if you are new to the Windows Server Core admi
 </div>
 </div>
 <div class="sect1">
-<h2 id="setup-virtualbox-vm">Setup VirtualBox VM</h2>
+<h2 id="setup-virtualbox-vm-and-networking">Setup VirtualBox VM and networking</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Install Windows Server 2019 x64 Core on e.g. VirtualBox (this is out of scope of this post),
+<p>Install Windows Server 2019 x64 Core on e.g. VirtualBox (out of scope of this post),
 using 32 GB dynamic VDI disk, 1 GB of RAM and UEFI. You can tweak RAM size and even shrink out virtual disk later.</p>
 </div>
 <div class="paragraph">
@@ -212,9 +212,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>---
-192.168.56.101	dnn9.local
----</code></pre>
+<pre class="highlight"><code>192.168.56.101	dnn9.local</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -222,165 +220,128 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>---
-192.168.56.101	dnn9.local
+<pre class="highlight"><code>192.168.56.101	dnn9.local
 192.168.56.101	dnn9-ru.local
---</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="tip-multiple-console-windows-inside-server-core">Tip: Multiple console windows inside Server Core:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>[Ctrl+Alt+Del] &#8594; Task Manager &#8594; File/Run new task &#8594; cmd/powershell</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="install-iis">Install IIS</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>List of installed features:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Get-WindowsFeature
----</code></pre>
+--
+
+Tip: Multiple console windows inside Server Core:
+
+`Ctrl+Alt+Del` / Task Manager / File/Run new task / `cmd` or `powershell`
+
+== Install Far file manager
+
+[source,powershell]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Install IIS and ASP.NET:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Install-WindowsFeature Web-Server
-Install-WindowsFeature Web-Asp-Net-45
----</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="install-far-file-manager">Install Far file manager</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+<p>wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
 Expand-Archive far.zip -DestinationPath .
-./far-???.msi
----</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You probably want to add far command to the PATH.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows" class="bare">https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Most simple way is to use regedit. User variables are at <code>HKCU\Environment</code>, system variables are at <code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="install-sql-server-expressdeveloper">Install SQL Server Express/Developer</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017" class="bare">https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017</a></p>
-</li>
-<li>
-<p><a href="https://anikinsv.blogspot.com/2018/08/ms-sql.html" class="bare">https://anikinsv.blogspot.com/2018/08/ms-sql.html</a></p>
-</li>
-<li>
-<p><a href="https://system-administrators.info/?p=6506" class="bare">https://system-administrators.info/?p=6506</a></p>
-</li>
-<li>
-<p><a href="https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/" class="bare">https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Get the SQL Express 2019 downloader:</p>
+./Far30b4455.x64.20151115.msi</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
----</code></pre>
+<pre>Now you will probably want to add `far` command to the PATH.
+
+- https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows
+
+Most simple way to do it is via `regedit`. User variables are at `HKCU\Environment`, system variables are at `HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment`.
+
+== Install IIS
+
+List of installed features:
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Run ./sqlexpress.exe - can proceed with GUI from now to download real installer.
-After that, find and run SETUP.EXE - this will require some command-line switches.</p>
-</div>
-<div class="paragraph">
-<p>GUI wizard:</p>
+<p>Get-WindowsFeature</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install
----</code></pre>
+<pre>Install IIS and ASP.NET:
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Command-line:</p>
+<p>Install-WindowsFeature Web-Server
+Install-WindowsFeature Web-Asp-Net-45</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN
----</code></pre>
+<pre>== Install SQL Server Express/Developer
+
+- https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017
+- https://anikinsv.blogspot.com/2018/08/ms-sql.html
+- https://system-administrators.info/?p=6506
+- https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/
+
+Get and run the SQL Express 2019 *downloader*:
+
+[source,powershell]</pre>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="create-new-empty-database-and-the-database-owner-user">Create new (empty) database and the database owner user:</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/" class="bare">https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/</a></p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>Create folder to store databases:</p>
+<p>wget <a href="https://go.microsoft.com/fwlink/?linkid=866658" class="bare">https://go.microsoft.com/fwlink/?linkid=866658</a> -UseBasicParsing -OutFile sqlexpress.exe
+./sqlexpress.exe</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-mkdir C:\Databases
----</code></pre>
+<pre>Proceed with GUI wizard from now to download *real installer*.
+
+After downloading real installer, find and run `SETUP.EXE` - this will require some command-line switches.
+
+Good old GUI wizard:
+
+[source,powershell]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">/SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install</div>
+<div class="content">
+<pre>Command-line:
+
+[source,powershell]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">/SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN</div>
+<div class="content">
+<pre>== Create the database for DNN
+
+- https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/
+
+Create folder to store databases:
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Configure permissions (see below) for "NT Service\MSSQLSERVER", "FullControl"</p>
-</div>
-<div class="paragraph">
-<p>TODO: Create separate database owner user, not use sa!</p>
-</div>
-<div class="paragraph">
-<p>Create the <code>CreateDnn9Database.sql</code> file somewhere:</p>
+<p>mkdir C:\Databases</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">---
-use master;
-go</code></pre>
+<pre>Configure permissions:
+
+[source,powershell]</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>$acl = Get-Acl "C:\Databases"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($accessRule)
+Set-Acl "C:\Databases" $acl</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Create the `CreateDnn9Database.sql` file somewhere:
+
+[source,sql]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>use master;
+go</p>
 </div>
 <div class="paragraph">
 <p>create database Dnn9
@@ -390,142 +351,110 @@ go</p>
 </div>
 <div class="paragraph">
 <p>alter authorization on database::Dnn9 to sa
-go
----</p>
+go</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Install-Module -Name "SqlServer"
-Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
----</code></pre>
+<pre>Execute it:
+
+[source,powershell]</pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="configure-firewall">Configure firewall</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Get rules:</p>
+<p>Install-Module -Name "SqlServer"
+Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Get-NetFirewallRule | Where Name -like "*ICMP4*"
----</code></pre>
+<pre>== Configure firewall
+
+Get the current rules:
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Allow ping:</p>
+<p>Get-NetFirewallRule | Where Name -like "<strong>ICMP4</strong>"</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow
----</code></pre>
+<pre>Allow ping:
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Allow external connections to IIS via HTTP (80): this is done by default by adding webserver role, rule names: IIS-WebServerRole-HTTP-In-TCP and IIS-WebServerRole-HTTPS-In-TCP.</p>
-</div>
-<div class="paragraph">
-<p>Allow inbound SMB for shared folders:</p>
+<p>Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow
----</code></pre>
+<pre>Allow external connections to IIS via HTTP (80): this is done by default by adding webserver role, rule names: IIS-WebServerRole-HTTP-In-TCP and IIS-WebServerRole-HTTPS-In-TCP.
+
+Allow inbound SMB for shared folders:
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>TODO: Optionally, allow external connections to the SQL Server (to use later with e.g. DBeaver):</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="download-and-unpack-dnn">Download and unpack DNN</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
-Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
----</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="add-site-and-app-pool-to-iis">Add site and app pool to IIS</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap" class="bare">https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap</a></p>
-</li>
-<li>
-<p><a href="https://octopus.com/blog/iis-powershell" class="bare">https://octopus.com/blog/iis-powershell</a></p>
-</li>
-<li>
-<p><a href="https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps" class="bare">https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Semo-old way:</p>
+<p>Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Import-Module WebAdministration
-cd IIS:\
-ls
----</code></pre>
+<pre>== Download and unpack DNN
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>New way:</p>
+<p>wget <a href="https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip" class="bare">https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip</a> -UseBasicParsing -OutFile dnn9.zip
+Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Import-Module IISAdministration
-New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9
----</code></pre>
+<pre>== Add new website and application pool in IIS
+
+- https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap
+- https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps
+- https://octopus.com/blog/iis-powershell
+
+[source,powershell]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>But this will not create the "dnn9.local" app pool!</p>
-</div>
-<div class="paragraph">
-<p>Create new AppPool and bind to the website:</p>
+<p>Import-Module IISAdministration
+New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Import-Module WebAdministration
+<pre>**But this will not create the app pool for the new website!**
+
+Create new application pool and bind it to the website:
+
+[source,powershell]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Import-Module WebAdministration
 New-WebAppPool -Name "dnn9.local"
-Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
---</code></pre>
+Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"</p>
 </div>
-</div>
+<div class="openblock">
+<div class="content">
 <div class="paragraph">
 <p>Check:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-ls "IIS:\AppPools"
----</code></pre>
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">Import-Module WebAdministration
+ls "IIS:\AppPools"</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>This will list all websites and corresponding application pools.</p>
 </div>
+<div class="paragraph">
+<p>== Configure file system permissions</p>
 </div>
-<div class="sect1">
-<h2 id="configure-fs-permissions">Configure FS permissions</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -535,15 +464,13 @@ ls "IIS:\AppPools"
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-$acl = Get-Acl "C:\Dnn9"
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">$acl = Get-Acl "C:\Dnn9"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Dnn9" $acl
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl
----</code></pre>
+Set-Acl "C:\Dnn9" $acl</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -551,41 +478,78 @@ Set-Acl "C:\Dnn9" $acl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Get-Acl "C:\Dnn9" | Format-List`
----</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="make-website-folder-shared-for-local-deploy">Make website folder shared for local deploy</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
-Install-WindowsFeature FS-SMB1-SERVER
-#optional: Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
-New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"
----</code></pre>
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">Get-Acl "C:\Dnn9" | Format-List</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Test by trying to connect share by IP (\\192.168.56.101\Dnn9), not hostname!</p>
+<p>== Make website folder shared</p>
+</div>
+<div class="paragraph">
+<p>You will probably need the website folder to be accessible via share,
+so you can setup automatic deployment of build output from IDE into it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">Install-WindowsFeature FS-SMB1-SERVER
+# Optional?
+# Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+
+New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Test by trying to connect share by IP: <code>\\192.168.56.101\Dnn9</code>.</p>
 </div>
-<div class="sect1">
-<h2 id="run-dnn-install">Run DNN install</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>== Run DNN install</p>
+</div>
 <div class="paragraph">
 <p>Access <a href="http://dnn9.local" class="bare">http://dnn9.local</a> from a web browser on host machine and follow instructions!</p>
 </div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Database Setup</dt>
+<dd>
+<p>Custom</p>
+</dd>
+<dt class="hdlist1">Server Name</dt>
+<dd>
+<p>(local)</p>
+</dd>
+<dt class="hdlist1">Database Name</dt>
+<dd>
+<p>Dnn9</p>
+</dd>
+<dt class="hdlist1">Database Username</dt>
+<dd>
+<p>sa</p>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
-<p>Database Setup: Custom
-Server Name: (local)
-Database Name: Dnn9
-Database Username: sa</p>
+<p>== TODO</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Separate initial setup and adding new DNN instances</p>
+</li>
+<li>
+<p>Create separate database owner user for each database</p>
+</li>
+<li>
+<p>Configure firewall to allow external connections to the SQL Server</p>
+</li>
+<li>
+<p>Add some screenshots</p>
+</li>
+<li>
+<p>Further integration (probably out of scope):
+<a href="https://github.com/roman-yagodin/vm-scripts">vm-scripts</a>, <code>/etc/fstab</code> entries for shares, deploy build output to the share, etc.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -659,7 +623,7 @@ Database Username: sa</p>
     
       <ul class="pagination">
       
-        <li class="page-item prev"><a class="page-link" href="/test/2019/12/02/asciidoc-test" title="AsciiDoc test"><i class="fas fa-chevron-left"></i> Previous</a></li>
+        <li class="page-item prev"><a class="page-link" href="/guide/2019/11/12/arcanum-proton" title="Arcanum on Linux with Steam Play Proton"><i class="fas fa-chevron-left"></i> Previous</a></li>
       
         <li><a href="/posts.html" class="page-link">All Posts</a></li>
       
