@@ -265,7 +265,7 @@ Expand-Archive far.zip -DestinationPath .
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Get-WindowsFeature</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-WindowsFeature</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -273,8 +273,8 @@ Expand-Archive far.zip -DestinationPath .
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Install-WindowsFeature Web-Server
-Install-WindowsFeature Web-Asp-Net-45</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Server</span><span class="w">
+</span><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Asp-Net-45</span></code></pre>
 </div>
 </div>
 </div>
@@ -303,8 +303,8 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
-./sqlexpress.exe</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">https://go.microsoft.com/fwlink/</span><span class="nf">?</span><span class="nx">linkid</span><span class="o">=</span><span class="nx">866658</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">sqlexpress.exe</span><span class="w">
+</span><span class="o">.</span><span class="nf">/sqlexpress.exe</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -318,7 +318,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">./SETUP.EXE /UIMODE<span class="o">=</span>EnableUIOnServerCore /Action<span class="o">=</span>Install</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -326,7 +326,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">./SETUP.EXE /Q /Action<span class="o">=</span>Install /SECURITYMODE<span class="o">=</span>SQL /SAPWD<span class="o">=</span><span class="s2">"MyP@</span><span class="nv">$$</span><span class="s2">w0rd"</span> /TCPENABLED<span class="o">=</span>1 /FEATURES<span class="o">=</span>SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
 </div>
 </div>
 </div>
@@ -346,7 +346,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>mkdir C:\Databases</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">mkdir</span><span class="w"> </span><span class="nx">C:\Databases</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -354,16 +354,17 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>$acl = Get-Acl "C:\Databases"
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
-$acl.SetAccessRule($accessRule)
-Set-Acl "C:\Databases" $acl</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nv">$acl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Databases"</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"NT Service\MSSQLSERVER"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+</span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
+</span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Databases"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Create the <code>CreateDnn9Database.sql</code> file somewhere:</p>
 </div>
 <div class="listingblock">
+<div class="title">CreateDnn9Database.sql</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sql"><span class="n">use</span> <span class="n">master</span><span class="p">;</span>
 <span class="k">go</span>
@@ -382,8 +383,8 @@ Set-Acl "C:\Databases" $acl</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Install-Module -Name "SqlServer"
-Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Install-Module</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"SqlServer"</span><span class="w">
+</span><span class="nf">Invoke-SqlCmd</span><span class="w"> </span><span class="nt">-ServerInstance</span><span class="w"> </span><span class="s2">"(local)"</span><span class="w"> </span><span class="nt">-InputFile</span><span class="w"> </span><span class="s2">"CreateDnn9Database.sql"</span></code></pre>
 </div>
 </div>
 </div>
@@ -396,7 +397,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Get-NetFirewallRule | Where Name -like "*ICMP4*"</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-NetFirewallRule</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Where</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">-like</span><span class="w"> </span><span class="s2">"*ICMP4*"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -404,7 +405,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-ICMP4-ERQ-In</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -415,7 +416,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-SMB-In-TCP</span><span class="w">  </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
 </div>
 </div>
 </div>
@@ -425,8 +426,8 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
-Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">dnn9.zip</span><span class="w">
+</span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">dnn9.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
 </div>
 </div>
 </div>
@@ -449,8 +450,8 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Import-Module IISAdministration
-New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">IISAdministration</span><span class="w">
+</span><span class="nf">New-IISSite</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.local</span><span class="w"> </span><span class="nt">-BindingInformation</span><span class="w"> </span><span class="s2">":80:dnn9.local"</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="nt">-PhysicalPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -461,9 +462,9 @@ New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Import-Module WebAdministration
-New-WebAppPool -Name "dnn9.local"
-Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
+</span><span class="nf">New-WebAppPool</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"dnn9.local"</span><span class="w">
+</span><span class="nf">Set-ItemProperty</span><span class="w"> </span><span class="s2">"IIS:\Sites\dnn9.local"</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"applicationPool"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="s2">"dnn9.local"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -471,8 +472,8 @@ Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.lo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Import-Module WebAdministration
-ls "IIS:\AppPools"</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
+</span><span class="nf">ls</span><span class="w"> </span><span class="s2">"IIS:\AppPools"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -492,13 +493,13 @@ ls "IIS:\AppPools"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>$acl = Get-Acl "C:\Dnn9"
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
-$acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
-$acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nv">$acl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS_IUSRS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReadAndExecute"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+</span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
+</span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nv">$acl</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS APPPOOL\dnn9.local"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+</span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
+</span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -506,7 +507,7 @@ Set-Acl "C:\Dnn9" $acl</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Get-Acl "C:\Dnn9" | Format-List</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Format-List</span></code></pre>
 </div>
 </div>
 </div>
@@ -520,11 +521,11 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>Install-WindowsFeature FS-SMB1-SERVER
-# Optional?
-# Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">FS-SMB1-SERVER</span><span class="w">
+</span><span class="c"># Optional?</span><span class="w">
+</span><span class="c"># Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol</span><span class="w">
 
-New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"</code></pre>
+</span><span class="nf">New-SMBShare</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"Dnn9"</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nt">-FullAccess</span><span class="w"> </span><span class="s2">"Administrator"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
