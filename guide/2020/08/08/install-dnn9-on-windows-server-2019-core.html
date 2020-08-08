@@ -212,7 +212,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>192.168.56.101	dnn9.local</code></pre>
+<pre class="pygments highlight"><code><span></span>192.168.56.101	dnn9.local</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -220,7 +220,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>192.168.56.101	dnn9.local
+<pre class="pygments highlight"><code><span></span>192.168.56.101	dnn9.local
 192.168.56.101	dnn9-ru.local</code></pre>
 </div>
 </div>
@@ -237,7 +237,7 @@ or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+<pre class="pygments highlight"><code><span></span>wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
 Expand-Archive far.zip -DestinationPath .
 ./Far30b4455.x64.20151115.msi</code></pre>
 </div>
@@ -265,7 +265,7 @@ Expand-Archive far.zip -DestinationPath .
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Get-WindowsFeature</code></pre>
+<pre class="pygments highlight"><code><span></span>Get-WindowsFeature</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -273,7 +273,7 @@ Expand-Archive far.zip -DestinationPath .
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Install-WindowsFeature Web-Server
+<pre class="pygments highlight"><code><span></span>Install-WindowsFeature Web-Server
 Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 </div>
@@ -303,7 +303,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
+<pre class="pygments highlight"><code><span></span>wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
 ./sqlexpress.exe</code></pre>
 </div>
 </div>
@@ -318,7 +318,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install</code></pre>
+<pre class="pygments highlight"><code><span></span>./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -326,7 +326,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
+<pre class="pygments highlight"><code><span></span>./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD=&quot;MyP@$$w0rd&quot; /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN</code></pre>
 </div>
 </div>
 </div>
@@ -346,7 +346,7 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>mkdir C:\Databases</code></pre>
+<pre class="pygments highlight"><code><span></span>mkdir C:\Databases</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -354,10 +354,10 @@ Install-WindowsFeature Web-Asp-Net-45</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$acl = Get-Acl "C:\Databases"
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("NT Service\MSSQLSERVER", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+<pre class="pygments highlight"><code><span></span>$acl = Get-Acl &quot;C:\Databases&quot;
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(&quot;NT Service\MSSQLSERVER&quot;, &quot;FullControl&quot;, &quot;ContainerInherit,ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Databases" $acl</code></pre>
+Set-Acl &quot;C:\Databases&quot; $acl</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -365,16 +365,16 @@ Set-Acl "C:\Databases" $acl</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">use master;
-go
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-n">use</span> <span class="tok-n">master</span><span class="tok-p">;</span>
+<span class="tok-k">go</span>
 
-create database Dnn9
-  on (name = N'Dnn9', filename = N'C:\Databases\Dnn9.mdf')
-  log on (name = N'Dnn9_log', filename = N'C:\Databases\Dnn9_log.ldf');
-go
+<span class="tok-k">create</span> <span class="tok-k">database</span> <span class="tok-n">Dnn9</span>
+  <span class="tok-k">on</span> <span class="tok-p">(</span><span class="tok-n">name</span> <span class="tok-o">=</span> <span class="tok-n">N</span><span class="tok-s1">&#39;Dnn9&#39;</span><span class="tok-p">,</span> <span class="tok-n">filename</span> <span class="tok-o">=</span> <span class="tok-n">N</span><span class="tok-s1">&#39;C:\Databases\Dnn9.mdf&#39;</span><span class="tok-p">)</span>
+  <span class="tok-n">log</span> <span class="tok-k">on</span> <span class="tok-p">(</span><span class="tok-n">name</span> <span class="tok-o">=</span> <span class="tok-n">N</span><span class="tok-s1">&#39;Dnn9_log&#39;</span><span class="tok-p">,</span> <span class="tok-n">filename</span> <span class="tok-o">=</span> <span class="tok-n">N</span><span class="tok-s1">&#39;C:\Databases\Dnn9_log.ldf&#39;</span><span class="tok-p">);</span>
+<span class="tok-k">go</span>
 
-alter authorization on database::Dnn9 to sa
-go</code></pre>
+<span class="tok-k">alter</span> <span class="tok-k">authorization</span> <span class="tok-k">on</span> <span class="tok-k">database</span><span class="tok-p">::</span><span class="tok-n">Dnn9</span> <span class="tok-k">to</span> <span class="tok-n">sa</span>
+<span class="tok-k">go</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -382,8 +382,8 @@ go</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Install-Module -Name "SqlServer"
-Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</code></pre>
+<pre class="pygments highlight"><code><span></span>Install-Module -Name &quot;SqlServer&quot;
+Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Database.sql&quot;</code></pre>
 </div>
 </div>
 </div>
@@ -396,7 +396,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Get-NetFirewallRule | Where Name -like "*ICMP4*"</code></pre>
+<pre class="pygments highlight"><code><span></span>Get-NetFirewallRule | Where Name -like &quot;*ICMP4*&quot;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -404,7 +404,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow</code></pre>
+<pre class="pygments highlight"><code><span></span>Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -415,7 +415,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow</code></pre>
+<pre class="pygments highlight"><code><span></span>Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow</code></pre>
 </div>
 </div>
 </div>
@@ -425,7 +425,7 @@ Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"</cod
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
+<pre class="pygments highlight"><code><span></span>wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
 Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</code></pre>
 </div>
 </div>
@@ -449,8 +449,8 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Import-Module IISAdministration
-New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9</code></pre>
+<pre class="pygments highlight"><code><span></span>Import-Module IISAdministration
+New-IISSite -Name dnn9.local -BindingInformation &quot;:80:dnn9.local&quot; -Protocol http -PhysicalPath C:\Dnn9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -461,9 +461,9 @@ New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Import-Module WebAdministration
-New-WebAppPool -Name "dnn9.local"
-Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"</code></pre>
+<pre class="pygments highlight"><code><span></span>Import-Module WebAdministration
+New-WebAppPool -Name &quot;dnn9.local&quot;
+Set-ItemProperty &quot;IIS:\Sites\dnn9.local&quot; -Name &quot;applicationPool&quot; -Value &quot;dnn9.local&quot;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -471,8 +471,8 @@ Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.lo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Import-Module WebAdministration
-ls "IIS:\AppPools"</code></pre>
+<pre class="pygments highlight"><code><span></span>Import-Module WebAdministration
+ls &quot;IIS:\AppPools&quot;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -492,13 +492,13 @@ ls "IIS:\AppPools"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$acl = Get-Acl "C:\Dnn9"
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
+<pre class="pygments highlight"><code><span></span>$acl = Get-Acl &quot;C:\Dnn9&quot;
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(&quot;IIS_IUSRS&quot;, &quot;ReadAndExecute&quot;, &quot;ContainerInherit,ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+Set-Acl &quot;C:\Dnn9&quot; $acl
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(&quot;IIS APPPOOL\dnn9.local&quot;, &quot;FullControl&quot;, &quot;ContainerInherit,ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl</code></pre>
+Set-Acl &quot;C:\Dnn9&quot; $acl</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -506,7 +506,7 @@ Set-Acl "C:\Dnn9" $acl</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Get-Acl "C:\Dnn9" | Format-List</code></pre>
+<pre class="pygments highlight"><code><span></span>Get-Acl &quot;C:\Dnn9&quot; | Format-List</code></pre>
 </div>
 </div>
 </div>
@@ -520,11 +520,11 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>Install-WindowsFeature FS-SMB1-SERVER
+<pre class="pygments highlight"><code><span></span>Install-WindowsFeature FS-SMB1-SERVER
 # Optional?
 # Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
 
-New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"</code></pre>
+New-SMBShare -Name &quot;Dnn9&quot; -Path &quot;C:\Dnn9&quot; -FullAccess &quot;Administrator&quot;</code></pre>
 </div>
 </div>
 <div class="paragraph">
