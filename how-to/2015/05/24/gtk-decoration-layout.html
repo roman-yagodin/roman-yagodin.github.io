@@ -198,15 +198,15 @@ Many great GNOME 3 applications are used widely across various desktop environme
 
 <h2 id="facts">Facts</h2>
 
-<p>Since GTK+ 3.10, GtkHeaderBar widgets use <code class="highlighter-rouge">gtk-decoration-layout</code> setting value
+<p>Since GTK+ 3.10, GtkHeaderBar widgets use <code class="language-plaintext highlighter-rouge">gtk-decoration-layout</code> setting value
 to display window control buttons in the right place &amp; order. Default value is
-<code class="highlighter-rouge">menu:maximize,minimize,close</code> (format is the same as for window manager buttons layout).</p>
+<code class="language-plaintext highlighter-rouge">menu:maximize,minimize,close</code> (format is the same as for window manager buttons layout).</p>
 
 <h2 id="solution-for-cinnamon">Solution for Cinnamon</h2>
 
-<p><em>Cinnamon</em> provide a way to override default <code class="highlighter-rouge">gtk-decoration-layout</code> setting value via <code class="highlighter-rouge">dconf</code> key <code class="highlighter-rouge">gtk-decoration-layout</code> in the  <code class="highlighter-rouge">org.cinnamon.desktop.interface</code> section.</p>
+<p><em>Cinnamon</em> provide a way to override default <code class="language-plaintext highlighter-rouge">gtk-decoration-layout</code> setting value via <code class="language-plaintext highlighter-rouge">dconf</code> key <code class="language-plaintext highlighter-rouge">gtk-decoration-layout</code> in the  <code class="language-plaintext highlighter-rouge">org.cinnamon.desktop.interface</code> section.</p>
 
-<p>Let’s set close button + menu to the left, and minimize button to the right. You could use <code class="highlighter-rouge">dconf-editor</code> to change setting value from GUI. From command-line, it should be like this:</p>
+<p>Let’s set close button + menu to the left, and minimize button to the right. You could use <code class="language-plaintext highlighter-rouge">dconf-editor</code> to change setting value from GUI. From command-line, it should be like this:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">gsettings <span class="nb">set </span>org.cinnamon.desktop.interface gtk-decoration-layout <span class="s1">'close,menu:minimize'</span></code></pre></figure>
 
@@ -214,14 +214,14 @@ to display window control buttons in the right place &amp; order. Default value 
 
 <h2 id="more-common-way">More common way</h2>
 
-<p>For desktop environments, which don’t override <code class="highlighter-rouge">gtk-decoration-layout</code> setting, just change (or define) it in <code class="highlighter-rouge">~/.config/gtk-3.0/setting.ini</code> like this:</p>
+<p>For desktop environments, which don’t override <code class="language-plaintext highlighter-rouge">gtk-decoration-layout</code> setting, just change (or define) it in <code class="language-plaintext highlighter-rouge">~/.config/gtk-3.0/setting.ini</code> like this:</p>
 
 <figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[Settings]</span>
 <span class="py">gtk-theme-name</span><span class="p">=</span><span class="s">Adwaita</span>
 <span class="err">...</span>
 <span class="py">gtk-decoration-layout</span><span class="p">=</span><span class="s">close,menu:minimize</span></code></pre></figure>
 
-<p>Session restart would be needed to apply changes. Also, if there are no <code class="highlighter-rouge">settings.ini</code> file, just create new one and add <code class="highlighter-rouge">[Settings]</code> line.</p>
+<p>Session restart would be needed to apply changes. Also, if there are no <code class="language-plaintext highlighter-rouge">settings.ini</code> file, just create new one and add <code class="language-plaintext highlighter-rouge">[Settings]</code> line.</p>
 
 <h2 id="results">Results</h2>
 
@@ -355,7 +355,7 @@ to display window control buttons in the right place &amp; order. Default value 
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

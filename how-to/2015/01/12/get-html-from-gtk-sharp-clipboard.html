@@ -196,16 +196,16 @@ Developing a cross-platform application would never be easy job, but I consider 
 
 <h2 id="problem">Problem</h2>
 
-<p>GTK# documentation and examples do not provide excessive information about using <code class="highlighter-rouge">Gtk.Clipboard</code> object to get various types of content. To get text from clipboard, the <code class="highlighter-rouge">Gtk.Clipboard.WaitForText()</code> method could be used, but how to get, by example, HTML table from LibreOffice Writer document or formatted text from webpage?</p>
+<p>GTK# documentation and examples do not provide excessive information about using <code class="language-plaintext highlighter-rouge">Gtk.Clipboard</code> object to get various types of content. To get text from clipboard, the <code class="language-plaintext highlighter-rouge">Gtk.Clipboard.WaitForText()</code> method could be used, but how to get, by example, HTML table from LibreOffice Writer document or formatted text from webpage?</p>
 
 <h2 id="solution">Solution</h2>
 
 <p>In this solution we:</p>
 
 <ol>
-  <li>Create target using <code class="highlighter-rouge">Gdk.Atom.Intern()</code> method, passing MIME type string <code class="highlighter-rouge">text/html</code> to it.</li>
-  <li>Get selection object by using <code class="highlighter-rouge">Gtk.Clipboard.WaitForContents()</code> method for created target.</li>
-  <li>If the selection is not null, then it’s <code class="highlighter-rouge">Data</code> property generally contains UTF-8 encoded string with HTML markup.</li>
+  <li>Create target using <code class="language-plaintext highlighter-rouge">Gdk.Atom.Intern()</code> method, passing MIME type string <code class="language-plaintext highlighter-rouge">text/html</code> to it.</li>
+  <li>Get selection object by using <code class="language-plaintext highlighter-rouge">Gtk.Clipboard.WaitForContents()</code> method for created target.</li>
+  <li>If the selection is not null, then it’s <code class="language-plaintext highlighter-rouge">Data</code> property generally contains UTF-8 encoded string with HTML markup.</li>
 </ol>
 
 <figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="c1">// create clipboard object</span>
@@ -229,7 +229,7 @@ Developing a cross-platform application would never be easy job, but I consider 
 
 <p>The solution is currently tested only on Linux with Mono 3.10.</p>
 
-<p>Note, that <code class="highlighter-rouge">Gtk.Clipboard.WaitForTargets()</code> method in the GTK# 2.12 seems to have broken interface. It defined as <code class="highlighter-rouge">bool WaitForTargets (Gdk.Atom targets, out int n_targets)</code>, but should be something like <code class="highlighter-rouge">bool WaitForTargets (Gdk.Atom [] targets, out int n_targets)</code> to return array of available targets. As a result, we can’t see what targets are available in the clipboard, but only a number of them:</p>
+<p>Note, that <code class="language-plaintext highlighter-rouge">Gtk.Clipboard.WaitForTargets()</code> method in the GTK# 2.12 seems to have broken interface. It defined as <code class="language-plaintext highlighter-rouge">bool WaitForTargets (Gdk.Atom targets, out int n_targets)</code>, but should be something like <code class="language-plaintext highlighter-rouge">bool WaitForTargets (Gdk.Atom [] targets, out int n_targets)</code> to return array of available targets. As a result, we can’t see what targets are available in the clipboard, but only a number of them:</p>
 
 <figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="c1">// create clipboard object</span>
 <span class="kt">var</span> <span class="n">clipboard</span> <span class="p">=</span> <span class="n">Gtk</span><span class="p">.</span><span class="n">Clipboard</span><span class="p">.</span><span class="nf">Get</span> <span class="p">(</span><span class="n">Gdk</span><span class="p">.</span><span class="n">Atom</span><span class="p">.</span><span class="nf">Intern</span> <span class="p">(</span><span class="s">"CLIPBOARD"</span><span class="p">,</span> <span class="k">true</span><span class="p">));</span>
@@ -250,7 +250,7 @@ Developing a cross-platform application would never be easy job, but I consider 
 
 <ul>
   <li>Primary: the selection data encoding seems to not always UTF-8, so we need a way to determine the encoding.</li>
-  <li>Which other common MIME types are supported by <code class="highlighter-rouge">Gtk.Clipboard</code>?</li>
+  <li>Which other common MIME types are supported by <code class="language-plaintext highlighter-rouge">Gtk.Clipboard</code>?</li>
   <li>How this code will behave on the different platforms?</li>
 </ul>
 
@@ -377,7 +377,7 @@ Developing a cross-platform application would never be easy job, but I consider 
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

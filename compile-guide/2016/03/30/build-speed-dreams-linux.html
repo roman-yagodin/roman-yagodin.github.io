@@ -201,14 +201,14 @@ Speed Dreams is a 3D cross-platform, open source motorsport simulation and racin
 <p>These are files you will need (version and revision numbers may differ):</p>
 
 <ul>
-  <li><code class="highlighter-rouge">speed-dreams-src-base-2.2.0-r6381.tar.xz</code> - core components of the game;</li>
-  <li><code class="highlighter-rouge">speed-dreams-src-hq-cars-and-tracks-2.2.0-r6381.tar.xz</code> - LS-GT1 and 36GP cars and AI drivers, HQ tracks;</li>
-  <li><code class="highlighter-rouge">speed-dreams-src-more-hq-cars-and-tracks-2.2.0-r6381.tar.xz</code> - TRB1 cars and AI drivers, more HQ tracks, and the Career mode;</li>
-  <li><code class="highlighter-rouge">speed-dreams-src-wip-cars-and-tracks-2.2.0-r6381.tar.xz</code> - work-in-progress MP5, LS-GT2 and RS cars and AI drivers, and many other tracks;</li>
-  <li><code class="highlighter-rouge">speed-dreams-src-unmaintained-2.2.0-r6381.tar.xz</code> - unmaintained Simu V2.1 engine and maybe something else, but do you really need this?</li>
+  <li><code class="language-plaintext highlighter-rouge">speed-dreams-src-base-2.2.0-r6381.tar.xz</code> - core components of the game;</li>
+  <li><code class="language-plaintext highlighter-rouge">speed-dreams-src-hq-cars-and-tracks-2.2.0-r6381.tar.xz</code> - LS-GT1 and 36GP cars and AI drivers, HQ tracks;</li>
+  <li><code class="language-plaintext highlighter-rouge">speed-dreams-src-more-hq-cars-and-tracks-2.2.0-r6381.tar.xz</code> - TRB1 cars and AI drivers, more HQ tracks, and the Career mode;</li>
+  <li><code class="language-plaintext highlighter-rouge">speed-dreams-src-wip-cars-and-tracks-2.2.0-r6381.tar.xz</code> - work-in-progress MP5, LS-GT2 and RS cars and AI drivers, and many other tracks;</li>
+  <li><code class="language-plaintext highlighter-rouge">speed-dreams-src-unmaintained-2.2.0-r6381.tar.xz</code> - unmaintained Simu V2.1 engine and maybe something else, but do you really need this?</li>
 </ul>
 
-<p>Unpack <code class="highlighter-rouge">base</code> tarball first, then <code class="highlighter-rouge">hq-cars-and-tracks</code>, then <code class="highlighter-rouge">more-hq-cars-and-tracks</code>, etc. Choose to rewrite files / folders in the case of conflicts.</p>
+<p>Unpack <code class="language-plaintext highlighter-rouge">base</code> tarball first, then <code class="language-plaintext highlighter-rouge">hq-cars-and-tracks</code>, then <code class="language-plaintext highlighter-rouge">more-hq-cars-and-tracks</code>, etc. Choose to rewrite files / folders in the case of conflicts.</p>
 
 <h2 id="step-2-install-development-libraries">Step 2: Install development libraries</h2>
 
@@ -227,34 +227,34 @@ libplib-dev <span class="se">\</span>
 libopenscenegraph-dev <span class="se">\</span>
 libsdl2-dev</code></pre></figure>
 
-<p>For other GNU/Linux distributions, consult with <em>Pre-requisites</em> section of <code class="highlighter-rouge">INSTALL.txt</code> file in the source folder.</p>
+<p>For other GNU/Linux distributions, consult with <em>Pre-requisites</em> section of <code class="language-plaintext highlighter-rouge">INSTALL.txt</code> file in the source folder.</p>
 
 <p>Note that the <em>OpenSceneGraph</em> and <em>SDL 2</em> dependencies were introduced in the <em>Speed Dreams</em> 2.2.0. You don’t need them for 2.1.0 version.</p>
 
 <h2 id="step-3-configure--build">Step 3: Configure &amp; build</h2>
 
-<p>Third step - create <code class="highlighter-rouge">build</code> subfolder <strong>inside</strong> the source folder, where you have extracted source tarballs. From this folder you need to invoke <code class="highlighter-rouge">cmake</code> with some options (see below).</p>
+<p>Third step - create <code class="language-plaintext highlighter-rouge">build</code> subfolder <strong>inside</strong> the source folder, where you have extracted source tarballs. From this folder you need to invoke <code class="language-plaintext highlighter-rouge">cmake</code> with some options (see below).</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">mkdir </span>build
 <span class="nb">cd </span>build
 cmake <span class="nt">-D</span> OPTION_OFFICIAL_ONLY:BOOL<span class="o">=</span>ON <span class="nt">-D</span> <span class="nv">PLIB_INCLUDE_DIR</span><span class="o">=</span><span class="s2">"/usr/include/plib"</span> ..</code></pre></figure>
 
-<p>This will configure source, and if something required is missing you will see an error message. This generally means that you should install some missing dependencies (additional development libraries). In case of other problems, it’s time to read the manual - see <code class="highlighter-rouge">INSTALL.txt</code> file in the source folder.</p>
+<p>This will configure source, and if something required is missing you will see an error message. This generally means that you should install some missing dependencies (additional development libraries). In case of other problems, it’s time to read the manual - see <code class="language-plaintext highlighter-rouge">INSTALL.txt</code> file in the source folder.</p>
 
-<p>If <code class="highlighter-rouge">cmake</code> finish without errors, it’s time to perform build and install:</p>
+<p>If <code class="language-plaintext highlighter-rouge">cmake</code> finish without errors, it’s time to perform build and install:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">make
 <span class="nb">sudo </span>make <span class="nb">install</span></code></pre></figure>
 
-<p>This will install main executable to the <code class="highlighter-rouge">/usr/local/games/speed-dreams-2</code> and data files to the <code class="highlighter-rouge">/usr/local/share/games/speed-dreams-2</code>, so the game will be available system-wide.</p>
+<p>This will install main executable to the <code class="language-plaintext highlighter-rouge">/usr/local/games/speed-dreams-2</code> and data files to the <code class="language-plaintext highlighter-rouge">/usr/local/share/games/speed-dreams-2</code>, so the game will be available system-wide.</p>
 
 <h2 id="step-4-create-game-shortcut">Step 4: Create game shortcut</h2>
 
-<p>Note that <em>Speed Dreams</em> install won’t create a shortcut (<em>FreeDesktop.org</em> <code class="highlighter-rouge">.desktop</code> file) anywhere. So now it’s your move to create one!</p>
+<p>Note that <em>Speed Dreams</em> install won’t create a shortcut (<em>FreeDesktop.org</em> <code class="language-plaintext highlighter-rouge">.desktop</code> file) anywhere. So now it’s your move to create one!</p>
 
 <p>You generally would like to add shortcut with an icon. The source does not provide us with one, so let’s search over the Internet. I’ve got one from <a href="https://commons.wikimedia.org/wiki/File:Speed_Dreams_Icon.svg">Wikipedia</a>.</p>
 
-<p>When you got the icon, copy it to <code class="highlighter-rouge">/usr/share/pixmaps/speed-dreams.svg</code>. Then create <code class="highlighter-rouge">speed-dreams-2.desktop</code> text file (see content below), copy it to <code class="highlighter-rouge">/usr/local/share/applications</code> folder and set executable flag (may or may not be required). These operations should require root access.</p>
+<p>When you got the icon, copy it to <code class="language-plaintext highlighter-rouge">/usr/share/pixmaps/speed-dreams.svg</code>. Then create <code class="language-plaintext highlighter-rouge">speed-dreams-2.desktop</code> text file (see content below), copy it to <code class="language-plaintext highlighter-rouge">/usr/local/share/applications</code> folder and set executable flag (may or may not be required). These operations should require root access.</p>
 
 <figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[Desktop Entry]</span>
 <span class="py">Encoding</span><span class="p">=</span><span class="s">UTF-8</span>
@@ -276,7 +276,7 @@ cmake <span class="nt">-D</span> OPTION_OFFICIAL_ONLY:BOOL<span class="o">=</spa
 
 <p>In order to safely upgrade your <em>Speed Dreams</em> installation to new version, you should uninstall old one first.</p>
 
-<p>To do so, go to the <code class="highlighter-rouge">build</code> subfolder you’ve created inside the source folder, and invoke <code class="highlighter-rouge">sudo make uninstall</code>.
+<p>To do so, go to the <code class="language-plaintext highlighter-rouge">build</code> subfolder you’ve created inside the source folder, and invoke <code class="language-plaintext highlighter-rouge">sudo make uninstall</code>.
 Then you can safely clear source folder, get &amp; unpack source packages, configure and build.</p>
 
 <h2 id="links">Links</h2>
@@ -415,7 +415,7 @@ Then you can safely clear source folder, get &amp; unpack source packages, confi
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

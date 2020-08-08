@@ -232,14 +232,14 @@ One of great things about Linux desktops is ability to customize window title bu
 <h2 id="setting-up">Setting up</h2>
 
 <p>Buttons layout and some other WM options are stored in the <em>dconf</em> keys. For <em>Cinnamon’s muffin</em>, we should
-change value of the key <code class="highlighter-rouge">org.cinnamon.desktop.wm.preferences.button-layout</code> or the key <code class="highlighter-rouge">org.cinnamon.muffin.button-layout</code>
+change value of the key <code class="language-plaintext highlighter-rouge">org.cinnamon.desktop.wm.preferences.button-layout</code> or the key <code class="language-plaintext highlighter-rouge">org.cinnamon.muffin.button-layout</code>
 to override value of the first key.</p>
 
 <p>Some other desktops:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">org.gnome.shell.overrides.button-layout</code> - for <em>GNOME 3</em></li>
-  <li><code class="highlighter-rouge">org.gnome.desktop.wm.preferences.button-layout</code> - said to work in <em>GNOME Flashback / Classic</em></li>
+  <li><code class="language-plaintext highlighter-rouge">org.gnome.shell.overrides.button-layout</code> - for <em>GNOME 3</em></li>
+  <li><code class="language-plaintext highlighter-rouge">org.gnome.desktop.wm.preferences.button-layout</code> - said to work in <em>GNOME Flashback / Classic</em></li>
 </ul>
 
 <p>Here are list of button names:</p>
@@ -254,15 +254,15 @@ to override value of the first key.</p>
 </ul>
 
 <p>Note what standard <em>Cinnamon</em> window settings do not have ability to add some buttons, like <strong>above</strong>, <del><strong>shade</strong></del> (present since 2.4) and also <strong>spacer</strong> -
-so we should use <code class="highlighter-rouge">dconf-editor</code> for GUI or <code class="highlighter-rouge">gsettings set</code> command in the terminal to get things done.</p>
+so we should use <code class="language-plaintext highlighter-rouge">dconf-editor</code> for GUI or <code class="language-plaintext highlighter-rouge">gsettings set</code> command in the terminal to get things done.</p>
 
 <p><img src="/assets/images/muffin-window-buttons-layout_04.png" alt="Editing muffin buttons layout in Cinnamon windows settings" class="img-fluid" /></p>
 
 <h2 id="examples">Examples</h2>
 
-<p>Value of <code class="highlighter-rouge">button-layout</code> key is a comma-separated list of button names, like <code class="highlighter-rouge">close:shade,minimize</code>. Colon (:) is used to distinguish left and right side.</p>
+<p>Value of <code class="language-plaintext highlighter-rouge">button-layout</code> key is a comma-separated list of button names, like <code class="language-plaintext highlighter-rouge">close:shade,minimize</code>. Colon (:) is used to distinguish left and right side.</p>
 
-<p>Format of <code class="highlighter-rouge">gsettings</code> command:</p>
+<p>Format of <code class="language-plaintext highlighter-rouge">gsettings</code> command:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">gsettings <span class="nb">set</span> &lt;key&gt; button-layout &lt;value&gt;</code></pre></figure>
 
@@ -412,7 +412,7 @@ about which button layouts you are using and what theme or WM issues you have en
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

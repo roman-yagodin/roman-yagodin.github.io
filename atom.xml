@@ -4,13 +4,422 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2019-12-02T11:07:04+00:00</updated>
+ <updated>2020-08-08T11:08:05+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
    <email>roman-yagodin@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Install DNN 9 on Windows Server 2019 Core</title>
+   <link href="http://roman-yagodin.github.io/guide/2020/08/08/install-dnn9-on-windows-server-2019-core"/>
+   <updated>2020-08-08T00:00:00+00:00</updated>
+   <id>http://roman-yagodin.github.io/guide/2020/08/08/install-dnn9-on-windows-server-2019-core</id>
+   <content type="html">&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM, primarily for development purposes.
+It was tested on DNN 8.0.4, DNN 9.6.2. Some things are still missing or not have detailed descriptions,
+but still it will be very usefull if you are new to the Windows Server Core administration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;setup-virtualbox-vm&quot;&gt;Setup VirtualBox VM&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Install Windows Server 2019 x64 Core on e.g. VirtualBox (this is out of scope of this post),
+using 32 GB dynamic VDI disk, 1 GB of RAM and UEFI. You can tweak RAM size and even shrink out virtual disk later.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You will need to configure host-only network interface.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Assuming host-only interface lease IP addresses via DHCP starting with 192.168.56.101, you should add the following line to &lt;code&gt;/etc/hosts&lt;/code&gt; (Linux)
+or &lt;code&gt;C:\Windows\System32\drivers\etc\hosts&lt;/code&gt; (Windows):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+192.168.56.101	dnn9.local
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you&amp;#8217;ll need multilanguage website (good for development), it is advisable to have separate aliases for different languages:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+192.168.56.101	dnn9.local
+192.168.56.101	dnn9-ru.local
+--&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;tip-multiple-console-windows-inside-server-core&quot;&gt;Tip: Multiple console windows inside Server Core:&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;[Ctrl+Alt+Del] &amp;#8594; Task Manager &amp;#8594; File/Run new task &amp;#8594; cmd/powershell&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;install-iis&quot;&gt;Install IIS&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;List of installed features:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Get-WindowsFeature
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Install IIS and ASP.NET:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Install-WindowsFeature Web-Server
+Install-WindowsFeature Web-Asp-Net-45
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;install-far-file-manager&quot;&gt;Install Far file manager&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+Expand-Archive far.zip -DestinationPath .
+./far-???.msi
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You probably want to add far command to the PATH.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows&quot; class=&quot;bare&quot;&gt;https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Most simple way is to use regedit. User variables are at &lt;code&gt;HKCU\Environment&lt;/code&gt;, system variables are at &lt;code&gt;HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;install-sql-server-expressdeveloper&quot;&gt;Install SQL Server Express/Developer&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017&quot; class=&quot;bare&quot;&gt;https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://anikinsv.blogspot.com/2018/08/ms-sql.html&quot; class=&quot;bare&quot;&gt;https://anikinsv.blogspot.com/2018/08/ms-sql.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://system-administrators.info/?p=6506&quot; class=&quot;bare&quot;&gt;https://system-administrators.info/?p=6506&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/&quot; class=&quot;bare&quot;&gt;https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Get the SQL Express 2019 downloader:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Run ./sqlexpress.exe - can proceed with GUI from now to download real installer.
+After that, find and run SETUP.EXE - this will require some command-line switches.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;GUI wizard:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Command-line:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD=&quot;MyP@$$w0rd&quot; /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;create-new-empty-database-and-the-database-owner-user&quot;&gt;Create new (empty) database and the database owner user:&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/&quot; class=&quot;bare&quot;&gt;https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Create folder to store databases:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+mkdir C:\Databases
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Configure permissions (see below) for &quot;NT Service\MSSQLSERVER&quot;, &quot;FullControl&quot;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;TODO: Create separate database owner user, not use sa!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Create the &lt;code&gt;CreateDnn9Database.sql&lt;/code&gt; file somewhere:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;---
+use master;
+go&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;create database Dnn9
+  on (name = N&amp;#8217;Dnn9', filename = N&amp;#8217;C:\Databases\Dnn9.mdf')
+  log on (name = N&amp;#8217;Dnn9_log', filename = N&amp;#8217;C:\Databases\Dnn9_log.ldf');
+go&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;alter authorization on database::Dnn9 to sa
+go
+---&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Install-Module -Name &quot;SqlServer&quot;
+Invoke-SqlCmd -ServerInstance &quot;(local)&quot; -InputFile &quot;CreateDnn9Database.sql&quot;
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;configure-firewall&quot;&gt;Configure firewall&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Get rules:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Get-NetFirewallRule | Where Name -like &quot;*ICMP4*&quot;
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Allow ping:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Allow external connections to IIS via HTTP (80): this is done by default by adding webserver role, rule names: IIS-WebServerRole-HTTP-In-TCP and IIS-WebServerRole-HTTPS-In-TCP.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Allow inbound SMB for shared folders:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;TODO: Optionally, allow external connections to the SQL Server (to use later with e.g. DBeaver):&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;download-and-unpack-dnn&quot;&gt;Download and unpack DNN&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
+Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;add-site-and-app-pool-to-iis&quot;&gt;Add site and app pool to IIS&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap&quot; class=&quot;bare&quot;&gt;https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://octopus.com/blog/iis-powershell&quot; class=&quot;bare&quot;&gt;https://octopus.com/blog/iis-powershell&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps&quot; class=&quot;bare&quot;&gt;https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Semo-old way:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Import-Module WebAdministration
+cd IIS:\
+ls
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;New way:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Import-Module IISAdministration
+New-IISSite -Name dnn9.local -BindingInformation &quot;:80:dnn9.local&quot; -Protocol http -PhysicalPath C:\Dnn9
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;But this will not create the &quot;dnn9.local&quot; app pool!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Create new AppPool and bind to the website:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Import-Module WebAdministration
+New-WebAppPool -Name &quot;dnn9.local&quot;
+Set-ItemProperty &quot;IIS:\Sites\dnn9.local&quot; -Name &quot;applicationPool&quot; -Value &quot;dnn9.local&quot;
+--&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Check:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+ls &quot;IIS:\AppPools&quot;
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;configure-fs-permissions&quot;&gt;Configure FS permissions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422&quot; class=&quot;bare&quot;&gt;https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+$acl = Get-Acl &quot;C:\Dnn9&quot;
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(&quot;IIS_IUSRS&quot;, &quot;ReadAndExecute&quot;, &quot;ContainerInherit,ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)
+$acl.SetAccessRule($accessRule)
+Set-Acl &quot;C:\Dnn9&quot; $acl
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule(&quot;IIS APPPOOL\dnn9.local&quot;, &quot;FullControl&quot;, &quot;ContainerInherit,ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;)
+$acl.SetAccessRule($accessRule)
+Set-Acl &quot;C:\Dnn9&quot; $acl
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Check:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Get-Acl &quot;C:\Dnn9&quot; | Format-List`
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;make-website-folder-shared-for-local-deploy&quot;&gt;Make website folder shared for local deploy&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-powershell&quot; data-lang=&quot;powershell&quot;&gt;---
+Install-WindowsFeature FS-SMB1-SERVER
+#optional: Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+New-SMBShare -Name &quot;Dnn9&quot; -Path &quot;C:\Dnn9&quot; -FullAccess &quot;Administrator&quot;
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Test by trying to connect share by IP (\\192.168.56.101\Dnn9), not hostname!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;run-dnn-install&quot;&gt;Run DNN install&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Access &lt;a href=&quot;http://dnn9.local&quot; class=&quot;bare&quot;&gt;http://dnn9.local&lt;/a&gt; from a web browser on host machine and follow instructions!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Database Setup: Custom
+Server Name: (local)
+Database Name: Dnn9
+Database Username: sa&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>AsciiDoc test</title>
@@ -75,10 +484,10 @@
 
 &lt;p&gt;After that, you can install the game by just clicking &lt;em&gt;Install&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;After installing, run game once - just to create &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.local/share/Steam/steamapps/compatdata/500810&lt;/code&gt; directory.
+&lt;p&gt;After installing, run game once - just to create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.local/share/Steam/steamapps/compatdata/500810&lt;/code&gt; directory.
 It will take some time, as Steam will need to download &lt;em&gt;Proton&lt;/em&gt; and create wineprefix for the game.&lt;/p&gt;
 
-&lt;p&gt;Add symlink to the game install directory and place it inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c&lt;/code&gt; directory:&lt;/p&gt;
+&lt;p&gt;Add symlink to the game install directory and place it inside the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c&lt;/code&gt; directory:&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.local/share/Steam/steamapps/common/Arcanum&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c/Arcanum&quot;&lt;/span&gt;
@@ -91,9 +500,9 @@ If you know something about it, please drop a comment.&lt;/p&gt;
 
 &lt;h3 id=&quot;wine-way&quot;&gt;Wine way&lt;/h3&gt;
 
-&lt;p&gt;&lt;em&gt;wineconsole&lt;/em&gt; is the &lt;em&gt;Wine&lt;/em&gt; console manager, used to run console commands and applications. We will need it to run &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd.exe&lt;/code&gt; shell in order to run some commands to setup the game.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;wineconsole&lt;/em&gt; is the &lt;em&gt;Wine&lt;/em&gt; console manager, used to run console commands and applications. We will need it to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd.exe&lt;/code&gt; shell in order to run some commands to setup the game.&lt;/p&gt;
 
-&lt;p&gt;Execute in the terminal emulator (replace &lt;code class=&quot;highlighter-rouge&quot;&gt;Proton 4.11&lt;/code&gt; with actual &lt;em&gt;Proton&lt;/em&gt; version):&lt;/p&gt;
+&lt;p&gt;Execute in the terminal emulator (replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Proton 4.11&lt;/code&gt; with actual &lt;em&gt;Proton&lt;/em&gt; version):&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;WINEPREFIX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.steam/steam/steamapps/compatdata/500810/pfx&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   &lt;span class=&quot;nv&quot;&gt;WINEPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/.local/share/Steam/steamapps/common/Proton 4.11/dist/bin/wine&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
@@ -108,14 +517,14 @@ If you know something about it, please drop a comment.&lt;/p&gt;
 
 &lt;h3 id=&quot;sierralauncher-way&quot;&gt;SierraLauncher way&lt;/h3&gt;
 
-&lt;p&gt;Backup &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;original_SierraLauncher.ini&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Backup &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;original_SierraLauncher.ini&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd.bat&lt;/code&gt; file with following content:&lt;/p&gt;
+&lt;p&gt;Create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd.bat&lt;/code&gt; file with following content:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cmd.exe
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cmd.exe
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Modify &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[Launcher]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Arcanum&lt;/span&gt;
@@ -129,9 +538,9 @@ If you know something about it, please drop a comment.&lt;/p&gt;
 &lt;span class=&quot;py&quot;&gt;Game1Cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Now run the game - it will start &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.exe&lt;/code&gt;, but then you click &lt;em&gt;Launch&lt;/em&gt;, it will open &lt;em&gt;wineconsole&lt;/em&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd.exe&lt;/code&gt;) window instead.&lt;/p&gt;
+&lt;p&gt;Now run the game - it will start &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SierraLauncher.exe&lt;/code&gt;, but then you click &lt;em&gt;Launch&lt;/em&gt;, it will open &lt;em&gt;wineconsole&lt;/em&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd.exe&lt;/code&gt;) window instead.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Optionally you can create a &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd_SierraLauncher.ini&lt;/code&gt; file and make &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; the symlink to it. This way you can switch between two &lt;code class=&quot;highlighter-rouge&quot;&gt;.ini&lt;/code&gt; versions without copying files.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Optionally you can create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd_SierraLauncher.ini&lt;/code&gt; file and make &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; the symlink to it. This way you can switch between two &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.ini&lt;/code&gt; versions without copying files.&lt;/p&gt;
 
 &lt;h2 id=&quot;install-unofficial-arcanum-patch&quot;&gt;Install Unofficial Arcanum Patch&lt;/h2&gt;
 
@@ -141,7 +550,7 @@ If you know something about it, please drop a comment.&lt;/p&gt;
 
 &lt;p&gt;Run &lt;em&gt;wineconsole&lt;/em&gt;, type some commands:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
 cd Arcanum
 UAP1.5.1.exe
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -160,9 +569,9 @@ UAP1.5.1.exe
 
 &lt;h2 id=&quot;apply-highres-patch&quot;&gt;Apply HighRes patch&lt;/h2&gt;
 
-&lt;p&gt;Then you install &lt;em&gt;Unofficial patch&lt;/em&gt;, the &lt;em&gt;HighRes&lt;/em&gt; patch will be installed into &lt;code class=&quot;highlighter-rouge&quot;&gt;Arcanum/HighRes&lt;/code&gt; directory, but not applied, as it will require some additional configuration. Let’s do it.&lt;/p&gt;
+&lt;p&gt;Then you install &lt;em&gt;Unofficial patch&lt;/em&gt;, the &lt;em&gt;HighRes&lt;/em&gt; patch will be installed into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Arcanum/HighRes&lt;/code&gt; directory, but not applied, as it will require some additional configuration. Let’s do it.&lt;/p&gt;
 
-&lt;p&gt;Open &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt; and modify it as you like:&lt;/p&gt;
+&lt;p&gt;Open &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ini&lt;/code&gt; and modify it as you like:&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;py&quot;&gt;Width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1920 // original: 800&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;Height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1080 // original: 600&lt;/span&gt;
@@ -173,7 +582,7 @@ UAP1.5.1.exe
 
 &lt;p&gt;Install patch. Open &lt;em&gt;wineconsole&lt;/em&gt; again,  type:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
 cd Arcanum\Arcanum\HighRes
 _install.bat
 exit
@@ -185,7 +594,7 @@ exit
 
 &lt;h2 id=&quot;play&quot;&gt;Play&lt;/h2&gt;
 
-&lt;p&gt;If you started &lt;em&gt;wineconsole&lt;/em&gt; from SierraLauncher, it’s time to restore the &lt;code class=&quot;highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; to its original state.&lt;/p&gt;
+&lt;p&gt;If you started &lt;em&gt;wineconsole&lt;/em&gt; from SierraLauncher, it’s time to restore the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SierraLauncher.ini&lt;/code&gt; to its original state.&lt;/p&gt;
 
 &lt;p&gt;Now &lt;strong&gt;run Arcanum from your Steam library&lt;/strong&gt; and have fun with such a great game!&lt;/p&gt;
 
@@ -201,14 +610,14 @@ exit
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/arcanum-graphics-glitch-small.png&quot; alt=&quot;Arcanum: Graphics glitch&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The most simple way to fix it is to switch to the software rendering via &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;The most simple way to fix it is to switch to the software rendering via &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;py&quot;&gt;Renderer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0 // 0 = software, 1 = hardware&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Repeat &lt;em&gt;HighRes&lt;/em&gt; patch setup, but run &lt;code class=&quot;highlighter-rouge&quot;&gt;_uninstall.bat&lt;/code&gt; first.&lt;/p&gt;
+&lt;p&gt;Repeat &lt;em&gt;HighRes&lt;/em&gt; patch setup, but run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_uninstall.bat&lt;/code&gt; first.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:
 cd Arcanum\Arcanum\HighRes
 _uninstall.bat
 _install.bat
@@ -217,11 +626,11 @@ exit
 
 &lt;h2 id=&quot;additional-tweaks&quot;&gt;Additional tweaks&lt;/h2&gt;
 
-&lt;p&gt;Before switching to software renderer, you could also explore other possibilities by tweaking some options via &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;, &lt;a href=&quot;https://wiki.winehq.org/Useful_Registry_Keys&quot;&gt;Wine&lt;/a&gt; and/or &lt;a href=&quot;https://github.com/ValveSoftware/Proton#runtime-config-options&quot;&gt;Proton&lt;/a&gt;. Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.&lt;/p&gt;
+&lt;p&gt;Before switching to software renderer, you could also explore other possibilities by tweaking some options via &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;, &lt;a href=&quot;https://wiki.winehq.org/Useful_Registry_Keys&quot;&gt;Wine&lt;/a&gt; and/or &lt;a href=&quot;https://github.com/ValveSoftware/Proton#runtime-config-options&quot;&gt;Proton&lt;/a&gt;. Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.&lt;/p&gt;
 
 &lt;h3 id=&quot;setting-arcanumexe-options-via-sierralauncherini&quot;&gt;Setting Arcanum.exe options via SierraLauncher.ini&lt;/h3&gt;
 
-&lt;p&gt;This is an (almost) obsolete way to do it, as the &lt;em&gt;HighRes&lt;/em&gt; patch allows you to set many options via &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;. But still, let’s set &lt;code class=&quot;highlighter-rouge&quot;&gt;-doublebuffer&lt;/code&gt; option:&lt;/p&gt;
+&lt;p&gt;This is an (almost) obsolete way to do it, as the &lt;em&gt;HighRes&lt;/em&gt; patch allows you to set many options via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;. But still, let’s set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-doublebuffer&lt;/code&gt; option:&lt;/p&gt;
 
 &lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[Launcher]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Arcanum&lt;/span&gt;
@@ -241,13 +650,13 @@ exit
 
 &lt;ol&gt;
   &lt;li&gt;Run &lt;em&gt;wineconsole&lt;/em&gt;.&lt;/li&gt;
-  &lt;li&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;regedit&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;HKEY_CURRENT_USER\Software\Wine\Direct3D&lt;/code&gt; (if key not exists, create it).&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;regedit&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HKEY_CURRENT_USER\Software\Wine\Direct3D&lt;/code&gt; (if key not exists, create it).&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Here you can set number of &lt;em&gt;Wine&lt;/em&gt; options, like:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;DirectDrawRenderer&quot;=&quot;gdi&quot;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;DirectDrawRenderer&quot;=&quot;gdi&quot;
 &quot;OffscreenRenderingMode&quot;=&quot;backbuffer&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -257,11 +666,11 @@ exit
 
 &lt;ol&gt;
   &lt;li&gt;Run &lt;em&gt;wineconsole&lt;/em&gt;.&lt;/li&gt;
-  &lt;li&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;winecfg&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;winecfg&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;Go to &lt;em&gt;Graphics&lt;/em&gt; tab.&lt;/li&gt;
   &lt;li&gt;Check &lt;em&gt;Emulate virtual desktop&lt;/em&gt; option.&lt;/li&gt;
   &lt;li&gt;Set required values for screen width and height.&lt;/li&gt;
-  &lt;li&gt;Ensure that same width and height values is set and also fullscreen is enabled in the &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Ensure that same width and height values is set and also fullscreen is enabled in the &lt;em&gt;HighRes&lt;/em&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config.ini&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;finally-some-links&quot;&gt;Finally, some links:&lt;/h2&gt;
@@ -353,22 +762,22 @@ git clone --mirror https://github.com/volgau/redmine-theme-greenmine.git
 
 &lt;h2 id=&quot;entries&quot;&gt;Entries&lt;/h2&gt;
 
-&lt;p&gt;I refer to every line in your &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; as an “entry” to differentiate them from tasks. Simpletask takes a broader view of what constitutes a &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; file.
-In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format provides a large chunk of your trusted system.&lt;/p&gt;
+&lt;p&gt;I refer to every line in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; as an “entry” to differentiate them from tasks. Simpletask takes a broader view of what constitutes a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; file.
+In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format provides a large chunk of your trusted system.&lt;/p&gt;
 
-&lt;p&gt;Entries may belong to one list (&lt;code class=&quot;highlighter-rouge&quot;&gt;@something&lt;/code&gt;) and they may have one or more tags (&lt;code class=&quot;highlighter-rouge&quot;&gt;+something&lt;/code&gt;) assigned to them. They may also utilize due dates (&lt;code class=&quot;highlighter-rouge&quot;&gt;due:2014-04-2&lt;/code&gt;) thresholds (&lt;code class=&quot;highlighter-rouge&quot;&gt;t:2014-04-3&lt;/code&gt;), recurrance (&lt;code class=&quot;highlighter-rouge&quot;&gt;rec:1w&lt;/code&gt;) and priorities (&lt;code class=&quot;highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, …, &lt;code class=&quot;highlighter-rouge&quot;&gt;(Z)&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Entries may belong to one list (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@something&lt;/code&gt;) and they may have one or more tags (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+something&lt;/code&gt;) assigned to them. They may also utilize due dates (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;due:2014-04-2&lt;/code&gt;) thresholds (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t:2014-04-3&lt;/code&gt;), recurrance (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rec:1w&lt;/code&gt;) and priorities (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, …, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(Z)&lt;/code&gt;).&lt;/p&gt;
 
-&lt;h2 id=&quot;lists-&quot;&gt;Lists (&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;)&lt;/h2&gt;
+&lt;h2 id=&quot;lists-&quot;&gt;Lists (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt;)&lt;/h2&gt;
 
-&lt;p&gt;Simpletasks collects all &lt;code class=&quot;highlighter-rouge&quot;&gt;@somethings&lt;/code&gt; in your entries and calls them &lt;em&gt;lists&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Simpletasks collects all &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@somethings&lt;/code&gt; in your entries and calls them &lt;em&gt;lists&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Lists hold all entries on the first four &lt;em&gt;Horizons of Focus&lt;/em&gt;: from &lt;em&gt;Runway&lt;/em&gt; to &lt;em&gt;30,000 feet&lt;/em&gt;, or &lt;em&gt;Next Actions&lt;/em&gt; to &lt;em&gt;Goals &amp;amp; Objectives&lt;/em&gt;.  If you find this format appropriate, you could feasibly include items from the remaining two altitudes: &lt;em&gt;Vision&lt;/em&gt;, &lt;em&gt;Purpose&lt;/em&gt; and &lt;em&gt;Principles&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Lists are mutually exclusive!&lt;/strong&gt; If an entry can be placed in more than one list, you need to clarify either the entry or your lists.&lt;/p&gt;
 
-&lt;h2 id=&quot;tags-&quot;&gt;Tags (&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;)&lt;/h2&gt;
+&lt;h2 id=&quot;tags-&quot;&gt;Tags (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt;)&lt;/h2&gt;
 
-&lt;p&gt;Simpletasks collects all &lt;code class=&quot;highlighter-rouge&quot;&gt;+somethings&lt;/code&gt; in your entries and calls them &lt;em&gt;tags&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Simpletasks collects all &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+somethings&lt;/code&gt; in your entries and calls them &lt;em&gt;tags&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Tags specify &lt;em&gt;areas of focus, interest or responsibility&lt;/em&gt;, as well as &lt;em&gt;agendas for people or meetings&lt;/em&gt;.&lt;/p&gt;
 
@@ -376,15 +785,15 @@ In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;highlighter
 
 &lt;p&gt;The inbox consists of &lt;em&gt;all entries that have not been assigned to a list&lt;/em&gt;. They are typically not tagged, either. Although I will often revise entries before tagging and assigning them to another list, I generally preserve the original creation date.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;You don’t need a list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Inbox&lt;/code&gt;!&lt;/strong&gt; First of all, it will just slow you down at the collection phase. If you want to view just your &lt;em&gt;Inbox&lt;/em&gt;, filter by &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; in the left drawer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You don’t need a list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Inbox&lt;/code&gt;!&lt;/strong&gt; First of all, it will just slow you down at the collection phase. If you want to view just your &lt;em&gt;Inbox&lt;/em&gt;, filter by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt; in the left drawer.&lt;/p&gt;
 
 &lt;h2 id=&quot;next-actions--contexts-runway&quot;&gt;Next Actions / Contexts (Runway)&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;Next actions&lt;/em&gt; are filed in lists that begin with an &lt;em&gt;at-sign&lt;/em&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;), one for each context. The &lt;em&gt;at-sign&lt;/em&gt; is an established shorthand that reinforces the idea that the context (place or tool) is required for the action to be performed. More importantly, the &lt;em&gt;at-sign&lt;/em&gt; makes these lists sort above the others, so you can find them more quickly.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Next actions&lt;/em&gt; are filed in lists that begin with an &lt;em&gt;at-sign&lt;/em&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt;), one for each context. The &lt;em&gt;at-sign&lt;/em&gt; is an established shorthand that reinforces the idea that the context (place or tool) is required for the action to be performed. More importantly, the &lt;em&gt;at-sign&lt;/em&gt; makes these lists sort above the others, so you can find them more quickly.&lt;/p&gt;
 
 &lt;p&gt;The examples of GTD contexts are:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@@agendas
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@@agendas
 @@anywhere
 @@calls
 @@computer / @@laptop
@@ -393,19 +802,19 @@ In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;highlighter
 @@office / @@work
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Уou may (and must) define your own contexts!&lt;/strong&gt; By example, I like to have context &lt;code class=&quot;highlighter-rouge&quot;&gt;@@buy&lt;/code&gt; - for any optional triffles I’d want to buy during accidental shopping; and also context &lt;code class=&quot;highlighter-rouge&quot;&gt;@@ingame&lt;/code&gt; - it’s just like &lt;code class=&quot;highlighter-rouge&quot;&gt;@@computer&lt;/code&gt;, but when you use it for fun.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Уou may (and must) define your own contexts!&lt;/strong&gt; By example, I like to have context &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@buy&lt;/code&gt; - for any optional triffles I’d want to buy during accidental shopping; and also context &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@ingame&lt;/code&gt; - it’s just like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@computer&lt;/code&gt;, but when you use it for fun.&lt;/p&gt;
 
 &lt;p&gt;Next actions are tagged with an area tag and, for entries relating to communication, an agenda tag (either a person or meeting).&lt;/p&gt;
 
 &lt;h3 id=&quot;agendas&quot;&gt;Agendas&lt;/h3&gt;
 
-&lt;p&gt;Agendas may be listed under &lt;code class=&quot;highlighter-rouge&quot;&gt;@@agendas&lt;/code&gt; (for face-to-face and impromptu communications) or required context (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;@@calls&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@@computer&lt;/code&gt;, etc.) but &lt;em&gt;not&lt;/em&gt; both.&lt;/p&gt;
+&lt;p&gt;Agendas may be listed under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@agendas&lt;/code&gt; (for face-to-face and impromptu communications) or required context (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@calls&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@computer&lt;/code&gt;, etc.) but &lt;em&gt;not&lt;/em&gt; both.&lt;/p&gt;
 
 &lt;p&gt;All tags that begin with a capital letter refer to agendas – that is, to people or meetings.&lt;/p&gt;
 
 &lt;p&gt;Example tags:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+Mom
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+Mom
 +JSmith
 +StaffMeeting
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -414,7 +823,7 @@ In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;highlighter
 
 &lt;p&gt;Example entries:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Tell +Bob about the party @@agendas +fun
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Tell +Bob about the party @@agendas +fun
 Email +DevTeam re: new client @@online +work
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -422,42 +831,42 @@ Email +DevTeam re: new client @@online +work
 
 &lt;h2 id=&quot;projects-10000-ft&quot;&gt;Projects (10,000 ft)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; with an entry for &lt;strong&gt;every multi-step outcome you are committed to completing within the next year&lt;/strong&gt;. Each project entry is tagged with an area and, if applicable, an agenda.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; with an entry for &lt;strong&gt;every multi-step outcome you are committed to completing within the next year&lt;/strong&gt;. Each project entry is tagged with an area and, if applicable, an agenda.&lt;/p&gt;
 
 &lt;p&gt;For code-related project you could think of each milestone as of GTD project.&lt;/p&gt;
 
 &lt;p&gt;Examples:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Clean out the garage +household @Projects
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Clean out the garage +household @Projects
 Release R7.Documents module v1.11 +work @Projects
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;somedaymaybe-incubate-runway10000-ft&quot;&gt;Someday/Maybe (Incubate Runway/10,000 ft)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday&lt;/code&gt; with an entry for every project (multi-step outcome) or single action you are incubating – i.e., that would like to periodically review but are not committed to moving on, yet. Each someday entry is tagged with an area and, if applicable, an agenda, allowing you to view potential commitments along with your current ones.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday&lt;/code&gt; with an entry for every project (multi-step outcome) or single action you are incubating – i.e., that would like to periodically review but are not committed to moving on, yet. Each someday entry is tagged with an area and, if applicable, an agenda, allowing you to view potential commitments along with your current ones.&lt;/p&gt;
 
-&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;Learn to play the piano +creativity @Someday&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Learn to play the piano +creativity @Someday&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;You could feasibly have multiple Someday/Maybe lists like &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday-Soon&lt;/code&gt; or even &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt;, if you need the additional granularity –
+&lt;p&gt;You could feasibly have multiple Someday/Maybe lists like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Soon&lt;/code&gt; or even &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt;, if you need the additional granularity –
 or just use Simpletask priorities.&lt;/p&gt;
 
-&lt;p&gt;Use the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt; to RIP things that you strongly doesn’t want and have strong reasons to not to do, but still need to remember sometimes.&lt;/p&gt;
+&lt;p&gt;Use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt; to RIP things that you strongly doesn’t want and have strong reasons to not to do, but still need to remember sometimes.&lt;/p&gt;
 
 &lt;h2 id=&quot;tickler-incubate-runway10000-ft&quot;&gt;Tickler (Incubate Runway/10,000 ft)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; contains &lt;strong&gt;all tickled items which are not actions&lt;/strong&gt;. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; contains &lt;strong&gt;all tickled items which are not actions&lt;/strong&gt;. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Tickled actions are not included in this list; they are placed under the appropriate context.&lt;/p&gt;
 
 &lt;h2 id=&quot;waiting-for-runway&quot;&gt;Waiting For (Runway)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@WaitingFor&lt;/code&gt; with an entry for each delegated action, tagged with both area and agenda.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@WaitingFor&lt;/code&gt; with an entry for each delegated action, tagged with both area and agenda.&lt;/p&gt;
 
-&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;+JSmith re: conference +consortium @WaitingFor&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+JSmith re: conference +consortium @WaitingFor&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;areas-20000-ft&quot;&gt;Areas (20,000 ft)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@\_Areas&lt;/code&gt; with entries identifying all your areas of focus, interest or responsibility. There is overlap between this horizon and the area tags (described below), but a 1-to-1 correspondence is not obligatory. How you set up this horizon depends on how you think about your life and how it makes sense to carve up your commitments.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@\_Areas&lt;/code&gt; with entries identifying all your areas of focus, interest or responsibility. There is overlap between this horizon and the area tags (described below), but a 1-to-1 correspondence is not obligatory. How you set up this horizon depends on how you think about your life and how it makes sense to carve up your commitments.&lt;/p&gt;
 
 &lt;p&gt;Note: the underscore in front of this list is merely to have it sort to the bottom of your lists.&lt;/p&gt;
 
@@ -467,7 +876,7 @@ or just use Simpletask priorities.&lt;/p&gt;
 
 &lt;p&gt;Examples:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+gtd
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+gtd
 +blog
 +health
 +household
@@ -475,7 +884,7 @@ or just use Simpletask priorities.&lt;/p&gt;
 
 &lt;p&gt;Example entries:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Family +family @_Areas
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Family +family @_Areas
 Health, Vitality &amp;amp; Well-Being +health @_Areas
 Profession, Self-improvement +profession +gtd @_Areas
 Finances +finances @_Areas
@@ -483,13 +892,13 @@ Household +household @_Areas
 Hobbies +blog +painting +rpg  @_Areas
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;To make sure that these are always available, define them in your &lt;code class=&quot;highlighter-rouge&quot;&gt;@_Areas&lt;/code&gt; entries or add them to a hidden entry (see below).&lt;/p&gt;
+&lt;p&gt;To make sure that these are always available, define them in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@_Areas&lt;/code&gt; entries or add them to a hidden entry (see below).&lt;/p&gt;
 
 &lt;h2 id=&quot;goals--objectives-30000-ft&quot;&gt;Goals &amp;amp; Objectives (30,000 ft)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;highlighter-rouge&quot;&gt;@\_Goals&lt;/code&gt; with an entry for &lt;strong&gt;every outcome you are committed to completing within the next 2-5 years&lt;/strong&gt;, tagged with an area and, if applicable, an agenda. Goals are treated basically as long-term projects.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@\_Goals&lt;/code&gt; with an entry for &lt;strong&gt;every outcome you are committed to completing within the next 2-5 years&lt;/strong&gt;, tagged with an area and, if applicable, an agenda. Goals are treated basically as long-term projects.&lt;/p&gt;
 
-&lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;Attain some promotion +career @\_Goals&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Attain some promotion +career @\_Goals&lt;/code&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -517,7 +926,7 @@ Hobbies +blog +painting +rpg  @_Areas
 
 &lt;p&gt;The most frequently used ways to slice your system – contexts and areas – are the quickest to reach, being at at the top and bottom, respectively. Less used stuff – higher altitudes, agendas – is in the middle.&lt;/p&gt;
 
-&lt;p&gt;You can choose multiple lists and tags to slice your trusted system in various ways. For example, you can see all the &lt;code class=&quot;highlighter-rouge&quot;&gt;@@calls&lt;/code&gt; you have to make for &lt;code class=&quot;highlighter-rouge&quot;&gt;+work&lt;/code&gt;, the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; relating to your &lt;code class=&quot;highlighter-rouge&quot;&gt;+family&lt;/code&gt; or all the &lt;code class=&quot;highlighter-rouge&quot;&gt;+fun&lt;/code&gt; things you might do &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can choose multiple lists and tags to slice your trusted system in various ways. For example, you can see all the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@calls&lt;/code&gt; you have to make for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+work&lt;/code&gt;, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; relating to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+family&lt;/code&gt; or all the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+fun&lt;/code&gt; things you might do &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;hidden-entries&quot;&gt;Hidden Entries&lt;/h3&gt;
 
@@ -525,7 +934,7 @@ Hobbies +blog +painting +rpg  @_Areas
 
 &lt;p&gt;Examples:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;h:1 Contexts: @@agendas, @@anywhere, @@calls, @@computer, @@errands, @@home, @@office
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;h:1 Contexts: @@agendas, @@anywhere, @@calls, @@computer, @@errands, @@home, @@office
 h:1 Other Lists: @Projects, @Someday, @Tickler, @WaitingFor, @_Areas, @_Goals
 h:1 Contacts: +Mom, +JSmith, etc.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -537,13 +946,13 @@ while it’s possibly better to have separate todo file for that.&lt;/p&gt;
 
 &lt;p&gt;Per GTD, I only use due dates for the “hard landscape”, such as appointments, rather than estimations of when I’d like to do something. I also add them to projects to indicate deadlines (after which completion becomes moot).&lt;/p&gt;
 
-&lt;p&gt;For time-sensitive actions you could use prefix times like so: &lt;code class=&quot;highlighter-rouge&quot;&gt;[10:15] Taskname&lt;/code&gt;. Or suffix times so: &lt;code class=&quot;highlighter-rouge&quot;&gt;due:2019-06-20 T10:15&lt;/code&gt; - this looks almost like an &lt;a href=&quot;https://www.w3.org/TR/NOTE-datetime&quot;&gt;ISO datetime&lt;/a&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;2019-06-20T10:15&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;For time-sensitive actions you could use prefix times like so: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[10:15] Taskname&lt;/code&gt;. Or suffix times so: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;due:2019-06-20 T10:15&lt;/code&gt; - this looks almost like an &lt;a href=&quot;https://www.w3.org/TR/NOTE-datetime&quot;&gt;ISO datetime&lt;/a&gt; (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2019-06-20T10:15&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;That said, I find Simpletask’s calendar integration to be really clunky, and I have begun adding items straight to the calendar, which I find problematic.&lt;/p&gt;
 
 &lt;h3 id=&quot;threshold-dates&quot;&gt;Threshold Dates&lt;/h3&gt;
 
-&lt;p&gt;Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; list.&lt;/p&gt;
+&lt;p&gt;Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; list.&lt;/p&gt;
 
 &lt;p&gt;The priority is removed when the entry has been “tickled” (the threshold has been passed).&lt;/p&gt;
 
@@ -553,19 +962,19 @@ while it’s possibly better to have separate todo file for that.&lt;/p&gt;
 
 &lt;h3 id=&quot;priorities&quot;&gt;Priorities&lt;/h3&gt;
 
-&lt;p&gt;GTD does not (and should not) have a priority system. I use the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; priority syntax to help me filter three kinds of entries:&lt;/p&gt;
+&lt;p&gt;GTD does not (and should not) have a priority system. I use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; priority syntax to help me filter three kinds of entries:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;(A)&lt;/code&gt; priority are “hot”: they are actions that I plan (not would &lt;em&gt;like&lt;/em&gt;) to do today or at least tomorrow. I update this list daily.&lt;/li&gt;
-  &lt;li&gt;Entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority are “tickled”: all actions or reminders with a threshold date have this priority until the threshold is passed.&lt;/li&gt;
-  &lt;li&gt;Entries with &lt;code class=&quot;highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priority are just GTD hints I like to leave above other entries in the list, something like that:&lt;/li&gt;
+  &lt;li&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt; priority are “hot”: they are actions that I plan (not would &lt;em&gt;like&lt;/em&gt;) to do today or at least tomorrow. I update this list daily.&lt;/li&gt;
+  &lt;li&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority are “tickled”: all actions or reminders with a threshold date have this priority until the threshold is passed.&lt;/li&gt;
+  &lt;li&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priority are just GTD hints I like to leave above other entries in the list, something like that:&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(D) Check context lists
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(D) Check context lists
 (D) Plan to complete within the next year @Projects
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This leaves &lt;code class=&quot;highlighter-rouge&quot;&gt;(C)&lt;/code&gt; priority reserved for future use, as only &lt;code class=&quot;highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;(B)&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;(C)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priorities are useful (have a color) in the current Simpletask version.&lt;/p&gt;
+&lt;p&gt;This leaves &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(C)&lt;/code&gt; priority reserved for future use, as only &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(C)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priorities are useful (have a color) in the current Simpletask version.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Projects and higher altitudes never have priorities.&lt;/strong&gt;&lt;/p&gt;
 
@@ -594,7 +1003,7 @@ while it’s possibly better to have separate todo file for that.&lt;/p&gt;
 
 &lt;p&gt;Base state:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x Completed entry 1
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x Completed entry 1
 Entry 2
 Entry 3
 ...
@@ -603,7 +1012,7 @@ Entry 199
 
 &lt;p&gt;Completing entry 2 on review:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x Completed entry 2
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x Completed entry 2
 x Completed entry 1
 Entry 3
 ...
@@ -621,18 +1030,18 @@ Entry 199
 &lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
 
 &lt;p&gt;There are times when I clear my Inbox and some entries which do not require any actions, but looks like general information,
-while still important (for some project or area) - I just move them to the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Notes&lt;/code&gt; list.&lt;/p&gt;
+while still important (for some project or area) - I just move them to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Notes&lt;/code&gt; list.&lt;/p&gt;
 
-&lt;p&gt;When reviewing my &lt;code class=&quot;highlighter-rouge&quot;&gt;@Notes&lt;/code&gt; list, I could decide do I need to delete it or move to the note-taking application.
+&lt;p&gt;When reviewing my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Notes&lt;/code&gt; list, I could decide do I need to delete it or move to the note-taking application.
 Currently I prefer &lt;a href=&quot;https://simplenote.com/&quot;&gt;Simplenote&lt;/a&gt; for that - very nice addition to my trusted system.&lt;/p&gt;
 
 &lt;h3 id=&quot;issue-trackers&quot;&gt;Issue Trackers&lt;/h3&gt;
 
 &lt;p&gt;Then working on code project, I like to treat the project bugtracker as a public context list for the project,
-still having an entry for it (or better - for a single milestone of it) in the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; list.&lt;/p&gt;
+still having an entry for it (or better - for a single milestone of it) in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Projects&lt;/code&gt; list.&lt;/p&gt;
 
-&lt;p&gt;During review, I move entries which should go to the bugtracker, to the &lt;code class=&quot;highlighter-rouge&quot;&gt;@@bugtracker&lt;/code&gt; list.
-And during review of &lt;code class=&quot;highlighter-rouge&quot;&gt;@@bugtracker&lt;/code&gt; list, I just create issues and remove entries from Simpletask,
+&lt;p&gt;During review, I move entries which should go to the bugtracker, to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@bugtracker&lt;/code&gt; list.
+And during review of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@@bugtracker&lt;/code&gt; list, I just create issues and remove entries from Simpletask,
 effectively “forgeting” about them. But I will certainly will remember them again – then and where I resume work on the project.&lt;/p&gt;
 
 &lt;table&gt;
@@ -681,7 +1090,7 @@ effectively “forgeting” about them. But I will certainly will remember them 
 &lt;ul&gt;
   &lt;li&gt;Simpletask provides an option to automatically generate a creation date for new tasks. Use it.&lt;/li&gt;
   &lt;li&gt;You could make copy of entry (or entries) by sharing it. Press “Share” button and then select Simpletask as a target app.
-This will produce a copy of entry with the &lt;code class=&quot;highlighter-rouge&quot;&gt;+background&lt;/code&gt; tag.&lt;/li&gt;
+This will produce a copy of entry with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+background&lt;/code&gt; tag.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;issues--problems&quot;&gt;Issues &amp;amp; Problems&lt;/h2&gt;
@@ -690,7 +1099,7 @@ This will produce a copy of entry with the &lt;code class=&quot;highlighter-roug
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Inbox&lt;/strong&gt;. I enter data straight into the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; with Simpletask or a text editor. I haven’t experimented with using emails or other input, which is why I don’t discuss this at all. There are some &lt;a href=&quot;https://ifttt.com/search/query/todo&quot;&gt;ifttt recipes&lt;/a&gt;, but I haven’t tried any of them.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Inbox&lt;/strong&gt;. I enter data straight into the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; with Simpletask or a text editor. I haven’t experimented with using emails or other input, which is why I don’t discuss this at all. There are some &lt;a href=&quot;https://ifttt.com/search/query/todo&quot;&gt;ifttt recipes&lt;/a&gt;, but I haven’t tried any of them.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;Calendar&lt;/strong&gt;. You do not need a calendar with this system – at least insofar as your GTD system is concerned. Integration with an online calendar would be useful, but that is a feature that would need to be provided by Simpletask, or via something that can read the text file and populate the calendar.&lt;/p&gt;
@@ -703,7 +1112,7 @@ This will produce a copy of entry with the &lt;code class=&quot;highlighter-roug
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;I include these as “notes” (see above). For example: &lt;code class=&quot;highlighter-rouge&quot;&gt;2014-01-07 Complete Something or Other // Files in Dropbox &amp;gt; Projects &amp;gt; SomethingOrOther&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I include these as “notes” (see above). For example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2014-01-07 Complete Something or Other // Files in Dropbox &amp;gt; Projects &amp;gt; SomethingOrOther&lt;/code&gt;.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -716,22 +1125,22 @@ This will produce a copy of entry with the &lt;code class=&quot;highlighter-roug
       &lt;li&gt;
         &lt;p&gt;“Must read” items go into the main system at the appropriate context – since I am committed to reading or reviewing them. This works very well for items that you can keep on your mobile device.&lt;/p&gt;
 
-        &lt;p&gt;Example: &lt;code class=&quot;highlighter-rouge&quot;&gt;Read email from bank @@anywhere +finances&lt;/code&gt;.&lt;/p&gt;
+        &lt;p&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Read email from bank @@anywhere +finances&lt;/code&gt;.&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
-        &lt;p&gt;“Nice to read” things do not go into the main system. You might want to add some of these to your classify &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday&lt;/code&gt; list, if you would like to review them weekly.&lt;/p&gt;
+        &lt;p&gt;“Nice to read” things do not go into the main system. You might want to add some of these to your classify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday&lt;/code&gt; list, if you would like to review them weekly.&lt;/p&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Since I don’t care much if anything falls through the cracks, they are housed in various systems: books and movies are in text files (in a custom format, but I might convert these to the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format as well), online articles are in a read-it-later service, etc.&lt;/p&gt;
+&lt;p&gt;Since I don’t care much if anything falls through the cracks, they are housed in various systems: books and movies are in text files (in a custom format, but I might convert these to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format as well), online articles are in a read-it-later service, etc.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;. Simpletask becomes quite slow if you are viewing many entries at once (over 200 on my phone). You might want to experiment with breaking off the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Someday/Maybe&lt;/code&gt; entries into their own todo file.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Performance&lt;/strong&gt;. Simpletask becomes quite slow if you are viewing many entries at once (over 200 on my phone). You might want to experiment with breaking off the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday/Maybe&lt;/code&gt; entries into their own todo file.&lt;/p&gt;
 
-    &lt;p&gt;That said, my &lt;code class=&quot;highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; is over 400 lines and, while not snappy, is still usable.&lt;/p&gt;
+    &lt;p&gt;That said, my &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; is over 400 lines and, while not snappy, is still usable.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -808,14 +1217,14 @@ This could autoresolve a number of potential issues with mail. Cause all people 
 &lt;p&gt;These are files you will need (version and revision numbers may differ):&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-base-2.2.0-r6381.tar.xz&lt;/code&gt; - core components of the game;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-hq-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - LS-GT1 and 36GP cars and AI drivers, HQ tracks;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-more-hq-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - TRB1 cars and AI drivers, more HQ tracks, and the Career mode;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-wip-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - work-in-progress MP5, LS-GT2 and RS cars and AI drivers, and many other tracks;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-src-unmaintained-2.2.0-r6381.tar.xz&lt;/code&gt; - unmaintained Simu V2.1 engine and maybe something else, but do you really need this?&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speed-dreams-src-base-2.2.0-r6381.tar.xz&lt;/code&gt; - core components of the game;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speed-dreams-src-hq-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - LS-GT1 and 36GP cars and AI drivers, HQ tracks;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speed-dreams-src-more-hq-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - TRB1 cars and AI drivers, more HQ tracks, and the Career mode;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speed-dreams-src-wip-cars-and-tracks-2.2.0-r6381.tar.xz&lt;/code&gt; - work-in-progress MP5, LS-GT2 and RS cars and AI drivers, and many other tracks;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speed-dreams-src-unmaintained-2.2.0-r6381.tar.xz&lt;/code&gt; - unmaintained Simu V2.1 engine and maybe something else, but do you really need this?&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Unpack &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; tarball first, then &lt;code class=&quot;highlighter-rouge&quot;&gt;hq-cars-and-tracks&lt;/code&gt;, then &lt;code class=&quot;highlighter-rouge&quot;&gt;more-hq-cars-and-tracks&lt;/code&gt;, etc. Choose to rewrite files / folders in the case of conflicts.&lt;/p&gt;
+&lt;p&gt;Unpack &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base&lt;/code&gt; tarball first, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hq-cars-and-tracks&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;more-hq-cars-and-tracks&lt;/code&gt;, etc. Choose to rewrite files / folders in the case of conflicts.&lt;/p&gt;
 
 &lt;h2 id=&quot;step-2-install-development-libraries&quot;&gt;Step 2: Install development libraries&lt;/h2&gt;
 
@@ -834,34 +1243,34 @@ libplib-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 libopenscenegraph-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 libsdl2-dev&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;For other GNU/Linux distributions, consult with &lt;em&gt;Pre-requisites&lt;/em&gt; section of &lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALL.txt&lt;/code&gt; file in the source folder.&lt;/p&gt;
+&lt;p&gt;For other GNU/Linux distributions, consult with &lt;em&gt;Pre-requisites&lt;/em&gt; section of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INSTALL.txt&lt;/code&gt; file in the source folder.&lt;/p&gt;
 
 &lt;p&gt;Note that the &lt;em&gt;OpenSceneGraph&lt;/em&gt; and &lt;em&gt;SDL 2&lt;/em&gt; dependencies were introduced in the &lt;em&gt;Speed Dreams&lt;/em&gt; 2.2.0. You don’t need them for 2.1.0 version.&lt;/p&gt;
 
 &lt;h2 id=&quot;step-3-configure--build&quot;&gt;Step 3: Configure &amp;amp; build&lt;/h2&gt;
 
-&lt;p&gt;Third step - create &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; subfolder &lt;strong&gt;inside&lt;/strong&gt; the source folder, where you have extracted source tarballs. From this folder you need to invoke &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; with some options (see below).&lt;/p&gt;
+&lt;p&gt;Third step - create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; subfolder &lt;strong&gt;inside&lt;/strong&gt; the source folder, where you have extracted source tarballs. From this folder you need to invoke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake&lt;/code&gt; with some options (see below).&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;build
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build
 cmake &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; OPTION_OFFICIAL_ONLY:BOOL&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ON &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PLIB_INCLUDE_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/usr/include/plib&quot;&lt;/span&gt; ..&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This will configure source, and if something required is missing you will see an error message. This generally means that you should install some missing dependencies (additional development libraries). In case of other problems, it’s time to read the manual - see &lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALL.txt&lt;/code&gt; file in the source folder.&lt;/p&gt;
+&lt;p&gt;This will configure source, and if something required is missing you will see an error message. This generally means that you should install some missing dependencies (additional development libraries). In case of other problems, it’s time to read the manual - see &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INSTALL.txt&lt;/code&gt; file in the source folder.&lt;/p&gt;
 
-&lt;p&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; finish without errors, it’s time to perform build and install:&lt;/p&gt;
+&lt;p&gt;If &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake&lt;/code&gt; finish without errors, it’s time to perform build and install:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;make
 &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;This will install main executable to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/games/speed-dreams-2&lt;/code&gt; and data files to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/share/games/speed-dreams-2&lt;/code&gt;, so the game will be available system-wide.&lt;/p&gt;
+&lt;p&gt;This will install main executable to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/games/speed-dreams-2&lt;/code&gt; and data files to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/share/games/speed-dreams-2&lt;/code&gt;, so the game will be available system-wide.&lt;/p&gt;
 
 &lt;h2 id=&quot;step-4-create-game-shortcut&quot;&gt;Step 4: Create game shortcut&lt;/h2&gt;
 
-&lt;p&gt;Note that &lt;em&gt;Speed Dreams&lt;/em&gt; install won’t create a shortcut (&lt;em&gt;FreeDesktop.org&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;.desktop&lt;/code&gt; file) anywhere. So now it’s your move to create one!&lt;/p&gt;
+&lt;p&gt;Note that &lt;em&gt;Speed Dreams&lt;/em&gt; install won’t create a shortcut (&lt;em&gt;FreeDesktop.org&lt;/em&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.desktop&lt;/code&gt; file) anywhere. So now it’s your move to create one!&lt;/p&gt;
 
 &lt;p&gt;You generally would like to add shortcut with an icon. The source does not provide us with one, so let’s search over the Internet. I’ve got one from &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Speed_Dreams_Icon.svg&quot;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;When you got the icon, copy it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/pixmaps/speed-dreams.svg&lt;/code&gt;. Then create &lt;code class=&quot;highlighter-rouge&quot;&gt;speed-dreams-2.desktop&lt;/code&gt; text file (see content below), copy it to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/share/applications&lt;/code&gt; folder and set executable flag (may or may not be required). These operations should require root access.&lt;/p&gt;
+&lt;p&gt;When you got the icon, copy it to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/share/pixmaps/speed-dreams.svg&lt;/code&gt;. Then create &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speed-dreams-2.desktop&lt;/code&gt; text file (see content below), copy it to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/share/applications&lt;/code&gt; folder and set executable flag (may or may not be required). These operations should require root access.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[Desktop Entry]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;UTF-8&lt;/span&gt;
@@ -883,7 +1292,7 @@ cmake &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; OPTION_OFFICIAL_ONLY:BOOL
 
 &lt;p&gt;In order to safely upgrade your &lt;em&gt;Speed Dreams&lt;/em&gt; installation to new version, you should uninstall old one first.&lt;/p&gt;
 
-&lt;p&gt;To do so, go to the &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; subfolder you’ve created inside the source folder, and invoke &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo make uninstall&lt;/code&gt;.
+&lt;p&gt;To do so, go to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; subfolder you’ve created inside the source folder, and invoke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo make uninstall&lt;/code&gt;.
 Then you can safely clear source folder, get &amp;amp; unpack source packages, configure and build.&lt;/p&gt;
 
 &lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
@@ -914,15 +1323,15 @@ Then you can safely clear source folder, get &amp;amp; unpack source packages, c
 
 &lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
 
-&lt;p&gt;Since GTK+ 3.10, GtkHeaderBar widgets use &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting value
+&lt;p&gt;Since GTK+ 3.10, GtkHeaderBar widgets use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting value
 to display window control buttons in the right place &amp;amp; order. Default value is
-&lt;code class=&quot;highlighter-rouge&quot;&gt;menu:maximize,minimize,close&lt;/code&gt; (format is the same as for window manager buttons layout).&lt;/p&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;menu:maximize,minimize,close&lt;/code&gt; (format is the same as for window manager buttons layout).&lt;/p&gt;
 
 &lt;h2 id=&quot;solution-for-cinnamon&quot;&gt;Solution for Cinnamon&lt;/h2&gt;
 
-&lt;p&gt;&lt;em&gt;Cinnamon&lt;/em&gt; provide a way to override default &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting value via &lt;code class=&quot;highlighter-rouge&quot;&gt;dconf&lt;/code&gt; key &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; in the  &lt;code class=&quot;highlighter-rouge&quot;&gt;org.cinnamon.desktop.interface&lt;/code&gt; section.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cinnamon&lt;/em&gt; provide a way to override default &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting value via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dconf&lt;/code&gt; key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; in the  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;org.cinnamon.desktop.interface&lt;/code&gt; section.&lt;/p&gt;
 
-&lt;p&gt;Let’s set close button + menu to the left, and minimize button to the right. You could use &lt;code class=&quot;highlighter-rouge&quot;&gt;dconf-editor&lt;/code&gt; to change setting value from GUI. From command-line, it should be like this:&lt;/p&gt;
+&lt;p&gt;Let’s set close button + menu to the left, and minimize button to the right. You could use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dconf-editor&lt;/code&gt; to change setting value from GUI. From command-line, it should be like this:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;org.cinnamon.desktop.interface gtk-decoration-layout &lt;span class=&quot;s1&quot;&gt;'close,menu:minimize'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -930,14 +1339,14 @@ to display window control buttons in the right place &amp;amp; order. Default va
 
 &lt;h2 id=&quot;more-common-way&quot;&gt;More common way&lt;/h2&gt;
 
-&lt;p&gt;For desktop environments, which don’t override &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting, just change (or define) it in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/gtk-3.0/setting.ini&lt;/code&gt; like this:&lt;/p&gt;
+&lt;p&gt;For desktop environments, which don’t override &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gtk-decoration-layout&lt;/code&gt; setting, just change (or define) it in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.config/gtk-3.0/setting.ini&lt;/code&gt; like this:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span class=&quot;nn&quot;&gt;[Settings]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;gtk-theme-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Adwaita&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;gtk-decoration-layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;close,menu:minimize&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Session restart would be needed to apply changes. Also, if there are no &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.ini&lt;/code&gt; file, just create new one and add &lt;code class=&quot;highlighter-rouge&quot;&gt;[Settings]&lt;/code&gt; line.&lt;/p&gt;
+&lt;p&gt;Session restart would be needed to apply changes. Also, if there are no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;settings.ini&lt;/code&gt; file, just create new one and add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[Settings]&lt;/code&gt; line.&lt;/p&gt;
 
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 
@@ -961,7 +1370,7 @@ to display window control buttons in the right place &amp;amp; order. Default va
    <updated>2015-01-12T00:00:00+00:00</updated>
    <id>http://roman-yagodin.github.io/how-to/2015/01/12/get-html-from-gtk-sharp-clipboard</id>
    <content type="html">
-&lt;p&gt;Developing a cross-platform application would never be easy job, but I consider GTK# framework as one of the solid options to provide cross-platform UI, though the lack of documentation is embarassing sometimes. In this post I want to show an example of using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt; object to get HTML markup from the clipboard.&lt;/p&gt;
+&lt;p&gt;Developing a cross-platform application would never be easy job, but I consider GTK# framework as one of the solid options to provide cross-platform UI, though the lack of documentation is embarassing sometimes. In this post I want to show an example of using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt; object to get HTML markup from the clipboard.&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -969,16 +1378,16 @@ to display window control buttons in the right place &amp;amp; order. Default va
 
 &lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
 
-&lt;p&gt;GTK# documentation and examples do not provide excessive information about using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt; object to get various types of content. To get text from clipboard, the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForText()&lt;/code&gt; method could be used, but how to get, by example, HTML table from LibreOffice Writer document or formatted text from webpage?&lt;/p&gt;
+&lt;p&gt;GTK# documentation and examples do not provide excessive information about using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt; object to get various types of content. To get text from clipboard, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForText()&lt;/code&gt; method could be used, but how to get, by example, HTML table from LibreOffice Writer document or formatted text from webpage?&lt;/p&gt;
 
 &lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
 
 &lt;p&gt;In this solution we:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Create target using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gdk.Atom.Intern()&lt;/code&gt; method, passing MIME type string &lt;code class=&quot;highlighter-rouge&quot;&gt;text/html&lt;/code&gt; to it.&lt;/li&gt;
-  &lt;li&gt;Get selection object by using &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForContents()&lt;/code&gt; method for created target.&lt;/li&gt;
-  &lt;li&gt;If the selection is not null, then it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Data&lt;/code&gt; property generally contains UTF-8 encoded string with HTML markup.&lt;/li&gt;
+  &lt;li&gt;Create target using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gdk.Atom.Intern()&lt;/code&gt; method, passing MIME type string &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/html&lt;/code&gt; to it.&lt;/li&gt;
+  &lt;li&gt;Get selection object by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForContents()&lt;/code&gt; method for created target.&lt;/li&gt;
+  &lt;li&gt;If the selection is not null, then it’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Data&lt;/code&gt; property generally contains UTF-8 encoded string with HTML markup.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create clipboard object&lt;/span&gt;
@@ -1002,7 +1411,7 @@ to display window control buttons in the right place &amp;amp; order. Default va
 
 &lt;p&gt;The solution is currently tested only on Linux with Mono 3.10.&lt;/p&gt;
 
-&lt;p&gt;Note, that &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForTargets()&lt;/code&gt; method in the GTK# 2.12 seems to have broken interface. It defined as &lt;code class=&quot;highlighter-rouge&quot;&gt;bool WaitForTargets (Gdk.Atom targets, out int n_targets)&lt;/code&gt;, but should be something like &lt;code class=&quot;highlighter-rouge&quot;&gt;bool WaitForTargets (Gdk.Atom [] targets, out int n_targets)&lt;/code&gt; to return array of available targets. As a result, we can’t see what targets are available in the clipboard, but only a number of them:&lt;/p&gt;
+&lt;p&gt;Note, that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gtk.Clipboard.WaitForTargets()&lt;/code&gt; method in the GTK# 2.12 seems to have broken interface. It defined as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bool WaitForTargets (Gdk.Atom targets, out int n_targets)&lt;/code&gt;, but should be something like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bool WaitForTargets (Gdk.Atom [] targets, out int n_targets)&lt;/code&gt; to return array of available targets. As a result, we can’t see what targets are available in the clipboard, but only a number of them:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c#&quot; data-lang=&quot;c#&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// create clipboard object&lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clipboard&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gtk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Gdk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Atom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Intern&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CLIPBOARD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
@@ -1023,7 +1432,7 @@ to display window control buttons in the right place &amp;amp; order. Default va
 
 &lt;ul&gt;
   &lt;li&gt;Primary: the selection data encoding seems to not always UTF-8, so we need a way to determine the encoding.&lt;/li&gt;
-  &lt;li&gt;Which other common MIME types are supported by &lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt;?&lt;/li&gt;
+  &lt;li&gt;Which other common MIME types are supported by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gtk.Clipboard&lt;/code&gt;?&lt;/li&gt;
   &lt;li&gt;How this code will behave on the different platforms?&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1080,14 +1489,14 @@ to display window control buttons in the right place &amp;amp; order. Default va
 &lt;h2 id=&quot;setting-up&quot;&gt;Setting up&lt;/h2&gt;
 
 &lt;p&gt;Buttons layout and some other WM options are stored in the &lt;em&gt;dconf&lt;/em&gt; keys. For &lt;em&gt;Cinnamon’s muffin&lt;/em&gt;, we should
-change value of the key &lt;code class=&quot;highlighter-rouge&quot;&gt;org.cinnamon.desktop.wm.preferences.button-layout&lt;/code&gt; or the key &lt;code class=&quot;highlighter-rouge&quot;&gt;org.cinnamon.muffin.button-layout&lt;/code&gt;
+change value of the key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;org.cinnamon.desktop.wm.preferences.button-layout&lt;/code&gt; or the key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;org.cinnamon.muffin.button-layout&lt;/code&gt;
 to override value of the first key.&lt;/p&gt;
 
 &lt;p&gt;Some other desktops:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;org.gnome.shell.overrides.button-layout&lt;/code&gt; - for &lt;em&gt;GNOME 3&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;org.gnome.desktop.wm.preferences.button-layout&lt;/code&gt; - said to work in &lt;em&gt;GNOME Flashback / Classic&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;org.gnome.shell.overrides.button-layout&lt;/code&gt; - for &lt;em&gt;GNOME 3&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;org.gnome.desktop.wm.preferences.button-layout&lt;/code&gt; - said to work in &lt;em&gt;GNOME Flashback / Classic&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Here are list of button names:&lt;/p&gt;
@@ -1102,15 +1511,15 @@ to override value of the first key.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Note what standard &lt;em&gt;Cinnamon&lt;/em&gt; window settings do not have ability to add some buttons, like &lt;strong&gt;above&lt;/strong&gt;, &lt;del&gt;&lt;strong&gt;shade&lt;/strong&gt;&lt;/del&gt; (present since 2.4) and also &lt;strong&gt;spacer&lt;/strong&gt; -
-so we should use &lt;code class=&quot;highlighter-rouge&quot;&gt;dconf-editor&lt;/code&gt; for GUI or &lt;code class=&quot;highlighter-rouge&quot;&gt;gsettings set&lt;/code&gt; command in the terminal to get things done.&lt;/p&gt;
+so we should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dconf-editor&lt;/code&gt; for GUI or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gsettings set&lt;/code&gt; command in the terminal to get things done.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/muffin-window-buttons-layout_04.png&quot; alt=&quot;Editing muffin buttons layout in Cinnamon windows settings&quot; class=&quot;img-fluid&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;examples&quot;&gt;Examples&lt;/h2&gt;
 
-&lt;p&gt;Value of &lt;code class=&quot;highlighter-rouge&quot;&gt;button-layout&lt;/code&gt; key is a comma-separated list of button names, like &lt;code class=&quot;highlighter-rouge&quot;&gt;close:shade,minimize&lt;/code&gt;. Colon (:) is used to distinguish left and right side.&lt;/p&gt;
+&lt;p&gt;Value of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;button-layout&lt;/code&gt; key is a comma-separated list of button names, like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;close:shade,minimize&lt;/code&gt;. Colon (:) is used to distinguish left and right side.&lt;/p&gt;
 
-&lt;p&gt;Format of &lt;code class=&quot;highlighter-rouge&quot;&gt;gsettings&lt;/code&gt; command:&lt;/p&gt;
+&lt;p&gt;Format of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gsettings&lt;/code&gt; command:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gsettings &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &amp;lt;key&amp;gt; button-layout &amp;lt;value&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -1158,7 +1567,7 @@ about which button layouts you are using and what theme or WM issues you have en
 
 &lt;h2 id=&quot;installation-in-debian&quot;&gt;Installation in Debian&lt;/h2&gt;
 
-&lt;p&gt;Add repository line to your &lt;code class=&quot;highlighter-rouge&quot;&gt;sources.list&lt;/code&gt; and install Xamarin &lt;a href=&quot;http://download.mono-project.com/repo/xamarin.gpg&quot;&gt;GPG key&lt;/a&gt;. The most simple way to do that is using &lt;em&gt;software-properties-gtk&lt;/em&gt; or &lt;em&gt;mintsources&lt;/em&gt; (in case you are using Mint or LMDE). It also can be done from command line:&lt;/p&gt;
+&lt;p&gt;Add repository line to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sources.list&lt;/code&gt; and install Xamarin &lt;a href=&quot;http://download.mono-project.com/repo/xamarin.gpg&quot;&gt;GPG key&lt;/a&gt;. The most simple way to do that is using &lt;em&gt;software-properties-gtk&lt;/em&gt; or &lt;em&gt;mintsources&lt;/em&gt; (in case you are using Mint or LMDE). It also can be done from command line:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb http://download.mono-project.com/repo/debian wheezy main&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/apt/sources.list.d/mono-xamarin.list
@@ -1197,7 +1606,7 @@ apt-key add - &amp;lt; xamarin.gpg&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
 
-&lt;p&gt;Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/cinnamon/js/ui/&lt;/code&gt; directory. As you can guess, expo logic is in &lt;code class=&quot;highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; and overview is in &lt;code class=&quot;highlighter-rouge&quot;&gt;overview.js&lt;/code&gt;. So what’s next?&lt;/p&gt;
+&lt;p&gt;Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/share/cinnamon/js/ui/&lt;/code&gt; directory. As you can guess, expo logic is in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; and overview is in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overview.js&lt;/code&gt;. So what’s next?&lt;/p&gt;
 
 &lt;p&gt;1. Open script with superuser privileges in the text editor:&lt;/p&gt;
 
@@ -1262,14 +1671,14 @@ apt-key add - &amp;lt; xamarin.gpg&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;killall cinnamon &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cinnamon&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;5. In some cases expo and overview boxes could be partially overlapped with panels - it’s probably your case if you using top panel. 
-For both expo and overview, you need to change second parameter value of &lt;code class=&quot;highlighter-rouge&quot;&gt;set_position&lt;/code&gt; function (Y offset).&lt;/p&gt;
+For both expo and overview, you need to change second parameter value of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set_position&lt;/code&gt; function (Y offset).&lt;/p&gt;
 
-&lt;p&gt;For expo, edit &lt;code class=&quot;highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; again:&lt;/p&gt;
+&lt;p&gt;For expo, edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; again:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_expo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* change last 0 to the desired value */&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_expo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buttonWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;For overview, edit &lt;code class=&quot;highlighter-rouge&quot;&gt;workspacesView.js&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;For overview, edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workspacesView.js&lt;/code&gt;:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;nx&quot;&gt;workspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* change 0 to the desired value */&lt;/span&gt;
@@ -1278,7 +1687,7 @@ For both expo and overview, you need to change second parameter value of &lt;cod
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Offset value is related to the panel height, but you need to experiment with this to get desired result, as current Cinnamon theme 
-could greatly infuence it. In my case (&lt;em&gt;New Minty&lt;/em&gt; theme), panel height is about 26, but value of 16 in the &lt;code class=&quot;highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; and 32 in &lt;code class=&quot;highlighter-rouge&quot;&gt;workspacesView.js&lt;/code&gt; is fine.&lt;/p&gt;
+could greatly infuence it. In my case (&lt;em&gt;New Minty&lt;/em&gt; theme), panel height is about 26, but value of 16 in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expo.js&lt;/code&gt; and 32 in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workspacesView.js&lt;/code&gt; is fine.&lt;/p&gt;
 
 &lt;hr /&gt;
 

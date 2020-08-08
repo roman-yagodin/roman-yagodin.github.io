@@ -210,22 +210,22 @@ This is a TL;DR guide of Getting Things Done (GTD) implementation using Simpleta
 
 <h2 id="entries">Entries</h2>
 
-<p>I refer to every line in your <code class="highlighter-rouge">todo.txt</code> as an “entry” to differentiate them from tasks. Simpletask takes a broader view of what constitutes a <code class="highlighter-rouge">todo.txt</code> file.
-In <em>this</em> implementation the <code class="highlighter-rouge">todo.txt</code> format provides a large chunk of your trusted system.</p>
+<p>I refer to every line in your <code class="language-plaintext highlighter-rouge">todo.txt</code> as an “entry” to differentiate them from tasks. Simpletask takes a broader view of what constitutes a <code class="language-plaintext highlighter-rouge">todo.txt</code> file.
+In <em>this</em> implementation the <code class="language-plaintext highlighter-rouge">todo.txt</code> format provides a large chunk of your trusted system.</p>
 
-<p>Entries may belong to one list (<code class="highlighter-rouge">@something</code>) and they may have one or more tags (<code class="highlighter-rouge">+something</code>) assigned to them. They may also utilize due dates (<code class="highlighter-rouge">due:2014-04-2</code>) thresholds (<code class="highlighter-rouge">t:2014-04-3</code>), recurrance (<code class="highlighter-rouge">rec:1w</code>) and priorities (<code class="highlighter-rouge">(A)</code>, …, <code class="highlighter-rouge">(Z)</code>).</p>
+<p>Entries may belong to one list (<code class="language-plaintext highlighter-rouge">@something</code>) and they may have one or more tags (<code class="language-plaintext highlighter-rouge">+something</code>) assigned to them. They may also utilize due dates (<code class="language-plaintext highlighter-rouge">due:2014-04-2</code>) thresholds (<code class="language-plaintext highlighter-rouge">t:2014-04-3</code>), recurrance (<code class="language-plaintext highlighter-rouge">rec:1w</code>) and priorities (<code class="language-plaintext highlighter-rouge">(A)</code>, …, <code class="language-plaintext highlighter-rouge">(Z)</code>).</p>
 
-<h2 id="lists-">Lists (<code class="highlighter-rouge">@</code>)</h2>
+<h2 id="lists-">Lists (<code class="language-plaintext highlighter-rouge">@</code>)</h2>
 
-<p>Simpletasks collects all <code class="highlighter-rouge">@somethings</code> in your entries and calls them <em>lists</em>.</p>
+<p>Simpletasks collects all <code class="language-plaintext highlighter-rouge">@somethings</code> in your entries and calls them <em>lists</em>.</p>
 
 <p>Lists hold all entries on the first four <em>Horizons of Focus</em>: from <em>Runway</em> to <em>30,000 feet</em>, or <em>Next Actions</em> to <em>Goals &amp; Objectives</em>.  If you find this format appropriate, you could feasibly include items from the remaining two altitudes: <em>Vision</em>, <em>Purpose</em> and <em>Principles</em>.</p>
 
 <p><strong>Lists are mutually exclusive!</strong> If an entry can be placed in more than one list, you need to clarify either the entry or your lists.</p>
 
-<h2 id="tags-">Tags (<code class="highlighter-rouge">+</code>)</h2>
+<h2 id="tags-">Tags (<code class="language-plaintext highlighter-rouge">+</code>)</h2>
 
-<p>Simpletasks collects all <code class="highlighter-rouge">+somethings</code> in your entries and calls them <em>tags</em>.</p>
+<p>Simpletasks collects all <code class="language-plaintext highlighter-rouge">+somethings</code> in your entries and calls them <em>tags</em>.</p>
 
 <p>Tags specify <em>areas of focus, interest or responsibility</em>, as well as <em>agendas for people or meetings</em>.</p>
 
@@ -233,15 +233,15 @@ In <em>this</em> implementation the <code class="highlighter-rouge">todo.txt</co
 
 <p>The inbox consists of <em>all entries that have not been assigned to a list</em>. They are typically not tagged, either. Although I will often revise entries before tagging and assigning them to another list, I generally preserve the original creation date.</p>
 
-<p><strong>You don’t need a list called <code class="highlighter-rouge">@Inbox</code>!</strong> First of all, it will just slow you down at the collection phase. If you want to view just your <em>Inbox</em>, filter by <code class="highlighter-rouge">-</code> in the left drawer.</p>
+<p><strong>You don’t need a list called <code class="language-plaintext highlighter-rouge">@Inbox</code>!</strong> First of all, it will just slow you down at the collection phase. If you want to view just your <em>Inbox</em>, filter by <code class="language-plaintext highlighter-rouge">-</code> in the left drawer.</p>
 
 <h2 id="next-actions--contexts-runway">Next Actions / Contexts (Runway)</h2>
 
-<p><em>Next actions</em> are filed in lists that begin with an <em>at-sign</em> (<code class="highlighter-rouge">@</code>), one for each context. The <em>at-sign</em> is an established shorthand that reinforces the idea that the context (place or tool) is required for the action to be performed. More importantly, the <em>at-sign</em> makes these lists sort above the others, so you can find them more quickly.</p>
+<p><em>Next actions</em> are filed in lists that begin with an <em>at-sign</em> (<code class="language-plaintext highlighter-rouge">@</code>), one for each context. The <em>at-sign</em> is an established shorthand that reinforces the idea that the context (place or tool) is required for the action to be performed. More importantly, the <em>at-sign</em> makes these lists sort above the others, so you can find them more quickly.</p>
 
 <p>The examples of GTD contexts are:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@@agendas
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@@agendas
 @@anywhere
 @@calls
 @@computer / @@laptop
@@ -250,19 +250,19 @@ In <em>this</em> implementation the <code class="highlighter-rouge">todo.txt</co
 @@office / @@work
 </code></pre></div></div>
 
-<p><strong>Уou may (and must) define your own contexts!</strong> By example, I like to have context <code class="highlighter-rouge">@@buy</code> - for any optional triffles I’d want to buy during accidental shopping; and also context <code class="highlighter-rouge">@@ingame</code> - it’s just like <code class="highlighter-rouge">@@computer</code>, but when you use it for fun.</p>
+<p><strong>Уou may (and must) define your own contexts!</strong> By example, I like to have context <code class="language-plaintext highlighter-rouge">@@buy</code> - for any optional triffles I’d want to buy during accidental shopping; and also context <code class="language-plaintext highlighter-rouge">@@ingame</code> - it’s just like <code class="language-plaintext highlighter-rouge">@@computer</code>, but when you use it for fun.</p>
 
 <p>Next actions are tagged with an area tag and, for entries relating to communication, an agenda tag (either a person or meeting).</p>
 
 <h3 id="agendas">Agendas</h3>
 
-<p>Agendas may be listed under <code class="highlighter-rouge">@@agendas</code> (for face-to-face and impromptu communications) or required context (e.g. <code class="highlighter-rouge">@@calls</code>, <code class="highlighter-rouge">@@computer</code>, etc.) but <em>not</em> both.</p>
+<p>Agendas may be listed under <code class="language-plaintext highlighter-rouge">@@agendas</code> (for face-to-face and impromptu communications) or required context (e.g. <code class="language-plaintext highlighter-rouge">@@calls</code>, <code class="language-plaintext highlighter-rouge">@@computer</code>, etc.) but <em>not</em> both.</p>
 
 <p>All tags that begin with a capital letter refer to agendas – that is, to people or meetings.</p>
 
 <p>Example tags:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+Mom
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+Mom
 +JSmith
 +StaffMeeting
 </code></pre></div></div>
@@ -271,7 +271,7 @@ In <em>this</em> implementation the <code class="highlighter-rouge">todo.txt</co
 
 <p>Example entries:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tell +Bob about the party @@agendas +fun
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tell +Bob about the party @@agendas +fun
 Email +DevTeam re: new client @@online +work
 </code></pre></div></div>
 
@@ -279,42 +279,42 @@ Email +DevTeam re: new client @@online +work
 
 <h2 id="projects-10000-ft">Projects (10,000 ft)</h2>
 
-<p>A list called <code class="highlighter-rouge">@Projects</code> with an entry for <strong>every multi-step outcome you are committed to completing within the next year</strong>. Each project entry is tagged with an area and, if applicable, an agenda.</p>
+<p>A list called <code class="language-plaintext highlighter-rouge">@Projects</code> with an entry for <strong>every multi-step outcome you are committed to completing within the next year</strong>. Each project entry is tagged with an area and, if applicable, an agenda.</p>
 
 <p>For code-related project you could think of each milestone as of GTD project.</p>
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Clean out the garage +household @Projects
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Clean out the garage +household @Projects
 Release R7.Documents module v1.11 +work @Projects
 </code></pre></div></div>
 
 <h2 id="somedaymaybe-incubate-runway10000-ft">Someday/Maybe (Incubate Runway/10,000 ft)</h2>
 
-<p>A list called <code class="highlighter-rouge">@Someday</code> with an entry for every project (multi-step outcome) or single action you are incubating – i.e., that would like to periodically review but are not committed to moving on, yet. Each someday entry is tagged with an area and, if applicable, an agenda, allowing you to view potential commitments along with your current ones.</p>
+<p>A list called <code class="language-plaintext highlighter-rouge">@Someday</code> with an entry for every project (multi-step outcome) or single action you are incubating – i.e., that would like to periodically review but are not committed to moving on, yet. Each someday entry is tagged with an area and, if applicable, an agenda, allowing you to view potential commitments along with your current ones.</p>
 
-<p>Example: <code class="highlighter-rouge">Learn to play the piano +creativity @Someday</code></p>
+<p>Example: <code class="language-plaintext highlighter-rouge">Learn to play the piano +creativity @Someday</code></p>
 
-<p>You could feasibly have multiple Someday/Maybe lists like <code class="highlighter-rouge">@Someday-Soon</code> or even <code class="highlighter-rouge">@Someday-Never</code>, if you need the additional granularity –
+<p>You could feasibly have multiple Someday/Maybe lists like <code class="language-plaintext highlighter-rouge">@Someday-Soon</code> or even <code class="language-plaintext highlighter-rouge">@Someday-Never</code>, if you need the additional granularity –
 or just use Simpletask priorities.</p>
 
-<p>Use the <code class="highlighter-rouge">@Someday-Never</code> to RIP things that you strongly doesn’t want and have strong reasons to not to do, but still need to remember sometimes.</p>
+<p>Use the <code class="language-plaintext highlighter-rouge">@Someday-Never</code> to RIP things that you strongly doesn’t want and have strong reasons to not to do, but still need to remember sometimes.</p>
 
 <h2 id="tickler-incubate-runway10000-ft">Tickler (Incubate Runway/10,000 ft)</h2>
 
-<p>A list called <code class="highlighter-rouge">@Tickler</code> contains <strong>all tickled items which are not actions</strong>. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of <code class="highlighter-rouge">(B)</code>.</p>
+<p>A list called <code class="language-plaintext highlighter-rouge">@Tickler</code> contains <strong>all tickled items which are not actions</strong>. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of <code class="language-plaintext highlighter-rouge">(B)</code>.</p>
 
 <p>Tickled actions are not included in this list; they are placed under the appropriate context.</p>
 
 <h2 id="waiting-for-runway">Waiting For (Runway)</h2>
 
-<p>A list called <code class="highlighter-rouge">@WaitingFor</code> with an entry for each delegated action, tagged with both area and agenda.</p>
+<p>A list called <code class="language-plaintext highlighter-rouge">@WaitingFor</code> with an entry for each delegated action, tagged with both area and agenda.</p>
 
-<p>Example: <code class="highlighter-rouge">+JSmith re: conference +consortium @WaitingFor</code></p>
+<p>Example: <code class="language-plaintext highlighter-rouge">+JSmith re: conference +consortium @WaitingFor</code></p>
 
 <h2 id="areas-20000-ft">Areas (20,000 ft)</h2>
 
-<p>A list called <code class="highlighter-rouge">@\_Areas</code> with entries identifying all your areas of focus, interest or responsibility. There is overlap between this horizon and the area tags (described below), but a 1-to-1 correspondence is not obligatory. How you set up this horizon depends on how you think about your life and how it makes sense to carve up your commitments.</p>
+<p>A list called <code class="language-plaintext highlighter-rouge">@\_Areas</code> with entries identifying all your areas of focus, interest or responsibility. There is overlap between this horizon and the area tags (described below), but a 1-to-1 correspondence is not obligatory. How you set up this horizon depends on how you think about your life and how it makes sense to carve up your commitments.</p>
 
 <p>Note: the underscore in front of this list is merely to have it sort to the bottom of your lists.</p>
 
@@ -324,7 +324,7 @@ or just use Simpletask priorities.</p>
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+gtd
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+gtd
 +blog
 +health
 +household
@@ -332,7 +332,7 @@ or just use Simpletask priorities.</p>
 
 <p>Example entries:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Family +family @_Areas
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Family +family @_Areas
 Health, Vitality &amp; Well-Being +health @_Areas
 Profession, Self-improvement +profession +gtd @_Areas
 Finances +finances @_Areas
@@ -340,13 +340,13 @@ Household +household @_Areas
 Hobbies +blog +painting +rpg  @_Areas
 </code></pre></div></div>
 
-<p>To make sure that these are always available, define them in your <code class="highlighter-rouge">@_Areas</code> entries or add them to a hidden entry (see below).</p>
+<p>To make sure that these are always available, define them in your <code class="language-plaintext highlighter-rouge">@_Areas</code> entries or add them to a hidden entry (see below).</p>
 
 <h2 id="goals--objectives-30000-ft">Goals &amp; Objectives (30,000 ft)</h2>
 
-<p>A list called <code class="highlighter-rouge">@\_Goals</code> with an entry for <strong>every outcome you are committed to completing within the next 2-5 years</strong>, tagged with an area and, if applicable, an agenda. Goals are treated basically as long-term projects.</p>
+<p>A list called <code class="language-plaintext highlighter-rouge">@\_Goals</code> with an entry for <strong>every outcome you are committed to completing within the next 2-5 years</strong>, tagged with an area and, if applicable, an agenda. Goals are treated basically as long-term projects.</p>
 
-<p>Example: <code class="highlighter-rouge">Attain some promotion +career @\_Goals</code></p>
+<p>Example: <code class="language-plaintext highlighter-rouge">Attain some promotion +career @\_Goals</code></p>
 
 <hr />
 
@@ -374,7 +374,7 @@ Hobbies +blog +painting +rpg  @_Areas
 
 <p>The most frequently used ways to slice your system – contexts and areas – are the quickest to reach, being at at the top and bottom, respectively. Less used stuff – higher altitudes, agendas – is in the middle.</p>
 
-<p>You can choose multiple lists and tags to slice your trusted system in various ways. For example, you can see all the <code class="highlighter-rouge">@@calls</code> you have to make for <code class="highlighter-rouge">+work</code>, the <code class="highlighter-rouge">@Projects</code> relating to your <code class="highlighter-rouge">+family</code> or all the <code class="highlighter-rouge">+fun</code> things you might do <code class="highlighter-rouge">@Someday</code>.</p>
+<p>You can choose multiple lists and tags to slice your trusted system in various ways. For example, you can see all the <code class="language-plaintext highlighter-rouge">@@calls</code> you have to make for <code class="language-plaintext highlighter-rouge">+work</code>, the <code class="language-plaintext highlighter-rouge">@Projects</code> relating to your <code class="language-plaintext highlighter-rouge">+family</code> or all the <code class="language-plaintext highlighter-rouge">+fun</code> things you might do <code class="language-plaintext highlighter-rouge">@Someday</code>.</p>
 
 <h3 id="hidden-entries">Hidden Entries</h3>
 
@@ -382,7 +382,7 @@ Hobbies +blog +painting +rpg  @_Areas
 
 <p>Examples:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>h:1 Contexts: @@agendas, @@anywhere, @@calls, @@computer, @@errands, @@home, @@office
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>h:1 Contexts: @@agendas, @@anywhere, @@calls, @@computer, @@errands, @@home, @@office
 h:1 Other Lists: @Projects, @Someday, @Tickler, @WaitingFor, @_Areas, @_Goals
 h:1 Contacts: +Mom, +JSmith, etc.
 </code></pre></div></div>
@@ -394,13 +394,13 @@ while it’s possibly better to have separate todo file for that.</p>
 
 <p>Per GTD, I only use due dates for the “hard landscape”, such as appointments, rather than estimations of when I’d like to do something. I also add them to projects to indicate deadlines (after which completion becomes moot).</p>
 
-<p>For time-sensitive actions you could use prefix times like so: <code class="highlighter-rouge">[10:15] Taskname</code>. Or suffix times so: <code class="highlighter-rouge">due:2019-06-20 T10:15</code> - this looks almost like an <a href="https://www.w3.org/TR/NOTE-datetime">ISO datetime</a> (<code class="highlighter-rouge">2019-06-20T10:15</code>).</p>
+<p>For time-sensitive actions you could use prefix times like so: <code class="language-plaintext highlighter-rouge">[10:15] Taskname</code>. Or suffix times so: <code class="language-plaintext highlighter-rouge">due:2019-06-20 T10:15</code> - this looks almost like an <a href="https://www.w3.org/TR/NOTE-datetime">ISO datetime</a> (<code class="language-plaintext highlighter-rouge">2019-06-20T10:15</code>).</p>
 
 <p>That said, I find Simpletask’s calendar integration to be really clunky, and I have begun adding items straight to the calendar, which I find problematic.</p>
 
 <h3 id="threshold-dates">Threshold Dates</h3>
 
-<p>Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the <code class="highlighter-rouge">(B)</code> priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the <code class="highlighter-rouge">@Tickler</code> list.</p>
+<p>Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the <code class="language-plaintext highlighter-rouge">(B)</code> priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the <code class="language-plaintext highlighter-rouge">@Tickler</code> list.</p>
 
 <p>The priority is removed when the entry has been “tickled” (the threshold has been passed).</p>
 
@@ -410,19 +410,19 @@ while it’s possibly better to have separate todo file for that.</p>
 
 <h3 id="priorities">Priorities</h3>
 
-<p>GTD does not (and should not) have a priority system. I use the <code class="highlighter-rouge">todo.txt</code> priority syntax to help me filter three kinds of entries:</p>
+<p>GTD does not (and should not) have a priority system. I use the <code class="language-plaintext highlighter-rouge">todo.txt</code> priority syntax to help me filter three kinds of entries:</p>
 
 <ul>
-  <li>Entries with <code class="highlighter-rouge">(A)</code> priority are “hot”: they are actions that I plan (not would <em>like</em>) to do today or at least tomorrow. I update this list daily.</li>
-  <li>Entries with <code class="highlighter-rouge">(B)</code> priority are “tickled”: all actions or reminders with a threshold date have this priority until the threshold is passed.</li>
-  <li>Entries with <code class="highlighter-rouge">(D)</code> priority are just GTD hints I like to leave above other entries in the list, something like that:</li>
+  <li>Entries with <code class="language-plaintext highlighter-rouge">(A)</code> priority are “hot”: they are actions that I plan (not would <em>like</em>) to do today or at least tomorrow. I update this list daily.</li>
+  <li>Entries with <code class="language-plaintext highlighter-rouge">(B)</code> priority are “tickled”: all actions or reminders with a threshold date have this priority until the threshold is passed.</li>
+  <li>Entries with <code class="language-plaintext highlighter-rouge">(D)</code> priority are just GTD hints I like to leave above other entries in the list, something like that:</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(D) Check context lists
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(D) Check context lists
 (D) Plan to complete within the next year @Projects
 </code></pre></div></div>
 
-<p>This leaves <code class="highlighter-rouge">(C)</code> priority reserved for future use, as only <code class="highlighter-rouge">(A)</code>, <code class="highlighter-rouge">(B)</code>, <code class="highlighter-rouge">(C)</code> and <code class="highlighter-rouge">(D)</code> priorities are useful (have a color) in the current Simpletask version.</p>
+<p>This leaves <code class="language-plaintext highlighter-rouge">(C)</code> priority reserved for future use, as only <code class="language-plaintext highlighter-rouge">(A)</code>, <code class="language-plaintext highlighter-rouge">(B)</code>, <code class="language-plaintext highlighter-rouge">(C)</code> and <code class="language-plaintext highlighter-rouge">(D)</code> priorities are useful (have a color) in the current Simpletask version.</p>
 
 <p><strong>Projects and higher altitudes never have priorities.</strong></p>
 
@@ -451,7 +451,7 @@ while it’s possibly better to have separate todo file for that.</p>
 
 <p>Base state:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x Completed entry 1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x Completed entry 1
 Entry 2
 Entry 3
 ...
@@ -460,7 +460,7 @@ Entry 199
 
 <p>Completing entry 2 on review:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x Completed entry 2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x Completed entry 2
 x Completed entry 1
 Entry 3
 ...
@@ -478,18 +478,18 @@ Entry 199
 <h3 id="notes">Notes</h3>
 
 <p>There are times when I clear my Inbox and some entries which do not require any actions, but looks like general information,
-while still important (for some project or area) - I just move them to the <code class="highlighter-rouge">@Notes</code> list.</p>
+while still important (for some project or area) - I just move them to the <code class="language-plaintext highlighter-rouge">@Notes</code> list.</p>
 
-<p>When reviewing my <code class="highlighter-rouge">@Notes</code> list, I could decide do I need to delete it or move to the note-taking application.
+<p>When reviewing my <code class="language-plaintext highlighter-rouge">@Notes</code> list, I could decide do I need to delete it or move to the note-taking application.
 Currently I prefer <a href="https://simplenote.com/">Simplenote</a> for that - very nice addition to my trusted system.</p>
 
 <h3 id="issue-trackers">Issue Trackers</h3>
 
 <p>Then working on code project, I like to treat the project bugtracker as a public context list for the project,
-still having an entry for it (or better - for a single milestone of it) in the <code class="highlighter-rouge">@Projects</code> list.</p>
+still having an entry for it (or better - for a single milestone of it) in the <code class="language-plaintext highlighter-rouge">@Projects</code> list.</p>
 
-<p>During review, I move entries which should go to the bugtracker, to the <code class="highlighter-rouge">@@bugtracker</code> list.
-And during review of <code class="highlighter-rouge">@@bugtracker</code> list, I just create issues and remove entries from Simpletask,
+<p>During review, I move entries which should go to the bugtracker, to the <code class="language-plaintext highlighter-rouge">@@bugtracker</code> list.
+And during review of <code class="language-plaintext highlighter-rouge">@@bugtracker</code> list, I just create issues and remove entries from Simpletask,
 effectively “forgeting” about them. But I will certainly will remember them again – then and where I resume work on the project.</p>
 
 <table>
@@ -538,7 +538,7 @@ effectively “forgeting” about them. But I will certainly will remember them 
 <ul>
   <li>Simpletask provides an option to automatically generate a creation date for new tasks. Use it.</li>
   <li>You could make copy of entry (or entries) by sharing it. Press “Share” button and then select Simpletask as a target app.
-This will produce a copy of entry with the <code class="highlighter-rouge">+background</code> tag.</li>
+This will produce a copy of entry with the <code class="language-plaintext highlighter-rouge">+background</code> tag.</li>
 </ul>
 
 <h2 id="issues--problems">Issues &amp; Problems</h2>
@@ -547,7 +547,7 @@ This will produce a copy of entry with the <code class="highlighter-rouge">+back
 
 <ul>
   <li>
-    <p><strong>Inbox</strong>. I enter data straight into the <code class="highlighter-rouge">todo.txt</code> with Simpletask or a text editor. I haven’t experimented with using emails or other input, which is why I don’t discuss this at all. There are some <a href="https://ifttt.com/search/query/todo">ifttt recipes</a>, but I haven’t tried any of them.</p>
+    <p><strong>Inbox</strong>. I enter data straight into the <code class="language-plaintext highlighter-rouge">todo.txt</code> with Simpletask or a text editor. I haven’t experimented with using emails or other input, which is why I don’t discuss this at all. There are some <a href="https://ifttt.com/search/query/todo">ifttt recipes</a>, but I haven’t tried any of them.</p>
   </li>
   <li>
     <p><strong>Calendar</strong>. You do not need a calendar with this system – at least insofar as your GTD system is concerned. Integration with an online calendar would be useful, but that is a feature that would need to be provided by Simpletask, or via something that can read the text file and populate the calendar.</p>
@@ -560,7 +560,7 @@ This will produce a copy of entry with the <code class="highlighter-rouge">+back
   </li>
 </ul>
 
-<p>I include these as “notes” (see above). For example: <code class="highlighter-rouge">2014-01-07 Complete Something or Other // Files in Dropbox &gt; Projects &gt; SomethingOrOther</code>.</p>
+<p>I include these as “notes” (see above). For example: <code class="language-plaintext highlighter-rouge">2014-01-07 Complete Something or Other // Files in Dropbox &gt; Projects &gt; SomethingOrOther</code>.</p>
 
 <ul>
   <li>
@@ -573,22 +573,22 @@ This will produce a copy of entry with the <code class="highlighter-rouge">+back
       <li>
         <p>“Must read” items go into the main system at the appropriate context – since I am committed to reading or reviewing them. This works very well for items that you can keep on your mobile device.</p>
 
-        <p>Example: <code class="highlighter-rouge">Read email from bank @@anywhere +finances</code>.</p>
+        <p>Example: <code class="language-plaintext highlighter-rouge">Read email from bank @@anywhere +finances</code>.</p>
       </li>
       <li>
-        <p>“Nice to read” things do not go into the main system. You might want to add some of these to your classify <code class="highlighter-rouge">@Someday</code> list, if you would like to review them weekly.</p>
+        <p>“Nice to read” things do not go into the main system. You might want to add some of these to your classify <code class="language-plaintext highlighter-rouge">@Someday</code> list, if you would like to review them weekly.</p>
       </li>
     </ul>
   </li>
 </ul>
 
-<p>Since I don’t care much if anything falls through the cracks, they are housed in various systems: books and movies are in text files (in a custom format, but I might convert these to the <code class="highlighter-rouge">todo.txt</code> format as well), online articles are in a read-it-later service, etc.</p>
+<p>Since I don’t care much if anything falls through the cracks, they are housed in various systems: books and movies are in text files (in a custom format, but I might convert these to the <code class="language-plaintext highlighter-rouge">todo.txt</code> format as well), online articles are in a read-it-later service, etc.</p>
 
 <ul>
   <li>
-    <p><strong>Performance</strong>. Simpletask becomes quite slow if you are viewing many entries at once (over 200 on my phone). You might want to experiment with breaking off the <code class="highlighter-rouge">@Someday/Maybe</code> entries into their own todo file.</p>
+    <p><strong>Performance</strong>. Simpletask becomes quite slow if you are viewing many entries at once (over 200 on my phone). You might want to experiment with breaking off the <code class="language-plaintext highlighter-rouge">@Someday/Maybe</code> entries into their own todo file.</p>
 
-    <p>That said, my <code class="highlighter-rouge">todo.txt</code> is over 400 lines and, while not snappy, is still usable.</p>
+    <p>That said, my <code class="language-plaintext highlighter-rouge">todo.txt</code> is over 400 lines and, while not snappy, is still usable.</p>
   </li>
 </ul>
 
@@ -619,7 +619,7 @@ This will produce a copy of entry with the <code class="highlighter-rouge">+back
      
     	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#guide-ref">
     		guide
-        <span class="badge badge-light">2</span>
+        <span class="badge badge-light">3</span>
     	</a></li>
     
   
@@ -720,7 +720,7 @@ This will produce a copy of entry with the <code class="highlighter-rouge">+back
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

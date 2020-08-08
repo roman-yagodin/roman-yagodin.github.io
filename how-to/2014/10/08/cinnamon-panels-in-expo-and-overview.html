@@ -200,7 +200,7 @@ One of the things that I’ve liked in GNOME 3 is ability to manage workspaces, 
 
 <h2 id="solution">Solution</h2>
 
-<p>Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the <code class="highlighter-rouge">/usr/share/cinnamon/js/ui/</code> directory. As you can guess, expo logic is in <code class="highlighter-rouge">expo.js</code> and overview is in <code class="highlighter-rouge">overview.js</code>. So what’s next?</p>
+<p>Luckily for us, most Cinnamon UI logic is defined by JavaScript files in the <code class="language-plaintext highlighter-rouge">/usr/share/cinnamon/js/ui/</code> directory. As you can guess, expo logic is in <code class="language-plaintext highlighter-rouge">expo.js</code> and overview is in <code class="language-plaintext highlighter-rouge">overview.js</code>. So what’s next?</p>
 
 <p>1. Open script with superuser privileges in the text editor:</p>
 
@@ -265,14 +265,14 @@ One of the things that I’ve liked in GNOME 3 is ability to manage workspaces, 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">killall cinnamon <span class="o">&amp;&amp;</span> cinnamon</code></pre></figure>
 
 <p>5. In some cases expo and overview boxes could be partially overlapped with panels - it’s probably your case if you using top panel. 
-For both expo and overview, you need to change second parameter value of <code class="highlighter-rouge">set_position</code> function (Y offset).</p>
+For both expo and overview, you need to change second parameter value of <code class="language-plaintext highlighter-rouge">set_position</code> function (Y offset).</p>
 
-<p>For expo, edit <code class="highlighter-rouge">expo.js</code> again:</p>
+<p>For expo, edit <code class="language-plaintext highlighter-rouge">expo.js</code> again:</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">_expo</span><span class="p">.</span><span class="nx">actor</span><span class="p">.</span><span class="nx">set_position</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* change last 0 to the desired value */</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">_expo</span><span class="p">.</span><span class="nx">actor</span><span class="p">.</span><span class="nx">set_size</span><span class="p">((</span><span class="nx">primary</span><span class="p">.</span><span class="nx">width</span> <span class="o">-</span> <span class="nx">buttonWidth</span><span class="p">),</span> <span class="nx">primary</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span></code></pre></figure>
 
-<p>For overview, edit <code class="highlighter-rouge">workspacesView.js</code>:</p>
+<p>For overview, edit <code class="language-plaintext highlighter-rouge">workspacesView.js</code>:</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">else</span> <span class="p">{</span>
 	<span class="nx">workspace</span><span class="p">.</span><span class="nx">actor</span><span class="p">.</span><span class="nx">set_position</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* change 0 to the desired value */</span>
@@ -281,7 +281,7 @@ For both expo and overview, you need to change second parameter value of <code c
 <span class="p">}</span></code></pre></figure>
 
 <p>Offset value is related to the panel height, but you need to experiment with this to get desired result, as current Cinnamon theme 
-could greatly infuence it. In my case (<em>New Minty</em> theme), panel height is about 26, but value of 16 in the <code class="highlighter-rouge">expo.js</code> and 32 in <code class="highlighter-rouge">workspacesView.js</code> is fine.</p>
+could greatly infuence it. In my case (<em>New Minty</em> theme), panel height is about 26, but value of 16 in the <code class="language-plaintext highlighter-rouge">expo.js</code> and 32 in <code class="language-plaintext highlighter-rouge">workspacesView.js</code> is fine.</p>
 
 <hr />
 
@@ -414,7 +414,7 @@ could greatly infuence it. In my case (<em>New Minty</em> theme), panel height i
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

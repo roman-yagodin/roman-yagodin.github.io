@@ -220,10 +220,10 @@ Celebrating recent update to Unofficial Arcanum Patch after almost 10 years sinc
 
 <p>After that, you can install the game by just clicking <em>Install</em>.</p>
 
-<p>After installing, run game once - just to create <code class="highlighter-rouge">$HOME/.local/share/Steam/steamapps/compatdata/500810</code> directory.
+<p>After installing, run game once - just to create <code class="language-plaintext highlighter-rouge">$HOME/.local/share/Steam/steamapps/compatdata/500810</code> directory.
 It will take some time, as Steam will need to download <em>Proton</em> and create wineprefix for the game.</p>
 
-<p>Add symlink to the game install directory and place it inside the <code class="highlighter-rouge">$HOME/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c</code> directory:</p>
+<p>Add symlink to the game install directory and place it inside the <code class="language-plaintext highlighter-rouge">$HOME/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c</code> directory:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/share/Steam/steamapps/common/Arcanum"</span> <span class="se">\</span>
   <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/share/Steam/steamapps/compatdata/500810/pfx/drive_c/Arcanum"</span>
@@ -236,9 +236,9 @@ If you know something about it, please drop a comment.</p>
 
 <h3 id="wine-way">Wine way</h3>
 
-<p><em>wineconsole</em> is the <em>Wine</em> console manager, used to run console commands and applications. We will need it to run <code class="highlighter-rouge">cmd.exe</code> shell in order to run some commands to setup the game.</p>
+<p><em>wineconsole</em> is the <em>Wine</em> console manager, used to run console commands and applications. We will need it to run <code class="language-plaintext highlighter-rouge">cmd.exe</code> shell in order to run some commands to setup the game.</p>
 
-<p>Execute in the terminal emulator (replace <code class="highlighter-rouge">Proton 4.11</code> with actual <em>Proton</em> version):</p>
+<p>Execute in the terminal emulator (replace <code class="language-plaintext highlighter-rouge">Proton 4.11</code> with actual <em>Proton</em> version):</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">env </span><span class="nv">WINEPREFIX</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.steam/steam/steamapps/compatdata/500810/pfx"</span> <span class="se">\</span>
   <span class="nv">WINEPATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/share/Steam/steamapps/common/Proton 4.11/dist/bin/wine"</span> <span class="se">\</span>
@@ -253,14 +253,14 @@ If you know something about it, please drop a comment.</p>
 
 <h3 id="sierralauncher-way">SierraLauncher way</h3>
 
-<p>Backup <code class="highlighter-rouge">SierraLauncher.ini</code> into <code class="highlighter-rouge">original_SierraLauncher.ini</code></p>
+<p>Backup <code class="language-plaintext highlighter-rouge">SierraLauncher.ini</code> into <code class="language-plaintext highlighter-rouge">original_SierraLauncher.ini</code></p>
 
-<p>Create <code class="highlighter-rouge">cmd.bat</code> file with following content:</p>
+<p>Create <code class="language-plaintext highlighter-rouge">cmd.bat</code> file with following content:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmd.exe
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cmd.exe
 </code></pre></div></div>
 
-<p>Modify <code class="highlighter-rouge">SierraLauncher.ini</code></p>
+<p>Modify <code class="language-plaintext highlighter-rouge">SierraLauncher.ini</code></p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[Launcher]</span>
 <span class="py">Name</span><span class="p">=</span><span class="s">Arcanum</span>
@@ -274,9 +274,9 @@ If you know something about it, please drop a comment.</p>
 <span class="py">Game1Cmd</span><span class="p">=</span>
 </code></pre></div></div>
 
-<p>Now run the game - it will start <code class="highlighter-rouge">SierraLauncher.exe</code>, but then you click <em>Launch</em>, it will open <em>wineconsole</em> (<code class="highlighter-rouge">cmd.exe</code>) window instead.</p>
+<p>Now run the game - it will start <code class="language-plaintext highlighter-rouge">SierraLauncher.exe</code>, but then you click <em>Launch</em>, it will open <em>wineconsole</em> (<code class="language-plaintext highlighter-rouge">cmd.exe</code>) window instead.</p>
 
-<p><strong>Note:</strong> Optionally you can create a <code class="highlighter-rouge">cmd_SierraLauncher.ini</code> file and make <code class="highlighter-rouge">SierraLauncher.ini</code> the symlink to it. This way you can switch between two <code class="highlighter-rouge">.ini</code> versions without copying files.</p>
+<p><strong>Note:</strong> Optionally you can create a <code class="language-plaintext highlighter-rouge">cmd_SierraLauncher.ini</code> file and make <code class="language-plaintext highlighter-rouge">SierraLauncher.ini</code> the symlink to it. This way you can switch between two <code class="language-plaintext highlighter-rouge">.ini</code> versions without copying files.</p>
 
 <h2 id="install-unofficial-arcanum-patch">Install Unofficial Arcanum Patch</h2>
 
@@ -286,7 +286,7 @@ If you know something about it, please drop a comment.</p>
 
 <p>Run <em>wineconsole</em>, type some commands:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
 cd Arcanum
 UAP1.5.1.exe
 </code></pre></div></div>
@@ -305,9 +305,9 @@ UAP1.5.1.exe
 
 <h2 id="apply-highres-patch">Apply HighRes patch</h2>
 
-<p>Then you install <em>Unofficial patch</em>, the <em>HighRes</em> patch will be installed into <code class="highlighter-rouge">Arcanum/HighRes</code> directory, but not applied, as it will require some additional configuration. Let’s do it.</p>
+<p>Then you install <em>Unofficial patch</em>, the <em>HighRes</em> patch will be installed into <code class="language-plaintext highlighter-rouge">Arcanum/HighRes</code> directory, but not applied, as it will require some additional configuration. Let’s do it.</p>
 
-<p>Open <em>HighRes</em> <code class="highlighter-rouge">config.ini</code> and modify it as you like:</p>
+<p>Open <em>HighRes</em> <code class="language-plaintext highlighter-rouge">config.ini</code> and modify it as you like:</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">Width</span> <span class="p">=</span> <span class="s">1920 // original: 800</span>
 <span class="py">Height</span> <span class="p">=</span> <span class="s">1080 // original: 600</span>
@@ -318,7 +318,7 @@ UAP1.5.1.exe
 
 <p>Install patch. Open <em>wineconsole</em> again,  type:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
 cd Arcanum\Arcanum\HighRes
 _install.bat
 exit
@@ -330,7 +330,7 @@ exit
 
 <h2 id="play">Play</h2>
 
-<p>If you started <em>wineconsole</em> from SierraLauncher, it’s time to restore the <code class="highlighter-rouge">SierraLauncher.ini</code> to its original state.</p>
+<p>If you started <em>wineconsole</em> from SierraLauncher, it’s time to restore the <code class="language-plaintext highlighter-rouge">SierraLauncher.ini</code> to its original state.</p>
 
 <p>Now <strong>run Arcanum from your Steam library</strong> and have fun with such a great game!</p>
 
@@ -346,14 +346,14 @@ exit
 
 <p><img src="/assets/images/arcanum-graphics-glitch-small.png" alt="Arcanum: Graphics glitch" class="img-fluid" /></p>
 
-<p>The most simple way to fix it is to switch to the software rendering via <em>HighRes</em> <code class="highlighter-rouge">config.ini</code>:</p>
+<p>The most simple way to fix it is to switch to the software rendering via <em>HighRes</em> <code class="language-plaintext highlighter-rouge">config.ini</code>:</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="py">Renderer</span> <span class="p">=</span> <span class="s">0 // 0 = software, 1 = hardware</span>
 </code></pre></div></div>
 
-<p>Repeat <em>HighRes</em> patch setup, but run <code class="highlighter-rouge">_uninstall.bat</code> first.</p>
+<p>Repeat <em>HighRes</em> patch setup, but run <code class="language-plaintext highlighter-rouge">_uninstall.bat</code> first.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C:
 cd Arcanum\Arcanum\HighRes
 _uninstall.bat
 _install.bat
@@ -362,11 +362,11 @@ exit
 
 <h2 id="additional-tweaks">Additional tweaks</h2>
 
-<p>Before switching to software renderer, you could also explore other possibilities by tweaking some options via <em>HighRes</em> <code class="highlighter-rouge">config.ini</code>, <a href="https://wiki.winehq.org/Useful_Registry_Keys">Wine</a> and/or <a href="https://github.com/ValveSoftware/Proton#runtime-config-options">Proton</a>. Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.</p>
+<p>Before switching to software renderer, you could also explore other possibilities by tweaking some options via <em>HighRes</em> <code class="language-plaintext highlighter-rouge">config.ini</code>, <a href="https://wiki.winehq.org/Useful_Registry_Keys">Wine</a> and/or <a href="https://github.com/ValveSoftware/Proton#runtime-config-options">Proton</a>. Feel free to share your glitches and the setup options which worked (not worked) for you in the comments.</p>
 
 <h3 id="setting-arcanumexe-options-via-sierralauncherini">Setting Arcanum.exe options via SierraLauncher.ini</h3>
 
-<p>This is an (almost) obsolete way to do it, as the <em>HighRes</em> patch allows you to set many options via <code class="highlighter-rouge">config.ini</code>. But still, let’s set <code class="highlighter-rouge">-doublebuffer</code> option:</p>
+<p>This is an (almost) obsolete way to do it, as the <em>HighRes</em> patch allows you to set many options via <code class="language-plaintext highlighter-rouge">config.ini</code>. But still, let’s set <code class="language-plaintext highlighter-rouge">-doublebuffer</code> option:</p>
 
 <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[Launcher]</span>
 <span class="py">Name</span><span class="p">=</span><span class="s">Arcanum</span>
@@ -386,13 +386,13 @@ exit
 
 <ol>
   <li>Run <em>wineconsole</em>.</li>
-  <li>Type <code class="highlighter-rouge">regedit</code>.</li>
-  <li>Go to <code class="highlighter-rouge">HKEY_CURRENT_USER\Software\Wine\Direct3D</code> (if key not exists, create it).</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">regedit</code>.</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">HKEY_CURRENT_USER\Software\Wine\Direct3D</code> (if key not exists, create it).</li>
 </ol>
 
 <p>Here you can set number of <em>Wine</em> options, like:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"DirectDrawRenderer"="gdi"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"DirectDrawRenderer"="gdi"
 "OffscreenRenderingMode"="backbuffer"
 </code></pre></div></div>
 
@@ -402,11 +402,11 @@ exit
 
 <ol>
   <li>Run <em>wineconsole</em>.</li>
-  <li>Type <code class="highlighter-rouge">winecfg</code>.</li>
+  <li>Type <code class="language-plaintext highlighter-rouge">winecfg</code>.</li>
   <li>Go to <em>Graphics</em> tab.</li>
   <li>Check <em>Emulate virtual desktop</em> option.</li>
   <li>Set required values for screen width and height.</li>
-  <li>Ensure that same width and height values is set and also fullscreen is enabled in the <em>HighRes</em> <code class="highlighter-rouge">config.ini</code>.</li>
+  <li>Ensure that same width and height values is set and also fullscreen is enabled in the <em>HighRes</em> <code class="language-plaintext highlighter-rouge">config.ini</code>.</li>
 </ol>
 
 <h2 id="finally-some-links">Finally, some links:</h2>
@@ -444,7 +444,7 @@ exit
      
     	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#guide-ref">
     		guide
-        <span class="badge badge-light">2</span>
+        <span class="badge badge-light">3</span>
     	</a></li>
     
   
@@ -557,7 +557,7 @@ exit
       <div class="container">
         <div class="row">
           <div class="col">
-            <p class="small text-light text-center mb-0">&copy; 2014-2019 Roman M. Yagodin & R7.Labs</p>
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
           </div>
         </div>
       </div>

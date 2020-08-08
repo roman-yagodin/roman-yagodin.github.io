@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Install DNN 9 on Windows Server 2019 Core</title>
+
+    
+      <meta name="description" content="This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM, primarily for development purposes.It was tested on DNN 8.0.4, DNN ...">
+    
+    
+    <meta name="author" content="Roman M. Yagodin & R7.Labs">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Pygments -->
+    <link href="/assets/pygments/default.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+    
+    <script src="https://kit.fontawesome.com/6cbfab33ab.js"></script>
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+	
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9311000650074319",
+          enable_page_level_ads: true
+     });
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="/">(R7) Personal Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#jb-navbar-collapse" aria-controls="jb-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              
+              
+              
+              
+              
+
+
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/categories" class="nav-link">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/tags" class="nav-link">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li class="nav-item"><a href="/pages" class="nav-link">Pages</a></li>
+      	
+      
+    
+  
+
+
+
+
+
+            </ul>
+            <hr class="d-lg-none" />
+            <form class="navbar-form navbar-right" role="search" action="http://www.google.com/search" target="_blank" onsubmit="return searchSubmit()" >
+              <div class="input-group" role="group">
+                <input type="text" id="search-box" class="form-control" placeholder="Search..." />
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-outline-secondary" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <input type="hidden" id="search-box-hidden" name="q" />
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </nav>
+      </header>
+
+      <main>
+        
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <div class="date">
+          <i class="fas fa-calendar-alt"></i> August  8, 2020
+        </div>
+        <h1>Install DNN 9 on Windows Server 2019 Core <small class="tagline"></small></h1>
+      </div>
+      <p class="lead">
+        
+This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM, primarily for development purposes.
+It was tested on DNN 8.0.4, DNN 9.6.2. Some things are still missing or not have detailed descriptions,
+but still it will be very usefull if you are new to the Windows Server Core administration.
+
+      </p>
+    </div>
+    <hr />
+  </div>
+
+  <div class="row"> 
+    <div class="col">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="7819924488"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+  </div>
+    
+  <div class="row post-full">
+    <div class="col">
+      <hr />
+      <div class="content">
+        <div id="preamble">
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="setup-virtualbox-vm">Setup VirtualBox VM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Install Windows Server 2019 x64 Core on e.g. VirtualBox (this is out of scope of this post),
+using 32 GB dynamic VDI disk, 1 GB of RAM and UEFI. You can tweak RAM size and even shrink out virtual disk later.</p>
+</div>
+<div class="paragraph">
+<p>You will need to configure host-only network interface.</p>
+</div>
+<div class="paragraph">
+<p>Assuming host-only interface lease IP addresses via DHCP starting with 192.168.56.101, you should add the following line to <code>/etc/hosts</code> (Linux)
+or <code>C:\Windows\System32\drivers\etc\hosts</code> (Windows):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>---
+192.168.56.101	dnn9.local
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;ll need multilanguage website (good for development), it is advisable to have separate aliases for different languages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>---
+192.168.56.101	dnn9.local
+192.168.56.101	dnn9-ru.local
+--</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tip-multiple-console-windows-inside-server-core">Tip: Multiple console windows inside Server Core:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>[Ctrl+Alt+Del] &#8594; Task Manager &#8594; File/Run new task &#8594; cmd/powershell</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install-iis">Install IIS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>List of installed features:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Get-WindowsFeature
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install IIS and ASP.NET:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Install-WindowsFeature Web-Server
+Install-WindowsFeature Web-Asp-Net-45
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install-far-file-manager">Install Far file manager</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+wget far-manager.ru/files/Far_Manager_v3.0_build_4455.zip -UseBasicParsing -OutFile far.zip
+Expand-Archive far.zip -DestinationPath .
+./far-???.msi
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You probably want to add far command to the PATH.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows" class="bare">https://stackoverflow.com/questions/9546324/adding-directory-to-path-environment-variable-in-windows</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Most simple way is to use regedit. User variables are at <code>HKCU\Environment</code>, system variables are at <code>HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install-sql-server-expressdeveloper">Install SQL Server Express/Developer</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017" class="bare">https://docs.microsoft.com/ru-ru/sql/database-engine/install-windows/install-sql-server-from-the-command-prompt?view=sql-server-2017</a></p>
+</li>
+<li>
+<p><a href="https://anikinsv.blogspot.com/2018/08/ms-sql.html" class="bare">https://anikinsv.blogspot.com/2018/08/ms-sql.html</a></p>
+</li>
+<li>
+<p><a href="https://system-administrators.info/?p=6506" class="bare">https://system-administrators.info/?p=6506</a></p>
+</li>
+<li>
+<p><a href="https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/" class="bare">https://mssqltrek.com/2011/08/23/installing-sql-server-from-command-linecmd/</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Get the SQL Express 2019 downloader:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+wget https://go.microsoft.com/fwlink/?linkid=866658 -UseBasicParsing -OutFile sqlexpress.exe
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run ./sqlexpress.exe - can proceed with GUI from now to download real installer.
+After that, find and run SETUP.EXE - this will require some command-line switches.</p>
+</div>
+<div class="paragraph">
+<p>GUI wizard:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+./SETUP.EXE /UIMODE=EnableUIOnServerCore /Action=Install
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Command-line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+./SETUP.EXE /Q /Action=Install /SECURITYMODE=SQL /SAPWD="MyP@$$w0rd" /TCPENABLED=1 /FEATURES=SQLEngine /ADDCURRENTUSERASSQLADMIN
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-new-empty-database-and-the-database-owner-user">Create new (empty) database and the database owner user:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/" class="bare">https://www.mssqltips.com/sqlservertip/6223/create-sql-server-database-with-powershell/</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Create folder to store databases:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+mkdir C:\Databases
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Configure permissions (see below) for "NT Service\MSSQLSERVER", "FullControl"</p>
+</div>
+<div class="paragraph">
+<p>TODO: Create separate database owner user, not use sa!</p>
+</div>
+<div class="paragraph">
+<p>Create the <code>CreateDnn9Database.sql</code> file somewhere:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">---
+use master;
+go</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>create database Dnn9
+  on (name = N&#8217;Dnn9', filename = N&#8217;C:\Databases\Dnn9.mdf')
+  log on (name = N&#8217;Dnn9_log', filename = N&#8217;C:\Databases\Dnn9_log.ldf');
+go</p>
+</div>
+<div class="paragraph">
+<p>alter authorization on database::Dnn9 to sa
+go
+---</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Install-Module -Name "SqlServer"
+Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configure-firewall">Configure firewall</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Get rules:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Get-NetFirewallRule | Where Name -like "*ICMP4*"
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Allow ping:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True -Profile Any -Action Allow
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Allow external connections to IIS via HTTP (80): this is done by default by adding webserver role, rule names: IIS-WebServerRole-HTTP-In-TCP and IIS-WebServerRole-HTTPS-In-TCP.</p>
+</div>
+<div class="paragraph">
+<p>Allow inbound SMB for shared folders:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action Allow
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>TODO: Optionally, allow external connections to the SQL Server (to use later with e.g. DBeaver):</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="download-and-unpack-dnn">Download and unpack DNN</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
+Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-site-and-app-pool-to-iis">Add site and app pool to IIS</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap" class="bare">https://www.itprotoday.com/powershell/managing-internet-information-services-iis-powershell-snap</a></p>
+</li>
+<li>
+<p><a href="https://octopus.com/blog/iis-powershell" class="bare">https://octopus.com/blog/iis-powershell</a></p>
+</li>
+<li>
+<p><a href="https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps" class="bare">https://docs.microsoft.com/ru-ru/powershell/module/iisadministration/New-IISSite?view=win10-ps</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Semo-old way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Import-Module WebAdministration
+cd IIS:\
+ls
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>New way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Import-Module IISAdministration
+New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But this will not create the "dnn9.local" app pool!</p>
+</div>
+<div class="paragraph">
+<p>Create new AppPool and bind to the website:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Import-Module WebAdministration
+New-WebAppPool -Name "dnn9.local"
+Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
+--</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+ls "IIS:\AppPools"
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configure-fs-permissions">Configure FS permissions</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422" class="bare">https://stackoverflow.com/questions/25779423/powershell-to-set-folder-permissions#25780422</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+$acl = Get-Acl "C:\Dnn9"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($accessRule)
+Set-Acl "C:\Dnn9" $acl
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($accessRule)
+Set-Acl "C:\Dnn9" $acl
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Get-Acl "C:\Dnn9" | Format-List`
+---</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="make-website-folder-shared-for-local-deploy">Make website folder shared for local deploy</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">---
+Install-WindowsFeature FS-SMB1-SERVER
+#optional: Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
+New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"
+---</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Test by trying to connect share by IP (\\192.168.56.101\Dnn9), not hostname!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run-dnn-install">Run DNN install</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Access <a href="http://dnn9.local" class="bare">http://dnn9.local</a> from a web browser on host machine and follow instructions!</p>
+</div>
+<div class="paragraph">
+<p>Database Setup: Custom
+Server Name: (local)
+Database Name: Dnn9
+Database Username: sa</p>
+</div>
+</div>
+</div>
+      </div>
+      <hr />
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-folder-open"></i> Categories:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-primary btn-sm" href="/categories.html#guide-ref">
+    		guide
+        <span class="badge badge-light">3</span>
+    	</a></li>
+    
+  
+
+
+
+
+
+
+    </ul>
+    
+
+    
+    <ul class="list-inline tag-box">
+      <li class="list-inline-item"><i class="fas fa-tags"></i> Tags:</li>
+      
+      
+      
+      
+      
+
+
+  
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#dnn-ref">dnn
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#virtualbox-ref">virtualbox
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#windows-ref">windows
+        <span class="badge badge-light">1</span></a>
+      </li>
+     
+    	<li class="list-inline-item"><a class="btn btn-secondary btn-sm" href="/tags.html#powershell-ref">powershell
+        <span class="badge badge-light">1</span></a>
+      </li>
+    
+  
+
+
+
+
+
+
+    </ul>
+      
+    
+      <ul class="pagination">
+      
+        <li class="page-item prev"><a class="page-link" href="/test/2019/12/02/asciidoc-test" title="AsciiDoc test"><i class="fas fa-chevron-left"></i> Previous</a></li>
+      
+        <li><a href="/posts.html" class="page-link">All Posts</a></li>
+      
+        <li class="page-item next disabled"><a class="page-link">Next <i class="fas fa-chevron-right"></i></a>
+      
+      </ul>
+    
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- roman-yagodin.github.io horizontal 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9311000650074319"
+     data-ad-slot="1961729102"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
+
+      <hr />
+      
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'r7-blog'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+    </div>
+
+    <footer id="footer" class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="small text-light text-center mb-0">&copy; 2014-2020 Roman M. Yagodin & R7.Labs</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/themes/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Startup script -->
+	<script>
+	function searchSubmit ()
+	{
+		var searchBox = document.getElementById ("search-box");
+		var searchBoxHidden = document.getElementById ("search-box-hidden");
+		searchBoxHidden.value = "site:" + "http://roman-yagodin.github.io".replace("http://","") + " " + searchBox.value;
+
+		return true;
+	}
+	</script>
+  </body>
+</html>
+
