@@ -5,6 +5,7 @@
 :page-tagline: ""
 :page-tags: [dnn, virtualbox, windows, powershell]
 :page-liquid:
+:source-highlighter: pygments
 :url-asciidoctor: http://asciidoctor.org
 
 {% include JB/setup %}
