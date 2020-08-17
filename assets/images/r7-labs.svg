@@ -28,20 +28,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-13.750428"
-     inkscape:cy="255.98456"
+     inkscape:zoom="1.4"
+     inkscape:cx="139.83476"
+     inkscape:cy="223.01418"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="1008"
      inkscape:window-x="0"
      inkscape:window-y="40"
      inkscape:window-maximized="1"
      units="px"
      inkscape:snap-global="true"
-     inkscape:pagecheckerboard="false">
+     inkscape:pagecheckerboard="true">
     <inkscape:grid
        type="xygrid"
        id="grid812"
@@ -101,19 +101,9 @@
        sodipodi:nodetypes="sssssccs" />
     <path
        style="fill:#ff0000;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       d="M 64 128 C 46.272001 128 32 142.27197 32 160 L 32 320 L 32 448 C 32 465.72799 46.272001 480 64 480 L 176 480 C 193.728 480 208 465.72799 208 448 L 208 352 L 352 352 C 369.728 352 384 337.72799 384 320 L 384 160 C 384 142.27197 369.728 128 352 128 L 64 128 z "
+       d="M 64 128 C 46.272001 128 32 142.27197 32 160 L 32 320 L 32 448 C 32 465.72799 46.272001 480 64 480 L 176 480 C 193.728 480 208 465.72799 208 448 L 208 352 L 352 352 C 369.728 352 384 337.72799 384 320 L 384 160 C 384 142.27197 369.728 128 352 128 L 64 128 z M 192 192 L 288 192 C 305.728 192 320 206.272 320 224 L 320 256 C 320 273.728 305.728 288 288 288 L 192 288 C 174.272 288 160 273.728 160 256 L 160 224 C 160 206.272 174.272 192 192 192 z "
        transform="matrix(0.26458333,0,0,0.26458333,0,161.53336)"
        id="rect814-3-7-5" />
-    <rect
-       style="fill:#ffffff;stroke:#1a1a1a;stroke-width:0.79374993;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       id="rect814-3-5"
-       width="25.399998"
-       height="42.333332"
-       x="212.33336"
-       y="-84.666664"
-       rx="8.4666662"
-       ry="8.4666662"
-       transform="rotate(90)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.79374999;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        d="M 76.199998,254.6667 H 33.866669 C 29.176136,254.6667 25.4,250.89057 25.4,246.20003"
