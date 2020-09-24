@@ -212,7 +212,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>192.168.56.101	dnn9.local</code></pre>
+<pre class="rouge highlight"><code>192.168.56.101	dnn9.hostname.local</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -220,9 +220,9 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>192.168.56.101	dnn9.local
-192.168.56.101	dnn9-de.local
-192.168.56.101	dnn9-ru.local
+<pre class="rouge highlight"><code>192.168.56.101	dnn9.hostname.local
+192.168.56.101	de.dnn9.hostname.local
+192.168.56.101	ru.dnn9.hostname.local
 ...</code></pre>
 </div>
 </div>
@@ -425,7 +425,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">IISAdministration</span><span class="w">
-</span><span class="nf">New-IISSite</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.local</span><span class="w"> </span><span class="nt">-BindingInformation</span><span class="w"> </span><span class="s2">":80:dnn9.local"</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="nt">-PhysicalPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
+</span><span class="nf">New-IISSite</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w"> </span><span class="nt">-BindingInformation</span><span class="w"> </span><span class="s2">"*:80:dnn9.hostname.local"</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="nt">-PhysicalPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -437,8 +437,8 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
-</span><span class="nf">New-WebAppPool</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"dnn9.local"</span><span class="w">
-</span><span class="nf">Set-ItemProperty</span><span class="w"> </span><span class="s2">"IIS:\Sites\dnn9.local"</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"applicationPool"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="s2">"dnn9.local"</span></code></pre>
+</span><span class="nf">New-WebAppPool</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"dnn9.hostname.local"</span><span class="w">
+</span><span class="nf">Set-ItemProperty</span><span class="w"> </span><span class="s2">"IIS:\Sites\dnn9.hostname.local"</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"applicationPool"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="s2">"dnn9.hostname.local"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -471,7 +471,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS_IUSRS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReadAndExecute"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
 </span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
 </span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nv">$acl</span><span class="w">
-</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS APPPOOL\dnn9.local"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS APPPOOL\dnn9.hostname.local"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
 </span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
 </span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
 </div>
@@ -511,7 +511,7 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <h2 id="run-dnn-install">Run DNN install</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Access http://dnn9.local from a web browser on host machine and follow installation wizard!</p>
+<p>Access http://dnn9.hostname.local from a web browser on host machine and follow installation wizard!</p>
 </div>
 <div class="paragraph">
 <p>Database setup form fields:</p>
