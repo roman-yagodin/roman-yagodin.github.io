@@ -29,16 +29,16 @@ Assuming that DHCP server of host-only interface is configured to lease IP addre
 
 [source]
 ----
-192.168.56.101	dnn9.local
+192.168.56.101	dnn9.hostname.local
 ----
 
 If you'll need multilanguage website, it is good to have separate alias for each of target languages:
 
 [source]
 ----
-192.168.56.101	dnn9.local
-192.168.56.101	dnn9-de.local
-192.168.56.101	dnn9-ru.local
+192.168.56.101	dnn9.hostname.local
+192.168.56.101	de.dnn9.hostname.local
+192.168.56.101	ru.dnn9.hostname.local
 ...
 ----
 
@@ -182,7 +182,7 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
 [source,powershell]
 ----
 Import-Module IISAdministration 
-New-IISSite -Name dnn9.local -BindingInformation ":80:dnn9.local" -Protocol http -PhysicalPath C:\Dnn9 
+New-IISSite -Name dnn9.hostname.local -BindingInformation "*:80:dnn9.hostname.local" -Protocol http -PhysicalPath C:\Dnn9 
 ----
 
 **But this will not create the application pool for the new website!**
@@ -192,8 +192,8 @@ Create new application pool and bind it to the website:
 [source,powershell]
 ----
 Import-Module WebAdministration
-New-WebAppPool -Name "dnn9.local"
-Set-ItemProperty "IIS:\Sites\dnn9.local" -Name "applicationPool" -Value "dnn9.local"
+New-WebAppPool -Name "dnn9.hostname.local"
+Set-ItemProperty "IIS:\Sites\dnn9.hostname.local" -Name "applicationPool" -Value "dnn9.hostname.local"
 ----
 
 Check:
@@ -216,7 +216,7 @@ $acl = Get-Acl "C:\Dnn9"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Dnn9" $acl
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.hostname.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Dnn9" $acl
 ----
@@ -246,7 +246,7 @@ Test this by trying to access share by IP like that: `\\192.168.56.101\Dnn9`.
 
 == Run DNN install
 
-Access \http://dnn9.local from a web browser on host machine and follow installation wizard!
+Access \http://dnn9.hostname.local from a web browser on host machine and follow installation wizard!
 
 Database setup form fields:
 
