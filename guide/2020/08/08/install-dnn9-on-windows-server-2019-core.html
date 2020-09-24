@@ -429,6 +429,16 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 </div>
 <div class="paragraph">
+<p>You can easily manipulate binding information for the website using <code>New-WebBinding</code> and <code>Remove-WebBinding</code> commandlets:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
+</span><span class="nf">Remove-WebBinding</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w"> </span><span class="nt">-HostHeader</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w">
+</span><span class="nf">New-WebBinding</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w"> </span><span class="nt">-port</span><span class="w"> </span><span class="nx">443</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="nt">-HostHeader</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p><strong>But this will not create the application pool for the new website!</strong></p>
 </div>
 <div class="paragraph">
