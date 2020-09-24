@@ -185,6 +185,15 @@ Import-Module IISAdministration
 New-IISSite -Name dnn9.hostname.local -BindingInformation "*:80:dnn9.hostname.local" -Protocol http -PhysicalPath C:\Dnn9 
 ----
 
+You can easily manipulate binding information for the website using `New-WebBinding` and `Remove-WebBinding` commandlets:
+
+[source,powershell]
+----
+Import-Module WebAdministration
+Remove-WebBinding -Name dnn9.hostname.local -HostHeader dnn9.hostname.local 
+New-WebBinding -Name dnn9.hostname.local -port 443 -Protocol https -HostHeader dnn9.hostname.local
+----
+
 **But this will not create the application pool for the new website!**
 
 Create new application pool and bind it to the website:
