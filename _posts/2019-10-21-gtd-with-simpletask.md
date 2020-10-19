@@ -28,7 +28,7 @@ This is a TL;DR guide of *Getting Things Done (GTD)* implementation using [Simpl
 I refer to every line in your `todo.txt` as an "entry" to differentiate them from tasks. Simpletask takes a broader view of what constitutes a `todo.txt` file.
 In *this* implementation the `todo.txt` format provides a large chunk of your trusted system.
 
-Entries may belong to one list (`@something`) and they may have one or more tags (`+something`) assigned to them. They may also utilize due dates (`due:2014-04-2`) thresholds (`t:2014-04-3`), recurrance (`rec:1w`) and priorities (`(A)`, ..., `(Z)`).
+Entries may belong to one list (`@something`) and they may have one or more tags (`+something`) assigned to them. They may also utilize due dates (`due:2014-04-2`), thresholds (`t:2014-04-3`), recurrance (`rec:1w`) and priorities (`(A)`, ..., `(Z)`).
 
 ## Lists (`@`)
 
@@ -114,14 +114,13 @@ A list called `@Someday` with an entry for every project (multi-step outcome) or
 
 Example: `Learn to play the piano +creativity @Someday`
 
-You could feasibly have multiple Someday/Maybe lists like `@Someday-Soon` or even `@Someday-Never`, if you need the additional granularity --
-or just use Simpletask priorities.
+You could feasibly have multiple Someday/Maybe lists like `@Someday-Soon` or even `@Someday-Never`, if you need the additional granularity.
 
 Use the `@Someday-Never` to RIP things that you strongly doesn't want and have strong reasons to not to do, but still need to remember sometimes.
 
 ## Tickler (Incubate Runway/10,000 ft)
 
-A list called `@Tickler` contains **all tickled items which are not actions**. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of `(B)`.
+A list called `@Tickler` contains **all tickled items which are not actions**. Tickled items are all entries with a threshold date.
 
 Tickled actions are not included in this list; they are placed under the appropriate context.
 
@@ -214,9 +213,7 @@ That said, I find Simpletask's calendar integration to be really clunky, and I h
 
 ### Threshold Dates
 
-Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the `(B)` priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the `@Tickler` list.
-
-The priority is removed when the entry has been "tickled" (the threshold has been passed).
+Threshold dates allow you to incubate actions or reminders (tickled entries). Tickled actions are filed under the appropriate context. For reminders, you can use the `@Tickler` list.
 
 ### Recurrence Dates
 
@@ -224,30 +221,26 @@ TBD.
 
 ### Priorities
 
-GTD does not (and should not) have a priority system. I use the `todo.txt` priority syntax to help me filter three kinds of entries:
+GTD does not (and should not) have a priority system. But I found useful to utilize the `todo.txt` priority syntax to help me filter several kinds of entries.
 
-- Entries with `(A)` priority are "hot": they are actions that I plan (not would *like*) to do today or at least tomorrow. I update this list daily.
-- Entries with `(B)` priority are "tickled": all actions or reminders with a threshold date have this priority until the threshold is passed.
-- Entries with `(D)` priority are just GTD hints I like to leave above other entries in the list, something like that:
+Entries with `(D)` priority are just general GT<u>D</u> hints that I like to keep above other entries in the context list.
+
+Entries with `(C)` priority are generally recurring actions with due dates. I use them for things that need to be kept under periodic <u>c</u>ontrol.
 
 ```
-(D) Check context lists
+(D) Check current context lists
 (D) Plan to complete within the next year @Projects
+...
+(C) Do weekly review rec:+1w due:2020-10-19
 ```
 
-This leaves `(C)` priority reserved for future use, as only `(A)`, `(B)`, `(C)` and `(D)` priorities are useful (have a color) in the current Simpletask version.
+This leaves `(A)` and `(B)` priorities reserved for some "hot" actions that I plan (not would *like*) to do today or very soon.
 
 **Projects and higher altitudes never have priorities.**
 
 ## Saved Filters (The Right Drawer)
 
 Saved filters allow you to bring up or review aspects of your GTD system. The ones I've found most useful are:
-
-### Hotlist
-
-The *Hotlist* shows me anything with a priority. In this way I see all my "hot" actions for today or tomorrow, as well as all "tickled" entries (incubated actions with a threshold that have become relevant).
-
-The hotlist is not a GTD concept, but in interviews *David Allen* has accepted the it as a potentially useful, as long as it does not become a system unto itself. It also allows an incubation system with date-specific triggers.
 
 ### Common
 
