@@ -244,7 +244,14 @@ Saved filters allow you to bring up or review aspects of your GTD system. The on
 
 ### Common
 
-- Hide completed tasks and tasks with threshold date in future.
+Hide completed tasks and tasks with threshold date in future.
+
+### Starts or ends withing a week
+
+Shows any actions with due or treshold dates within 1 week in future from today.
+This utilizes Simpletask Lua scripting.
+
+<script src="https://gist.github.com/roman-yagodin/4d6b3c8be8aac3a1de2c023da827560d.js"></script>
 
 ### Review
 
