@@ -4,7 +4,7 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2020-10-19T11:12:50+00:00</updated>
+ <updated>2020-10-19T11:17:26+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
@@ -1136,6 +1136,31 @@ This will produce a copy of entry with the &lt;code class=&quot;language-plainte
   &lt;li&gt;&lt;a href=&quot;https://play.google.com/store/apps/developer?id=Mark+Janssen&quot;&gt;Various Simpletask flavours&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://simplenote.com&quot;&gt;Simplenote&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;gtd-russian-glossary-wip&quot;&gt;GTD Russian Glossary (WIP)&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;GTD term&lt;/th&gt;
+      &lt;th&gt;in Russian&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;inbox&lt;/td&gt;
+      &lt;td&gt;входящие&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;someday/maybe&lt;/td&gt;
+      &lt;td&gt;копилка&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;waiting for&lt;/td&gt;
+      &lt;td&gt;ждем&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;!-- Reference Links --&gt;
 
