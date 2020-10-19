@@ -4,7 +4,7 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2020-09-24T07:30:44+00:00</updated>
+ <updated>2020-10-19T11:12:50+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
@@ -755,7 +755,7 @@ git clone --mirror https://github.com/volgau/redmine-theme-greenmine.git
 &lt;p&gt;I refer to every line in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; as an “entry” to differentiate them from tasks. Simpletask takes a broader view of what constitutes a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; file.
 In &lt;em&gt;this&lt;/em&gt; implementation the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; format provides a large chunk of your trusted system.&lt;/p&gt;
 
-&lt;p&gt;Entries may belong to one list (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@something&lt;/code&gt;) and they may have one or more tags (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+something&lt;/code&gt;) assigned to them. They may also utilize due dates (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;due:2014-04-2&lt;/code&gt;) thresholds (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t:2014-04-3&lt;/code&gt;), recurrance (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rec:1w&lt;/code&gt;) and priorities (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, …, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(Z)&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Entries may belong to one list (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@something&lt;/code&gt;) and they may have one or more tags (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+something&lt;/code&gt;) assigned to them. They may also utilize due dates (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;due:2014-04-2&lt;/code&gt;), thresholds (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t:2014-04-3&lt;/code&gt;), recurrance (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rec:1w&lt;/code&gt;) and priorities (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, …, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(Z)&lt;/code&gt;).&lt;/p&gt;
 
 &lt;h2 id=&quot;lists-&quot;&gt;Lists (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt;)&lt;/h2&gt;
 
@@ -837,14 +837,13 @@ Release R7.Documents module v1.11 +work @Projects
 
 &lt;p&gt;Example: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Learn to play the piano +creativity @Someday&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;You could feasibly have multiple Someday/Maybe lists like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Soon&lt;/code&gt; or even &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt;, if you need the additional granularity –
-or just use Simpletask priorities.&lt;/p&gt;
+&lt;p&gt;You could feasibly have multiple Someday/Maybe lists like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Soon&lt;/code&gt; or even &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt;, if you need the additional granularity.&lt;/p&gt;
 
 &lt;p&gt;Use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Someday-Never&lt;/code&gt; to RIP things that you strongly doesn’t want and have strong reasons to not to do, but still need to remember sometimes.&lt;/p&gt;
 
 &lt;h2 id=&quot;tickler-incubate-runway10000-ft&quot;&gt;Tickler (Incubate Runway/10,000 ft)&lt;/h2&gt;
 
-&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; contains &lt;strong&gt;all tickled items which are not actions&lt;/strong&gt;. Tickled items are all entries with a threshold date; if their threshold has not passed, I like them to also have a priority of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A list called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; contains &lt;strong&gt;all tickled items which are not actions&lt;/strong&gt;. Tickled items are all entries with a threshold date.&lt;/p&gt;
 
 &lt;p&gt;Tickled actions are not included in this list; they are placed under the appropriate context.&lt;/p&gt;
 
@@ -942,9 +941,7 @@ while it’s possibly better to have separate todo file for that.&lt;/p&gt;
 
 &lt;h3 id=&quot;threshold-dates&quot;&gt;Threshold Dates&lt;/h3&gt;
 
-&lt;p&gt;Threshold dates allow you to incubate actions or reminders (tickled entries). I like to add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority to all newly created tickled entries, while it is not required. Tickled actions are filed under the appropriate context. For reminders, you can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; list.&lt;/p&gt;
-
-&lt;p&gt;The priority is removed when the entry has been “tickled” (the threshold has been passed).&lt;/p&gt;
+&lt;p&gt;Threshold dates allow you to incubate actions or reminders (tickled entries). Tickled actions are filed under the appropriate context. For reminders, you can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Tickler&lt;/code&gt; list.&lt;/p&gt;
 
 &lt;h3 id=&quot;recurrence-dates&quot;&gt;Recurrence Dates&lt;/h3&gt;
 
@@ -952,19 +949,19 @@ while it’s possibly better to have separate todo file for that.&lt;/p&gt;
 
 &lt;h3 id=&quot;priorities&quot;&gt;Priorities&lt;/h3&gt;
 
-&lt;p&gt;GTD does not (and should not) have a priority system. I use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; priority syntax to help me filter three kinds of entries:&lt;/p&gt;
+&lt;p&gt;GTD does not (and should not) have a priority system. But I found useful to utilize the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;todo.txt&lt;/code&gt; priority syntax to help me filter several kinds of entries.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt; priority are “hot”: they are actions that I plan (not would &lt;em&gt;like&lt;/em&gt;) to do today or at least tomorrow. I update this list daily.&lt;/li&gt;
-  &lt;li&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priority are “tickled”: all actions or reminders with a threshold date have this priority until the threshold is passed.&lt;/li&gt;
-  &lt;li&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priority are just GTD hints I like to leave above other entries in the list, something like that:&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priority are just general GT&lt;u&gt;D&lt;/u&gt; hints that I like to keep above other entries in the context list.&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(D) Check context lists
+&lt;p&gt;Entries with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(C)&lt;/code&gt; priority are generally recurring actions with due dates. I use them for things that need to be kept under periodic &lt;u&gt;c&lt;/u&gt;ontrol.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(D) Check current context lists
 (D) Plan to complete within the next year @Projects
+...
+(C) Do weekly review rec:+1w due:2020-10-19
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This leaves &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(C)&lt;/code&gt; priority reserved for future use, as only &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(C)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(D)&lt;/code&gt; priorities are useful (have a color) in the current Simpletask version.&lt;/p&gt;
+&lt;p&gt;This leaves &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(A)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(B)&lt;/code&gt; priorities reserved for some “hot” actions that I plan (not would &lt;em&gt;like&lt;/em&gt;) to do today or very soon.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Projects and higher altitudes never have priorities.&lt;/strong&gt;&lt;/p&gt;
 
@@ -972,17 +969,16 @@ while it’s possibly better to have separate todo file for that.&lt;/p&gt;
 
 &lt;p&gt;Saved filters allow you to bring up or review aspects of your GTD system. The ones I’ve found most useful are:&lt;/p&gt;
 
-&lt;h3 id=&quot;hotlist&quot;&gt;Hotlist&lt;/h3&gt;
-
-&lt;p&gt;The &lt;em&gt;Hotlist&lt;/em&gt; shows me anything with a priority. In this way I see all my “hot” actions for today or tomorrow, as well as all “tickled” entries (incubated actions with a threshold that have become relevant).&lt;/p&gt;
-
-&lt;p&gt;The hotlist is not a GTD concept, but in interviews &lt;em&gt;David Allen&lt;/em&gt; has accepted the it as a potentially useful, as long as it does not become a system unto itself. It also allows an incubation system with date-specific triggers.&lt;/p&gt;
-
 &lt;h3 id=&quot;common&quot;&gt;Common&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Hide completed tasks and tasks with threshold date in future.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Hide completed tasks and tasks with threshold date in future.&lt;/p&gt;
+
+&lt;h3 id=&quot;starts-or-ends-withing-a-week&quot;&gt;Starts or ends withing a week&lt;/h3&gt;
+
+&lt;p&gt;Shows any actions with due or treshold dates within 1 week in future from today.
+This utilizes Simpletask Lua scripting.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/roman-yagodin/4d6b3c8be8aac3a1de2c023da827560d.js&quot;&gt;&lt;/script&gt;
 
 &lt;h3 id=&quot;review&quot;&gt;Review&lt;/h3&gt;
 
