@@ -359,6 +359,14 @@ Since I don't care much if anything falls through the cracks, they are housed in
 - [Various Simpletask flavours](https://play.google.com/store/apps/developer?id=Mark+Janssen)
 - [Simplenote](https://simplenote.com)
 
+## GTD Russian Glossary (WIP)
+
+| GTD term           | in Russian |
+|--------------------|------------|
+| inbox              | входящие   |
+| someday/maybe      | копилка    |
+| waiting for        | ждем       |
+
 <!-- Reference Links -->
 
 [Simpletask]: https://play.google.com/store/apps/details?id=nl.mpcjanssen.todotxtholo
