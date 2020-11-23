@@ -4,7 +4,7 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2020-11-23T07:34:49+00:00</updated>
+ <updated>2020-11-23T08:55:28+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
@@ -361,6 +361,10 @@ so you can setup automatic deployment of build output from IDE into it.&lt;/p&gt
 &lt;dt class=&quot;hdlist1&quot;&gt;Database Setup&lt;/dt&gt;
 &lt;dd&gt;
 &lt;p&gt;Custom&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;Database Type&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;SQL Server/SQL Server Express Database&lt;/p&gt;
 &lt;/dd&gt;
 &lt;dt class=&quot;hdlist1&quot;&gt;Server Name&lt;/dt&gt;
 &lt;dd&gt;
