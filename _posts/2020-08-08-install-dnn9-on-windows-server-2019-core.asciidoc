@@ -260,6 +260,7 @@ Access \http://dnn980.hostname.local from a web browser on host machine and foll
 Database setup form fields:
 
 Database Setup:: Custom
+Database Type:: SQL Server/SQL Server Express Database
 Server Name:: (local)
 Database Name:: Dnn980
 Database Username:: sa
