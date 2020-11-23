@@ -8,7 +8,7 @@
     <title>Install DNN 9 on Windows Server 2019 Core</title>
 
     
-      <meta name="description" content="This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.It is tested on DNN 8.0.4 and DNN 9.6.2. So...">
+      <meta name="description" content="This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.It is tested on DNN 8.0.4, DNN 9.6.2 and DN...">
     
     
     <meta name="author" content="Roman M. Yagodin & R7.Labs">
@@ -163,7 +163,7 @@
       <p class="lead">
         
 This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.
-It is tested on DNN 8.0.4 and DNN 9.6.2. Some things are still missing or don&#8217;t have detailed description,
+It is tested on DNN 8.0.4, DNN 9.6.2 and DNN 9.8.0. Some things are still missing or don&#8217;t have detailed description,
 but I hope it still will be helpful, especially if you are new to the Windows Server Core administration.
 
       </p>
@@ -212,7 +212,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>192.168.56.101	dnn9.hostname.local</code></pre>
+<pre class="rouge highlight"><code>192.168.56.101	dnn980.hostname.local</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -220,9 +220,9 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>192.168.56.101	dnn9.hostname.local
-192.168.56.101	de.dnn9.hostname.local
-192.168.56.101	ru.dnn9.hostname.local
+<pre class="rouge highlight"><code>192.168.56.101	dnn980.hostname.local
+192.168.56.101	de.dnn980.hostname.local
+192.168.56.101	ru.dnn980.hostname.local
 ...</code></pre>
 </div>
 </div>
@@ -236,7 +236,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-WindowsFeature</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Get-WindowsFeature</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -244,8 +244,8 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Server</span><span class="w">
-</span><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Asp-Net-45</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Server</span><span class="w">
+</span><span class="n">Install-WindowsFeature</span><span class="w"> </span><span class="nx">Web-Asp-Net-45</span></code></pre>
 </div>
 </div>
 </div>
@@ -274,8 +274,8 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">https://go.microsoft.com/fwlink/</span><span class="nf">?</span><span class="nx">linkid</span><span class="o">=</span><span class="nx">866658</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">sqlexpress.exe</span><span class="w">
-</span><span class="o">.</span><span class="nf">/sqlexpress.exe</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">wget</span><span class="w"> </span><span class="nx">https://go.microsoft.com/fwlink/</span><span class="nf">?</span><span class="nx">linkid</span><span class="o">=</span><span class="nx">866658</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">sqlexpress.exe</span><span class="w">
+</span><span class="o">.</span><span class="n">/sqlexpress.exe</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -317,7 +317,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">mkdir</span><span class="w"> </span><span class="nx">C:\Databases</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">mkdir</span><span class="w"> </span><span class="nx">C:\Databases</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -325,27 +325,27 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nv">$acl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Databases"</span><span class="w">
-</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"NT Service\MSSQLSERVER"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nv">$acl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Databases"</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"NT Service\MSSQLSERVER"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
 </span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
-</span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Databases"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
+</span><span class="n">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Databases"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Create the <code>CreateDnn9Database.sql</code> file somewhere:</p>
+<p>Create the <code>CreateDnn980Database.sql</code> file somewhere:</p>
 </div>
 <div class="listingblock">
-<div class="title">CreateDnn9Database.sql</div>
+<div class="title">CreateDnn980Database.sql</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sql"><span class="n">use</span> <span class="n">master</span><span class="p">;</span>
 <span class="k">go</span>
 
-<span class="k">create</span> <span class="k">database</span> <span class="n">Dnn9</span>
-  <span class="k">on</span> <span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'Dnn9'</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'C:</span><span class="se">\D</span><span class="s1">atabases</span><span class="se">\D</span><span class="s1">nn9.mdf'</span><span class="p">)</span>
-  <span class="n">log</span> <span class="k">on</span> <span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'Dnn9_log'</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'C:</span><span class="se">\D</span><span class="s1">atabases</span><span class="se">\D</span><span class="s1">nn9_log.ldf'</span><span class="p">);</span>
+<span class="k">create</span> <span class="k">database</span> <span class="n">Dnn980</span>
+  <span class="k">on</span> <span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'Dnn980'</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'C:</span><span class="se">\D</span><span class="s1">atabases</span><span class="se">\D</span><span class="s1">nn980.mdf'</span><span class="p">)</span>
+  <span class="n">log</span> <span class="k">on</span> <span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'Dnn980_log'</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">N</span><span class="s1">'C:</span><span class="se">\D</span><span class="s1">atabases</span><span class="se">\D</span><span class="s1">nn980_log.ldf'</span><span class="p">);</span>
 <span class="k">go</span>
 
-<span class="k">alter</span> <span class="k">authorization</span> <span class="k">on</span> <span class="k">database</span><span class="p">::</span><span class="n">Dnn9</span> <span class="k">to</span> <span class="n">sa</span>
+<span class="k">alter</span> <span class="k">authorization</span> <span class="k">on</span> <span class="k">database</span><span class="p">::</span><span class="n">Dnn980</span> <span class="k">to</span> <span class="n">sa</span>
 <span class="k">go</span></code></pre>
 </div>
 </div>
@@ -354,8 +354,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Install-Module</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"SqlServer"</span><span class="w">
-</span><span class="nf">Invoke-SqlCmd</span><span class="w"> </span><span class="nt">-ServerInstance</span><span class="w"> </span><span class="s2">"(local)"</span><span class="w"> </span><span class="nt">-InputFile</span><span class="w"> </span><span class="s2">"CreateDnn9Database.sql"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Invoke-SqlCmd</span><span class="w"> </span><span class="nt">-ServerInstance</span><span class="w"> </span><span class="s2">"(local)"</span><span class="w"> </span><span class="nt">-InputFile</span><span class="w"> </span><span class="s2">"CreateDnn980Database.sql"</span></code></pre>
 </div>
 </div>
 </div>
@@ -368,7 +367,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-NetFirewallRule</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Where</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">-like</span><span class="w"> </span><span class="s2">"*ICMP*"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Get-NetFirewallRule</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Where</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">-like</span><span class="w"> </span><span class="s2">"*ICMP*"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -376,7 +375,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-ICMP4-ERQ-In</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-ICMP4-ERQ-In</span><span class="w"> </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -390,7 +389,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-SMB-In-TCP</span><span class="w">  </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Set-NetFirewallRule</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">FPS-SMB-In-TCP</span><span class="w">  </span><span class="nt">-Enabled</span><span class="w"> </span><span class="nx">True</span><span class="w"> </span><span class="nt">-Profile</span><span class="w"> </span><span class="nx">Any</span><span class="w"> </span><span class="nt">-Action</span><span class="w"> </span><span class="nx">Allow</span></code></pre>
 </div>
 </div>
 </div>
@@ -400,8 +399,9 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">dnn9.zip</span><span class="w">
-</span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">dnn9.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">wget</span><span class="w"> </span><span class="nx">https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">dnn980.zip</span><span class="w">
+</span><span class="n">Expand-Archive</span><span class="w"> </span><span class="nx">dnn980.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="nx">C:\Dnn980</span><span class="w">
+</span><span class="n">rm</span><span class="w"> </span><span class="nx">dnn980.zip</span></code></pre>
 </div>
 </div>
 </div>
@@ -424,8 +424,8 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">IISAdministration</span><span class="w">
-</span><span class="nf">New-IISSite</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w"> </span><span class="nt">-BindingInformation</span><span class="w"> </span><span class="s2">"*:80:dnn9.hostname.local"</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="nt">-PhysicalPath</span><span class="w"> </span><span class="nx">C:\Dnn9</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Import-Module</span><span class="w"> </span><span class="nx">IISAdministration</span><span class="w">
+</span><span class="n">New-IISSite</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn980.hostname.local</span><span class="w"> </span><span class="nt">-BindingInformation</span><span class="w"> </span><span class="s2">"*:80:dnn980.hostname.local"</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="nt">-PhysicalPath</span><span class="w"> </span><span class="nx">C:\Dnn980</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -433,9 +433,9 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
-</span><span class="nf">Remove-WebBinding</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w"> </span><span class="nt">-HostHeader</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w">
-</span><span class="nf">New-WebBinding</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span><span class="w"> </span><span class="nt">-port</span><span class="w"> </span><span class="nx">443</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="nt">-HostHeader</span><span class="w"> </span><span class="nx">dnn9.hostname.local</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
+</span><span class="n">Remove-WebBinding</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn980.hostname.local</span><span class="w"> </span><span class="nt">-HostHeader</span><span class="w"> </span><span class="nx">dnn980.hostname.local</span><span class="w">
+</span><span class="n">New-WebBinding</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="nx">dnn980.hostname.local</span><span class="w"> </span><span class="nt">-port</span><span class="w"> </span><span class="nx">443</span><span class="w"> </span><span class="nt">-Protocol</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="nt">-HostHeader</span><span class="w"> </span><span class="nx">dnn980.hostname.local</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -446,9 +446,9 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
-</span><span class="nf">New-WebAppPool</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"dnn9.hostname.local"</span><span class="w">
-</span><span class="nf">Set-ItemProperty</span><span class="w"> </span><span class="s2">"IIS:\Sites\dnn9.hostname.local"</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"applicationPool"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="s2">"dnn9.hostname.local"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
+</span><span class="n">New-WebAppPool</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"dnn980.hostname.local"</span><span class="w">
+</span><span class="n">Set-ItemProperty</span><span class="w"> </span><span class="s2">"IIS:\Sites\dnn980.hostname.local"</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"applicationPool"</span><span class="w"> </span><span class="nt">-Value</span><span class="w"> </span><span class="s2">"dnn980.hostname.local"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -456,8 +456,8 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
-</span><span class="nf">ls</span><span class="w"> </span><span class="s2">"IIS:\AppPools"</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Import-Module</span><span class="w"> </span><span class="nx">WebAdministration</span><span class="w">
+</span><span class="n">ls</span><span class="w"> </span><span class="s2">"IIS:\AppPools"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -477,13 +477,13 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nv">$acl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w">
-</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS_IUSRS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReadAndExecute"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="nv">$acl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn980"</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS_IUSRS"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ReadAndExecute"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
 </span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
-</span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nv">$acl</span><span class="w">
-</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS APPPOOL\dnn9.hostname.local"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
+</span><span class="n">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn980"</span><span class="w"> </span><span class="nv">$acl</span><span class="w">
+</span><span class="nv">$accessRule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Security.AccessControl.FileSystemAccessRule</span><span class="p">(</span><span class="s2">"IIS APPPOOL\dnn980.hostname.local"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FullControl"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ContainerInherit,ObjectInherit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">)</span><span class="w">
 </span><span class="nv">$acl</span><span class="o">.</span><span class="nf">SetAccessRule</span><span class="p">(</span><span class="nv">$accessRule</span><span class="p">)</span><span class="w">
-</span><span class="nf">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
+</span><span class="n">Set-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn980"</span><span class="w"> </span><span class="nv">$acl</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -491,7 +491,7 @@ Of cause, there are more <a href="https://www.virtualbox.org/manual/ch06.html">v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">Format-List</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Get-Acl</span><span class="w"> </span><span class="s2">"C:\Dnn980"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Format-List</span></code></pre>
 </div>
 </div>
 </div>
@@ -505,15 +505,15 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">Install-WindowsFeature</span><span class="w"> </span><span class="nx">FS-SMB1-SERVER</span><span class="w">
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">Install-WindowsFeature</span><span class="w"> </span><span class="nx">FS-SMB1-SERVER</span><span class="w">
 </span><span class="c"># Optional?</span><span class="w">
 </span><span class="c"># Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol</span><span class="w">
 
-</span><span class="nf">New-SMBShare</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"Dnn9"</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="s2">"C:\Dnn9"</span><span class="w"> </span><span class="nt">-FullAccess</span><span class="w"> </span><span class="s2">"Administrator"</span></code></pre>
+</span><span class="n">New-SMBShare</span><span class="w"> </span><span class="nt">-Name</span><span class="w"> </span><span class="s2">"Dnn980"</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="s2">"C:\Dnn980"</span><span class="w"> </span><span class="nt">-FullAccess</span><span class="w"> </span><span class="s2">"Administrator"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Test this by trying to access share by IP like that: <code>\\192.168.56.101\Dnn9</code>.</p>
+<p>Test this by trying to access share by IP like that: <code>\\192.168.56.101\Dnn980</code>.</p>
 </div>
 </div>
 </div>
@@ -521,7 +521,7 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <h2 id="run-dnn-install">Run DNN install</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Access http://dnn9.hostname.local from a web browser on host machine and follow installation wizard!</p>
+<p>Access http://dnn980.hostname.local from a web browser on host machine and follow installation wizard!</p>
 </div>
 <div class="paragraph">
 <p>Database setup form fields:</p>
@@ -538,7 +538,7 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 </dd>
 <dt class="hdlist1">Database Name</dt>
 <dd>
-<p>Dnn9</p>
+<p>Dnn980</p>
 </dd>
 <dt class="hdlist1">Database Username</dt>
 <dd>
@@ -555,9 +555,9 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <h3 id="install-far-file-manager">Install Far file manager</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="powershell"><span class="nf">wget</span><span class="w"> </span><span class="nx">far-manager.ru/files/Far_Manager_v3.0_build_4455.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">far.zip</span><span class="w">
-</span><span class="nf">Expand-Archive</span><span class="w"> </span><span class="nx">far.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="o">.</span><span class="w">
-</span><span class="o">.</span><span class="nf">/Far30b4455.x64.20151115.msi</span></code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">wget</span><span class="w"> </span><span class="nx">far-manager.ru/files/Far_Manager_v3.0_build_4455.zip</span><span class="w"> </span><span class="nt">-UseBasicParsing</span><span class="w"> </span><span class="nt">-OutFile</span><span class="w"> </span><span class="nx">far.zip</span><span class="w">
+</span><span class="n">Expand-Archive</span><span class="w"> </span><span class="nx">far.zip</span><span class="w"> </span><span class="nt">-DestinationPath</span><span class="w"> </span><span class="o">.</span><span class="w">
+</span><span class="o">.</span><span class="n">/Far30b4455.x64.20151115.msi</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -588,10 +588,10 @@ so you can setup automatic deployment of build output from IDE into it.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Separate initial configuration and installing new DNN instances</p>
+<p>Separate initial configuration and adding new DNN instances</p>
 </li>
 <li>
-<p>Create separate database owner user for each database</p>
+<p>Create separate database owner for each database</p>
 </li>
 <li>
 <p>Configure firewall to allow external connections to the SQL Server</p>
