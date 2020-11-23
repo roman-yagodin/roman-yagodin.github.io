@@ -12,7 +12,7 @@
 {% include JB/setup %}
 
 This guide describes the process of installing DNN 9 on Windows Server Core 2016/2019 VM for development purposes.
-It is tested on DNN 8.0.4 and DNN 9.6.2. Some things are still missing or don't have detailed description,
+It is tested on DNN 8.0.4, DNN 9.6.2 and DNN 9.8.0. Some things are still missing or don't have detailed description,
 but I hope it still will be helpful, especially if you are new to the Windows Server Core administration.
 
 //more
@@ -29,16 +29,16 @@ Assuming that DHCP server of host-only interface is configured to lease IP addre
 
 [source]
 ----
-192.168.56.101	dnn9.hostname.local
+192.168.56.101	dnn980.hostname.local
 ----
 
 If you'll need multilanguage website, it is good to have separate alias for each of target languages:
 
 [source]
 ----
-192.168.56.101	dnn9.hostname.local
-192.168.56.101	de.dnn9.hostname.local
-192.168.56.101	ru.dnn9.hostname.local
+192.168.56.101	dnn980.hostname.local
+192.168.56.101	de.dnn980.hostname.local
+192.168.56.101	ru.dnn980.hostname.local
 ...
 ----
 
@@ -113,20 +113,20 @@ $acl.SetAccessRule($accessRule)
 Set-Acl "C:\Databases" $acl
 ----
 
-Create the `CreateDnn9Database.sql` file somewhere:
+Create the `CreateDnn980Database.sql` file somewhere:
 
-.CreateDnn9Database.sql
+.CreateDnn980Database.sql
 [source,sql]
 ----
 use master;
 go
 
-create database Dnn9
-  on (name = N'Dnn9', filename = N'C:\Databases\Dnn9.mdf')
-  log on (name = N'Dnn9_log', filename = N'C:\Databases\Dnn9_log.ldf');
+create database Dnn980
+  on (name = N'Dnn980', filename = N'C:\Databases\Dnn980.mdf')
+  log on (name = N'Dnn980_log', filename = N'C:\Databases\Dnn980_log.ldf');
 go
 
-alter authorization on database::Dnn9 to sa
+alter authorization on database::Dnn980 to sa
 go
 ----
 
@@ -134,8 +134,7 @@ Execute it:
 
 [source,powershell]
 ----
-Install-Module -Name "SqlServer"
-Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn9Database.sql"
+Invoke-SqlCmd -ServerInstance "(local)" -InputFile "CreateDnn980Database.sql"
 ----
 
 == Configure firewall
@@ -169,8 +168,9 @@ Set-NetFirewallRule -Name FPS-SMB-In-TCP  -Enabled True -Profile Any -Action All
 
 [source,powershell]
 ----
-wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn9.zip
-Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
+wget https://github.com/dnnsoftware/Dnn.Platform/releases/download/v9.6.2/DNN_Platform_9.6.2_Install.zip -UseBasicParsing -OutFile dnn980.zip
+Expand-Archive dnn980.zip -DestinationPath C:\Dnn980
+rm dnn980.zip
 ----
 
 == Add website and application pool in IIS
@@ -182,7 +182,7 @@ Expand-Archive dnn9.zip -DestinationPath C:\Dnn9
 [source,powershell]
 ----
 Import-Module IISAdministration 
-New-IISSite -Name dnn9.hostname.local -BindingInformation "*:80:dnn9.hostname.local" -Protocol http -PhysicalPath C:\Dnn9 
+New-IISSite -Name dnn980.hostname.local -BindingInformation "*:80:dnn980.hostname.local" -Protocol http -PhysicalPath C:\Dnn980 
 ----
 
 You can easily manipulate binding information for the website using `New-WebBinding` and `Remove-WebBinding` commandlets:
@@ -190,8 +190,8 @@ You can easily manipulate binding information for the website using `New-WebBind
 [source,powershell]
 ----
 Import-Module WebAdministration
-Remove-WebBinding -Name dnn9.hostname.local -HostHeader dnn9.hostname.local 
-New-WebBinding -Name dnn9.hostname.local -port 443 -Protocol https -HostHeader dnn9.hostname.local
+Remove-WebBinding -Name dnn980.hostname.local -HostHeader dnn980.hostname.local 
+New-WebBinding -Name dnn980.hostname.local -port 443 -Protocol https -HostHeader dnn980.hostname.local
 ----
 
 **But this will not create the application pool for the new website!**
@@ -201,8 +201,8 @@ Create new application pool and bind it to the website:
 [source,powershell]
 ----
 Import-Module WebAdministration
-New-WebAppPool -Name "dnn9.hostname.local"
-Set-ItemProperty "IIS:\Sites\dnn9.hostname.local" -Name "applicationPool" -Value "dnn9.hostname.local"
+New-WebAppPool -Name "dnn980.hostname.local"
+Set-ItemProperty "IIS:\Sites\dnn980.hostname.local" -Name "applicationPool" -Value "dnn980.hostname.local"
 ----
 
 Check:
@@ -221,20 +221,20 @@ This will list all websites and corresponding application pools.
 
 [source,powershell]
 ----
-$acl = Get-Acl "C:\Dnn9"
+$acl = Get-Acl "C:\Dnn980"
 $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS_IUSRS", "ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl
-$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn9.hostname.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+Set-Acl "C:\Dnn980" $acl
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS APPPOOL\dnn980.hostname.local", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($accessRule)
-Set-Acl "C:\Dnn9" $acl
+Set-Acl "C:\Dnn980" $acl
 ----
 
 Check: 
 
 [source,powershell]
 ----
-Get-Acl "C:\Dnn9" | Format-List
+Get-Acl "C:\Dnn980" | Format-List
 ----
 
 == Share website folder
@@ -248,20 +248,20 @@ Install-WindowsFeature FS-SMB1-SERVER
 # Optional?
 # Enable-WindowsOptionalFeature -Online -FeatureName smb1protocol
 
-New-SMBShare -Name "Dnn9" -Path "C:\Dnn9" -FullAccess "Administrator"
+New-SMBShare -Name "Dnn980" -Path "C:\Dnn980" -FullAccess "Administrator"
 ----
 
-Test this by trying to access share by IP like that: `\\192.168.56.101\Dnn9`.
+Test this by trying to access share by IP like that: `\\192.168.56.101\Dnn980`.
 
 == Run DNN install
 
-Access \http://dnn9.hostname.local from a web browser on host machine and follow installation wizard!
+Access \http://dnn980.hostname.local from a web browser on host machine and follow installation wizard!
 
 Database setup form fields:
 
 Database Setup:: Custom
 Server Name:: (local)
-Database Name:: Dnn9
+Database Name:: Dnn980
 Database Username:: sa
 
 == Extra
@@ -287,8 +287,8 @@ Press kbd:[Ctrl+Alt+Del], select **Task Manager**, then run `cmd.exe` or `powers
 
 == TODO
 
-- Separate initial configuration and installing new DNN instances
-- Create separate database owner user for each database
+- Separate initial configuration and adding new DNN instances
+- Create separate database owner for each database
 - Configure firewall to allow external connections to the SQL Server
 - Further integration (probably out of scope):
   https://github.com/roman-yagodin/vm-scripts[vm-scripts], `/etc/fstab` entries for shares, deploy build output to the share, etc.
