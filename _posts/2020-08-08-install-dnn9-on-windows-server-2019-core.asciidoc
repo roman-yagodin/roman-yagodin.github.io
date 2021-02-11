@@ -290,7 +290,6 @@ Press kbd:[Ctrl+Alt+Del], select **Task Manager**, then run `cmd.exe` or `powers
 
 - Separate initial configuration and adding new DNN instances
 - Create separate database owner for each database
-- Configure firewall to allow external connections to the SQL Server
+- Configure firewall to allow external connections to the SQL Server: https://docs.microsoft.com/en-us/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access?view=sql-server-ver15
 - Further integration (probably out of scope):
   https://github.com/roman-yagodin/vm-scripts[vm-scripts], `/etc/fstab` entries for shares, deploy build output to the share, etc.
-  
