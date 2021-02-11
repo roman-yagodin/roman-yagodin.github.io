@@ -56,7 +56,7 @@ Install IIS and ASP.NET:
 [source,powershell]
 ----
 Install-WindowsFeature Web-Server
-Install-WindowsFeature Web-Asp-Net-45
+Install-WindowsFeature Web-Asp-Net45
 ----
 
 == Install SQL Server Express/Developer
