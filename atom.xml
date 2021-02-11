@@ -4,7 +4,7 @@
  <title>(R7) Personal Blog</title>
  <link href="http://roman-yagodin.github.io/" rel="self"/>
  <link href="http://roman-yagodin.github.io"/>
- <updated>2020-11-23T08:55:28+00:00</updated>
+ <updated>2021-02-11T10:47:26+00:00</updated>
  <id>http://roman-yagodin.github.io</id>
  <author>
    <name>Roman M. Yagodin & R7.Labs</name>
@@ -75,7 +75,7 @@ Of cause, there are more &lt;a href=&quot;https://www.virtualbox.org/manual/ch06
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;rouge highlight&quot;&gt;&lt;code data-lang=&quot;powershell&quot;&gt;&lt;span class=&quot;n&quot;&gt;Install-WindowsFeature&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Web-Server&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Install-WindowsFeature&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Web-Asp-Net-45&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Install-WindowsFeature&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Web-Asp-Net45&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
