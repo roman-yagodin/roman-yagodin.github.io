@@ -5,8 +5,8 @@
         <description>(R7) Personal Blog - Roman M. Yagodin & R7.Labs</description>
         <link>http://roman-yagodin.github.io</link>
         <link>http://roman-yagodin.github.io</link>
-        <lastBuildDate>2021-02-11T10:47:26+00:00</lastBuildDate>
-        <pubDate>2021-02-11T10:47:26+00:00</pubDate>
+        <lastBuildDate>2021-02-11T11:23:30+00:00</lastBuildDate>
+        <pubDate>2021-02-11T11:23:30+00:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -423,7 +423,7 @@ so you can setup automatic deployment of build output from IDE into it.&lt;/p&gt
 &lt;p&gt;Create separate database owner for each database&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Configure firewall to allow external connections to the SQL Server&lt;/p&gt;
+&lt;p&gt;Configure firewall to allow external connections to the SQL Server: &lt;a href=&quot;https://docs.microsoft.com/en-us/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access?view=sql-server-ver15&quot; class=&quot;bare&quot;&gt;https://docs.microsoft.com/en-us/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access?view=sql-server-ver15&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Further integration (probably out of scope):
