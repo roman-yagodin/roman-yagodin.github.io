@@ -1,6 +1,7 @@
 
 http://roman-yagodin.github.io/atom.xml
 http://roman-yagodin.github.io/categories
+http://roman-yagodin.github.io/webdoctor/
 http://roman-yagodin.github.io/
 http://roman-yagodin.github.io/pages
 http://roman-yagodin.github.io/posts
