@@ -1,7 +1,6 @@
 
 http://roman-yagodin.github.io/atom.xml
 http://roman-yagodin.github.io/categories
-http://roman-yagodin.github.io/webdoctor/
 http://roman-yagodin.github.io/
 http://roman-yagodin.github.io/pages
 http://roman-yagodin.github.io/posts
@@ -9,6 +8,7 @@ http://roman-yagodin.github.io/rss.xml
 http://roman-yagodin.github.io/sitemap.txt
 http://roman-yagodin.github.io/tags
 
+http://roman-yagodin.github.io/2021/06/10/about-webdoctor-project
 http://roman-yagodin.github.io/guide/2020/08/08/install-dnn9-on-windows-server-2019-core
 http://roman-yagodin.github.io/guide/2019/11/12/arcanum-proton
 http://roman-yagodin.github.io/how-to/2019/10/21/ru-sync-github-repository-with-redmine

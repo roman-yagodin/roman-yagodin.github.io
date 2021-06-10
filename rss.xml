@@ -5,10 +5,50 @@
         <description>(R7) Personal Blog - Roman M. Yagodin & R7.Labs</description>
         <link>http://roman-yagodin.github.io</link>
         <link>http://roman-yagodin.github.io</link>
-        <lastBuildDate>2021-06-10T09:18:41+00:00</lastBuildDate>
-        <pubDate>2021-06-10T09:18:41+00:00</pubDate>
+        <lastBuildDate>2021-06-10T10:25:22+00:00</lastBuildDate>
+        <pubDate>2021-06-10T10:25:22+00:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>О проекте Webdoctor</title>
+                <description>&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;о-проекте-webdoctor&quot;&gt;О проекте &quot;Webdoctor&quot;&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Ситуация довольно типичная - многие &quot;ура&quot;-специалисты готовы склепать сайт, но поддерживать и тянуть его - это тяжело и плохо оплачивается. Веб-студии также готовы вам помочь - обычно сделав новый сайт, дальнейшая поддержка которого влетит &quot;в копеечку&quot;, поскольку размещен он на их хостинге и сделан с помощью их &quot;особых&quot; технологий и решений. В рамках проекта Webdoctor я занимаюсь &quot;оживлением&quot; заброшенных веб-проектов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Я предлагаю простое решение:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;На первом этапе я оживляю ваш веб-сайт, решая насущные вопросы.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;На втором этапе я передаю проект вам в полное управление.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Если насущные вопросы не удается решить за осмысленное время, вы получаете набор конкретных рекомендаций относительно дальнейших действий.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Полная передача проекта заключается в полной передаче вам прав на управление доменными именами, хостингом DNS, хостингом сайта, исходным кодом и др. ресурсами, а также в обучении вас (или вашего человека) основам управления контентом на сайте, по необходимости - основам веб-технологий.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Таким образом, на выходе вы получаете фунционирующий веб-сайт и возможность его поддерживать самостоятельно - без завязки на любых третьх лиц - меня, &quot;ура&quot;-специалиста или веб-студию.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Если у вас есть заброшенный веб-сайт и вы хотите его оживить - пишите мне в Telegram &amp;lt;a href=&quot;tel:+79275308750&quot;&amp;gt;+79275308750&amp;lt;/a&amp;gt; или на электронную почту &lt;a href=&quot;mailto:roman.yagodin@gmail.com&quot;&gt;roman.yagodin@gmail.com&lt;/a&gt;. Мы договоримся о первичной консультации. Обычно она занимает около часа, стоимость фиксированная - 1000 р.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+                <link>http://roman-yagodin.github.io/2021/06/10/about-webdoctor-project</link>
+                <guid>http://roman-yagodin.github.io/2021/06/10/about-webdoctor-project</guid>
+                <pubDate>2021-06-10T00:00:00+00:00</pubDate>
+        </item>
 
         <item>
                 <title>Install DNN 9 on Windows Server 2019 Core</title>
