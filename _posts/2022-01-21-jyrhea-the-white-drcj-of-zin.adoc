@@ -1,0 +1,30 @@
+= Jyrhea the White Draconian Conjurer of Zin
+:page-layout: post
+:page-category: memo
+:page-title: "Jyrhea, the White Draconian Conjurer of Zin"
+:page-tagline: ""
+:page-tags: [dcss, crawl]
+:page-liquid:
+:experimental:
+:source-highlighter: rouge
+:url-asciidoctor: http://asciidoctor.org
+
+{% include JB/setup %}
+
+Мой лучший забег в качестве Draconian и первый длительный под покровительством Zin.
+
+....
+
+<img src="{{ site.url }}/assets/images/jyrhea-the-white-drcj-of-zin.jpg" alt="Jyrhea the White Draconian Conjurer of Zin" class="img-fluid" />
+
+Zin мне попался случайно на Forgotten Altar. До этого я практически не играл им раньше, и полагал, что он больше подходит для melee. Но Zin показал себя очень универсальным и надежным - почти постоянно под Vitality, а Recite на пару с Dazzling Flash отлично комбинируется с Short Blades, тем более что мне довольно рано попался Spriggan Knife. Imprison пару раз отлично сработал в качестве кнопки спасения - например с ледяным драконом в Ice Cave.
+
+Пытался сделать некоторый фокус на Long Blades с учётом высокого EV - вследствие отсутствия основной брони. Чуть позже начал фокусироваться на Conjurations плюс Iron Shot. Это работало очень хорошо с учётом бонусов к Int, Staff of Conjuration и Battlesphere. Даже Magic Dart в таком варианте был полезен до самого "конца". Наверное, первый раз я прочувствовал полезность Fulminant Prism в качестве crowd control.
+
+На 7 уровне стал "ледяным" - наверное, не лучший вариант, но и не плохой - rC+ не мешает, а Breathe Frost работает  бесплатной вариацией Mystic Blast.
+
+Прикупил отличный трезубец на +8 с бонусом к Int и Shadow Weapon. Ввиду того же недостатка AC прокачал Shields до 15 и бегал с Kite Shield of Reflection. Amulet of Regeneration был надет на постоянной основе. Но общего уровня защиты все равно было недостаточно для комфортной танковки, как и DPS в melee, поэтому расслабляться особенно не приходилось.
+
+Прошел Lair, Ice Cave, Orcs и Swamp (с руной), пару раз слетал в Abyss. Умер в процессе чистки Elf:3, скорее от скуки - при должной осторожности, эльфы не представляли большой угрозы. Возможностей выжить в последнем бою была масса.
+
+Интересных вариантов развития по гибридному варианту дальше я не видел, а хотелось! Нужно было просто вкладываться всё дальше и дальше в Conjurations, а забег растянулся на несколько месяцев в real time. 
